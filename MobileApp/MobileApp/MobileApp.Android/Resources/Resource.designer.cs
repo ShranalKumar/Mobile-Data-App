@@ -45,7 +45,7 @@ namespace MobileApp.Droid
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			public const int User1 = 2131034112;
 			
 			static Id()
 			{
@@ -61,7 +61,7 @@ namespace MobileApp.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int AdminDashboardLayout = 2130903040;
 			
 			static Layout()
 			{

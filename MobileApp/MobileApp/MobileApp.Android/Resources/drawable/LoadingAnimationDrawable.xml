@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/LoadingAnimation1" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation2" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation3" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation4" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation5" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation6" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation7" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation8" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation9" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation10" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation11" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation12" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation13" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation14" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation15" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation16" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation17" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation18" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation19" android:duration="50" />
+    <item android:drawable="@drawable/LoadingAnimation20" android:duration="50" />
+</animation-list>
