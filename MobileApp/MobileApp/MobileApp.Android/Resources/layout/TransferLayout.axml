@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Toolbar
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="?android:attr/colorPrimary"
+        android:minWidth="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TransferToolBar">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ToolBarLinearLayout">
+            <ImageButton
+                android:src="@drawable/arrowbackicon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/TransferBackButton" />
+            <TextView
+                android:text="Transfer Data"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/TransferDataTitle"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </Toolbar>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SendToLayout"
+        android:layout_marginTop="25dp">
+        <TextView
+            android:text="Send Data to:"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/SendDataText" />
+        <HorizontalScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/UserTilesScrollView">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:id="@+id/UserSelectionSlidingLayout"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <Button
+                    android:text="Louise"
+                    android:layout_width="120dp"
+                    android:layout_height="65dp"
+                    android:id="@+id/UserSelectLouise"
+                    android:height="45dp"
+                    android:width="100dp"
+                    android:layout_marginRight="5dp" />
+                <Button
+                    android:text="Steven"
+                    android:layout_width="120dp"
+                    android:layout_height="65dp"
+                    android:id="@+id/UserSelectSteven"
+                    android:height="45dp"
+                    android:width="100dp"
+                    android:layout_marginRight="5dp" />
+                <Button
+                    android:text="Shranal"
+                    android:layout_width="120dp"
+                    android:layout_height="65dp"
+                    android:id="@+id/UserSelectShranal"
+                    android:height="45dp"
+                    android:width="100dp"
+                    android:layout_marginRight="5dp" />
+                <Button
+                    android:text="Soumik"
+                    android:layout_width="120dp"
+                    android:layout_height="65dp"
+                    android:id="@+id/UserSelectSoumik"
+                    android:height="45dp"
+                    android:width="100dp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>

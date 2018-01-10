@@ -41,11 +41,249 @@ namespace MobileApp.Droid
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int AccountCategoryCommerical = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int AccountCategoryDefault = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int AccountCategoryHouse = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int AccountCategoryPump = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int AccountCategoryShed = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int ArrowBackIcon = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int ArrowUpIcon = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int BottledGas = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Broadband = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int BroadbandAndPhone = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int CategoryCommercial = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int CategoryDefault = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int CategoryHouse = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int CategoryPump = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int CategoryShed = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int ChevronDownIcon = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int ChevronIcon = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int CreditCardIcon = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int DeleteIcon = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int DirectDebitIcon = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int DoneIcon = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int icpnumberborder = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int InternetIcon = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int LoadingAnimation1 = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int LoadingAnimation10 = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int LoadingAnimation11 = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int LoadingAnimation12 = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int LoadingAnimation13 = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int LoadingAnimation14 = 2130837532;
+			
+			// aapt resource value: 0x7f02001d
+			public const int LoadingAnimation15 = 2130837533;
+			
+			// aapt resource value: 0x7f02001e
+			public const int LoadingAnimation16 = 2130837534;
+			
+			// aapt resource value: 0x7f02001f
+			public const int LoadingAnimation17 = 2130837535;
+			
+			// aapt resource value: 0x7f020020
+			public const int LoadingAnimation18 = 2130837536;
+			
+			// aapt resource value: 0x7f020021
+			public const int LoadingAnimation19 = 2130837537;
+			
+			// aapt resource value: 0x7f020022
+			public const int LoadingAnimation2 = 2130837538;
+			
+			// aapt resource value: 0x7f020023
+			public const int LoadingAnimation20 = 2130837539;
+			
+			// aapt resource value: 0x7f020024
+			public const int LoadingAnimation3 = 2130837540;
+			
+			// aapt resource value: 0x7f020025
+			public const int LoadingAnimation4 = 2130837541;
+			
+			// aapt resource value: 0x7f020026
+			public const int LoadingAnimation5 = 2130837542;
+			
+			// aapt resource value: 0x7f020027
+			public const int LoadingAnimation6 = 2130837543;
+			
+			// aapt resource value: 0x7f020028
+			public const int LoadingAnimation7 = 2130837544;
+			
+			// aapt resource value: 0x7f020029
+			public const int LoadingAnimation8 = 2130837545;
+			
+			// aapt resource value: 0x7f02002a
+			public const int LoadingAnimation9 = 2130837546;
+			
+			// aapt resource value: 0x7f02002b
+			public const int lpgbottle = 2130837547;
+			
+			// aapt resource value: 0x7f02002c
+			public const int lpgbottlemask = 2130837548;
+			
+			// aapt resource value: 0x7f02002d
+			public const int LpgIcon = 2130837549;
+			
+			// aapt resource value: 0x7f02002e
+			public const int Menu = 2130837550;
+			
+			// aapt resource value: 0x7f02002f
+			public const int MoneyBag = 2130837551;
+			
+			// aapt resource value: 0x7f020030
+			public const int NotificationIcon = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int Other = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int PastBillEstimatePattern = 2130837554;
+			
+			// aapt resource value: 0x7f020033
+			public const int Phone = 2130837555;
+			
+			// aapt resource value: 0x7f020034
+			public const int Power = 2130837556;
+			
+			// aapt resource value: 0x7f020035
+			public const int PowerIcon = 2130837557;
+			
+			// aapt resource value: 0x7f020036
+			public const int ReticulatedGas = 2130837558;
+			
+			// aapt resource value: 0x7f020037
+			public const int ReticulatedGasIcon = 2130837559;
+			
+			// aapt resource value: 0x7f020038
+			public const int SelectedAccountTick = 2130837560;
+			
+			// aapt resource value: 0x7f020039
+			public const int SplashScreenLogo = 2130837561;
+			
+			// aapt resource value: 0x7f02003a
+			public const int StarFilled = 2130837562;
+			
+			// aapt resource value: 0x7f02003b
+			public const int StarUnfilled = 2130837563;
+			
+			// aapt resource value: 0x7f02003c
+			public const int StatusBarIcon = 2130837564;
+			
+			// aapt resource value: 0x7f02003d
+			public const int TrustpowerLogo = 2130837565;
+			
+			// aapt resource value: 0x7f02003e
+			public const int UnlimitedIcon = 2130837566;
+			
+			// aapt resource value: 0x7f02003f
+			public const int WelcomeTutorial = 2130837567;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f060005
+			public const int SendDataText = 2131099653;
+			
+			// aapt resource value: 0x7f060004
+			public const int SendToLayout = 2131099652;
+			
+			// aapt resource value: 0x7f060001
+			public const int ToolBarLinearLayout = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int TransferBackButton = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int TransferDataTitle = 2131099651;
+			
+			// aapt resource value: 0x7f060000
+			public const int TransferToolBar = 2131099648;
+			
+			// aapt resource value: 0x7f060008
+			public const int UserSelectLouise = 2131099656;
+			
+			// aapt resource value: 0x7f06000a
+			public const int UserSelectShranal = 2131099658;
+			
+			// aapt resource value: 0x7f06000b
+			public const int UserSelectSoumik = 2131099659;
+			
+			// aapt resource value: 0x7f060009
+			public const int UserSelectSteven = 2131099657;
+			
+			// aapt resource value: 0x7f060007
+			public const int UserSelectionSlidingLayout = 2131099655;
+			
+			// aapt resource value: 0x7f060006
+			public const int UserTilesScrollView = 2131099654;
 			
 			static Id()
 			{
@@ -60,8 +298,8 @@ namespace MobileApp.Droid
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int TransferLayout = 2130968576;
 			
 			static Layout()
 			{
@@ -76,8 +314,8 @@ namespace MobileApp.Droid
 		public partial class Mipmap
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int Icon = 2130903040;
 			
 			static Mipmap()
 			{
@@ -92,11 +330,11 @@ namespace MobileApp.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int app_name = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int hello = 2131034112;
 			
 			static String()
 			{
