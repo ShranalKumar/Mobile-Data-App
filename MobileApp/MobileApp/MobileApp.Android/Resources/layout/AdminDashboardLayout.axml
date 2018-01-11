@@ -110,24 +110,65 @@
             p1:layout_height="wrap_content"
             p1:layout_alignWithParentIfMissing="true"
             p1:layout_centerHorizontal="true" />
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:layout_below="@id/DaysRemainingText"
+            p1:id="@+id/DataBarLayout"
+            p1:layout_centerInParent="true">
+            <ImageView
+                p1:id="@+id/DataUsageBorder"
+                p1:layout_width="250dp"
+                p1:layout_height="wrap_content"
+                p1:layout_centerInParent="true" />
+            <ImageView
+                p1:id="@+id/DataUsageFill"
+                p1:layout_height="wrap_content"
+                p1:layout_centerInParent="true"
+                p1:layout_alignLeft="@id/DataUsageBorder"
+                p1:layout_width="wrap_content" />
+            <android.support.v7.widget.DialogTitle
+                p1:id="@+id/DataUsageText"
+                p1:textAlignment="center"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:layout_centerInParent="true" />
+        </RelativeLayout>
     </RelativeLayout>
-    <Space
-        p1:layout_width="match_parent"
-        p1:layout_height="20dp"
-        p1:layout_below="@id/MobileInformationLayout"
-        p1:id="@+id/space7" />
     <RelativeLayout
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:layout_below="@id/space7"
+        p1:layout_below="@id/MobileInformationLayout"
         p1:id="@+id/UserTilesLayout">
         <Button
-            p1:text="Louise"
             p1:layout_width="150dp"
             p1:layout_height="70dp"
-            p1:layout_below="@id/space7"
             p1:id="@+id/LouiseUserTile"
             p1:background="@drawable/transparent_button"
             p1:layout_margin="20dp" />
+        <Button
+            p1:layout_width="150dp"
+            p1:layout_height="70dp"
+            p1:layout_toRightOf="@id/LouiseUserTile"
+            p1:id="@+id/ShranalUserTile"
+            p1:layout_margin="20dp"
+            p1:background="@drawable/transparent_button" />
+        <Button
+            p1:layout_width="150dp"
+            p1:layout_height="70dp"
+            p1:layout_below="@id/LouiseUserTile"
+            p1:id="@+id/SoumikUserTile"
+            p1:layout_margin="20dp"
+            p1:background="@drawable/transparent_button" />
+        <Button
+            p1:layout_width="150dp"
+            p1:layout_height="70dp"
+            p1:layout_toRightOf="@id/SoumikUserTile"
+            p1:id="@+id/MinkyuUserTile"
+            p1:layout_below="@id/ShranalUserTile"
+            p1:layout_margin="20dp"
+            p1:background="@drawable/transparent_button" />
     </RelativeLayout>
 </RelativeLayout>
