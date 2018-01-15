@@ -273,11 +273,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f060004
 			public const int RemainingDaysNonAdmin = 2131099652;
 			
-			// aapt resource value: 0x7f06000b
-			public const int RequestButton = 2131099659;
+			// aapt resource value: 0x7f06000e
+			public const int RequestButton = 2131099662;
 			
-			// aapt resource value: 0x7f06000c
-			public const int TransferButton = 2131099660;
+			// aapt resource value: 0x7f06000f
+			public const int TransferButton = 2131099663;
 			
 			// aapt resource value: 0x7f060006
 			public const int imageView1 = 2131099654;
@@ -285,17 +285,26 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f060007
 			public const int imageView2 = 2131099655;
 			
+			// aapt resource value: 0x7f06000b
+			public const int imageView3 = 2131099659;
+			
+			// aapt resource value: 0x7f06000c
+			public const int imageView4 = 2131099660;
+			
 			// aapt resource value: 0x7f060000
 			public const int linearLayout1 = 2131099648;
 			
 			// aapt resource value: 0x7f060003
 			public const int linearLayout2 = 2131099651;
 			
-			// aapt resource value: 0x7f06000a
-			public const int linearLayout3 = 2131099658;
+			// aapt resource value: 0x7f06000d
+			public const int linearLayout3 = 2131099661;
 			
 			// aapt resource value: 0x7f060009
 			public const int linearLayout4 = 2131099657;
+			
+			// aapt resource value: 0x7f06000a
+			public const int linearLayout5 = 2131099658;
 			
 			// aapt resource value: 0x7f060005
 			public const int relativeLayout1 = 2131099653;
