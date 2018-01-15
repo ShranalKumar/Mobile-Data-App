@@ -3108,45 +3108,6 @@ namespace MobileApp.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0900f8
-			public const int AllocatedDataAmount = 2131296504;
-			
-			// aapt resource value: 0x7f0900f6
-			public const int AllocatedDataLayout = 2131296502;
-			
-			// aapt resource value: 0x7f0900f7
-			public const int AllocatedDataText = 2131296503;
-			
-			// aapt resource value: 0x7f0900fc
-			public const int AllocationTextLayout = 2131296508;
-			
-			// aapt resource value: 0x7f0900fe
-			public const int CenteredAllocatedDataAmount = 2131296510;
-			
-			// aapt resource value: 0x7f0900fd
-			public const int CenteredAllocatedDataText = 2131296509;
-			
-			// aapt resource value: 0x7f090101
-			public const int CenteredUsedDataAmount = 2131296513;
-			
-			// aapt resource value: 0x7f090100
-			public const int CenteredUsedDataText = 2131296512;
-			
-			// aapt resource value: 0x7f0900f5
-			public const int CurrentPlanDataAmount = 2131296501;
-			
-			// aapt resource value: 0x7f0900f3
-			public const int CurrentPlanLayout = 2131296499;
-			
-			// aapt resource value: 0x7f0900f4
-			public const int CurrentPlanText = 2131296500;
-			
-			// aapt resource value: 0x7f0900f9
-			public const int DataAllocationLayout = 2131296505;
-			
-			// aapt resource value: 0x7f0900fa
-			public const int DataAllocationSliderLayout = 2131296506;
-			
 			// aapt resource value: 0x7f0900c2
 			public const int DataAmountSelectorButtonLayout = 2131296450;
 			
@@ -3155,9 +3116,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900c1
 			public const int DataAmountSelectorTitleText = 2131296449;
-			
-			// aapt resource value: 0x7f0900f2
-			public const int DataDetailsTextLayout = 2131296498;
 			
 			// aapt resource value: 0x7f0900d7
 			public const int DataRemainingPgBarLayout = 2131296471;
@@ -3173,9 +3131,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900c7
 			public const int DataUnitDecimalText = 2131296455;
-			
-			// aapt resource value: 0x7f090102
-			public const int DataUsageBreakdownLayout = 2131296514;
 			
 			// aapt resource value: 0x7f0900c3
 			public const int FirstButtonLayout = 2131296451;
@@ -3201,30 +3156,6 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0900d1
 			public const int FourthUpArrow = 2131296465;
 			
-			// aapt resource value: 0x7f09010c
-			public const int GoogleAppName = 2131296524;
-			
-			// aapt resource value: 0x7f09010a
-			public const int GoogleDataUsage = 2131296522;
-			
-			// aapt resource value: 0x7f09010e
-			public const int GoogleDataUsageBar = 2131296526;
-			
-			// aapt resource value: 0x7f09010b
-			public const int GoogleTextDetails = 2131296523;
-			
-			// aapt resource value: 0x7f09010f
-			public const int GoogleUsageBarBorder = 2131296527;
-			
-			// aapt resource value: 0x7f090110
-			public const int GoogleUsageBarMask = 2131296528;
-			
-			// aapt resource value: 0x7f09010d
-			public const int GoogleUsedDataAmount = 2131296525;
-			
-			// aapt resource value: 0x7f0900fb
-			public const int MainViewTextLayout = 2131296507;
-			
 			// aapt resource value: 0x7f0900e5
 			public const int NoDoNotTransferButton = 2131296485;
 			
@@ -3239,15 +3170,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900d5
 			public const int RemainingDataLayoutForTransfer = 2131296469;
-			
-			// aapt resource value: 0x7f090112
-			public const int SaveButton = 2131296530;
-			
-			// aapt resource value: 0x7f090111
-			public const int SaveButtonLayout = 2131296529;
-			
-			// aapt resource value: 0x7f090113
-			public const int SaveButtonText = 2131296531;
 			
 			// aapt resource value: 0x7f0900c8
 			public const int SecondButtonLayout = 2131296456;
@@ -3342,24 +3264,6 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0900e9
 			public const int TrusppowerLogoSuccessDialog = 2131296489;
 			
-			// aapt resource value: 0x7f0900ff
-			public const int UsedDataLayout = 2131296511;
-			
-			// aapt resource value: 0x7f0900f0
-			public const int UserDataUsageBackButton = 2131296496;
-			
-			// aapt resource value: 0x7f0900ed
-			public const int UserDataUsageLayout = 2131296493;
-			
-			// aapt resource value: 0x7f0900f1
-			public const int UserDataUsageTitle = 2131296497;
-			
-			// aapt resource value: 0x7f0900ee
-			public const int UserDataUsageToolBar = 2131296494;
-			
-			// aapt resource value: 0x7f0900ef
-			public const int UserDataUsageToolbarLayout = 2131296495;
-			
 			// aapt resource value: 0x7f0900bc
 			public const int UserSelectLouise = 2131296444;
 			
@@ -3380,27 +3284,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900e4
 			public const int YesTransferButton = 2131296484;
-			
-			// aapt resource value: 0x7f090105
-			public const int YoutubeAppName = 2131296517;
-			
-			// aapt resource value: 0x7f090103
-			public const int YoutubeDataUsage = 2131296515;
-			
-			// aapt resource value: 0x7f090107
-			public const int YoutubeDataUsageBar = 2131296519;
-			
-			// aapt resource value: 0x7f090104
-			public const int YoutubeTextDetails = 2131296516;
-			
-			// aapt resource value: 0x7f090108
-			public const int YoutubeUsageBarBorder = 2131296520;
-			
-			// aapt resource value: 0x7f090109
-			public const int YoutubeUsageBarMask = 2131296521;
-			
-			// aapt resource value: 0x7f090106
-			public const int YoutubeUsedDataAmount = 2131296518;
 			
 			// aapt resource value: 0x7f09009e
 			public const int action0 = 2131296414;
@@ -3630,8 +3513,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090048
 			public const int list_item = 2131296328;
 			
-			// aapt resource value: 0x7f090115
-			public const int masked = 2131296533;
+			// aapt resource value: 0x7f0900ee
+			public const int masked = 2131296494;
 			
 			// aapt resource value: 0x7f0900a1
 			public const int media_actions = 2131296417;
@@ -3930,8 +3813,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09000e
 			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f090114
-			public const int visible = 2131296532;
+			// aapt resource value: 0x7f0900ed
+			public const int visible = 2131296493;
 			
 			// aapt resource value: 0x7f090093
 			public const int volume_item_container = 2131296403;
@@ -4223,9 +4106,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f040042
 			public const int TransferLayout = 2130968642;
-			
-			// aapt resource value: 0x7f040043
-			public const int UsersDataUsageLayout = 2130968643;
 			
 			static Layout()
 			{
