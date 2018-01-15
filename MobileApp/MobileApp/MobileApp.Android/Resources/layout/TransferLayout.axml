@@ -389,7 +389,6 @@
                     android:scaleY="0.7" />
             </LinearLayout>
             <TextView
-                android:text="Are you sure you would like to transfer XX MB to Steven?"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -430,8 +429,7 @@
         android:id="@+id/TransferPageSuccessfulPopUpLayout"
         android:gravity="center"
         android:visibility="invisible"
-        android:background="@color/background_floating_material_dark"
-        android:alpha="0.95">
+        android:background="@android:color/transparent">
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
@@ -459,7 +457,6 @@
                     android:scaleY="0.7" />
             </LinearLayout>
             <TextView
-                android:text="OK! XX MB has successfully been transfered to Steven?"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

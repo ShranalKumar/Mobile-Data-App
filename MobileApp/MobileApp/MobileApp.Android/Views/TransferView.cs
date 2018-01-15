@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TransferView", MainLauncher = true)]
+    [Activity(Label = "TransferView", Icon = "@mipmap/icon")]
     public class TransferView : Activity
     {
 
@@ -22,6 +22,8 @@ namespace MobileApp.Droid.Views
         private TextView _fourthNumber;
         private TextView _dataUnitsToGB;
         private TextView _decimalPointVisibility;
+        private TextView _transferDialogDisplayText;
+        private TextView _successfullyTransferedMessage;
 
         private Button _doNotTransfer;
         private Button _yesToTransfer;
@@ -40,6 +42,10 @@ namespace MobileApp.Droid.Views
         private RelativeLayout _transferConfirmationPopUp;
         private RelativeLayout _transferSuccessMessage;
 
+        private string _getDataAmount;
+        private string _getDataUnit;
+        //private string _getConfirmationMessage;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -53,6 +59,8 @@ namespace MobileApp.Droid.Views
             _fourthNumber = FindViewById<TextView>(Resource.Id.FourthNumberText);
             _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataTransferUnits);
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.DataUnitDecimalText);
+            _transferDialogDisplayText = FindViewById<TextView>(Resource.Id.TransferDialogText);
+            _successfullyTransferedMessage = FindViewById<TextView>(Resource.Id.TransferSuccessDialogText);
 
             _yesToTransfer = FindViewById<Button>(Resource.Id.YesTransferButton);
             _yesToTransfer.Click += showSuccessMessage;
@@ -94,6 +102,8 @@ namespace MobileApp.Droid.Views
 
             _sendButtonClicked = FindViewById<ImageButton>(Resource.Id.SendButton);
             _sendButtonClicked.Click += showConfirmationPopUp;
+
+                        
         }
 
 
@@ -179,7 +189,7 @@ namespace MobileApp.Droid.Views
             if (valueOfFirstNumber > 0)
             {
                 _dataUnitsToGB.Text = "GB";
-                _decimalPointVisibility.Text = " . ";
+                _decimalPointVisibility.Text = ".";
             } else
             {
                 _dataUnitsToGB.Text = "MB";
@@ -189,6 +199,10 @@ namespace MobileApp.Droid.Views
 
         private void showConfirmationPopUp(object sender, EventArgs e)
         {
+            _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
+            _getDataUnit = _dataUnitsToGB.Text;
+            _transferDialogDisplayText.Text = "Are you sure you would like to transfer " + _getDataAmount + " " + _getDataUnit + " to Steven?";
+
             if (_transferConfirmationPopUp.Visibility == ViewStates.Invisible) {
                 _transferConfirmationPopUp.Visibility = ViewStates.Visible;
             }
@@ -200,6 +214,8 @@ namespace MobileApp.Droid.Views
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
+            _successfullyTransferedMessage.Text = "OK! " + _getDataAmount + " " + _getDataUnit + " has successfully been transfered to Steven!";
+
             if (_transferSuccessMessage.Visibility == ViewStates.Invisible)
             {
                 _transferSuccessMessage.Visibility = ViewStates.Visible;
