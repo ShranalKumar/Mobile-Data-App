@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/AllocationPageMainLayout">
+    <android.support.v7.widget.Toolbar
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/AllocationPageToolbar">
+        <ImageButton
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_above="@id/AllocationPageToolbar"
+            p1:id="@+id/BackButton"
+            p1:background="@android:color/transparent" />
+        <android.support.v7.widget.DialogTitle
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/AllocationPageTitle"
+            p1:gravity="center"
+            p1:textAlignment="center" />
+    </android.support.v7.widget.Toolbar>
+    <GridLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:id="@+id/DataInformation"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/AllocationPageToolbar"
+        p1:columnCount="2"
+        p1:rowCount="1"
+        p1:layout_centerHorizontal="true"
+        p1:layout_marginBottom="20dp">
+        <RelativeLayout
+            p1:id="@+id/CurrentDataInformation"
+            p1:layout_rowWeight="1"
+            p1:layout_columnWeight="1">
+            <android.support.v7.widget.DialogTitle
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/CurrentDataInformationHeader"
+                p1:text="Current Plan"
+                p1:layout_centerHorizontal="true" />
+            <android.support.v7.widget.DialogTitle
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/CurrentDataAmount"
+                p1:text="XXGB"
+                p1:layout_centerHorizontal="true"
+                p1:layout_below="@id/CurrentDataInformationHeader" />
+        </RelativeLayout>
+        <RelativeLayout
+            p1:id="@+id/RemainingDataInformation"
+            p1:layout_columnWeight="1">
+            <android.support.v7.widget.DialogTitle
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/RemainingDataInformationHeader"
+                p1:text="Remaining Data"
+                p1:layout_centerHorizontal="true" />
+            <android.support.v7.widget.DialogTitle
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/RemainingDataAmount"
+                p1:text="XXGB"
+                p1:layout_below="@id/RemainingDataInformationHeader"
+                p1:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </GridLayout>
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:id="@+id/DataPoolCircleLayout"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/DataInformation"
+        p1:layout_centerInParent="true">
+        <RadialProgress.RadialProgressView
+            p1:layout_width="match_parent"
+            p1:layout_height="100.0dp"
+            p1:id="@+id/RadialProgressCircle"
+            p1:background="@android:color/transparent" />
+    </RelativeLayout>
+    <GridLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/WeeklyModeLayout"
+        p1:layout_below="@id/DataPoolCircleLayout"
+        p1:layout_marginTop="20dp"
+        p1:columnCount="2">
+        <android.support.v7.widget.DialogTitle
+            p1:id="@+id/WeeklyModeText"
+            p1:layout_columnWeight="1"
+            p1:text="Weekly Mode"
+            p1:layout_width="wrap_content"
+            p1:layout_marginLeft="20dp" />
+        <Switch
+            p1:id="@+id/WeeklyModeOnOff"
+            p1:layout_columnWeight="1"
+            p1:layout_marginRight="20dp" />
+    </GridLayout>
+    <ListView
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="205.0dp"
+        p1:layout_below="@id/WeeklyModeLayout"
+        p1:id="@+id/UserDataAllocationListView" />
+    <Button
+        p1:text="SAVE"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/SaveButton"
+        p1:layout_below="@id/UserDataAllocationListView"
+        p1:background="@drawable/transparent_button"
+        p1:layout_centerHorizontal="true"
+        p1:textColor="@color/foreground_material_dark" />
+</RelativeLayout>

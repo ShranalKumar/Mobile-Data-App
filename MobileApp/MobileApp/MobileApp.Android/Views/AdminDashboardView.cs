@@ -40,7 +40,7 @@ namespace MobileApp.Droid.Views
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
+
             SetContentView(Resource.Layout.AdminDashboardLayout);
 
             //Image Buttons
@@ -74,7 +74,7 @@ namespace MobileApp.Droid.Views
             _minkyuTileName = FindViewById<DialogTitle>(Resource.Id.MinkyuTileName);
 
             //Buttons
-            _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);           
+            _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
 
             //Image Resources
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
@@ -103,13 +103,8 @@ namespace MobileApp.Droid.Views
             _daysRemaining.Text = "XX Days Remaining";
             _dataUsage.Text = "XXGB Remaining";
             _allocateButton.SetAllCaps(true);
-            _allocateButton.Click += ChangeText;
+            _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
 
-        }
-
-        private void ChangeText(object sender, EventArgs e)
-        {
-            _allocateButton.Text = "Fuck this!";
         }
     }
 }
