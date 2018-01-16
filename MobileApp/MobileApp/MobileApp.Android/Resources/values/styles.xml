@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+
+  <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:statusBarColor">@android:color/black</item>
+    <item name="android:buttonStyle">@style/NoShadowButton</item>
+    <item name="colorControlNormal">#E9E9EA</item>
+    <item name="colorControlActivated">#1D79DE</item>
+  </style>
+
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+
+  <style name="ActionBarActivityTheme" parent="MainTheme">
+    <item name="android:homeAsUpIndicator">@drawable/ArrowBackIcon</item>
+  </style>
+
+  <style name="NoShadowButton" parent="android:style/Widget.Button">
+    <item name="android:elevation">0dp</item>
+    <item name="android:padding">0dp</item>
+  </style>
+
+  <!-- Login screen -->
+  <style name="TextInputLayoutHintTextAppearance">
+    <item name="android:textSize">11dp</item>
+  </style>
+
+  <style name="TextInputLayout">
+    <item name="android:paddingTop">7dp</item>
+    <item name="android:paddingLeft">15dp</item>
+    <item name="android:paddingRight">15dp</item>
+    <item name="android:layout_marginBottom">6dp</item>
+    <item name="android:layout_height">50dp</item>
+  </style>
+
+  <style name="BankAccountTextInputLayout" parent="TextInputLayout">
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+  </style>
+
+  <style name="TextInputEditText">
+    <item name="android:paddingTop">2dp</item>
+    <item name="android:textSize">14dp</item>
+  </style>
+
+  <style name="ClickableTextView">
+    <item name="android:autoLink">web</item>
+    <item name="android:clickable">true</item>
+  </style>
+
+  <style name="LoginButton">
+    <item name="android:layout_height">50dp</item>
+    <item name="android:textSize">24dp</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:layout_marginBottom">6dp</item>
+  </style>
+
+  <!-- Navigation Drawer -->
+  <style name="DisplayName">
+    <item name="android:layout_marginLeft">15dp</item>
+    <item name="android:layout_marginRight">15dp</item>
+    <item name="android:layout_marginTop">25dp</item>
+    <item name="android:textSize">19dp</item>
+    <item name="android:maxLines">2</item>
+    <item name="android:singleLine">false</item>
+    <item name="android:layout_centerVertical">true</item>
+  </style>
+
+  <style name="MenuItemText">
+    <item name="android:textSize">18dp</item>
+    <item name="android:layout_marginLeft">15dp</item>
+    <item name="android:layout_height">55dp</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:gravity">center_vertical</item>
+  </style>
+
+  <style name="MenuLinkText">
+    <item name="android:textSize">14dp</item>
+    <item name="android:autoLink">web</item>
+    <item name="android:clickable">true</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">40dp</item>
+    <item name="android:layout_marginLeft">15dp</item>
+    <item name="android:gravity">center_vertical</item>
+  </style>
+
+  <style name="MenuSeparatorBar">
+    <item name="android:layout_height">1dp</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
+
+  <style name="BackButtonIcon">
+    <item name="android:layout_width">50dp</item>
+    <item name="android:layout_height">50dp</item>
+    <item name="android:src">@drawable/ArrowBackIcon</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:scaleType">fitCenter</item>
+    <item name="android:padding">15dp</item>
+  </style>
+
+  <style name="HamburgerMenuIcon">
+    <item name="android:padding">5dp</item>
+    <item name="android:layout_height">35dp</item>
+    <item name="android:layout_width">35dp</item>
+    <item name="android:src">@drawable/menu</item>
+  </style>
+
+  <!-- Balance Summary Card -->
+  <style name="PayNowButton">
+    <item name="android:layout_marginLeft">15dp</item>
+    <item name="android:layout_marginRight">15dp</item>
+    <item name="android:layout_marginTop">5dp</item>
+    <item name="android:layout_marginBottom">5dp</item>
+    <item name="android:textSize">16dp</item>
+  </style>
+
+  <!-- Manage Credit Card Info -->
+  <style name="CreditCardItemLayout">
+    <item name="android:layout_height">55dp</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
+
+  <style name="CreditCardItemText">
+    <item name="android:textSize">18dp</item>
+  </style>
+
+  <style name="CreditCardItemLabel">
+    <item name="android:textSize">10dp</item>
+  </style>
+
+  <!-- Feedback Screen -->
+  <style name="FeedbackStar">
+    <item name="android:layout_weight">1</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:src">@drawable/starunfilled</item>
+    <item name="android:layout_marginTop">15dp</item>
+    <item name="android:layout_marginBottom">12dp</item>
+  </style>
+
+  <!-- Internet Screen -->
+  <style name="CenterIcon">
+    <item name="android:layout_gravity">center</item>
+    <item name="android:layout_width">30dp</item>
+    <item name="android:layout_height">30dp</item>
+  </style>
+
+  <style name="CenterPageTitle">
+    <item name="android:layout_marginTop">10dp</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">16dp</item>
+  </style>
+
+  <style name="Button">
+    <item name="android:layout_height">40dp</item>
+    <item name="android:layout_width">140dp</item>
+    <item name="android:textSize">16dp</item>
+    <item name="android:background">@drawable/transparent_button</item>
+  </style>
+
+  <style name="InternetButton" parent="Button">
+    <item name="android:layout_margin">10dp</item>
+  </style>
+
+  <style name="LpgButton" parent="Button">
+    <item name="android:layout_width">150dp</item>
+  </style>
+
+  <style name="Circle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">15dp</item>
+    <item name="android:layout_centerInParent">true</item>
+  </style>
+
+  <style name="FormSeparatorStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+  </style>
+
+</resources>
