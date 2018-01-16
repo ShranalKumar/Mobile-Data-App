@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System;
+using MobileApp.Droid.Adapters;
 
 namespace MobileApp.Droid.Views
 {
@@ -36,6 +37,8 @@ namespace MobileApp.Droid.Views
         private DialogTitle _minkyuTileName;
         
         private Button _allocateButton;
+
+        private RelativeLayout _userTiles;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -76,6 +79,9 @@ namespace MobileApp.Droid.Views
             //Buttons
             _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
 
+            //Relative Layouts
+            _userTiles = FindViewById<RelativeLayout>(Resource.Id.UserTilesLayout);
+
             //Image Resources
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
@@ -96,7 +102,7 @@ namespace MobileApp.Droid.Views
             _shranalTileName.Text = "Shranal";
             _soumikTileName.Text = "Soumik";
             _minkyuTileName.Text = "Minkyu";
-
+                        
             _productName.Text = "Mobile";
             _user.Text = "mrs louise shirley wesley abcd";
             _user.SetAllCaps(true);
