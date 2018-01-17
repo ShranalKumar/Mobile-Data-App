@@ -10,39 +10,50 @@
 	using Android.Views;
 	using Android.Widget;
 
-	namespace MobileApp.Droid
+namespace MobileApp.Droid
+{
+	class Controller
 	{
-		class Controller
+		private string _loginid;
+		private string _password;
+		private List<string> _uid; /*{ get; set; }*/
+		private List<string> _fullname;
+		private List<int> _used;
+		private List<int> _allocated;
+		private List<int> _remainder;
+		private List<string> _appName;
+		private List<string> _appUsage;
+		private string _startDate;
+		private string _endDate;
+		private DateTime _daysRemaining;
+
+
+
+
+		//public ViewModel(string[] nameList, int[] usedList, int[] allocatedList, int[] remainder)
+		//{
+		//	this._nameList = nameList;
+		//	this._usedList = usedList;
+		//	this._allocatedList = allocatedList;
+		//	this._remainder = remainder;
+		//}
+
+		public Controller(List<string> uid, List<string> fullname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage /*string startDate, string endDate*/)
 		{
-		//private string[] _nameList;
-		//private int[] _usedList;
-		//private int[] _allocatedList;
-		//private int[] _remainder;
-		public List<string> _uid; /*{ get; set; }*/
-		public List<string> _fullname;
-		public List<int> _used;
-		public List<int> _allocated;
-		public List<int> _remainder;
-		public List<string> _appName;
-		public List<string> _appUsage;
+			this._uid = uid;
+			this._fullname = fullname;
+			this._used = used;
+			this._allocated = allocated;
+			this._remainder = remainder;
+			this._appName = appName;
+			this._appUsage = appUsage;
+			//this._startDate = startDate;
+			//this._endDate = endDate;
 
-			//public ViewModel(string[] nameList, int[] usedList, int[] allocatedList, int[] remainder)
-			//{
-			//	this._nameList = nameList;
-			//	this._usedList = usedList;
-			//	this._allocatedList = allocatedList;
-			//	this._remainder = remainder;
-			//}
-
-			public Controller(List<string> uid, List<string> fullname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage)
-			{
-				this._uid = uid;
-				this._fullname = fullname;
-				this._used = used;
-				this._allocated = allocated;
-				this._remainder = remainder;
-				this._appName = appName;
-				this._appUsage = appUsage;
-			}
+		}
+		public Controller(string loginId, string password)
+		{
+			
 		}
 	}
+}

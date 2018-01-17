@@ -4,12 +4,12 @@ using Android.OS;
 
 namespace MobileApp.Droid.Views
 {
-	[Activity(Label = "MobileApp", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "MobileApp", Icon = "@mipmap/icon")]
 	public class NonAdminDashbaordView : Activity
 	{
-		int count = 1;
 		Button request, transfer;
 		ImageView logo;
+		TodoItemManager manager;
 
 
 		protected override void OnCreate(Bundle savedInstanceState)

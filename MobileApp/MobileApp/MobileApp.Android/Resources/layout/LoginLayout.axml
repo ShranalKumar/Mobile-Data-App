@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/LoginPageLayout"
+    p1:gravity="center_vertical"
+    p1:padding="25dp">
+    <ImageView
+        p1:src="@drawable/splashscreenlogo"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/SplashScreenLogo" />
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/UsernameLayout"
+        p1:padding="5dp"
+        p1:layout_marginTop="5dp"
+        p1:layout_marginBottom="5dp"
+        p1:layout_below="@id/SplashScreenLogo"
+        p1:animateLayoutChanges="true">
+        <EditText
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/UsernameInputField"
+            p1:inputType="textEmailAddress" />
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/PasswordLayout"
+        p1:padding="5dp"
+        p1:layout_marginBottom="5dp"
+        p1:layout_marginTop="5dp"
+        p1:layout_below="@id/UsernameLayout">
+        <EditText
+            p1:inputType="textPassword"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/PasswordInputField" />
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/LoginButtonLayout"
+        p1:padding="5dp"
+        p1:layout_marginBottom="5dp"
+        p1:layout_marginTop="5dp"
+        p1:layout_below="@id/PasswordLayout"
+        p1:animateLayoutChanges="true">
+        <Button
+            p1:text="Login"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/LogInButton" />
+    </LinearLayout>
+</RelativeLayout>

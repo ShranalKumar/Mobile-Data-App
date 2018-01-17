@@ -95,6 +95,8 @@ namespace MobileApp.Droid
 				List<int> remainder = new List<int>();
 				List<string> AppName = new List<string>();
 				List<string> AppUsage = new List<string>();
+				string startDate;
+				string endDate;
 
 
 
@@ -127,8 +129,10 @@ namespace MobileApp.Droid
 						allocated.Add(gm.Allocated);
 						used.Add(gm.Used);
 					}
+					startDate = item.PlanStartDate;
+					endDate = item.PlanEndDate;
 				}
-				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage);
+				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage /*startDate, endDate*/);
 				
 
 				//for (int i = 0; i <= Querylength - 1; i++)
@@ -173,7 +177,7 @@ namespace MobileApp.Droid
 		//		this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
 		//	}
 		//	catch (DocumentClientException de)
-		//	{
+		//	{C:\Users\kan02\Desktop\Trustpower\project\Trustpoer new App\MobileApp\MobileApp\MobileApp.Android\Views\NonAdminDashbaordView.cs
 		//		throw;
 		//	}
 		//}
