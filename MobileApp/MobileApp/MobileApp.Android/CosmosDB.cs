@@ -49,6 +49,47 @@ namespace MobileApp.Droid
 
 		public List<TodoItem> Items { get; private set; }
 
+		public async Task<List<TodoItem>> GetTodoItemsAsync(string loginQuery, string _loginId , string _password)
+		{
+			try
+			{
+				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, loginQuery)
+					  .AsDocumentQuery();
+
+				Items = new List<TodoItem>();
+				while (query.HasMoreResults)
+				{
+					Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
+				}
+
+				if (Items.Count ==0)
+				{
+					Console.WriteLine("Authentication failed");
+				}
+				else
+				{
+					foreach (TodoItem item in Items)
+					{
+						if (item.password == _password && item.uid == _loginId)
+						{
+							Console.WriteLine("Authentication succeeed");
+						}
+						else
+						{
+							Console.WriteLine("Authentication failed");	
+						}
+					}
+				}
+
+			}
+			catch (Exception e)
+			{
+				Console.Error.WriteLine(@"ERROR {0}", e.Message);
+				return null;
+			}
+			return Items;
+		}
+
 		public async Task<List<TodoItem>> GetTodoItemsAsync()
 		{
 			try

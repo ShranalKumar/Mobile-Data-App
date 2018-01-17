@@ -57,7 +57,7 @@
     <Compile Include="Controller.cs" />
     <Compile Include="CosmosDB.cs" />
     <Compile Include="CosmosSchema.cs" />
-    <Compile Include="LoginControll.cs" />
+    <Compile Include="LoginController.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\NonAdminDashbaordView.cs" />

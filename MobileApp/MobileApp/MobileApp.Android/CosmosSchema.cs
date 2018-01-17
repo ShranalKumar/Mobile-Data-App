@@ -12,6 +12,9 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "uID")]
 		public string uid { get; set; }
 
+		[JsonProperty(PropertyName = "Password")]
+		public string password { get; set; }
+
 		[JsonProperty(PropertyName = "Name")]
 		public List<NameList> Name { get; set; }
 

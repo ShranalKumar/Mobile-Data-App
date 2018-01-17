@@ -51,7 +51,7 @@ namespace MobileApp.Droid.Views
 			_loginId = _userInputID.Text;
 			_password = _userInputPassword.Text;
 
-			Controller controller = new Controller(_loginId, _password);
+			LoginController logincontroller = new LoginController(_loginId, _password);
 
 
 			//throw new NotImplementedException();

@@ -14,6 +14,7 @@ namespace MobileApp.Droid
 {
 	class Controller
 	{
+		TodoItemManager manager;
 		private string _loginid;
 		private string _password;
 		private List<string> _uid; /*{ get; set; }*/
@@ -26,9 +27,6 @@ namespace MobileApp.Droid
 		private string _startDate;
 		private string _endDate;
 		private DateTime _daysRemaining;
-
-
-
 
 		//public ViewModel(string[] nameList, int[] usedList, int[] allocatedList, int[] remainder)
 		//{
@@ -50,10 +48,6 @@ namespace MobileApp.Droid
 			//this._startDate = startDate;
 			//this._endDate = endDate;
 
-		}
-		public Controller(string loginId, string password)
-		{
-			
 		}
 	}
 }
