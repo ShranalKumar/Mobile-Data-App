@@ -21,18 +21,18 @@ namespace MobileApp.Droid
 	{
 		static TodoItemManager defaultInstance = new TodoItemManager();
 
-		private const string accountURL = @"https://9b48ec4c-0ee0-4-231-b9ee.documents.azure.com:443/";
-		private const string accountKey = @"9YMu58QaaaWSbGdVXzXCmUsxiOYqZdIQatyyNplkw6xi9LOH6afai77iDPmgnjsTWszLy9b6RQCOXnLQLGdk7w==";
-		private const string databaseId = @"ToDoList";
-		private const string collectionId = @"Items";
+		private const string _accountURL = @"https://7cd241a9-0ee0-4-231-b9ee.documents.azure.com:443/";
+		private const string _accountKey = @"qd90jPFq21MhZ8i3HfJA943zmDWRqVBhTZJNOYYqKIFqvjuBau6k2CMKmqtowyz7jRkPObpYS1AO4Jvq9DFrdQ==";
+		private const string _databaseId = @"ToDoList";
+		private const string _collectionId = @"Items";
 
-		private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
+		private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(_databaseId, _collectionId);
 
 		private DocumentClient client;
 
 		private TodoItemManager()
 		{
-			client = new DocumentClient(new System.Uri(accountURL), accountKey);
+			client = new DocumentClient(new System.Uri(_accountURL), _accountKey);
 		}
 
 		public static TodoItemManager DefaultManager
@@ -53,8 +53,8 @@ namespace MobileApp.Droid
 		{
 			try
 			{
-				var AQuery = "select T.id, G.FirstName, G.LastName , G.Used, G.Allocated, G.Admin from ToDoList T join G in T.GroupMember where T.id = 'Realtest1'";
-				var filterQuery = "select t.id, t.Plan , t.Admin , t.Used , t.PlanStartDate, t.Allocated, t.PlanEndDate, a.FirstName, a.LastName from ToDoList t join a in t.Name where t.id = 'Realtest1'";
+				var AQuery = "select T.id, G.FirstName, G.LastName , G.Used, G.Allocated, G.Admin from ToDoList T join G in T.GroupMember where T.id = 'MemberDBTest'";
+				var filterQuery = "select t.id, t.Plan , t.Admin , t.Used , t.PlanStartDate, t.Allocated, t.PlanEndDate, a.FirstName, a.LastName from ToDoList t join a in t.Name where t.id = 'MemberDBTest'";
 
 
 				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, AQuery)
@@ -128,10 +128,8 @@ namespace MobileApp.Droid
 
 		public async Task UpdateDocumentDB()
 		{
-			var AQuery = "select T.id, T.Plan, G.FirstName, G.LastName , G.Used, G.Allocated, G.Admin from ToDoList T join G in T.GroupMember where T.id = 'Zamora'";
-
 			Document doc = client.CreateDocumentQuery<Document>(collectionLink)
-							.Where(r => r.Id == "Zamora")
+							.Where(r => r.Id == "MemberDBTestUpdate")
 							.AsEnumerable()
 							.SingleOrDefault();
 
