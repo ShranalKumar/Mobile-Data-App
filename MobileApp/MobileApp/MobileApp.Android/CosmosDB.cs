@@ -93,6 +93,8 @@ namespace MobileApp.Droid
 				List<int> used = new List<int>();
 				List<int> allocated = new List<int>();
 				List<int> remainder = new List<int>();
+				List<string> AppName = new List<string>();
+				List<string> AppUsage = new List<string>();
 
 
 
@@ -113,10 +115,21 @@ namespace MobileApp.Droid
 						{
 							fullname.Add(name.FirstName + " " + name.LastName);
 						}
+
+						AppName.Add(gm.UsageBreakdown[0].App1);
+						AppName.Add(gm.UsageBreakdown[0].App2);
+						AppName.Add(gm.UsageBreakdown[0].App3);
+
+						AppUsage.Add(gm.UsageBreakdown[0].App1Usage);
+						AppUsage.Add(gm.UsageBreakdown[0].App2Usage);
+						AppUsage.Add(gm.UsageBreakdown[0].App3Usage);
+
 						allocated.Add(gm.Allocated);
 						used.Add(gm.Used);
 					}
 				}
+				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage);
+				
 
 				//for (int i = 0; i <= Querylength - 1; i++)
 				//{

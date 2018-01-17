@@ -54,6 +54,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller.cs" />
     <Compile Include="CosmosDB.cs" />
     <Compile Include="CosmosSchema.cs" />
     <Compile Include="ViewModel.cs" />
