@@ -72,7 +72,9 @@ namespace MobileApp.Droid
 					{
 						if (item.password == _password && item.uid == _loginId)
 						{
-							Console.WriteLine("Authentication succeeed");
+							//Console.WriteLine("Authentication succeeed");
+							string dbQuery = String.Format("select * from t where t.uid = '{0}'", _loginId);
+							await GetTodoItemsAsync(dbQuery);
 						}
 						else
 						{
@@ -90,44 +92,18 @@ namespace MobileApp.Droid
 			return Items;
 		}
 
-		public async Task<List<TodoItem>> GetTodoItemsAsync()
+		public async Task<List<TodoItem>> GetTodoItemsAsync(string dbQuery)
 		{
 			try
 			{
-				//var AQuery = "select T.id, G.FirstName, G.LastName , G.Used, G.Allocated, G.Admin from ToDoList T join G in T.GroupMember where T.id = 'MemberDBTest'";
-				//var filterQuery = "select t.id, t.Plan , t.Admin , t.Used , t.Name, t.PlanStartDate, t.Allocated, t.PlanEndDate, a.FirstName, a.LastName from ToDoList t join a in t.Name where t.id = 'MemberDBTest'";
-				var q = "select * from T where T.id = 'MemberDBTest'";
-
-
-				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, q)
+				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, dbQuery)
 					  .AsDocumentQuery();
-
-				//var query = client.CreateDocumentQuery<TodoItem>(collectionLink, AQuery)
-				//	  .AsDocumentQuery();
-
-				//var result = client.CreateDocumentQuery<TodoItem>(collectionLink, filterQuery)
-				//	.AsDocumentQuery();
 
 				Items = new List<TodoItem>();
 				while (query.HasMoreResults)
 				{
 					Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
 				}
-
-
-				//Items = new List<TodoItem>();
-				//while (query.HasMoreResults || result.HasMoreResults)
-				//{
-				//	Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
-				//	Items.AddRange(await result.ExecuteNextAsync<TodoItem>());
-				//}
-
-				//int Querylength = Items.Count;
-
-				//String[] NameList = new string[Querylength];
-				//int[] UsedList = new int[Querylength];
-				//int[] AllocatedList = new int[Querylength];
-				//int[] Remainder = new int[Querylength];
 
 				List<string> uid = new List<string>();
 				List<string> fullname = new List<string>();
@@ -136,14 +112,15 @@ namespace MobileApp.Droid
 				List<int> remainder = new List<int>();
 				List<string> AppName = new List<string>();
 				List<string> AppUsage = new List<string>();
-				string startDate;
-				string endDate;
+				string startDate ="";
+				string endDate="";
 
 
 
 
 				foreach (TodoItem item in Items)
 				{
+
 					foreach (NameList name in item.Name)
 					{
 						fullname.Add(name.FirstName + " " + name.LastName);
@@ -159,42 +136,22 @@ namespace MobileApp.Droid
 							fullname.Add(name.FirstName + " " + name.LastName);
 						}
 
-						AppName.Add(gm.UsageBreakdown[0].App1);
-						AppName.Add(gm.UsageBreakdown[0].App2);
-						AppName.Add(gm.UsageBreakdown[0].App3);
+						//AppName.Add(gm.UsageBreakdown[0].App1);
+						//AppName.Add(gm.UsageBreakdown[0].App2);
+						//AppName.Add(gm.UsageBreakdown[0].App3);
 
-						AppUsage.Add(gm.UsageBreakdown[0].App1Usage);
-						AppUsage.Add(gm.UsageBreakdown[0].App2Usage);
-						AppUsage.Add(gm.UsageBreakdown[0].App3Usage);
+						//AppUsage.Add(gm.UsageBreakdown[0].App1Usage);
+						//AppUsage.Add(gm.UsageBreakdown[0].App2Usage);
+						//AppUsage.Add(gm.UsageBreakdown[0].App3Usage);
 
 						allocated.Add(gm.Allocated);
 						used.Add(gm.Used);
 					}
 					startDate = item.PlanStartDate;
 					endDate = item.PlanEndDate;
+
 				}
-				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage /*startDate, endDate*/);
-				
-
-				//for (int i = 0; i <= Querylength - 1; i++)
-				//{
-				//	NameList[i] = Items[i].FirstName;
-				//	UsedList[i] = int.Parse(Items[i].Used);
-				//	AllocatedList[i] = int.Parse(Items[i].Allocated);
-				//	if (AllocatedList[i] - UsedList[i] < 0) //Enters this clause iff admin; because admin's allocate is less than 0
-				//	{
-				//		int findPlanGB = Int32.Parse(Items[i].Plan.Substring(0, 2));
-				//		Remainder[i] = findPlanGB - AllocatedList.Sum() - UsedList[i];
-
-				//	}
-				//	else
-				//	{
-				//		Remainder[i] = AllocatedList[i] - UsedList[i];
-				//	}
-				//	ViewModel view = new ViewModel(NameList, UsedList, AllocatedList, Remainder);
-
-				//}
-
+				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage, startDate, endDate);
 
 			}
 			catch (Exception e)
@@ -204,25 +161,6 @@ namespace MobileApp.Droid
 			}
 			return Items;
 		}
-
-		//public async Task UpdateDocumentDB(TodoItem item)
-		//{
-		//	await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, item.Id), item);
-		//}
-
-		//private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
-		//{
-		//	try
-		//	{
-		//		await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-		//		this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
-		//	}
-		//	catch (DocumentClientException de)
-		//	{C:\Users\kan02\Desktop\Trustpower\project\Trustpoer new App\MobileApp\MobileApp\MobileApp.Android\Views\NonAdminDashbaordView.cs
-		//		throw;
-		//	}
-		//}
-
 
 		public async Task UpdateDocumentDB()
 		{

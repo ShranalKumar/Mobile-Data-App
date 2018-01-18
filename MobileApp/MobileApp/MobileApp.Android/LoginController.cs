@@ -21,16 +21,16 @@ namespace MobileApp.Droid
 		{
 			this._loginid = _loginid;
 			this._password = _password;
-			userLoginPhase();
+			userLoginPhaseAsync();
 		}
 
-		public void userLoginPhase()
+		public async System.Threading.Tasks.Task userLoginPhaseAsync()
 		{
 			Console.WriteLine("Hehehe");
 			string loginQuery = String.Format("select * from t where t.uID = '{0}'", _loginid);
 			manager = TodoItemManager.DefaultManager;
 
-			manager.GetTodoItemsAsync(loginQuery, _loginid, _password);
+			await manager.GetTodoItemsAsync(loginQuery, _loginid, _password);
 		}
 
 
