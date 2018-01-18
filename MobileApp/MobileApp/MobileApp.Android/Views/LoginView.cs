@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "LoginView", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class LoginView : Activity
     {
         private Button _loginButtonClicked;
