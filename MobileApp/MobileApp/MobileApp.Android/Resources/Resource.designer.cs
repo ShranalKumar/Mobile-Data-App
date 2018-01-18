@@ -1927,587 +1927,581 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b005d
 			public const int AccountSwitcher = 2131427421;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int AllocateButton = 2131427458;
+			// aapt resource value: 0x7f0b005b
+			public const int AccountSwitcherLayout = 2131427419;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int AllocateButtonLayout = 2131427457;
+			// aapt resource value: 0x7f0b007c
+			public const int AllocateButton = 2131427452;
 			
-			// aapt resource value: 0x7f0b011f
-			public const int AllocatedDataAmount = 2131427615;
+			// aapt resource value: 0x7f0b007b
+			public const int AllocateButtonLayout = 2131427451;
 			
-			// aapt resource value: 0x7f0b011e
-			public const int AllocatedDataText = 2131427614;
+			// aapt resource value: 0x7f0b0119
+			public const int AllocatedDataAmount = 2131427609;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int AllocationPageMainLayout = 2131427459;
+			// aapt resource value: 0x7f0b0118
+			public const int AllocatedDataText = 2131427608;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int AllocationPageTitle = 2131427462;
+			// aapt resource value: 0x7f0b007d
+			public const int AllocationPageMainLayout = 2131427453;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int AllocationPageToolbar = 2131427460;
+			// aapt resource value: 0x7f0b0080
+			public const int AllocationPageTitle = 2131427456;
 			
-			// aapt resource value: 0x7f0b011b
-			public const int AllocationSlider = 2131427611;
+			// aapt resource value: 0x7f0b007e
+			public const int AllocationPageToolbar = 2131427454;
 			
-			// aapt resource value: 0x7f0b011d
-			public const int AllocationTextLayout = 2131427613;
+			// aapt resource value: 0x7f0b0115
+			public const int AllocationSlider = 2131427605;
+			
+			// aapt resource value: 0x7f0b0117
+			public const int AllocationTextLayout = 2131427607;
+			
+			// aapt resource value: 0x7f0b00a7
+			public const int App1 = 2131427495;
+			
+			// aapt resource value: 0x7f0b00a5
+			public const int App1DetailsLayout = 2131427493;
+			
+			// aapt resource value: 0x7f0b00a8
+			public const int App1MBLeft = 2131427496;
+			
+			// aapt resource value: 0x7f0b00aa
+			public const int App1RemainingDataBarFill = 2131427498;
+			
+			// aapt resource value: 0x7f0b00a9
+			public const int App1RemainingLayout = 2131427497;
+			
+			// aapt resource value: 0x7f0b00a6
+			public const int App1TextLayout = 2131427494;
 			
 			// aapt resource value: 0x7f0b00ad
-			public const int App1 = 2131427501;
+			public const int App2 = 2131427501;
 			
 			// aapt resource value: 0x7f0b00ab
-			public const int App1DetailsLayout = 2131427499;
+			public const int App2DetailsLayout = 2131427499;
 			
 			// aapt resource value: 0x7f0b00ae
-			public const int App1MBLeft = 2131427502;
+			public const int App2MBLeft = 2131427502;
 			
 			// aapt resource value: 0x7f0b00b0
-			public const int App1RemainingDataBarFill = 2131427504;
+			public const int App2RemainingDataBarFill = 2131427504;
 			
 			// aapt resource value: 0x7f0b00af
-			public const int App1RemainingLayout = 2131427503;
+			public const int App2RemainingLayout = 2131427503;
 			
 			// aapt resource value: 0x7f0b00ac
-			public const int App1TextLayout = 2131427500;
+			public const int App2TextLayout = 2131427500;
 			
 			// aapt resource value: 0x7f0b00b3
-			public const int App2 = 2131427507;
+			public const int App3 = 2131427507;
 			
 			// aapt resource value: 0x7f0b00b1
-			public const int App2DetailsLayout = 2131427505;
+			public const int App3DetailsLayout = 2131427505;
 			
 			// aapt resource value: 0x7f0b00b4
-			public const int App2MBLeft = 2131427508;
+			public const int App3MBLeft = 2131427508;
 			
 			// aapt resource value: 0x7f0b00b6
-			public const int App2RemainingDataBarFill = 2131427510;
+			public const int App3RemainingDataBarFill = 2131427510;
 			
 			// aapt resource value: 0x7f0b00b5
-			public const int App2RemainingLayout = 2131427509;
+			public const int App3RemainingLayout = 2131427509;
 			
 			// aapt resource value: 0x7f0b00b2
-			public const int App2TextLayout = 2131427506;
+			public const int App3TextLayout = 2131427506;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int App3 = 2131427513;
-			
-			// aapt resource value: 0x7f0b00b7
-			public const int App3DetailsLayout = 2131427511;
-			
-			// aapt resource value: 0x7f0b00ba
-			public const int App3MBLeft = 2131427514;
-			
-			// aapt resource value: 0x7f0b00bc
-			public const int App3RemainingDataBarFill = 2131427516;
-			
-			// aapt resource value: 0x7f0b00bb
-			public const int App3RemainingLayout = 2131427515;
-			
-			// aapt resource value: 0x7f0b00b8
-			public const int App3TextLayout = 2131427512;
-			
-			// aapt resource value: 0x7f0b0085
-			public const int BackButton = 2131427461;
+			// aapt resource value: 0x7f0b007f
+			public const int BackButton = 2131427455;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int BackgroundLayout = 2131427414;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int CurrentDataAmount = 2131427466;
+			// aapt resource value: 0x7f0b0084
+			public const int CurrentDataAmount = 2131427460;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int CurrentDataInformation = 2131427464;
+			// aapt resource value: 0x7f0b0082
+			public const int CurrentDataInformation = 2131427458;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int CurrentDataInformationHeader = 2131427465;
+			// aapt resource value: 0x7f0b0083
+			public const int CurrentDataInformationHeader = 2131427459;
 			
-			// aapt resource value: 0x7f0b0116
-			public const int CurrentPlanDataAmount = 2131427606;
+			// aapt resource value: 0x7f0b0110
+			public const int CurrentPlanDataAmount = 2131427600;
 			
-			// aapt resource value: 0x7f0b0114
-			public const int CurrentPlanLayout = 2131427604;
+			// aapt resource value: 0x7f0b010e
+			public const int CurrentPlanLayout = 2131427598;
 			
-			// aapt resource value: 0x7f0b0115
-			public const int CurrentPlanText = 2131427605;
-			
-			// aapt resource value: 0x7f0b0119
-			public const int DataAllocationLayout = 2131427609;
-			
-			// aapt resource value: 0x7f0b011a
-			public const int DataAllocationSliderLayout = 2131427610;
-			
-			// aapt resource value: 0x7f0b00e6
-			public const int DataAmountSelectorButtonLayout = 2131427558;
-			
-			// aapt resource value: 0x7f0b00e4
-			public const int DataAmountSelectorLayout = 2131427556;
-			
-			// aapt resource value: 0x7f0b00e5
-			public const int DataAmountSelectorTitleText = 2131427557;
-			
-			// aapt resource value: 0x7f0b0067
-			public const int DataBarLayout = 2131427431;
+			// aapt resource value: 0x7f0b010f
+			public const int CurrentPlanText = 2131427599;
 			
 			// aapt resource value: 0x7f0b0113
-			public const int DataDetailsTextLayout = 2131427603;
+			public const int DataAllocationLayout = 2131427603;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int DataInformation = 2131427463;
+			// aapt resource value: 0x7f0b0114
+			public const int DataAllocationSliderLayout = 2131427604;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int DataPoolCircleLayout = 2131427470;
+			// aapt resource value: 0x7f0b00e0
+			public const int DataAmountSelectorButtonLayout = 2131427552;
 			
-			// aapt resource value: 0x7f0b00fb
-			public const int DataRemainingFillMask = 2131427579;
+			// aapt resource value: 0x7f0b00de
+			public const int DataAmountSelectorLayout = 2131427550;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int DataRemainingPgBarLayout = 2131427494;
+			// aapt resource value: 0x7f0b00df
+			public const int DataAmountSelectorTitleText = 2131427551;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int DataRemainingTextInsidePgBar = 2131427495;
-			
-			// aapt resource value: 0x7f0b00fa
-			public const int DataRemainingTitleText = 2131427578;
-			
-			// aapt resource value: 0x7f0b00f8
-			public const int DataTransferUnits = 2131427576;
-			
-			// aapt resource value: 0x7f0b00eb
-			public const int DataUnitDecimalText = 2131427563;
-			
-			// aapt resource value: 0x7f0b0068
-			public const int DataUsageBorder = 2131427432;
-			
-			// aapt resource value: 0x7f0b0123
-			public const int DataUsageBreakdownLayout = 2131427619;
-			
-			// aapt resource value: 0x7f0b0069
-			public const int DataUsageFill = 2131427433;
-			
-			// aapt resource value: 0x7f0b006a
-			public const int DataUsageText = 2131427434;
-			
-			// aapt resource value: 0x7f0b00a4
-			public const int DateLayout = 2131427492;
-			
-			// aapt resource value: 0x7f0b0066
-			public const int DaysRemainingText = 2131427430;
-			
-			// aapt resource value: 0x7f0b00e7
-			public const int FirstButtonLayout = 2131427559;
-			
-			// aapt resource value: 0x7f0b00ea
-			public const int FirstDownArrow = 2131427562;
-			
-			// aapt resource value: 0x7f0b00e9
-			public const int FirstNumberText = 2131427561;
-			
-			// aapt resource value: 0x7f0b00e8
-			public const int FirstUpArrow = 2131427560;
-			
-			// aapt resource value: 0x7f0b00f4
-			public const int FourthButtonLayout = 2131427572;
-			
-			// aapt resource value: 0x7f0b00f7
-			public const int FourthDownArrow = 2131427575;
-			
-			// aapt resource value: 0x7f0b00f6
-			public const int FourthNumberText = 2131427574;
-			
-			// aapt resource value: 0x7f0b00f5
-			public const int FourthUpArrow = 2131427573;
-			
-			// aapt resource value: 0x7f0b012d
-			public const int GoogleAppName = 2131427629;
-			
-			// aapt resource value: 0x7f0b012b
-			public const int GoogleDataUsage = 2131427627;
-			
-			// aapt resource value: 0x7f0b012f
-			public const int GoogleDataUsageBar = 2131427631;
-			
-			// aapt resource value: 0x7f0b012c
-			public const int GoogleTextDetails = 2131427628;
-			
-			// aapt resource value: 0x7f0b0130
-			public const int GoogleUsageBarBorder = 2131427632;
-			
-			// aapt resource value: 0x7f0b0131
-			public const int GoogleUsageBarMask = 2131427633;
-			
-			// aapt resource value: 0x7f0b012e
-			public const int GoogleUsedDataAmount = 2131427630;
-			
-			// aapt resource value: 0x7f0b009c
-			public const int LogInButton = 2131427484;
-			
-			// aapt resource value: 0x7f0b009b
-			public const int LoginButtonLayout = 2131427483;
-			
-			// aapt resource value: 0x7f0b0095
-			public const int LoginPageLayout = 2131427477;
-			
-			// aapt resource value: 0x7f0b006f
-			public const int LouiseTileName = 2131427439;
-			
-			// aapt resource value: 0x7f0b006e
-			public const int LouiseUsageLayout = 2131427438;
-			
-			// aapt resource value: 0x7f0b006d
-			public const int LouiseUserTile = 2131427437;
-			
-			// aapt resource value: 0x7f0b0070
-			public const int LouiseUserTileUsageBorder = 2131427440;
-			
-			// aapt resource value: 0x7f0b0071
-			public const int LouiseUserTileUsageBorderMask = 2131427441;
-			
-			// aapt resource value: 0x7f0b011c
-			public const int MainViewTextLayout = 2131427612;
-			
-			// aapt resource value: 0x7f0b005b
-			public const int MenuButton = 2131427419;
-			
-			// aapt resource value: 0x7f0b007e
-			public const int MinkyuTileName = 2131427454;
-			
-			// aapt resource value: 0x7f0b007d
-			public const int MinkyuUsageLayout = 2131427453;
-			
-			// aapt resource value: 0x7f0b007c
-			public const int MinkyuUserTile = 2131427452;
-			
-			// aapt resource value: 0x7f0b007f
-			public const int MinkyuUserTileUsageBorder = 2131427455;
-			
-			// aapt resource value: 0x7f0b0080
-			public const int MinkyuUserTileUsageBorderMask = 2131427456;
-			
-			// aapt resource value: 0x7f0b0062
-			public const int MobileIcon = 2131427426;
-			
-			// aapt resource value: 0x7f0b00a3
-			public const int MobileIconText = 2131427491;
+			// aapt resource value: 0x7f0b0067
+			public const int DataBarBorder = 2131427431;
 			
 			// aapt resource value: 0x7f0b0065
-			public const int MobileInformationLayout = 2131427429;
+			public const int DataBarLayout = 2131427429;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int MobileLogo = 2131427490;
+			// aapt resource value: 0x7f0b010d
+			public const int DataDetailsTextLayout = 2131427597;
 			
-			// aapt resource value: 0x7f0b00a1
-			public const int MobileLogoLayout = 2131427489;
+			// aapt resource value: 0x7f0b0081
+			public const int DataInformation = 2131427457;
 			
-			// aapt resource value: 0x7f0b0106
-			public const int NoDoNotTransferButton = 2131427590;
+			// aapt resource value: 0x7f0b0088
+			public const int DataPoolCircleLayout = 2131427464;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int NonAdminButtonLayout = 2131427517;
-			
-			// aapt resource value: 0x7f0b009f
-			public const int NonAdminDataUsageBackButton = 2131427487;
+			// aapt resource value: 0x7f0b00f5
+			public const int DataRemainingFillMask = 2131427573;
 			
 			// aapt resource value: 0x7f0b00a0
-			public const int NonAdminDataUsageTitle = 2131427488;
+			public const int DataRemainingPgBarLayout = 2131427488;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int NonAdminDataUsageToolBar = 2131427485;
+			// aapt resource value: 0x7f0b00a1
+			public const int DataRemainingTextInsidePgBar = 2131427489;
+			
+			// aapt resource value: 0x7f0b00f4
+			public const int DataRemainingTitleText = 2131427572;
+			
+			// aapt resource value: 0x7f0b00f2
+			public const int DataTransferUnits = 2131427570;
+			
+			// aapt resource value: 0x7f0b00e5
+			public const int DataUnitDecimalText = 2131427557;
+			
+			// aapt resource value: 0x7f0b011d
+			public const int DataUsageBreakdownLayout = 2131427613;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int DataUsageText = 2131427430;
 			
 			// aapt resource value: 0x7f0b009e
-			public const int NonAdminDataUsageToolbarLayout = 2131427486;
+			public const int DateLayout = 2131427486;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int NonAdminUsageBreakdown = 2131427498;
+			// aapt resource value: 0x7f0b0064
+			public const int DaysRemainingText = 2131427428;
+			
+			// aapt resource value: 0x7f0b00e1
+			public const int FirstButtonLayout = 2131427553;
+			
+			// aapt resource value: 0x7f0b00e4
+			public const int FirstDownArrow = 2131427556;
+			
+			// aapt resource value: 0x7f0b00e3
+			public const int FirstNumberText = 2131427555;
+			
+			// aapt resource value: 0x7f0b00e2
+			public const int FirstUpArrow = 2131427554;
+			
+			// aapt resource value: 0x7f0b00ee
+			public const int FourthButtonLayout = 2131427566;
+			
+			// aapt resource value: 0x7f0b00f1
+			public const int FourthDownArrow = 2131427569;
+			
+			// aapt resource value: 0x7f0b00f0
+			public const int FourthNumberText = 2131427568;
+			
+			// aapt resource value: 0x7f0b00ef
+			public const int FourthUpArrow = 2131427567;
+			
+			// aapt resource value: 0x7f0b0127
+			public const int GoogleAppName = 2131427623;
+			
+			// aapt resource value: 0x7f0b0125
+			public const int GoogleDataUsage = 2131427621;
+			
+			// aapt resource value: 0x7f0b0129
+			public const int GoogleDataUsageBar = 2131427625;
+			
+			// aapt resource value: 0x7f0b0126
+			public const int GoogleTextDetails = 2131427622;
+			
+			// aapt resource value: 0x7f0b012a
+			public const int GoogleUsageBarBorder = 2131427626;
+			
+			// aapt resource value: 0x7f0b012b
+			public const int GoogleUsageBarMask = 2131427627;
+			
+			// aapt resource value: 0x7f0b0128
+			public const int GoogleUsedDataAmount = 2131427624;
+			
+			// aapt resource value: 0x7f0b0096
+			public const int LogInButton = 2131427478;
+			
+			// aapt resource value: 0x7f0b0095
+			public const int LoginButtonLayout = 2131427477;
+			
+			// aapt resource value: 0x7f0b008f
+			public const int LoginPageLayout = 2131427471;
+			
+			// aapt resource value: 0x7f0b006d
+			public const int LouiseDataBarBorder = 2131427437;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int LouiseDataBarLayout = 2131427436;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int LouiseText = 2131427435;
+			
+			// aapt resource value: 0x7f0b006a
+			public const int LouiseUserLayout = 2131427434;
+			
+			// aapt resource value: 0x7f0b0116
+			public const int MainViewTextLayout = 2131427606;
+			
+			// aapt resource value: 0x7f0b005a
+			public const int MenuButton = 2131427418;
+			
+			// aapt resource value: 0x7f0b0059
+			public const int MenuButtonLayout = 2131427417;
+			
+			// aapt resource value: 0x7f0b007a
+			public const int MinkyuDataBarBorder = 2131427450;
+			
+			// aapt resource value: 0x7f0b0079
+			public const int MinkyuDataBarLayout = 2131427449;
+			
+			// aapt resource value: 0x7f0b0078
+			public const int MinkyuText = 2131427448;
+			
+			// aapt resource value: 0x7f0b0077
+			public const int MinkyuUserLayout = 2131427447;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int MobileIcon = 2131427425;
+			
+			// aapt resource value: 0x7f0b009d
+			public const int MobileIconText = 2131427485;
+			
+			// aapt resource value: 0x7f0b0063
+			public const int MobileInformationLayout = 2131427427;
+			
+			// aapt resource value: 0x7f0b009c
+			public const int MobileLogo = 2131427484;
+			
+			// aapt resource value: 0x7f0b009b
+			public const int MobileLogoLayout = 2131427483;
+			
+			// aapt resource value: 0x7f0b0100
+			public const int NoDoNotTransferButton = 2131427584;
+			
+			// aapt resource value: 0x7f0b00b7
+			public const int NonAdminButtonLayout = 2131427511;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int NonAdminDataUsageBackButton = 2131427481;
+			
+			// aapt resource value: 0x7f0b009a
+			public const int NonAdminDataUsageTitle = 2131427482;
+			
+			// aapt resource value: 0x7f0b0097
+			public const int NonAdminDataUsageToolBar = 2131427479;
+			
+			// aapt resource value: 0x7f0b0098
+			public const int NonAdminDataUsageToolbarLayout = 2131427480;
+			
+			// aapt resource value: 0x7f0b00a4
+			public const int NonAdminUsageBreakdown = 2131427492;
 			
 			// aapt resource value: 0x7f0b005f
 			public const int NotificationButton = 2131427423;
 			
-			// aapt resource value: 0x7f0b010d
-			public const int OkTransferButton = 2131427597;
+			// aapt resource value: 0x7f0b005e
+			public const int NotificationButtonLayout = 2131427422;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int PasswordInputField = 2131427482;
-			
-			// aapt resource value: 0x7f0b0099
-			public const int PasswordLayout = 2131427481;
-			
-			// aapt resource value: 0x7f0b0061
-			public const int ProductLabelLayout = 2131427425;
-			
-			// aapt resource value: 0x7f0b0063
-			public const int ProductName = 2131427427;
-			
-			// aapt resource value: 0x7f0b00a8
-			public const int ProgressBarBorderImage = 2131427496;
-			
-			// aapt resource value: 0x7f0b00a9
-			public const int ProgressBarMaskImage = 2131427497;
-			
-			// aapt resource value: 0x7f0b008f
-			public const int RadialProgressCircle = 2131427471;
-			
-			// aapt resource value: 0x7f0b008d
-			public const int RemainingDataAmount = 2131427469;
-			
-			// aapt resource value: 0x7f0b008b
-			public const int RemainingDataInformation = 2131427467;
-			
-			// aapt resource value: 0x7f0b008c
-			public const int RemainingDataInformationHeader = 2131427468;
-			
-			// aapt resource value: 0x7f0b0117
-			public const int RemainingDataLayout = 2131427607;
-			
-			// aapt resource value: 0x7f0b00f9
-			public const int RemainingDataLayoutForTransfer = 2131427577;
-			
-			// aapt resource value: 0x7f0b0118
-			public const int RemainingDataText = 2131427608;
-			
-			// aapt resource value: 0x7f0b00a5
-			public const int RemainingDaysNonAdmin = 2131427493;
-			
-			// aapt resource value: 0x7f0b00be
-			public const int RequestButton = 2131427518;
+			// aapt resource value: 0x7f0b0107
+			public const int OkTransferButton = 2131427591;
 			
 			// aapt resource value: 0x7f0b0094
-			public const int SaveButton = 2131427476;
+			public const int PasswordInputField = 2131427476;
 			
-			// aapt resource value: 0x7f0b0132
-			public const int SaveButtonLayout = 2131427634;
+			// aapt resource value: 0x7f0b0093
+			public const int PasswordLayout = 2131427475;
 			
-			// aapt resource value: 0x7f0b0133
-			public const int SaveButtonText = 2131427635;
+			// aapt resource value: 0x7f0b0060
+			public const int ProductLabelLayout = 2131427424;
 			
-			// aapt resource value: 0x7f0b00ec
-			public const int SecondButtonLayout = 2131427564;
+			// aapt resource value: 0x7f0b0062
+			public const int ProductName = 2131427426;
 			
-			// aapt resource value: 0x7f0b00ef
-			public const int SecondDownArrow = 2131427567;
+			// aapt resource value: 0x7f0b00a2
+			public const int ProgressBarBorderImage = 2131427490;
 			
-			// aapt resource value: 0x7f0b00ee
-			public const int SecondNumberText = 2131427566;
+			// aapt resource value: 0x7f0b00a3
+			public const int ProgressBarMaskImage = 2131427491;
 			
-			// aapt resource value: 0x7f0b00ed
-			public const int SecondUpArrow = 2131427565;
+			// aapt resource value: 0x7f0b0089
+			public const int RadialProgressCircle = 2131427465;
 			
-			// aapt resource value: 0x7f0b00fe
-			public const int SendButton = 2131427582;
+			// aapt resource value: 0x7f0b0087
+			public const int RemainingDataAmount = 2131427463;
 			
-			// aapt resource value: 0x7f0b00fd
-			public const int SendButtonLayout = 2131427581;
+			// aapt resource value: 0x7f0b0085
+			public const int RemainingDataInformation = 2131427461;
 			
-			// aapt resource value: 0x7f0b00dd
-			public const int SendDataText = 2131427549;
+			// aapt resource value: 0x7f0b0086
+			public const int RemainingDataInformationHeader = 2131427462;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int SendToLayout = 2131427548;
-			
-			// aapt resource value: 0x7f0b0074
-			public const int ShranalTileName = 2131427444;
-			
-			// aapt resource value: 0x7f0b0073
-			public const int ShranalUsageLayout = 2131427443;
-			
-			// aapt resource value: 0x7f0b0072
-			public const int ShranalUserTile = 2131427442;
-			
-			// aapt resource value: 0x7f0b0075
-			public const int ShranalUserTileUsageBorder = 2131427445;
-			
-			// aapt resource value: 0x7f0b0076
-			public const int ShranalUserTileUsageBorderMask = 2131427446;
-			
-			// aapt resource value: 0x7f0b0079
-			public const int SoumikTileName = 2131427449;
-			
-			// aapt resource value: 0x7f0b0078
-			public const int SoumikUsageLayout = 2131427448;
-			
-			// aapt resource value: 0x7f0b0077
-			public const int SoumikUserTile = 2131427447;
-			
-			// aapt resource value: 0x7f0b007a
-			public const int SoumikUserTileUsageBorder = 2131427450;
-			
-			// aapt resource value: 0x7f0b007b
-			public const int SoumikUserTileUsageBorderMask = 2131427451;
-			
-			// aapt resource value: 0x7f0b0096
-			public const int SplashScreenLogo = 2131427478;
-			
-			// aapt resource value: 0x7f0b00f0
-			public const int ThirdButtonLayout = 2131427568;
+			// aapt resource value: 0x7f0b0111
+			public const int RemainingDataLayout = 2131427601;
 			
 			// aapt resource value: 0x7f0b00f3
-			public const int ThirdDownArrow = 2131427571;
+			public const int RemainingDataLayoutForTransfer = 2131427571;
 			
-			// aapt resource value: 0x7f0b00f2
-			public const int ThirdNumberText = 2131427570;
+			// aapt resource value: 0x7f0b0112
+			public const int RemainingDataText = 2131427602;
 			
-			// aapt resource value: 0x7f0b00f1
-			public const int ThirdUpArrow = 2131427569;
+			// aapt resource value: 0x7f0b009f
+			public const int RemainingDaysNonAdmin = 2131427487;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int TitleBar = 2131427417;
+			// aapt resource value: 0x7f0b00b8
+			public const int RequestButton = 2131427512;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int TitleBarLayout = 2131427418;
+			// aapt resource value: 0x7f0b008e
+			public const int SaveButton = 2131427470;
+			
+			// aapt resource value: 0x7f0b012c
+			public const int SaveButtonLayout = 2131427628;
+			
+			// aapt resource value: 0x7f0b012d
+			public const int SaveButtonText = 2131427629;
+			
+			// aapt resource value: 0x7f0b00e6
+			public const int SecondButtonLayout = 2131427558;
+			
+			// aapt resource value: 0x7f0b00e9
+			public const int SecondDownArrow = 2131427561;
+			
+			// aapt resource value: 0x7f0b00e8
+			public const int SecondNumberText = 2131427560;
+			
+			// aapt resource value: 0x7f0b00e7
+			public const int SecondUpArrow = 2131427559;
+			
+			// aapt resource value: 0x7f0b00f8
+			public const int SendButton = 2131427576;
+			
+			// aapt resource value: 0x7f0b00f7
+			public const int SendButtonLayout = 2131427575;
+			
+			// aapt resource value: 0x7f0b00d7
+			public const int SendDataText = 2131427543;
+			
+			// aapt resource value: 0x7f0b00d6
+			public const int SendToLayout = 2131427542;
+			
+			// aapt resource value: 0x7f0b0071
+			public const int ShranalDataBarBorder = 2131427441;
+			
+			// aapt resource value: 0x7f0b0070
+			public const int ShranalDataBarLayout = 2131427440;
+			
+			// aapt resource value: 0x7f0b006f
+			public const int ShranalText = 2131427439;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int ShranalUserLayout = 2131427438;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int SoumikDataBarBorder = 2131427446;
+			
+			// aapt resource value: 0x7f0b0075
+			public const int SoumikDataBarLayout = 2131427445;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int SoumikText = 2131427444;
+			
+			// aapt resource value: 0x7f0b0073
+			public const int SoumikUserLayout = 2131427443;
+			
+			// aapt resource value: 0x7f0b0090
+			public const int SplashScreenLogo = 2131427472;
+			
+			// aapt resource value: 0x7f0b00ea
+			public const int ThirdButtonLayout = 2131427562;
+			
+			// aapt resource value: 0x7f0b00ed
+			public const int ThirdDownArrow = 2131427565;
+			
+			// aapt resource value: 0x7f0b00ec
+			public const int ThirdNumberText = 2131427564;
+			
+			// aapt resource value: 0x7f0b00eb
+			public const int ThirdUpArrow = 2131427563;
+			
+			// aapt resource value: 0x7f0b0058
+			public const int TitleBar = 2131427416;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int ToolbarLayout = 2131427415;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int TransferBackButton = 2131427546;
+			// aapt resource value: 0x7f0b00d4
+			public const int TransferBackButton = 2131427540;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int TransferButton = 2131427519;
+			// aapt resource value: 0x7f0b00b9
+			public const int TransferButton = 2131427513;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int TransferDataTitle = 2131427547;
+			// aapt resource value: 0x7f0b00d5
+			public const int TransferDataTitle = 2131427541;
 			
-			// aapt resource value: 0x7f0b0104
-			public const int TransferDialogButtons = 2131427588;
+			// aapt resource value: 0x7f0b00fe
+			public const int TransferDialogButtons = 2131427582;
 			
-			// aapt resource value: 0x7f0b0100
-			public const int TransferDialogLayout = 2131427584;
+			// aapt resource value: 0x7f0b00fa
+			public const int TransferDialogLayout = 2131427578;
 			
-			// aapt resource value: 0x7f0b0103
-			public const int TransferDialogText = 2131427587;
+			// aapt resource value: 0x7f0b00fd
+			public const int TransferDialogText = 2131427581;
+			
+			// aapt resource value: 0x7f0b00fb
+			public const int TransferDialogTpLogo = 2131427579;
+			
+			// aapt resource value: 0x7f0b00d1
+			public const int TransferPageContentsLayout = 2131427537;
+			
+			// aapt resource value: 0x7f0b00f9
+			public const int TransferPagePopUpLayout = 2131427577;
 			
 			// aapt resource value: 0x7f0b0101
-			public const int TransferDialogTpLogo = 2131427585;
+			public const int TransferPageSuccessfulPopUpLayout = 2131427585;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int TransferPageContentsLayout = 2131427543;
-			
-			// aapt resource value: 0x7f0b00ff
-			public const int TransferPagePopUpLayout = 2131427583;
-			
-			// aapt resource value: 0x7f0b0107
-			public const int TransferPageSuccessfulPopUpLayout = 2131427591;
-			
-			// aapt resource value: 0x7f0b010c
-			public const int TransferSuccessDialogButtons = 2131427596;
-			
-			// aapt resource value: 0x7f0b0108
-			public const int TransferSuccessDialogLayout = 2131427592;
-			
-			// aapt resource value: 0x7f0b010b
-			public const int TransferSuccessDialogText = 2131427595;
-			
-			// aapt resource value: 0x7f0b0109
-			public const int TransferSuccessDialogTpLogo = 2131427593;
-			
-			// aapt resource value: 0x7f0b00d8
-			public const int TransferToolBar = 2131427544;
-			
-			// aapt resource value: 0x7f0b00d9
-			public const int TransferToolbarLayout = 2131427545;
+			// aapt resource value: 0x7f0b0106
+			public const int TransferSuccessDialogButtons = 2131427590;
 			
 			// aapt resource value: 0x7f0b0102
-			public const int TrusppowerLogo = 2131427586;
+			public const int TransferSuccessDialogLayout = 2131427586;
+			
+			// aapt resource value: 0x7f0b0105
+			public const int TransferSuccessDialogText = 2131427589;
+			
+			// aapt resource value: 0x7f0b0103
+			public const int TransferSuccessDialogTpLogo = 2131427587;
+			
+			// aapt resource value: 0x7f0b00d2
+			public const int TransferToolBar = 2131427538;
+			
+			// aapt resource value: 0x7f0b00d3
+			public const int TransferToolbarLayout = 2131427539;
+			
+			// aapt resource value: 0x7f0b00fc
+			public const int TrusppowerLogo = 2131427580;
+			
+			// aapt resource value: 0x7f0b0104
+			public const int TrusppowerLogoSuccessDialog = 2131427588;
+			
+			// aapt resource value: 0x7f0b011c
+			public const int UsedDataAmount = 2131427612;
+			
+			// aapt resource value: 0x7f0b011a
+			public const int UsedDataLayout = 2131427610;
+			
+			// aapt resource value: 0x7f0b011b
+			public const int UsedDataText = 2131427611;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int UserDataAllocationListView = 2131427469;
+			
+			// aapt resource value: 0x7f0b010b
+			public const int UserDataUsageBackButton = 2131427595;
+			
+			// aapt resource value: 0x7f0b0108
+			public const int UserDataUsageLayout = 2131427592;
+			
+			// aapt resource value: 0x7f0b010c
+			public const int UserDataUsageTitle = 2131427596;
+			
+			// aapt resource value: 0x7f0b0109
+			public const int UserDataUsageToolBar = 2131427593;
 			
 			// aapt resource value: 0x7f0b010a
-			public const int TrusppowerLogoSuccessDialog = 2131427594;
-			
-			// aapt resource value: 0x7f0b0122
-			public const int UsedDataAmount = 2131427618;
-			
-			// aapt resource value: 0x7f0b0120
-			public const int UsedDataLayout = 2131427616;
-			
-			// aapt resource value: 0x7f0b0121
-			public const int UsedDataText = 2131427617;
-			
-			// aapt resource value: 0x7f0b0093
-			public const int UserDataAllocationListView = 2131427475;
-			
-			// aapt resource value: 0x7f0b0111
-			public const int UserDataUsageBackButton = 2131427601;
-			
-			// aapt resource value: 0x7f0b010e
-			public const int UserDataUsageLayout = 2131427598;
-			
-			// aapt resource value: 0x7f0b0112
-			public const int UserDataUsageTitle = 2131427602;
-			
-			// aapt resource value: 0x7f0b010f
-			public const int UserDataUsageToolBar = 2131427599;
-			
-			// aapt resource value: 0x7f0b0110
-			public const int UserDataUsageToolbarLayout = 2131427600;
+			public const int UserDataUsageToolbarLayout = 2131427594;
 			
 			// aapt resource value: 0x7f0b005c
 			public const int UserName = 2131427420;
 			
-			// aapt resource value: 0x7f0b00e0
-			public const int UserSelectLouise = 2131427552;
+			// aapt resource value: 0x7f0b00da
+			public const int UserSelectLouise = 2131427546;
 			
-			// aapt resource value: 0x7f0b00e2
-			public const int UserSelectShranal = 2131427554;
+			// aapt resource value: 0x7f0b00dc
+			public const int UserSelectShranal = 2131427548;
 			
-			// aapt resource value: 0x7f0b00e3
-			public const int UserSelectSoumik = 2131427555;
+			// aapt resource value: 0x7f0b00dd
+			public const int UserSelectSoumik = 2131427549;
 			
-			// aapt resource value: 0x7f0b00e1
-			public const int UserSelectSteven = 2131427553;
+			// aapt resource value: 0x7f0b00db
+			public const int UserSelectSteven = 2131427547;
 			
-			// aapt resource value: 0x7f0b00df
-			public const int UserSelectionSlidingLayout = 2131427551;
+			// aapt resource value: 0x7f0b00d9
+			public const int UserSelectionSlidingLayout = 2131427545;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int UserTileLayout = 2131427436;
+			// aapt resource value: 0x7f0b0068
+			public const int UserTilesLayout = 2131427432;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int UserTilesLayout = 2131427435;
+			// aapt resource value: 0x7f0b0069
+			public const int UserTilesLayoutRow1 = 2131427433;
 			
-			// aapt resource value: 0x7f0b00de
-			public const int UserTilesScrollViewLayout = 2131427550;
+			// aapt resource value: 0x7f0b0072
+			public const int UserTilesLayoutRow2 = 2131427442;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int UsernameInputField = 2131427480;
-			
-			// aapt resource value: 0x7f0b0097
-			public const int UsernameLayout = 2131427479;
-			
-			// aapt resource value: 0x7f0b0090
-			public const int WeeklyModeLayout = 2131427472;
+			// aapt resource value: 0x7f0b00d8
+			public const int UserTilesScrollViewLayout = 2131427544;
 			
 			// aapt resource value: 0x7f0b0092
-			public const int WeeklyModeOnOff = 2131427474;
+			public const int UsernameInputField = 2131427474;
 			
 			// aapt resource value: 0x7f0b0091
-			public const int WeeklyModeText = 2131427473;
+			public const int UsernameLayout = 2131427473;
 			
-			// aapt resource value: 0x7f0b0105
-			public const int YesTransferButton = 2131427589;
+			// aapt resource value: 0x7f0b008a
+			public const int WeeklyModeLayout = 2131427466;
 			
-			// aapt resource value: 0x7f0b0126
-			public const int YoutubeAppName = 2131427622;
+			// aapt resource value: 0x7f0b008c
+			public const int WeeklyModeOnOff = 2131427468;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int WeeklyModeText = 2131427467;
+			
+			// aapt resource value: 0x7f0b00ff
+			public const int YesTransferButton = 2131427583;
+			
+			// aapt resource value: 0x7f0b0120
+			public const int YoutubeAppName = 2131427616;
+			
+			// aapt resource value: 0x7f0b011e
+			public const int YoutubeDataUsage = 2131427614;
+			
+			// aapt resource value: 0x7f0b0122
+			public const int YoutubeDataUsageBar = 2131427618;
+			
+			// aapt resource value: 0x7f0b011f
+			public const int YoutubeTextDetails = 2131427615;
+			
+			// aapt resource value: 0x7f0b0123
+			public const int YoutubeUsageBarBorder = 2131427619;
 			
 			// aapt resource value: 0x7f0b0124
-			public const int YoutubeDataUsage = 2131427620;
+			public const int YoutubeUsageBarMask = 2131427620;
 			
-			// aapt resource value: 0x7f0b0128
-			public const int YoutubeDataUsageBar = 2131427624;
+			// aapt resource value: 0x7f0b0121
+			public const int YoutubeUsedDataAmount = 2131427617;
 			
-			// aapt resource value: 0x7f0b0125
-			public const int YoutubeTextDetails = 2131427621;
-			
-			// aapt resource value: 0x7f0b0129
-			public const int YoutubeUsageBarBorder = 2131427625;
-			
-			// aapt resource value: 0x7f0b012a
-			public const int YoutubeUsageBarMask = 2131427626;
-			
-			// aapt resource value: 0x7f0b0127
-			public const int YoutubeUsedDataAmount = 2131427623;
-			
-			// aapt resource value: 0x7f0b00c3
-			public const int action0 = 2131427523;
+			// aapt resource value: 0x7f0b00bd
+			public const int action0 = 2131427517;
 			
 			// aapt resource value: 0x7f0b0047
 			public const int action_bar = 2131427399;
@@ -2530,17 +2524,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0024
 			public const int action_bar_title = 2131427364;
 			
-			// aapt resource value: 0x7f0b00c0
-			public const int action_container = 2131427520;
+			// aapt resource value: 0x7f0b00ba
+			public const int action_container = 2131427514;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int action_context_bar = 2131427400;
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int action_divider = 2131427527;
-			
 			// aapt resource value: 0x7f0b00c1
-			public const int action_image = 2131427521;
+			public const int action_divider = 2131427521;
+			
+			// aapt resource value: 0x7f0b00bb
+			public const int action_image = 2131427515;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -2557,11 +2551,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0026
 			public const int action_mode_close_button = 2131427366;
 			
-			// aapt resource value: 0x7f0b00c2
-			public const int action_text = 2131427522;
+			// aapt resource value: 0x7f0b00bc
+			public const int action_text = 2131427516;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int actions = 2131427536;
+			// aapt resource value: 0x7f0b00ca
+			public const int actions = 2131427530;
 			
 			// aapt resource value: 0x7f0b0027
 			public const int activity_chooser_view_content = 2131427367;
@@ -2584,14 +2578,14 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b002e
 			public const int buttonPanel = 2131427374;
 			
-			// aapt resource value: 0x7f0b00c4
-			public const int cancel_action = 2131427524;
+			// aapt resource value: 0x7f0b00be
+			public const int cancel_action = 2131427518;
 			
 			// aapt resource value: 0x7f0b003e
 			public const int checkbox = 2131427390;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int chronometer = 2131427532;
+			// aapt resource value: 0x7f0b00c6
+			public const int chronometer = 2131427526;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int collapseActionView = 2131427358;
@@ -2620,8 +2614,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b001b
 			public const int end = 2131427355;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int end_padder = 2131427542;
+			// aapt resource value: 0x7f0b00d0
+			public const int end_padder = 2131427536;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int expand_activities_button = 2131427368;
@@ -2638,8 +2632,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b002c
 			public const int icon = 2131427372;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int icon_group = 2131427537;
+			// aapt resource value: 0x7f0b00cb
+			public const int icon_group = 2131427531;
 			
 			// aapt resource value: 0x7f0b001f
 			public const int ifRoom = 2131427359;
@@ -2647,17 +2641,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0029
 			public const int image = 2131427369;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int info = 2131427533;
+			// aapt resource value: 0x7f0b00c7
+			public const int info = 2131427527;
 			
-			// aapt resource value: 0x7f0b00d2
-			public const int line1 = 2131427538;
+			// aapt resource value: 0x7f0b00cc
+			public const int line1 = 2131427532;
 			
-			// aapt resource value: 0x7f0b00d4
-			public const int line3 = 2131427540;
+			// aapt resource value: 0x7f0b00ce
+			public const int line3 = 2131427534;
 			
-			// aapt resource value: 0x7f0b00fc
-			public const int linearLayout1 = 2131427580;
+			// aapt resource value: 0x7f0b00f6
+			public const int linearLayout1 = 2131427574;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
@@ -2665,8 +2659,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b002b
 			public const int list_item = 2131427371;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int media_actions = 2131427526;
+			// aapt resource value: 0x7f0b00c0
+			public const int media_actions = 2131427520;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int middle = 2131427356;
@@ -2683,14 +2677,14 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b000a
 			public const int normal = 2131427338;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int notification_background = 2131427535;
-			
 			// aapt resource value: 0x7f0b00c9
-			public const int notification_main_column = 2131427529;
+			public const int notification_background = 2131427529;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int notification_main_column_container = 2131427528;
+			// aapt resource value: 0x7f0b00c3
+			public const int notification_main_column = 2131427523;
+			
+			// aapt resource value: 0x7f0b00c2
+			public const int notification_main_column_container = 2131427522;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int parentPanel = 2131427376;
@@ -2704,11 +2698,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0040
 			public const int radio = 2131427392;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int right_icon = 2131427534;
+			// aapt resource value: 0x7f0b00c8
+			public const int right_icon = 2131427528;
 			
-			// aapt resource value: 0x7f0b00ca
-			public const int right_side = 2131427530;
+			// aapt resource value: 0x7f0b00c4
+			public const int right_side = 2131427524;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int screen = 2131427348;
@@ -2767,18 +2761,6 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0011
 			public const int showTitle = 2131427345;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int space2 = 2131427416;
-			
-			// aapt resource value: 0x7f0b005e
-			public const int space4 = 2131427422;
-			
-			// aapt resource value: 0x7f0b0060
-			public const int space5 = 2131427424;
-			
-			// aapt resource value: 0x7f0b0064
-			public const int space6 = 2131427428;
-			
 			// aapt resource value: 0x7f0b002f
 			public const int spacer = 2131427375;
 			
@@ -2794,8 +2776,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0017
 			public const int src_over = 2131427351;
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int status_bar_latest_event_content = 2131427525;
+			// aapt resource value: 0x7f0b00bf
+			public const int status_bar_latest_event_content = 2131427519;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int submenuarrow = 2131427393;
@@ -2806,11 +2788,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int text = 2131427541;
+			// aapt resource value: 0x7f0b00cf
+			public const int text = 2131427535;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int text2 = 2131427539;
+			// aapt resource value: 0x7f0b00cd
+			public const int text2 = 2131427533;
 			
 			// aapt resource value: 0x7f0b0035
 			public const int textSpacerNoButtons = 2131427381;
@@ -2818,8 +2800,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0b0034
 			public const int textSpacerNoTitle = 2131427380;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int time = 2131427531;
+			// aapt resource value: 0x7f0b00c5
+			public const int time = 2131427525;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int title = 2131427373;
