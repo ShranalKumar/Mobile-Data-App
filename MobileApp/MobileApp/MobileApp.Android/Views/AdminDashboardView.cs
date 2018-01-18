@@ -7,7 +7,7 @@ using MobileApp.Droid.Adapters;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme", MainLauncher = true)]
+    [Activity(Theme = "@style/MainTheme")]
     public class AdminDashboardView : Activity
     {
         private ImageButton _hamburgerIcon;
