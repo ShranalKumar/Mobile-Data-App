@@ -25,7 +25,6 @@ namespace MobileApp.Droid.Views
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
-		bool authenticationStatus = false;
 
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -57,8 +56,14 @@ namespace MobileApp.Droid.Views
 			LoginController logincontroller = new LoginController(_loginId, _password);
 			await logincontroller.userLoginPhaseAsync();
 
-			if (logincontroller.getLoginStatus()) {
+			if (logincontroller.getLoginStatus() && logincontroller.getAdminStatus()) 
+			{
 				Intent intent = new Intent(this, typeof(AdminDashboardView));
+				StartActivity(intent);
+			}
+			else if (logincontroller.getLoginStatus())
+			{
+				Intent intent = new Intent(this, typeof(NonAdminDashbaordView));
 				StartActivity(intent);
 			}
 			else

@@ -44,7 +44,7 @@ namespace MobileApp.Droid
 			_daysRemaining = Math.Ceiling((_endDate - _currentDate).TotalDays);
 			//_daysRemaining = (_startDate - _endDate).TotalDays;
 
-
+			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
 
 

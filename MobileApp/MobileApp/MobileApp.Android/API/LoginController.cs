@@ -32,8 +32,14 @@ namespace MobileApp.Droid
 			await manager.GetTodoItemsAsync(loginQuery, _loginid, _password);
 		}
 
-		public Boolean getLoginStatus() {
+		public Boolean getLoginStatus() 
+		{
 			return manager.getLoginStatus();
+		}
+
+		public Boolean getAdminStatus()
+		{
+			return manager.getAdminStatus();
 		}
 
 

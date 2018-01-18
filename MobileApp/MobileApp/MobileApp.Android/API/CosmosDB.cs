@@ -26,6 +26,7 @@ namespace MobileApp.Droid
 		private const string _databaseId = @"ToDoList";
 		private const string _collectionId = @"Items";
 		private bool _authenticationStatus = false;
+		private bool _adminStatus = false;
 
 		private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(_databaseId, _collectionId);
 
@@ -116,6 +117,7 @@ namespace MobileApp.Droid
 				List<string> AppUsage = new List<string>();
 				string startDate ="";
 				string endDate="";
+				string adminStatusOnDB = "";
 
 
 
@@ -151,6 +153,11 @@ namespace MobileApp.Droid
 					}
 					startDate = item.PlanStartDate;
 					endDate = item.PlanEndDate;
+					adminStatusOnDB = item.AdminStatus;
+					if (adminStatusOnDB.ToUpper() == "TRUE")
+					{
+						_adminStatus = true;
+					}
 
 				}
 				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage, startDate, endDate);
@@ -179,8 +186,14 @@ namespace MobileApp.Droid
 			Document updated = await client.ReplaceDocumentAsync(doc);
 		}
 
-		public Boolean getLoginStatus() {
+		public Boolean getLoginStatus()
+		{
 			return _authenticationStatus;
+		}
+
+		public Boolean getAdminStatus()
+		{
+			return _adminStatus;
 		}
 
 	}
