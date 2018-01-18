@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace MobileApp.Droid
 {
-	class LoginController
+	public class LoginController
 	{
 		TodoItemManager manager;
 		private string _loginid;
@@ -21,7 +21,6 @@ namespace MobileApp.Droid
 		{
 			this._loginid = _loginid;
 			this._password = _password;
-			userLoginPhaseAsync();
 		}
 
 		public async System.Threading.Tasks.Task userLoginPhaseAsync()

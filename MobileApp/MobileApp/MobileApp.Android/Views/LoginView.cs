@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Droid;
 
 namespace MobileApp.Droid.Views
 {
@@ -24,15 +25,17 @@ namespace MobileApp.Droid.Views
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
+		bool authenticationStatus = false;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+
+		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.LoginLayout);
 
             _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
-            _loginButtonClicked.Click += loginButtonIsClicked;
+            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
             //_loginButtonClicked.Click += delegate { StartActivity(typeof(TransferView)); };
 
 
@@ -44,7 +47,7 @@ namespace MobileApp.Droid.Views
             // Create your application here
         }
 
-        private void loginButtonIsClicked(object sender, EventArgs e)
+        private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
@@ -52,7 +55,9 @@ namespace MobileApp.Droid.Views
 			_password = _userInputPassword.Text;
 
 			LoginController logincontroller = new LoginController(_loginId, _password);
-
+			await logincontroller.userLoginPhaseAsync();
+			Intent intent = new Intent(this, typeof(AdminDashboardView));
+			StartActivity(intent);
 
 			//throw new NotImplementedException();
 		}

@@ -25,6 +25,7 @@ namespace MobileApp.Droid
 		private const string _accountKey = @"qd90jPFq21MhZ8i3HfJA943zmDWRqVBhTZJNOYYqKIFqvjuBau6k2CMKmqtowyz7jRkPObpYS1AO4Jvq9DFrdQ==";
 		private const string _databaseId = @"ToDoList";
 		private const string _collectionId = @"Items";
+		private bool _authenticationStatus = false;
 
 		private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(_databaseId, _collectionId);
 
@@ -73,6 +74,7 @@ namespace MobileApp.Droid
 						if (item.password == _password && item.uid == _loginId)
 						{
 							//Console.WriteLine("Authentication succeeed");
+							//_authenticationStatus = true;
 							string dbQuery = String.Format("select * from t where t.uid = '{0}'", _loginId);
 							await GetTodoItemsAsync(dbQuery);
 						}
