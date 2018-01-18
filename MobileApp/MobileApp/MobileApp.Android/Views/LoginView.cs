@@ -56,8 +56,16 @@ namespace MobileApp.Droid.Views
 
 			LoginController logincontroller = new LoginController(_loginId, _password);
 			await logincontroller.userLoginPhaseAsync();
-			Intent intent = new Intent(this, typeof(AdminDashboardView));
-			StartActivity(intent);
+
+			if (logincontroller.getLoginStatus()) {
+				Intent intent = new Intent(this, typeof(AdminDashboardView));
+				StartActivity(intent);
+			}
+			else
+			{
+				Console.WriteLine("Log in Failed!");
+			}
+			
 
 			//throw new NotImplementedException();
 		}

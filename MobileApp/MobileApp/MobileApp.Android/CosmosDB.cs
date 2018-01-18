@@ -74,7 +74,7 @@ namespace MobileApp.Droid
 						if (item.password == _password && item.uid == _loginId)
 						{
 							//Console.WriteLine("Authentication succeeed");
-							//_authenticationStatus = true;
+							_authenticationStatus = true;
 							string dbQuery = String.Format("select * from t where t.uid = '{0}'", _loginId);
 							await GetTodoItemsAsync(dbQuery);
 						}
@@ -177,6 +177,10 @@ namespace MobileApp.Droid
 
 			//Now persist these changes to the database by replacing the original resource
 			Document updated = await client.ReplaceDocumentAsync(doc);
+		}
+
+		public Boolean getLoginStatus() {
+			return _authenticationStatus;
 		}
 
 	}
