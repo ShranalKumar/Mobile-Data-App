@@ -9,287 +9,320 @@
         p1:orientation="vertical"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/ToolbarLayout">
-        <Space
-            p1:id="@+id/space2"
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp" />
+        p1:id="@+id/ToolbarLayout"
+        p1:background="@drawable/progressbarborder">
         <android.support.v7.widget.Toolbar
             p1:id="@+id/TitleBar"
             p1:minWidth="25px"
             p1:minHeight="25px"
             p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
-            <RelativeLayout
+            p1:layout_height="wrap_content"
+            p1:padding="10dp">
+            <LinearLayout
+                p1:orientation="horizontal"
                 p1:minWidth="25px"
                 p1:minHeight="25px"
-                p1:id="@+id/TitleBarLayout"
                 p1:layout_width="match_parent"
-                p1:layout_height="wrap_content">
-                <ImageButton
-                    p1:id="@+id/MenuButton"
-                    p1:background="@drawable/transparent_button"
-                    p1:clickable="true"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/ToolbarLayout">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true" />
-                <android.support.v7.widget.DialogTitle
-                    p1:id="@+id/UserName"
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/MenuButtonLayout"
+                    p1:layout_weight="1"
+                    p1:layout_gravity="left">
+                    <ImageButton
+                        p1:id="@+id/MenuButton"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:src="@drawable/menu"
+                        p1:background="@android:color/transparent"
+                        p1:padding="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_toRightOf="@id/MenuButton"
-                    p1:layout_centerVertical="true"
-                    p1:maxWidth="200dp" />
-                <ImageButton
-                    p1:id="@+id/AccountSwitcher"
-                    p1:background="@drawable/transparent_button"
-                    p1:layout_width="30dp"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true"
-                    p1:layout_toRightOf="@id/UserName"
-                    p1:layout_alignWithParentIfMissing="true" />
-                <Space
-                    p1:id="@+id/space4"
-                    p1:layout_width="20dp"
-                    p1:layout_height="wrap_content"
-                    p1:layout_toRightOf="@id/AccountSwitcher" />
-                <ImageButton
-                    p1:id="@+id/NotificationButton"
-                    p1:background="@drawable/transparent_button"
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/AccountSwitcherLayout"
+                    p1:padding="10dp"
+                    p1:layout_weight="1"
+                    p1:layout_gravity="center">
+                    <android.support.v7.widget.DialogTitle
+                        p1:id="@+id/UserName"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:text="MRS LOUISE SHIRLEY WESLEY"
+                        p1:layout_gravity="center"
+                        p1:padding="5dp" />
+                    <ImageButton
+                        p1:id="@+id/AccountSwitcher"
+                        p1:background="@android:color/transparent"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="match_parent"
+                        p1:src="@drawable/chevrondownicon"
+                        p1:padding="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true"
-                    p1:layout_toRightOf="@id/space4"
-                    p1:layout_alignParentRight="true" />
-            </RelativeLayout>
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/NotificationButtonLayout"
+                    p1:layout_weight="1"
+                    p1:gravity="right">
+                    <ImageButton
+                        p1:id="@+id/NotificationButton"
+                        p1:background="@android:color/transparent"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="match_parent"
+                        p1:src="@drawable/notificationicon"
+                        p1:padding="10dp" />
+                </LinearLayout>
+            </LinearLayout>
         </android.support.v7.widget.Toolbar>
-        <Space
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp"
-            p1:id="@+id/space5" />
     </LinearLayout>
     <RelativeLayout
         p1:id="@+id/ProductLabelLayout"
-        p1:layout_width="wrap_content"
+        p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:layout_below="@id/ToolbarLayout">
+        p1:layout_below="@id/ToolbarLayout"
+        p1:padding="10dp">
         <ImageView
             p1:id="@+id/MobileIcon"
-            p1:layout_width="match_parent"
+            p1:layout_width="wrap_content"
             p1:layout_height="wrap_content"
-            p1:layout_centerHorizontal="true" />
+            p1:layout_centerHorizontal="true"
+            p1:src="@drawable/mobileicon"
+            p1:padding="5dp" />
         <android.support.v7.widget.DialogTitle
             p1:id="@+id/ProductName"
             p1:layout_width="wrap_content"
             p1:layout_height="wrap_content"
             p1:layout_centerHorizontal="true"
-            p1:layout_alignWithParentIfMissing="true"
             p1:layout_below="@id/MobileIcon"
-            p1:layout_centerInParent="true" />
-        <Space
-            p1:id="@+id/space6"
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp"
-            p1:layout_below="@id/ProductName" />
+            p1:layout_centerInParent="true"
+            p1:text="Mobile"
+            p1:padding="5dp" />
     </RelativeLayout>
-    <RelativeLayout
+    <LinearLayout
+        p1:orientation="vertical"
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/MobileInformationLayout"
+        p1:padding="25dp"
         p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
         p1:layout_below="@id/ProductLabelLayout"
-        p1:layout_marginTop="30dp">
-        <android.support.v7.widget.DialogTitle
+        p1:layout_height="130dp">
+        <TextView
             p1:id="@+id/DaysRemainingText"
             p1:layout_width="wrap_content"
             p1:layout_height="wrap_content"
             p1:layout_alignWithParentIfMissing="true"
-            p1:layout_centerHorizontal="true" />
+            p1:layout_centerHorizontal="true"
+            p1:text="XX Days Remaining"
+            p1:layout_gravity="center"
+            p1:paddingBottom="10dp" />
         <RelativeLayout
             p1:minWidth="25px"
             p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:layout_below="@id/DaysRemainingText"
             p1:id="@+id/DataBarLayout"
-            p1:layout_centerInParent="true">
-            <ImageView
-                p1:id="@+id/DataUsageBorder"
-                p1:layout_height="wrap_content"
-                p1:layout_width="wrap_content"
-                p1:layout_centerInParent="true" />
-            <ImageView
-                p1:id="@+id/DataUsageFill"
-                p1:layout_height="wrap_content"
-                p1:alpha="0.3"
-                p1:layout_alignLeft="@id/DataUsageBorder"
-                p1:layout_width="wrap_content"
-                p1:layout_centerInParent="true" />
-            <android.support.v7.widget.DialogTitle
+            p1:background="@drawable/progressbarborder"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content">
+            <TextView
                 p1:id="@+id/DataUsageText"
-                p1:textAlignment="center"
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true" />
+                p1:layout_centerInParent="true"
+                p1:text="XX GB Remaining" />
+            <RelativeLayout
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent"
+                p1:id="@+id/DataBarBorder"
+                p1:background="@drawable/progressbarmask"
+                p1:alpha="0.3" />
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
     <RelativeLayout
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:layout_below="@id/MobileInformationLayout"
         p1:id="@+id/UserTilesLayout"
         p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_marginTop="60dp">
-        <GridLayout
-            p1:layout_width="wrap_content"
+        p1:minHeight="25px">
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:id="@+id/UserTileLayout"
-            p1:columnCount="2"
-            p1:rowCount="2"
-            p1:layout_centerInParent="true">
+            p1:id="@+id/UserTilesLayoutRow1"
+            p1:gravity="center"
+            p1:padding="5dp">
             <LinearLayout
                 p1:orientation="vertical"
-                p1:id="@+id/LouiseUserTile"
-                p1:layout_height="wrap_content"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
                 p1:layout_width="wrap_content"
-                p1:layout_marginRight="30dp"
-                p1:layout_marginBottom="30dp">
+                p1:layout_height="wrap_content"
+                p1:id="@+id/LouiseUserLayout"
+                p1:layout_weight="1"
+                p1:padding="10dp"
+                p1:gravity="center">
+                <TextView
+                    p1:text="Louise"
+                    p1:textAppearance="?android:attr/textAppearanceSmall"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/LouiseText" />
                 <RelativeLayout
                     p1:minWidth="25px"
                     p1:minHeight="25px"
+                    p1:id="@+id/LouiseDataBarLayout"
+                    p1:background="@drawable/progressbarborder"
                     p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/LouiseUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/LouiseTileName"
-                        p1:textAlignment="center"
+                    p1:layout_height="wrap_content">
+                    <RelativeLayout
+                        p1:minWidth="25px"
+                        p1:minHeight="25px"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/LouiseUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/LouiseTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/LouiseUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/LouiseTileName"
-                        p1:layout_alignLeft="@id/LouiseUserTileUsageBorder"
+                        p1:id="@+id/LouiseDataBarBorder"
+                        p1:background="@drawable/progressbarmask"
                         p1:alpha="0.3"
-                        p1:scaleType="fitXY"
-                        p1:layout_width="wrap_content" />
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:id="@+id/ShranalUserTile">
-                <RelativeLayout
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/ShranalUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/ShranalTileName"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/ShranalUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/ShranalTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/ShranalUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/ShranalTileName"
-                        p1:alpha="0.3"
-                        p1:layout_alignLeft="@id/ShranalUserTileUsageBorder" />
+                        p1:layout_centerVertical="true" />
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
                 p1:orientation="vertical"
                 p1:minWidth="25px"
                 p1:minHeight="25px"
-                p1:id="@+id/SoumikUserTile">
-                <RelativeLayout
-                    p1:layout_width="match_parent"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent"
+                p1:id="@+id/ShranalUserLayout"
+                p1:layout_weight="1"
+                p1:gravity="center"
+                p1:padding="7dp">
+                <TextView
+                    p1:text="Shranal"
+                    p1:layout_width="wrap_content"
                     p1:layout_height="wrap_content"
-                    p1:id="@+id/SoumikUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/SoumikTileName"
+                    p1:id="@+id/ShranalText" />
+                <RelativeLayout
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/ShranalDataBarLayout"
+                    p1:background="@drawable/progressbarborder"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <RelativeLayout
+                        p1:minWidth="25px"
+                        p1:minHeight="25px"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/SoumikUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/SoumikTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/SoumikUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/SoumikTileName"
+                        p1:id="@+id/ShranalDataBarBorder"
+                        p1:background="@drawable/progressbarmask"
                         p1:alpha="0.3"
-                        p1:layout_alignLeft="@id/SoumikUserTileUsageBorder" />
+                        p1:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="horizontal"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/UserTilesLayoutRow2"
+            p1:gravity="center"
+            p1:layout_below="@id/UserTilesLayoutRow1">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/SoumikUserLayout"
+                p1:layout_weight="1"
+                p1:padding="10dp"
+                p1:gravity="center">
+                <TextView
+                    p1:text="Soumik"
+                    p1:textAppearance="?android:attr/textAppearanceSmall"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/SoumikText" />
+                <RelativeLayout
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/SoumikDataBarLayout"
+                    p1:background="@drawable/progressbarborder"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <RelativeLayout
+                        p1:minWidth="25px"
+                        p1:minHeight="25px"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/SoumikDataBarBorder"
+                        p1:background="@drawable/progressbarmask"
+                        p1:alpha="0.3"
+                        p1:layout_centerVertical="true" />
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
                 p1:orientation="vertical"
-                p1:id="@+id/MinkyuUserTile">
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="wrap_content"
+                p1:layout_height="match_parent"
+                p1:id="@+id/MinkyuUserLayout"
+                p1:layout_weight="1"
+                p1:gravity="center"
+                p1:padding="7dp">
+                <TextView
+                    p1:text="Minkyu"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/MinkyuText" />
                 <RelativeLayout
                     p1:minWidth="25px"
                     p1:minHeight="25px"
+                    p1:id="@+id/MinkyuDataBarLayout"
+                    p1:background="@drawable/progressbarborder"
                     p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/MinkyuUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/MinkyuTileName"
+                    p1:layout_height="wrap_content">
+                    <RelativeLayout
+                        p1:minWidth="25px"
+                        p1:minHeight="25px"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/MinkyuUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/MinkyuTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:id="@+id/MinkyuUserTileUsageBorderMask"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
+                        p1:id="@+id/MinkyuDataBarBorder"
+                        p1:background="@drawable/progressbarmask"
                         p1:alpha="0.3"
-                        p1:layout_below="@id/MinkyuTileName"
-                        p1:layout_alignLeft="@id/MinkyuUserTileUsageBorder" />
+                        p1:layout_centerVertical="true" />
                 </RelativeLayout>
             </LinearLayout>
-        </GridLayout>
+        </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
+        p1:layout_height="match_parent"
         p1:layout_below="@id/UserTilesLayout"
         p1:id="@+id/AllocateButtonLayout"
-        p1:layout_marginTop="70dp">
+        p1:layout_alignParentBottom="true"
+        p1:paddingLeft="45dp"
+        p1:paddingRight="45dp">
         <Button
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
@@ -298,8 +331,7 @@
             p1:layout_centerHorizontal="false"
             p1:layout_centerInParent="true"
             p1:textColor="@color/foreground_material_dark"
-            p1:clickable="true"
             p1:text="Allocate Data"
-            p1:layout_margin="50dp" />
+            p1:padding="10dp" />
     </RelativeLayout>
 </RelativeLayout>

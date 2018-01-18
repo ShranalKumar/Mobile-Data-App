@@ -32,8 +32,8 @@ namespace MobileApp.Droid.Views
             SetContentView(Resource.Layout.LoginLayout);
 
             _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
-            _loginButtonClicked.Click += loginButtonIsClicked;
-            //_loginButtonClicked.Click += delegate { StartActivity(typeof(TransferView)); };
+            //_loginButtonClicked.Click += loginButtonIsClicked;
+            _loginButtonClicked.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
 
 
             _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
