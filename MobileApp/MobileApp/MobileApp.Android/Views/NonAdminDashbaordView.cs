@@ -9,7 +9,6 @@ namespace MobileApp.Droid.Views
 	{
 		Button request, transfer;
 		ImageView logo;
-		TodoItemManager manager;
 
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -26,8 +25,12 @@ namespace MobileApp.Droid.Views
 			transfer = FindViewById<Button>(Resource.Id.TransferButton);
 			logo = FindViewById<ImageView>(Resource.Id.MobileLogo);
 
+			transfer.Click += delegate { StartActivity(typeof(TransferView)); };
+
 		}
+
 	}
 }
+
 
 

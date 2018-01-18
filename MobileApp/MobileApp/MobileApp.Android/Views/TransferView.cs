@@ -105,7 +105,7 @@ namespace MobileApp.Droid.Views
             _sendButtonClicked.Click += showConfirmationPopUp;
 
             _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
-            _BackButton.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashbaordView)); };
         }
 
 
