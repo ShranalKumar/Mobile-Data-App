@@ -60,7 +60,7 @@ namespace MobileApp.Droid.Views
 
 			if (logincontroller.getLoginStatus() && logincontroller.getAdminStatus()) 
 			{
-				Intent intent = new Intent(this, typeof(AdminDashboardView));
+				Intent intent = new Intent(this, typeof(UsersDataUsageView));
 				StartActivity(intent);
 			}
 			else if (logincontroller.getLoginStatus())

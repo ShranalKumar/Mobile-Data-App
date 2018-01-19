@@ -32,11 +32,13 @@ namespace MobileApp.Constants
             public const string TransferButton = "Transfer";
 
             //Allocation Screen
-            public const string Allocate = "Allocate Data";
+            public const string AllocatedData = "Allocated Data";
+            public const string UsedData = "Used Data";
             public const string CurrentPlan = "Current Plan";
             public const string RemainingData = "Remaining Data";
             public const string DataAmount = "{0}GB";
             public const string WeeklyMode = "Weekly Mode";
+            public const string SaveButton = "Save";
         }
     }
 }
