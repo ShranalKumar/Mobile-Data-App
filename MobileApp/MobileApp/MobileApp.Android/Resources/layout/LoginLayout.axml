@@ -58,7 +58,6 @@
         p1:layout_below="@id/PasswordLayout"
         p1:animateLayoutChanges="true">
         <Button
-            p1:text="Login"
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/LogInButton" />

@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MobileApp.Droid;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
@@ -35,15 +36,16 @@ namespace MobileApp.Droid.Views
 
             _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
             _loginButtonClicked.Click += LoginButtonIsClickedAsync;
-            //_loginButtonClicked.Click += delegate { StartActivity(typeof(TransferView)); };
 
 
             _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
             _passwordField = FindViewById <LinearLayout > (Resource.Id.PasswordLayout);
 
 			_userInputID = FindViewById<EditText>(Resource.Id.UsernameInputField);
+            _userInputID.Hint = StringConstants.Localizable.UsernameHint;
 			_userInputPassword = FindViewById<EditText>(Resource.Id.PasswordInputField);
-            // Create your application here
+            _userInputPassword.Hint = StringConstants.Localizable.PasswordHint;
+            _loginButtonClicked.Text = StringConstants.Localizable.LogIn;
         }
 
         private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
@@ -70,9 +72,6 @@ namespace MobileApp.Droid.Views
 			{
 				Console.WriteLine("Log in Failed!");
 			}
-			
-
-			//throw new NotImplementedException();
 		}
 	}
 }
