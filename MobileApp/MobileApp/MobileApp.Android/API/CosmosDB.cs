@@ -109,12 +109,12 @@ namespace MobileApp.Droid
 				}
 
 				List<string> uid = new List<string>();
-				List<string> fullname = new List<string>();
+				List<string> firstname = new List<string>();
 				List<int> used = new List<int>();
 				List<int> allocated = new List<int>();
 				List<int> remainder = new List<int>();
-				List<string> AppName = new List<string>();
-				List<string> AppUsage = new List<string>();
+				//List<string> AppName = new List<string>();
+				//List<string> AppUsage = new List<string>();
 				string startDate ="";
 				string endDate="";
 				string adminStatusOnDB = "";
@@ -127,7 +127,7 @@ namespace MobileApp.Droid
 
 					foreach (NameList name in item.Name)
 					{
-						fullname.Add(name.FirstName + " " + name.LastName);
+						firstname.Add(name.FirstName);
 					}
 					uid.Add(item.uid);
 					allocated.Add(item.Allocated);
@@ -137,16 +137,8 @@ namespace MobileApp.Droid
 						uid.Add(gm.uid);
 						foreach (NameList name in gm.Name)
 						{
-							fullname.Add(name.FirstName + " " + name.LastName);
+							firstname.Add(name.FirstName);
 						}
-
-						//AppName.Add(gm.UsageBreakdown[0].App1);
-						//AppName.Add(gm.UsageBreakdown[0].App2);
-						//AppName.Add(gm.UsageBreakdown[0].App3);
-
-						//AppUsage.Add(gm.UsageBreakdown[0].App1Usage);
-						//AppUsage.Add(gm.UsageBreakdown[0].App2Usage);
-						//AppUsage.Add(gm.UsageBreakdown[0].App3Usage);
 
 						allocated.Add(gm.Allocated);
 						used.Add(gm.Used);
@@ -160,7 +152,7 @@ namespace MobileApp.Droid
 					}
 
 				}
-				Controller controller = new Controller(uid, fullname, used, allocated, remainder, AppName, AppUsage, startDate, endDate);
+				Controller controller = new Controller(uid, firstname, used, allocated, remainder, AppName, AppUsage, startDate, endDate);
 
 			}
 			catch (Exception e)

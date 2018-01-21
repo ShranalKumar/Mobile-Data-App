@@ -14,8 +14,8 @@ namespace MobileApp.Droid
 {
 	class Controller
 	{
-		private List<string> _uid; /*{ get; set; }*/
-		private List<string> _fullname;
+		private List<string> _uid; 
+		private List<string> _firstname;
 		private List<int> _used;
 		private List<int> _allocated;
 		private List<int> _remainder;
@@ -25,12 +25,13 @@ namespace MobileApp.Droid
 		private DateTime _endDate;
 		private DateTime _currentDate;
 		private double _daysRemaining;
+		private int _allocatedlistlength;
 
 
-		public Controller(List<string> uid, List<string> fullname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate)
+		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate)
 		{
 			this._uid = uid;
-			this._fullname = fullname;
+			this._firstname = firstname;
 			this._used = used;
 			this._allocated = allocated;
 			this._remainder = remainder;
@@ -40,17 +41,22 @@ namespace MobileApp.Droid
 			this._endDate = Convert.ToDateTime(endDate);
 
 			_currentDate = DateTime.Now;
+			_allocated.Count();
+
+			
+
+			//for (int i = 0; i <)
 
 			_daysRemaining = Math.Ceiling((_endDate - _currentDate).TotalDays);
-			//_daysRemaining = (_startDate - _endDate).TotalDays;
-
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
+		}
 
 
-
-
+		public void LoadOntoScreen()
+		{
 
 		}
+
 	}
 }
