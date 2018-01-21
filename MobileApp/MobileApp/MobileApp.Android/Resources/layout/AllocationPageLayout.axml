@@ -4,76 +4,107 @@
     p1:layout_height="match_parent"
     p1:id="@+id/AllocationPageMainLayout">
     <android.support.v7.widget.Toolbar
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/AllocationPageToolbar">
-        <ImageButton
+        p1:minHeight="?android:attr/actionBarSize"
+        p1:background="@drawable/progressbarborder"
+        p1:minWidth="25px"
+        p1:id="@+id/AllocationPageToolbar"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content">
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="25px"
             p1:layout_width="wrap_content"
             p1:layout_height="wrap_content"
-            p1:layout_above="@id/AllocationPageToolbar"
-            p1:id="@+id/BackButton"
-            p1:background="@android:color/transparent" />
-        <android.support.v7.widget.DialogTitle
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/AllocationPageTitle"
-            p1:gravity="center"
-            p1:textAlignment="center" />
+            p1:id="@+id/TransferToolbarLayout"
+            p1:gravity="center">
+            <ImageButton
+                p1:src="@drawable/arrowbackicon"
+                p1:id="@+id/AllocationBackButton"
+                p1:background="@android:color/transparent"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:layout_alignParentLeft="true"
+                p1:padding="15dp" />
+            <TextView
+                p1:text="Allocate Data"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:id="@+id/AllocationPageTitle"
+                p1:textAlignment="center"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:layout_centerInParent="true"
+                p1:gravity="center"
+                p1:layout_centerHorizontal="true"
+                p1:layout_centerVertical="true" />
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-    <GridLayout
+    <LinearLayout
+        p1:orientation="horizontal"
         p1:minWidth="25px"
         p1:minHeight="25px"
-        p1:id="@+id/DataInformation"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:layout_below="@id/AllocationPageToolbar"
-        p1:columnCount="2"
-        p1:rowCount="1"
-        p1:layout_centerHorizontal="true"
-        p1:layout_marginBottom="20dp">
-        <RelativeLayout
-            p1:id="@+id/CurrentDataInformation"
-            p1:layout_rowWeight="1"
-            p1:layout_columnWeight="1">
-            <android.support.v7.widget.DialogTitle
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/CurrentDataInformationHeader"
+        p1:id="@+id/DataDetailsTextLayout"
+        p1:padding="10dp"
+        p1:layout_marginTop="5dp"
+        p1:layout_marginBottom="10dp"
+        p1:layout_below="@id/AllocationPageToolbar">
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/CurrentPlanLayout"
+            p1:gravity="center"
+            p1:layout_weight="1">
+            <TextView
                 p1:text="Current Plan"
-                p1:layout_centerHorizontal="true" />
-            <android.support.v7.widget.DialogTitle
-                p1:layout_width="wrap_content"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:id="@+id/CurrentPlanText"
+                p1:gravity="center"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content" />
+            <TextView
+                p1:text="XX GB"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
-                p1:id="@+id/CurrentDataAmount"
-                p1:text="XXGB"
-                p1:layout_centerHorizontal="true"
-                p1:layout_below="@id/CurrentDataInformationHeader" />
-        </RelativeLayout>
-        <RelativeLayout
-            p1:id="@+id/RemainingDataInformation"
-            p1:layout_columnWeight="1">
-            <android.support.v7.widget.DialogTitle
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/RemainingDataInformationHeader"
+                p1:id="@+id/CurrentPlanDataAmount"
+                p1:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/RemainingDataLayout"
+            p1:gravity="center"
+            p1:layout_weight="1">
+            <TextView
                 p1:text="Remaining Data"
-                p1:layout_centerHorizontal="true" />
-            <android.support.v7.widget.DialogTitle
-                p1:layout_width="wrap_content"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:id="@+id/RemainingDataText"
+                p1:gravity="center"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content" />
+            <TextView
+                p1:text="XX GB"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
                 p1:id="@+id/RemainingDataAmount"
-                p1:text="XXGB"
-                p1:layout_below="@id/RemainingDataInformationHeader"
-                p1:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </GridLayout>
+                p1:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
     <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/DataPoolCircleLayout"
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:layout_below="@id/DataInformation"
+        p1:layout_below="@id/DataDetailsTextLayout"
         p1:layout_centerInParent="true">
         <RadialProgress.RadialProgressView
             p1:layout_width="match_parent"
@@ -81,40 +112,287 @@
             p1:id="@+id/RadialProgressCircle"
             p1:background="@android:color/transparent" />
     </RelativeLayout>
-    <GridLayout
+    <LinearLayout
+        p1:orientation="horizontal"
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/WeeklyModeLayout"
+        p1:columnCount="2"
         p1:layout_below="@id/DataPoolCircleLayout"
-        p1:layout_marginTop="20dp"
-        p1:columnCount="2">
-        <android.support.v7.widget.DialogTitle
-            p1:id="@+id/WeeklyModeText"
-            p1:layout_columnWeight="1"
-            p1:text="Weekly Mode"
+        p1:gravity="center"
+        p1:padding="15dp">
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
             p1:layout_width="wrap_content"
-            p1:layout_marginLeft="20dp" />
-        <Switch
-            p1:id="@+id/WeeklyModeOnOff"
-            p1:layout_columnWeight="1"
-            p1:layout_marginRight="20dp" />
-    </GridLayout>
-    <ListView
+            p1:layout_height="match_parent"
+            p1:id="@+id/WeeklyModeTextLayout"
+            p1:layout_weight="50">
+            <TextView
+                p1:text="Weekly Mode"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:id="@+id/WeeklyModeText"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            p1:id="@+id/WeeklyModeSwitchLayout"
+            p1:layout_weight="0.5">
+            <Switch
+                p1:id="@+id/WeeklyModeOnOff"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <ScrollView
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="205.0dp"
+        p1:layout_height="220dp"
+        p1:id="@+id/ScrollableLayout"
         p1:layout_below="@id/WeeklyModeLayout"
-        p1:id="@+id/UserDataAllocationListView" />
-    <Button
-        p1:text="SAVE"
-        p1:layout_width="wrap_content"
+        p1:padding="5dp">
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:layout_width="match_parent"
+            p1:id="@+id/UserDataAllocationList"
+            p1:layout_below="@id/WeeklyModeLayout"
+            p1:layout_height="wrap_content">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/User1"
+                p1:background="@drawable/progressbarborder"
+                p1:layout_marginBottom="-6dp"
+                p1:padding="3dp">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/User1DetailsTextLayout"
+                    p1:padding="5dp">
+                    <TextView
+                        p1:text="Louise"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User1NameTextView"
+                        p1:layout_weight="1"
+                        p1:paddingLeft="10dp" />
+                    <TextView
+                        p1:text="Allocated: XX GB"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User1AllocatedDataAmount"
+                        p1:layout_weight="1"
+                        p1:gravity="right"
+                        p1:paddingRight="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/User1DataAllocationSliderLayout"
+                    p1:gravity="center"
+                    p1:padding="5dp"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <SeekBar
+                        p1:layout_width="match_parent"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User1AllocationSlider" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/User2"
+                p1:background="@drawable/progressbarborder"
+                p1:layout_marginBottom="-6dp"
+                p1:layout_marginTop="-5dp"
+                p1:padding="3dp">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/User2DetailsTextLayout"
+                    p1:padding="5dp">
+                    <TextView
+                        p1:text="Steven"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User2NameTextView"
+                        p1:layout_weight="1"
+                        p1:paddingLeft="10dp" />
+                    <TextView
+                        p1:text="Allocated: XX GB"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User2AllocatedDataAmount"
+                        p1:layout_weight="1"
+                        p1:gravity="right"
+                        p1:paddingRight="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/User2DataAllocationSliderLayout"
+                    p1:gravity="center"
+                    p1:padding="5dp"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <SeekBar
+                        p1:layout_width="match_parent"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User2AllocationSlider" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/User3"
+                p1:background="@drawable/progressbarborder"
+                p1:layout_marginBottom="-6dp"
+                p1:layout_marginTop="-5dp"
+                p1:padding="3dp">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/User3DetailsTextLayout"
+                    p1:padding="5dp">
+                    <TextView
+                        p1:text="Shranal"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User3NameTextView"
+                        p1:layout_weight="1"
+                        p1:paddingLeft="10dp" />
+                    <TextView
+                        p1:text="Allocated: XX GB"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User3AllocatedDataAmount"
+                        p1:layout_weight="1"
+                        p1:gravity="right"
+                        p1:paddingRight="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/User3DataAllocationSliderLayout"
+                    p1:gravity="center"
+                    p1:padding="5dp"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <SeekBar
+                        p1:layout_width="match_parent"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User3AllocationSlider" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/User4"
+                p1:background="@drawable/progressbarborder"
+                p1:layout_marginTop="-5dp"
+                p1:padding="3dp">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/User4DetailsTextLayout"
+                    p1:padding="5dp">
+                    <TextView
+                        p1:text="Soumik"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User4NameTextView"
+                        p1:layout_weight="1"
+                        p1:paddingLeft="10dp" />
+                    <TextView
+                        p1:text="Allocated: XX GB"
+                        p1:textAppearance="?android:attr/textAppearanceSmall"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User4AllocatedDataAmount"
+                        p1:layout_weight="1"
+                        p1:gravity="right"
+                        p1:paddingRight="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:id="@+id/User4DataAllocationSliderLayout"
+                    p1:gravity="center"
+                    p1:padding="5dp"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <SeekBar
+                        p1:layout_width="match_parent"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/User4AllocationSlider" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:id="@+id/SendButtonLayout"
+        p1:layout_width="match_parent"
+        p1:layout_below="@id/ScrollableLayout"
         p1:layout_height="wrap_content"
-        p1:id="@+id/SaveButton"
-        p1:layout_below="@id/UserDataAllocationListView"
-        p1:background="@drawable/transparent_button"
-        p1:layout_centerHorizontal="true"
-        p1:textColor="@color/foreground_material_dark" />
+        p1:paddingTop="25dp"
+        p1:paddingBottom="25dp"
+        p1:paddingLeft="45dp"
+        p1:paddingRight="45dp">
+        <Button
+            p1:text="SAVE"
+            p1:id="@+id/SaveButton"
+            p1:background="@drawable/transparent_button"
+            p1:textColor="@color/foreground_material_dark"
+            p1:layout_width="match_parent"
+            p1:layout_height="match_parent" />
+    </RelativeLayout>
 </RelativeLayout>
