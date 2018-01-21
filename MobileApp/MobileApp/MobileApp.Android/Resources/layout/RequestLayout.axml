@@ -12,12 +12,12 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/TransferPageContentsLayout">
+        android:id="@+id/RequestPageContentsLayout">
         <android.support.v7.widget.Toolbar
             android:minHeight="?android:attr/actionBarSize"
             android:background="@drawable/progressbarborder"
             android:minWidth="25px"
-            android:id="@+id/AllocationPageToolbar"
+            android:id="@+id/RequestPageToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RelativeLayout
@@ -25,20 +25,20 @@
                 android:minHeight="25px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/TransferToolbarLayout"
+                android:id="@+id/RequestToolbarLayout"
                 android:gravity="center">
                 <ImageButton
                     android:src="@drawable/arrowbackicon"
-                    android:id="@+id/TransferBackButton"
+                    android:id="@+id/RequestBackButton"
                     android:background="@android:color/transparent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:padding="15dp" />
                 <TextView
-                    android:text="Transfer Data"
+                    android:text="Request Data"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/TransferPageTitle"
+                    android:id="@+id/RequestPageTitle"
                     android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,16 +52,19 @@
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:id="@+id/SendToLayout"
-            android:padding="10dp"
+            android:id="@+id/RequestFromLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="40dp"
+            android:paddingTop="40dp">
             <TextView
-                android:text="Send Data to:"
+                android:text="Request Data From:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/SendDataText"
+                android:id="@+id/RequestDataText"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp" />
             <HorizontalScrollView
@@ -117,19 +120,22 @@
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:id="@+id/DataAmountSelectorLayout"
-            android:padding="10dp"
+            android:id="@+id/RequestAmountSelectorLayout"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="40dp"
+            android:paddingTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/DataAmountSelectorTitleText"
-                android:text="Select Amount to Transfer:"
+                android:id="@+id/RequestAmountSelectorTitleText"
+                android:text="Select Amount to Request:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <LinearLayout
                 android:orientation="horizontal"
-                android:id="@+id/DataAmountSelectorButtonLayout"
+                android:id="@+id/RequestAmountSelectorButtonLayout"
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_height="wrap_content"
@@ -141,14 +147,14 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/FirstButtonLayout"
+                    android:id="@+id/FirstRequestButtonLayout"
                     android:layout_weight="1"
                     android:padding="10dp">
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/FirstUpArrow"
+                        android:id="@+id/FirstRequestUpArrow"
                         android:rotation="180"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
@@ -157,7 +163,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/FirstNumberText"
+                        android:id="@+id/FirstRequestNumberText"
                         android:layout_gravity="center"
                         android:textSize="30dp"
                         android:layout_weight="1" />
@@ -165,7 +171,7 @@
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/FirstDownArrow"
+                        android:id="@+id/FirstRequestDownArrow"
                         android:background="@android:color/transparent"
                         android:layout_weight="1"
                         android:padding="15dp" />
@@ -175,10 +181,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:id="@+id/DataUnitDecimalText" />
+                    android:id="@+id/RequestDataUnitDecimalText" />
                 <LinearLayout
                     android:orientation="vertical"
-                    android:id="@+id/SecondButtonLayout"
+                    android:id="@+id/SecondRequestButtonLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
@@ -187,7 +193,7 @@
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/SecondUpArrow"
+                        android:id="@+id/SecondRequestUpArrow"
                         android:rotation="180"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
@@ -198,12 +204,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/SecondNumberText" />
+                        android:id="@+id/SecondRequestNumberText" />
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/SecondDownArrow"
+                        android:id="@+id/SecondRequestDownArrow"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                 </LinearLayout>
@@ -211,14 +217,14 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ThirdButtonLayout"
+                    android:id="@+id/ThirdRequestButtonLayout"
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ThirdUpArrow"
+                        android:id="@+id/ThirdRequestUpArrow"
                         android:background="@android:color/transparent"
                         android:rotation="180"
                         android:padding="15dp" />
@@ -229,12 +235,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/ThirdNumberText" />
+                        android:id="@+id/ThirdRequestNumberText" />
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ThirdDownArrow"
+                        android:id="@+id/ThirdRequestDownArrow"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                 </LinearLayout>
@@ -242,14 +248,14 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/FourthButtonLayout"
+                    android:id="@+id/FourthRequestButtonLayout"
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/FourthUpArrow"
+                        android:id="@+id/FourthRequestUpArrow"
                         android:background="@android:color/transparent"
                         android:rotation="180"
                         android:padding="15dp" />
@@ -260,12 +266,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/FourthNumberText" />
+                        android:id="@+id/FourthRequestNumberText" />
                     <ImageButton
                         android:src="@drawable/chevrondownicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/FourthDownArrow"
+                        android:id="@+id/FourthRequestDownArrow"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                 </LinearLayout>
@@ -274,69 +280,29 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/DataTransferUnits" />
+                    android:id="@+id/DataRequestUnits" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:id="@+id/RemainingDataLayoutForTransfer"
-            android:padding="10dp"
+            android:id="@+id/RequestButtonLayout"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
-            <TextView
-                android:text="Data Remaining:"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/DataRemainingTitleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp" />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/DataRemainingPgBarLayout"
-                android:layoutMode="clipBounds"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:background="@drawable/progressbarborder">
-                <TextView
-                    android:text="XX GB Ramining"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/DataRemainingTextInsidePgBar"
-                    android:layout_centerInParent="true" />
-                <RelativeLayout
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:id="@+id/DataRemainingFillMask"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/progressbarmask"
-                    android:alpha="0.3" />
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout1">
+            android:layout_height="wrap_content">
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:id="@+id/SendButtonLayout"
+                android:id="@+id/RequestButtonLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp">
                 <Button
-                    android:text="Send"
+                    android:text="Request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/SendButton"
+                    android:id="@+id/RequestButton"
                     android:layout_centerInParent="true"
                     android:background="@drawable/progressbarborder"
                     android:layout_alignParentBottom="true" />
@@ -348,17 +314,17 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/TransferPagePopUpLayout"
+        android:id="@+id/RequestPagePopUpLayout"
         android:gravity="center"
         android:alpha="0.95"
-        android:background="@color/material_grey_600"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        android:background="@color/material_grey_600">
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_height="wrap_content"
-            android:id="@+id/TransferDialogLayout"
+            android:id="@+id/RequestDialogLayout"
             android:gravity="center"
             android:background="@android:drawable/alert_dark_frame"
             android:layout_width="match_parent"
@@ -368,7 +334,7 @@
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:id="@+id/TransferDialogTpLogo"
+                android:id="@+id/RequestDialogTpLogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -383,7 +349,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/TransferDialogText"
+                android:id="@+id/RequestDialogText"
                 android:padding="5dp" />
             <LinearLayout
                 android:orientation="horizontal"
@@ -391,13 +357,13 @@
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/TransferDialogButtons"
+                android:id="@+id/RequestDialogButtons"
                 android:gravity="center">
                 <Button
                     android:text="Yes"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/YesTransferButton"
+                    android:id="@+id/YesRequestButton"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:layout_margin="5dp" />
@@ -405,7 +371,7 @@
                     android:text="No"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/NoDoNotTransferButton"
+                    android:id="@+id/NoDoNotRequestButton"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:layout_margin="5dp" />
@@ -417,15 +383,16 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/TransferPageSuccessfulPopUpLayout"
+        android:id="@+id/RequestPageSuccessfulPopUpLayout"
         android:gravity="center"
+        android:background="@android:color/transparent"
         android:visibility="invisible">
         <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_height="wrap_content"
-            android:id="@+id/TransferSuccessDialogLayout"
+            android:id="@+id/RequestSuccessDialogLayout"
             android:gravity="center"
             android:background="@android:drawable/alert_dark_frame"
             android:layout_width="match_parent"
@@ -435,7 +402,7 @@
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:id="@+id/TransferSuccessDialogTpLogo"
+                android:id="@+id/RequestSuccessDialogTpLogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -450,7 +417,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/TransferSuccessDialogText"
+                android:id="@+id/RequestSuccessDialogText"
                 android:padding="5dp" />
             <LinearLayout
                 android:orientation="horizontal"
@@ -458,13 +425,13 @@
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/TransferSuccessDialogButtons"
+                android:id="@+id/RequestSuccessDialogButtons"
                 android:gravity="center">
                 <Button
                     android:text="Ok!"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/OkTransferButton"
+                    android:id="@+id/OkRequestButton"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:layout_margin="5dp" />

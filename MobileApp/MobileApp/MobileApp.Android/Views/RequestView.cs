@@ -6,7 +6,6 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -14,8 +13,8 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TransferView", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class TransferView : Activity
+    [Activity(Label = "RequestView", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    public class RequestView : Activity
     {
         private TextView _firstNumber;
         private TextView _secondNumber;
@@ -23,15 +22,15 @@ namespace MobileApp.Droid.Views
         private TextView _fourthNumber;
         private TextView _dataUnitsToGB;
         private TextView _decimalPointVisibility;
-        private TextView _transferDialogDisplayText;
-        private TextView _successfullyTransferedMessage;
+        private TextView _requestDialogDisplayText;
+        private TextView _successfullyRequestedMessage;
 
         private double _dataAmountDouble;
 
-        private Button _sendButtonClicked;
-        private Button _doNotTransfer;
-        private Button _yesToTransfer;
-        private Button _OkSuccessfullyTransfered;
+        private Button _requestButtonClicked;
+        private Button _doNotRequest;
+        private Button _yesToRequest;
+        private Button _OkSuccessfullyRequested;
 
         private ImageButton _firstUpArrow;
         private ImageButton _secondUpArrow;
@@ -43,71 +42,69 @@ namespace MobileApp.Droid.Views
         private ImageButton _fourthDownArrow;
         private ImageButton _BackButton;
 
-        private RelativeLayout _transferConfirmationPopUp;
-        private RelativeLayout _transferSuccessMessage;
-        private RelativeLayout _backgroundLayout;
+        private RelativeLayout _requestConfirmationPopUp;
+        private RelativeLayout _requestSuccessMessage;
 
         private string _getDataAmount;
         private string _getDataUnit;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.TransferLayout);
+            SetContentView(Resource.Layout.RequestLayout);
 
-            _firstNumber = FindViewById<TextView>(Resource.Id.FirstNumberText);
-            _secondNumber = FindViewById<TextView>(Resource.Id.SecondNumberText);
-            _thirdNumber = FindViewById<TextView>(Resource.Id.ThirdNumberText);
-            _fourthNumber = FindViewById<TextView>(Resource.Id.FourthNumberText);
-            _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataTransferUnits);
-            _decimalPointVisibility = FindViewById<TextView>(Resource.Id.DataUnitDecimalText);
-            _transferDialogDisplayText = FindViewById<TextView>(Resource.Id.TransferDialogText);
-            _successfullyTransferedMessage = FindViewById<TextView>(Resource.Id.TransferSuccessDialogText);
+            _firstNumber = FindViewById<TextView>(Resource.Id.FirstRequestNumberText);
+            _secondNumber = FindViewById<TextView>(Resource.Id.SecondRequestNumberText);
+            _thirdNumber = FindViewById<TextView>(Resource.Id.ThirdRequestNumberText);
+            _fourthNumber = FindViewById<TextView>(Resource.Id.FourthRequestNumberText);
+            _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataRequestUnits);
+            _decimalPointVisibility = FindViewById<TextView>(Resource.Id.RequestDataUnitDecimalText);
+            _requestDialogDisplayText = FindViewById<TextView>(Resource.Id.RequestDialogText);
+            _successfullyRequestedMessage = FindViewById<TextView>(Resource.Id.RequestSuccessDialogText);
 
-            _yesToTransfer = FindViewById<Button>(Resource.Id.YesTransferButton);
-            _yesToTransfer.Click += showSuccessMessage;
+            _yesToRequest = FindViewById<Button>(Resource.Id.YesRequestButton);
+            _yesToRequest.Click += showSuccessMessage;
 
-            _doNotTransfer = FindViewById<Button>(Resource.Id.NoDoNotTransferButton);
-            _doNotTransfer.Click += showConfirmationPopUp;
+            _doNotRequest = FindViewById<Button>(Resource.Id.NoDoNotRequestButton);
+            _doNotRequest.Click += showConfirmationPopUp;
 
-            _OkSuccessfullyTransfered = FindViewById<Button>(Resource.Id.OkTransferButton);
-            _OkSuccessfullyTransfered.Click += showSuccessMessage;
+            _OkSuccessfullyRequested = FindViewById<Button>(Resource.Id.OkRequestButton);
+            _OkSuccessfullyRequested.Click += showSuccessMessage;
 
-            _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstUpArrow);
+            _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestUpArrow);
             _firstUpArrow.Click += increaseInt;
 
-            _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondUpArrow);
+            _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestUpArrow);
             _secondUpArrow.Click += increaseInt;
 
-            _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdUpArrow);
+            _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestUpArrow);
             _thirdUpArrow.Click += increaseInt;
 
-            _fourthUpArrow = FindViewById<ImageButton>(Resource.Id.FourthUpArrow);
+            _fourthUpArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestUpArrow);
             _fourthUpArrow.Click += increaseInt;
 
 
 
-            _firstDownArrow = FindViewById<ImageButton>(Resource.Id.FirstDownArrow);
+            _firstDownArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestDownArrow);
             _firstDownArrow.Click += decreaseInt;
 
-            _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondDownArrow);
+            _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestDownArrow);
             _secondDownArrow.Click += decreaseInt;
 
-            _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdDownArrow);
+            _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestDownArrow);
             _thirdDownArrow.Click += decreaseInt;
 
-            _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthDownArrow);
+            _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestDownArrow);
             _fourthDownArrow.Click += decreaseInt;
 
-            _transferConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.TransferPagePopUpLayout);
-            _transferSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.TransferPageSuccessfulPopUpLayout);
+            _requestConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.RequestPagePopUpLayout);
+            _requestSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.RequestPageSuccessfulPopUpLayout);
 
-            _sendButtonClicked = FindViewById<Button>(Resource.Id.SendButton);
-            _sendButtonClicked.Click += showConfirmationPopUp;
+            _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
+            _requestButtonClicked.Click += showConfirmationPopUp;
 
-            _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
+            _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
             _BackButton.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
         }
 
@@ -123,26 +120,26 @@ namespace MobileApp.Droid.Views
 
             switch (_upArrowClicked.Id)
             {
-                case Resource.Id.FirstUpArrow:
+                case Resource.Id.FirstRequestUpArrow:
                     if (num1 < 9) { num1++; }
                     else if (num1 == 9) { num1 = 0; }
                     _firstNumber.Text = num1.ToString();
                     setGbOrMb(num1);
                     break;
 
-                case Resource.Id.SecondUpArrow:
+                case Resource.Id.SecondRequestUpArrow:
                     if (num2 < 9) { num2++; }
                     else if (num2 == 9) { num2 = 0; }
                     _secondNumber.Text = num2.ToString();
                     break;
 
-                case Resource.Id.ThirdUpArrow:
+                case Resource.Id.ThirdRequestUpArrow:
                     if (num3 < 9) { num3++; }
                     else if (num3 == 9) { num3 = 0; }
                     _thirdNumber.Text = num3.ToString();
                     break;
 
-                case Resource.Id.FourthUpArrow:
+                case Resource.Id.FourthRequestUpArrow:
                     if (num4 < 9) { num4++; }
                     else if (num4 == 9) { num4 = 0; }
                     _fourthNumber.Text = num4.ToString();
@@ -162,26 +159,26 @@ namespace MobileApp.Droid.Views
 
             switch (_downArrowClicked.Id)
             {
-                case Resource.Id.FirstDownArrow:
+                case Resource.Id.FirstRequestDownArrow:
                     num1--;
                     if (num1 < 0) { num1 = 9; }
                     _firstNumber.Text = num1.ToString();
                     setGbOrMb(num1);
                     break;
 
-                case Resource.Id.SecondDownArrow:
+                case Resource.Id.SecondRequestDownArrow:
                     if (num2 > 0) { num2--; }
                     else if (num2 == 0) { num2 = 9; }
                     _secondNumber.Text = num2.ToString();
                     break;
 
-                case Resource.Id.ThirdDownArrow:
+                case Resource.Id.ThirdRequestDownArrow:
                     if (num3 > 0) { num3--; }
                     else if (num3 == 0) { num3 = 9; }
                     _thirdNumber.Text = num3.ToString();
                     break;
 
-                case Resource.Id.FourthDownArrow:
+                case Resource.Id.FourthRequestDownArrow:
                     if (num4 > 0) { num4--; }
                     else if (num4 == 0) { num4 = 9; }
                     _fourthNumber.Text = num4.ToString();
@@ -208,21 +205,21 @@ namespace MobileApp.Droid.Views
             _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
             _dataAmountDouble = Double.Parse(_getDataAmount);
             _getDataUnit = _dataUnitsToGB.Text;
-            _transferDialogDisplayText.Text = "Are you sure you would like to transfer " + _dataAmountDouble.ToString() + " " + _getDataUnit + " to Steven?";
+            _requestDialogDisplayText.Text = "Are you sure you would like to request " + _dataAmountDouble.ToString() + " " + _getDataUnit + " from Steven?";
 
-            if (_transferConfirmationPopUp.Visibility == ViewStates.Invisible)
+            if (_requestConfirmationPopUp.Visibility == ViewStates.Invisible)
             {
-                _transferConfirmationPopUp.Visibility = ViewStates.Visible;
+                _requestConfirmationPopUp.Visibility = ViewStates.Visible;
             }
             else
             {
-                _transferConfirmationPopUp.Visibility = ViewStates.Invisible;
+                _requestConfirmationPopUp.Visibility = ViewStates.Invisible;
             }
         }
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-            _successfullyTransferedMessage.Text = "OK! " + _dataAmountDouble.ToString() + " " + _getDataUnit + " has successfully been transfered to Steven!";
+            _successfullyRequestedMessage.Text = "OK! " + _dataAmountDouble.ToString() + " " + _getDataUnit + " has successfully been requested from Steven!";
             _firstNumber.Text = "0";
             _secondNumber.Text = "0";
             _thirdNumber.Text = "0";
@@ -231,15 +228,15 @@ namespace MobileApp.Droid.Views
             _decimalPointVisibility.Text = "";
 
 
-            if (_transferSuccessMessage.Visibility == ViewStates.Invisible)
+            if (_requestSuccessMessage.Visibility == ViewStates.Invisible)
             {
-                _transferSuccessMessage.Visibility = ViewStates.Visible;
+                _requestSuccessMessage.Visibility = ViewStates.Visible;
             }
 
             else
             {
-                _transferSuccessMessage.Visibility = ViewStates.Invisible;
-                _transferConfirmationPopUp.Visibility = ViewStates.Invisible;
+                _requestSuccessMessage.Visibility = ViewStates.Invisible;
+                _requestConfirmationPopUp.Visibility = ViewStates.Invisible;
             }
         }
 

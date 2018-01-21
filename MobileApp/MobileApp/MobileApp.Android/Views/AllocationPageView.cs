@@ -22,7 +22,7 @@ namespace MobileApp.Droid.Views
         private ImageView _userDataAllocationBorderMask;
         private ImageView _userDataAllocationSlider;
 
-        private DialogTitle _allocatePageTitle;
+        private TextView _allocatePageTitle;
         private RadialProgressView _radialProgress;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,22 +34,24 @@ namespace MobileApp.Droid.Views
             var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
 
             //Image Buttons
-            _backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
+            _backButton = FindViewById<ImageButton>(Resource.Id.AllocationBackButton);
 
             //ImageView 
 
             //Dialog Title
-            _allocatePageTitle = FindViewById<DialogTitle>(Resource.Id.AllocationPageTitle);
+            _allocatePageTitle = FindViewById<TextView>(Resource.Id.AllocationPageTitle);
 
             //Radial Progress
             _radialProgress = FindViewById<RadialProgressView>(Resource.Id.RadialProgressCircle);
-            _radialProgress.LayoutParameters.Height = 150 * pixelToDp;
-            _radialProgress.LayoutParameters.Width = 150 * pixelToDp;
+            _radialProgress.LayoutParameters.Height = 100 * pixelToDp;
+            _radialProgress.LayoutParameters.Width = 100 * pixelToDp;
             _radialProgress.LabelHidden = true;
 
             _backButton.SetImageResource(Resource.Drawable.ArrowBackIcon);
             _backButton.Click += delegate { Finish(); };
             _allocatePageTitle.Text = "Allocate Data";
+            
+
             
             
         }
