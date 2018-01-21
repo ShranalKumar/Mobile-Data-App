@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MobileApp.Droid;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
@@ -18,7 +19,6 @@ namespace MobileApp.Droid.Views
     public class LoginView : Activity
     {
         private Button _loginButtonClicked;
-
         private LinearLayout _usernameField;
 		private LinearLayout _passwordField;
 		private EditText _userInputID;
@@ -26,24 +26,16 @@ namespace MobileApp.Droid.Views
 		private string _loginId;
 		private string _password;
 
-
 		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.LoginLayout);
 
-            _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
-            //_loginButtonClicked.Click += delegate { StartActivity(typeof(TransferView)); };
-
-
-            _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
-            _passwordField = FindViewById <LinearLayout > (Resource.Id.PasswordLayout);
-
-			_userInputID = FindViewById<EditText>(Resource.Id.UsernameInputField);
-			_userInputPassword = FindViewById<EditText>(Resource.Id.PasswordInputField);
-            // Create your application here
+            findAllElements();
+            setAllStringConstants();
+            
+            _loginButtonClicked.Click += LoginButtonIsClickedAsync;            
         }
 
         private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
@@ -70,9 +62,22 @@ namespace MobileApp.Droid.Views
 			{
 				Console.WriteLine("Log in Failed!");
 			}
-			
-
-			//throw new NotImplementedException();
 		}
+
+        protected void findAllElements()
+        {
+            _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
+            _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
+            _passwordField = FindViewById<LinearLayout>(Resource.Id.PasswordLayout);
+            _userInputID = FindViewById<EditText>(Resource.Id.UsernameInputField);
+            _userInputPassword = FindViewById<EditText>(Resource.Id.PasswordInputField);
+        }
+
+        protected void setAllStringConstants()
+        {
+            _userInputID.Hint = StringConstants.Localizable.UsernameHint;
+            _userInputPassword.Hint = StringConstants.Localizable.PasswordHint;
+            _loginButtonClicked.Text = StringConstants.Localizable.LogIn;
+        }
 	}
 }

@@ -29,7 +29,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true" />
             <TextView
-                android:text="Steven's Data Usage"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/UserDataUsageTitle"
                 android:layout_width="match_parent"
@@ -60,14 +59,12 @@
             android:gravity="center"
             android:layout_weight="1">
             <TextView
-                android:text="Current Plan"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/CurrentPlanText"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="XX GB"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,14 +81,12 @@
             android:gravity="center"
             android:layout_weight="1">
             <TextView
-                android:text="Remaining Data"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/RemainingDataText"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
-                android:text="XX GB"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,14 +135,12 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp">
                 <TextView
-                    android:text="Allocated Data"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/AllocatedDataText"
                     android:gravity="center" />
                 <TextView
-                    android:text="50"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,14 +157,12 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp">
                 <TextView
-                    android:text="Used Data"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/UsedDataText"
                     android:gravity="center" />
                 <TextView
-                    android:text="XX GB"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
