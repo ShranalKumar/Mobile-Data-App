@@ -75,8 +75,9 @@ namespace MobileApp.Droid.Views
             _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
 
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
+			_userTiles.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
 
-        }
-    }
+		}
+	}
 }
 

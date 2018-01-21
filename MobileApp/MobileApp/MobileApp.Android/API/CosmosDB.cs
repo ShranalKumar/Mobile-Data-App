@@ -113,8 +113,8 @@ namespace MobileApp.Droid
 				List<int> used = new List<int>();
 				List<int> allocated = new List<int>();
 				List<int> remainder = new List<int>();
-				//List<string> AppName = new List<string>();
-				//List<string> AppUsage = new List<string>();
+				List<string> AppName = new List<string>();
+				List<string> AppUsage = new List<string>();
 				string startDate ="";
 				string endDate="";
 				string adminStatusOnDB = "";

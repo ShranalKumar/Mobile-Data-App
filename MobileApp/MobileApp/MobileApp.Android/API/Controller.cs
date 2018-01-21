@@ -41,7 +41,7 @@ namespace MobileApp.Droid
 			this._endDate = Convert.ToDateTime(endDate);
 
 			_currentDate = DateTime.Now;
-			_allocated.Count();
+			_allocatedlistlength = _allocated.Count();
 
 			
 
