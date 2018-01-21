@@ -30,16 +30,10 @@ namespace MobileApp.Droid.Views
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.AllocationPageLayout);
+            findAllElements();
+            setAllStringConstants();
 
             var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
-
-            //Image Buttons
-            _backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
-
-            //ImageView 
-
-            //Dialog Title
-            _allocatePageTitle = FindViewById<DialogTitle>(Resource.Id.AllocationPageTitle);
 
             //Radial Progress
             _radialProgress = FindViewById<RadialProgressView>(Resource.Id.RadialProgressCircle);
@@ -52,6 +46,17 @@ namespace MobileApp.Droid.Views
             _allocatePageTitle.Text = "Allocate Data";
             
             
+        }
+
+        protected void findAllElements()
+        {
+            _backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
+            _allocatePageTitle = FindViewById<DialogTitle>(Resource.Id.AllocationPageTitle);
+        }
+
+        protected void setAllStringConstants()
+        {
+
         }
     }
 }
