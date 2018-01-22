@@ -24,6 +24,10 @@ namespace MobileApp.Constants
             public const string SelectAmount = "Select Amount to Transfer:";
             public const string DataRemaining = "Data Remaining:";
             public const string SendButton = "Send";
+            public const string InitialAmount = "0";
+            public const string MBUnit = "MB";
+            public const string GBUnit = "GB";
+
 
             //Non-Admin Dashboard Screen
             public const string UsersDataUsage = "{0} Data Usage";

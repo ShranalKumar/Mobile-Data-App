@@ -36,7 +36,6 @@
                     android:layout_alignParentLeft="true"
                     android:padding="15dp" />
                 <TextView
-                    android:text="Transfer Data"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/TransferPageTitle"
                     android:textAlignment="center"
@@ -57,7 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
-                android:text="Send Data to:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,7 +122,6 @@
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/DataAmountSelectorTitleText"
-                android:text="Select Amount to Transfer:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <LinearLayout
@@ -153,7 +150,6 @@
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,7 +188,6 @@
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -223,7 +218,6 @@
                         android:rotation="180"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -254,7 +248,6 @@
                         android:rotation="180"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -270,7 +263,6 @@
                         android:padding="15dp" />
                 </LinearLayout>
                 <TextView
-                    android:text="MB"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -286,7 +278,6 @@
             android:layout_width="match_parent"
             android:layout_height="130dp">
             <TextView
-                android:text="Data Remaining:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/DataRemainingTitleText"
                 android:layout_width="match_parent"
@@ -301,7 +292,6 @@
                 android:minHeight="25px"
                 android:background="@drawable/progressbarborder">
                 <TextView
-                    android:text="XX GB Ramining"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -333,7 +323,6 @@
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp">
                 <Button
-                    android:text="Send"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/SendButton"

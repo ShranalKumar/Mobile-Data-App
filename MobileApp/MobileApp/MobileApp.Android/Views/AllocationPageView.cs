@@ -43,17 +43,13 @@ namespace MobileApp.Droid.Views
 
             _backButton.SetImageResource(Resource.Drawable.ArrowBackIcon);
             _backButton.Click += delegate { Finish(); };
-            _allocatePageTitle.Text = "Allocate Data";
-            
-
-            
-            
+            _allocatePageTitle.Text = "Allocate Data";           
         }
 
         protected void findAllElements()
         {
-            _backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
-            _allocatePageTitle = FindViewById<DialogTitle>(Resource.Id.AllocationPageTitle);
+            _backButton = FindViewById<ImageButton>(Resource.Id.AllocationBackButton);
+            _allocatePageTitle = FindViewById<TextView>(Resource.Id.AllocationPageTitle);
         }
 
         protected void setAllStringConstants()

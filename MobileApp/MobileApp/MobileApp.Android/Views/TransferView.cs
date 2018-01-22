@@ -11,12 +11,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
     [Activity(Label = "TransferView", ScreenOrientation = ScreenOrientation.Portrait)]
     public class TransferView : Activity
     {
+        private TextView _transferPageTitle;
+        private TextView _sendToText;
+        private TextView _dataAmountText;
         private TextView _firstNumber;
         private TextView _secondNumber;
         private TextView _thirdNumber;
@@ -41,6 +45,8 @@ namespace MobileApp.Droid.Views
         private ImageButton _secondDownArrow;
         private ImageButton _thirdDownArrow;
         private ImageButton _fourthDownArrow;
+        private TextView _dataRemainingText;
+        private TextView _gbRemainingText;
         private ImageButton _BackButton;
 
         private RelativeLayout _transferConfirmationPopUp;
@@ -57,6 +63,29 @@ namespace MobileApp.Droid.Views
 
             SetContentView(Resource.Layout.TransferLayout);
 
+            findAllElements();
+            setAllStringConstants();
+            
+            _yesToTransfer.Click += showSuccessMessage;            
+            _doNotTransfer.Click += showConfirmationPopUp;            
+            _OkSuccessfullyTransfered.Click += showSuccessMessage;            
+            _firstUpArrow.Click += increaseInt;            
+            _secondUpArrow.Click += increaseInt;            
+            _thirdUpArrow.Click += increaseInt;            
+            _fourthUpArrow.Click += increaseInt;
+            _firstDownArrow.Click += decreaseInt;            
+            _secondDownArrow.Click += decreaseInt;            
+            _thirdDownArrow.Click += decreaseInt;            
+            _fourthDownArrow.Click += decreaseInt;            
+            _sendButtonClicked.Click += showConfirmationPopUp;           
+            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashbaordView)); };
+        }
+
+        protected void findAllElements()
+        {
+            _transferPageTitle = FindViewById<TextView>(Resource.Id.TransferPageTitle);
+            _sendToText = FindViewById<TextView>(Resource.Id.SendDataText);
+            _dataAmountText = FindViewById<TextView>(Resource.Id.DataAmountSelectorTitleText);
             _firstNumber = FindViewById<TextView>(Resource.Id.FirstNumberText);
             _secondNumber = FindViewById<TextView>(Resource.Id.SecondNumberText);
             _thirdNumber = FindViewById<TextView>(Resource.Id.ThirdNumberText);
@@ -65,50 +94,38 @@ namespace MobileApp.Droid.Views
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.DataUnitDecimalText);
             _transferDialogDisplayText = FindViewById<TextView>(Resource.Id.TransferDialogText);
             _successfullyTransferedMessage = FindViewById<TextView>(Resource.Id.TransferSuccessDialogText);
-
             _yesToTransfer = FindViewById<Button>(Resource.Id.YesTransferButton);
-            _yesToTransfer.Click += showSuccessMessage;
-
             _doNotTransfer = FindViewById<Button>(Resource.Id.NoDoNotTransferButton);
-            _doNotTransfer.Click += showConfirmationPopUp;
-
             _OkSuccessfullyTransfered = FindViewById<Button>(Resource.Id.OkTransferButton);
-            _OkSuccessfullyTransfered.Click += showSuccessMessage;
-
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstUpArrow);
-            _firstUpArrow.Click += increaseInt;
-
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondUpArrow);
-            _secondUpArrow.Click += increaseInt;
-
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdUpArrow);
-            _thirdUpArrow.Click += increaseInt;
-
             _fourthUpArrow = FindViewById<ImageButton>(Resource.Id.FourthUpArrow);
-            _fourthUpArrow.Click += increaseInt;
-
-
-
             _firstDownArrow = FindViewById<ImageButton>(Resource.Id.FirstDownArrow);
-            _firstDownArrow.Click += decreaseInt;
-
             _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondDownArrow);
-            _secondDownArrow.Click += decreaseInt;
-
             _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdDownArrow);
-            _thirdDownArrow.Click += decreaseInt;
-
             _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthDownArrow);
-            _fourthDownArrow.Click += decreaseInt;
-
+            _dataRemainingText = FindViewById<TextView>(Resource.Id.DataRemainingTitleText);
+            _gbRemainingText = FindViewById<TextView>(Resource.Id.DataRemainingTextInsidePgBar);
             _transferConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.TransferPagePopUpLayout);
             _transferSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.TransferPageSuccessfulPopUpLayout);
-
             _sendButtonClicked = FindViewById<Button>(Resource.Id.SendButton);
-            _sendButtonClicked.Click += showConfirmationPopUp;
-
             _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
-            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashbaordView)); };
+        }
+
+        protected void setAllStringConstants()
+        {
+            _transferPageTitle.Text = StringConstants.Localizable.Transfer;
+            _sendToText.Text = StringConstants.Localizable.SendDataTo;
+            _dataAmountText.Text = StringConstants.Localizable.SelectAmount;
+            _firstNumber.Text = StringConstants.Localizable.InitialAmount;
+            _secondNumber.Text = StringConstants.Localizable.InitialAmount;
+            _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
+            _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
+            _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
+            _dataRemainingText.Text = StringConstants.Localizable.DataRemaining;
+            _gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, "1");
+            _sendButtonClicked.Text = StringConstants.Localizable.SendButton;
         }
 
 
