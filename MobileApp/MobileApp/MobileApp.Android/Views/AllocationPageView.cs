@@ -42,7 +42,7 @@ namespace MobileApp.Droid.Views
             _radialProgress.LabelHidden = true;
 
             _backButton.SetImageResource(Resource.Drawable.ArrowBackIcon);
-            _backButton.Click += delegate { Finish(); };
+			_backButton.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
             _allocatePageTitle.Text = "Allocate Data";
             
 
@@ -52,8 +52,8 @@ namespace MobileApp.Droid.Views
 
         protected void findAllElements()
         {
-            _backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
-            _allocatePageTitle = FindViewById<DialogTitle>(Resource.Id.AllocationPageTitle);
+            _backButton = FindViewById<ImageButton>(Resource.Id.AllocationBackButton);
+            _allocatePageTitle = FindViewById<TextView>(Resource.Id.AllocationPageTitle);
         }
 
         protected void setAllStringConstants()
