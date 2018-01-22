@@ -13,8 +13,8 @@ namespace MobileApp.Constants
             public const string PasswordHint = "Password";
             public const string LogIn = "LogIn";
 
-            //Admin Dashboard Screen
-            public const string DaysRemaining = "{0} Days Remaining";
+			//Admin Dashboard Screen
+			public const string DaysRemaining = "{0} Days Remaining";
             public const string GbRemaining = "{0}GB Remaining";
             public const string AllocateData = "Allocate Data";
 
@@ -43,6 +43,11 @@ namespace MobileApp.Constants
             public const string DataAmount = "{0}GB";
             public const string WeeklyMode = "Weekly Mode";
             public const string SaveButton = "Save";
+
+            //Request Screen
+            public const string RequestPageTitle = "Request Data";
+            public const string RequestFrom = "Reqeust Data From:";
+            public const string SelectAmountRequest = "Select Amount to Request:";
         }
     }
 }

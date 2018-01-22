@@ -15,17 +15,12 @@ namespace MobileApp.Droid.Views
         private ImageButton _hamburgerIcon;
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
-
         private ImageView _mobileIcon;
-
         private TextView _productName;
-
         private TextView _dataUsage;
         private TextView _user;
-        private TextView _daysRemaining;
-        
+        private TextView _daysRemaining;        
         private Button _allocateButton;
-
         private RelativeLayout _userTiles;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -38,6 +33,8 @@ namespace MobileApp.Droid.Views
             
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
 			_userTiles.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+
+			Console.WriteLine("AAAAAAAA" + Controller._nonadminfirstname);
         }
 
         protected void findAllElements()
@@ -61,10 +58,12 @@ namespace MobileApp.Droid.Views
 
         protected void setAllStringConstants()
         {
-            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, "1");
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, "2");
+            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
+            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._remainder[0]);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
 		}
+
+		
 	}
 }
 
