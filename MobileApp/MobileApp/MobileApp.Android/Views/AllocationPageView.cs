@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.Widget;
@@ -13,7 +14,7 @@ using RadialProgress;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme")]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class AllocationPageView : Activity
     {
         private ImageButton _backButton;

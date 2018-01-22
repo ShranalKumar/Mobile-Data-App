@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "RequestView", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "RequestView", ScreenOrientation = ScreenOrientation.Portrait)]
     public class RequestView : Activity
     {
         private TextView _firstNumber;

@@ -15,7 +15,7 @@ using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/icon")]
     public class LoginView : Activity
     {
         private Button _loginButtonClicked;

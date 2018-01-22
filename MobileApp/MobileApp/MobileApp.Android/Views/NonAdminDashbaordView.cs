@@ -2,10 +2,11 @@
 using Android.Widget;
 using Android.OS;
 using MobileApp.Constants;
+using Android.Content.PM;
 
 namespace MobileApp.Droid.Views
 {
-	[Activity(Label = "MobileApp", Icon = "@mipmap/icon")]
+	[Activity(Label = "MobileApp", ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/icon")]
 	public class NonAdminDashbaordView : Activity
 	{
         private TextView _nonAdminDataUsageUsageTitle;
@@ -13,8 +14,10 @@ namespace MobileApp.Droid.Views
         private TextView _gbRemainingNonAdmin;
         private Button _requestButton;
         private Button _transferButton;
+        private RelativeLayout _dataRemainingFill;
+        private RelativeLayout _dataRemainingPgBarLayout;
         
-        
+        // DataRemainingFillMask ScaleX to a max of 4.1
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -24,6 +27,10 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
+
+            _dataRemainingFill = FindViewById<RelativeLayout>(Resource.Id.DataRemainingFillMask);
+            _dataRemainingFill.ScaleX = (float)3.5;
+
             _transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
             _requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
 		}
