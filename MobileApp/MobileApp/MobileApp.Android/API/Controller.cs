@@ -18,7 +18,8 @@ namespace MobileApp.Droid
 		public static List<string> _firstname;
 		public static List<int> _used;
 		public static List<int> _allocated;
-		public static List<int> _remainder;
+		//public static List<int> _remainder;
+		public static int[] _remainder;
 		public static List<string> _appName;
 		public static List<string> _appUsage;
 		public static DateTime _startDate;
@@ -29,13 +30,17 @@ namespace MobileApp.Droid
 		public static int _planDataPool;
 
 		public static string _nonadminfirstname;
-		public static int _nonaadminused;
+		public static int _nonadminused;
 		public static int _nonadminallocated;
-		public static string _nonadminstartdate;
-		public static string _nonadminenddate;
+		public static DateTime _nonadminstartDate;
+		public static DateTime _nonadminendDate;
+		public static DateTime _nonadmincurrentDate;
+		public static double _nonadmindaysRemaining;
 
 
-		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
+		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
+		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, List<string> appName, List<string> appUsage, string startDate, string endDate, int planDataPool)
+
 		{
 			_uid = uid;
 			_firstname = firstname;
@@ -54,9 +59,9 @@ namespace MobileApp.Droid
 
 			for (int i = 0; i < _allocatedlistlength; i++)
 			{
-				if (_allocated[i] - _used[i] < 0)
+				if ((_allocated[i] - _used[i]) < 0)
 				{
-					_remainder[i] = _planDataPool - _allocated[i] - _used[i];
+					_remainder[i] = (_planDataPool - _allocated[i] - _used[i]);
 				}
 				else
 				{
@@ -72,10 +77,14 @@ namespace MobileApp.Droid
 		public Controller (string firstname, int used, int allocated, string startDate, string endDate)
 		{
 			_nonadminfirstname = firstname;
-			_nonaadminused = used;
+			_nonadminused = used;
 			_nonadminallocated = allocated;
-			_nonadminstartdate = startDate;
-			_nonadminenddate = endDate;
+			_nonadminstartDate = Convert.ToDateTime(startDate);
+			_nonadminendDate = Convert.ToDateTime(endDate);
+			_nonadmincurrentDate = DateTime.Now;
+
+			_nonadmindaysRemaining = Math.Ceiling((_nonadminendDate - _nonadmincurrentDate).TotalDays);
+
 
 		}
 

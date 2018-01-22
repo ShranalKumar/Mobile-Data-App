@@ -47,9 +47,9 @@ namespace MobileApp.Droid.Views
 
         protected void setAllStringConstants()
         {
-            _nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, "Steven's");
-            _remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, "1");
-            _gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, "2");
+            _nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, Controller._nonadminfirstname);
+            _remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, Controller._nonadmindaysRemaining);
+            _gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, (Controller._nonadminallocated - Controller._nonadminused));
             _transferButton.Text = StringConstants.Localizable.TransferButton;
             _requestButton.Text = StringConstants.Localizable.RequestButton;
         }

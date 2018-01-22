@@ -13,8 +13,8 @@ namespace MobileApp.Constants
             public const string PasswordHint = "Password";
             public const string LogIn = "LogIn";
 
-            //Admin Dashboard Screen
-            public const string DaysRemaining = "{0} Days Remaining";
+			//Admin Dashboard Screen
+			public const string DaysRemaining = "{0} Days Remaining";
             public const string GbRemaining = "{0}GB Remaining";
             public const string AllocateData = "Allocate Data";
 

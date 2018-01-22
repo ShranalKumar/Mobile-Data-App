@@ -58,8 +58,8 @@ namespace MobileApp.Droid.Views
 
         protected void setAllStringConstants()
         {
-            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, "1");
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, "2");
+            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
+            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._remainder[0]);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
 		}
 
