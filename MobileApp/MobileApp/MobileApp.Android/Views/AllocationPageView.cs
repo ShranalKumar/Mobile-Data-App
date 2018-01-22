@@ -69,9 +69,9 @@ namespace MobileApp.Droid.Views
         {
             _allocatePageTitle.Text = StringConstants.Localizable.AllocateData;
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, "1");
+            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, "2");
+            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._remainder[0]);
             _weeklyModeText.Text = StringConstants.Localizable.WeeklyMode;
             _saveButon.Text = StringConstants.Localizable.SaveButton;
         }

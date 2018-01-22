@@ -105,13 +105,15 @@ namespace MobileApp.Droid
 					List<string> firstname = new List<string>();
 					List<int> used = new List<int>();
 					List<int> allocated = new List<int>();
-					List<int> remainder = new List<int>();
-					List<string> AppName = new List<string>();
-					List<string> AppUsage = new List<string>();
+					
+					List<string> appname = new List<string>();
+					List<string> appusage = new List<string>();
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
 					int planDataPool = 0;
+					int allocatedlistlength = 0;
+					int groupmembercounter = 0;
 
 					foreach (TodoItem item in _items)
 					{
@@ -126,20 +128,40 @@ namespace MobileApp.Droid
 						foreach (GroupMembers gm in item.groupMembers)
 						{
 							uid.Add(gm.uid);
+							groupmembercounter = item.groupMembers.Count;
 							foreach (NameList name in gm.Name)
 							{
 								firstname.Add(name.FirstName);
-							}
+								//foreach (UsageBreakdownList app in gm.UsageBreakdown)
+								//{
 
+								//	for (int i = 0; i < groupmembercounter; i++)
+								//	{
+								//		appname.Add(app.);
+								//		appname.Add(gm.UsageBreakdown[i].App2);
+								//		appname.Add(gm.UsageBreakdown[i].App3);
+								//		appusage.Add(gm.UsageBreakdown[i].App1Usage);
+								//		appusage.Add(gm.UsageBreakdown[i].App2Usage);
+								//		appusage.Add(gm.UsageBreakdown[i].App3Usage);
+
+								//	}
+								//}
+
+							}
 							allocated.Add(gm.Allocated);
 							used.Add(gm.Used);
-						}
-					startDate = item.PlanStartDate;
-					endDate = item.PlanEndDate;
-					adminStatusOnDB = item.AdminStatus;
-					planDataPool = int.Parse(item.Plan.Substring(0, 2));
+							
 
-					Controller controller = new Controller(uid, firstname, used, allocated, remainder, AppName, AppUsage, startDate, endDate, planDataPool);
+						}
+						startDate = item.PlanStartDate;
+						endDate = item.PlanEndDate;
+						adminStatusOnDB = item.AdminStatus;
+						planDataPool = int.Parse(item.Plan.Substring(0, 2));
+						allocatedlistlength = allocated.Count;
+						int[] remainder = new int[allocatedlistlength];
+
+						Controller controller = new Controller(uid, firstname, used, allocated, remainder, appname, appusage, startDate, endDate, planDataPool);
+						//Controller controller = new Controller(uid, firstname, used, allocated, remainder, AppName, AppUsage, startDate, endDate, planDataPool);
 					}
 				}
 				else

@@ -69,14 +69,14 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
-            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, "2");
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, "Steven's");
+            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[1]);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, Controller._firstname[1]);
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, "10");
+            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, "9");
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._remainder[1]);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
-            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, "1");
+            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._used[1]);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
         }
     }
