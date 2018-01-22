@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using System;
 
 namespace MobileApp.Droid.Views
 {
@@ -20,6 +21,8 @@ namespace MobileApp.Droid.Views
 
 			request = FindViewById<Button>(Resource.Id.RequestButton);
 			request.Click += delegate { StartActivity(typeof(RequestView)); };
+
+			Console.WriteLine("AAAAAAAA" + Controller._nonadminfirstname);
 
 
 

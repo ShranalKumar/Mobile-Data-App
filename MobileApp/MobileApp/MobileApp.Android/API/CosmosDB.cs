@@ -17,8 +17,10 @@ using Microsoft.Azure.Documents;
 
 namespace MobileApp.Droid
 {
+	
 	public partial class TodoItemManager
 	{
+		private List<TodoItem> _items;
 		static TodoItemManager defaultInstance = new TodoItemManager();
 
 		private const string _accountURL = @"https://7cd241a9-0ee0-4-231-b9ee.documents.azure.com:443/";
@@ -47,9 +49,7 @@ namespace MobileApp.Droid
 			{
 				defaultInstance = value;
 			}
-		}
-
-		public List<TodoItem> Items { get; private set; }
+		}		
 
 		public async Task<List<TodoItem>> GetTodoItemsAsync(string loginQuery, string _loginId , string _password)
 		{
@@ -58,26 +58,25 @@ namespace MobileApp.Droid
 				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, loginQuery)
 					  .AsDocumentQuery();
 
-				Items = new List<TodoItem>();
+				_items = new List<TodoItem>();
 				while (query.HasMoreResults)
 				{
-					Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
+					_items.AddRange(await query.ExecuteNextAsync<TodoItem>());
 				}
 
-				if (Items.Count ==0)
+				if (_items.Count ==0)
 				{
 					Console.WriteLine("Authentication failed");
 				}
 				else
 				{
-					foreach (TodoItem item in Items)
+					foreach (TodoItem item in _items)
 					{
 						if (item.password == _password && item.uid == _loginId)
 						{
 							//Console.WriteLine("Authentication succeeed");
 							_authenticationStatus = true;
-							string dbQuery = String.Format("select * from t where t.uid = '{0}'", _loginId);
-							await GetTodoItemsAsync(dbQuery);
+							AssignAllValues();
 						}
 						else
 						{
@@ -85,30 +84,20 @@ namespace MobileApp.Droid
 						}
 					}
 				}
-
 			}
 			catch (Exception e)
 			{
 				Console.Error.WriteLine(@"ERROR {0}", e.Message);
 				return null;
 			}
-			return Items;
+			return _items;
 		}
 
-		public async Task<List<TodoItem>> GetTodoItemsAsync(string dbQuery)
+		public List<TodoItem> AssignAllValues()
 		{
 			try
 			{
-				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, dbQuery)
-					  .AsDocumentQuery();
-
-				Items = new List<TodoItem>();
-				while (query.HasMoreResults)
-				{
-					Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
-				}
-
-				if (Items[0].AdminStatus.ToUpper() == "TRUE")
+				if (_items[0].AdminStatus.ToUpper() == "TRUE")
 				{
 					_adminStatus = true;
 
@@ -124,7 +113,7 @@ namespace MobileApp.Droid
 					string adminStatusOnDB = "";
 					int planDataPool = 0;
 
-					foreach (TodoItem item in Items)
+					foreach (TodoItem item in _items)
 					{
 
 						foreach (NameList name in item.Name)
@@ -161,8 +150,7 @@ namespace MobileApp.Droid
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
-					int planDataPool = 0;
-					foreach (TodoItem item in Items)
+					foreach (TodoItem item in _items)
 					{
 						foreach (NameList username in item.Name)
 						{
@@ -175,9 +163,7 @@ namespace MobileApp.Droid
 						allocated = item.Allocated;
 						
 					}
-
 					Controller controller = new Controller(firstname, used, allocated, startDate, endDate);
-
 				}
 			}
 			catch (Exception e)
@@ -185,7 +171,7 @@ namespace MobileApp.Droid
 				Console.Error.WriteLine(@"ERROR {0}", e.Message);
 				return null;
 			}
-			return Items;
+			return _items;
 		}
 
 		public async Task UpdateDocumentDB()

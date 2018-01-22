@@ -38,7 +38,7 @@ namespace MobileApp.Droid.Views
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
 			_userTiles.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
 
-			Console.WriteLine("AAAAAAAA" + Controller._uid[0]);
+			Console.WriteLine("AAAAAAAA" + Controller._nonadminfirstname);
         }
 
         protected void findAllElements()
