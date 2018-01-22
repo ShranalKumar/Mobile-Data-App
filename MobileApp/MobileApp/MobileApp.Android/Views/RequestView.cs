@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -10,12 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
     [Activity(Label = "RequestView", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class RequestView : Activity
     {
+        private TextView _requestPageTitle;
+        private TextView _requestDataFrom;
+        private TextView _requestDataAmount;
         private TextView _firstNumber;
         private TextView _secondNumber;
         private TextView _thirdNumber;
@@ -54,6 +57,29 @@ namespace MobileApp.Droid.Views
 
             SetContentView(Resource.Layout.RequestLayout);
 
+            findAllElements();
+            setAllStringConstants();
+            
+            _yesToRequest.Click += showSuccessMessage;
+            _doNotRequest.Click += showConfirmationPopUp;
+            _OkSuccessfullyRequested.Click += showSuccessMessage;
+            _firstUpArrow.Click += increaseInt;
+            _secondUpArrow.Click += increaseInt;
+            _thirdUpArrow.Click += increaseInt;
+            _fourthUpArrow.Click += increaseInt;
+            _firstDownArrow.Click += decreaseInt;
+            _secondDownArrow.Click += decreaseInt;
+            _thirdDownArrow.Click += decreaseInt;
+            _fourthDownArrow.Click += decreaseInt;
+            _requestButtonClicked.Click += showConfirmationPopUp;
+            _BackButton.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };           
+        }
+
+        protected void findAllElements()
+        {
+            _requestPageTitle = FindViewById<TextView>(Resource.Id.RequestPageTitle);
+            _requestDataFrom = FindViewById<TextView>(Resource.Id.RequestDataText);
+            _requestDataAmount = FindViewById<TextView>(Resource.Id.RequestAmountSelectorTitleText);
             _firstNumber = FindViewById<TextView>(Resource.Id.FirstRequestNumberText);
             _secondNumber = FindViewById<TextView>(Resource.Id.SecondRequestNumberText);
             _thirdNumber = FindViewById<TextView>(Resource.Id.ThirdRequestNumberText);
@@ -62,50 +88,34 @@ namespace MobileApp.Droid.Views
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.RequestDataUnitDecimalText);
             _requestDialogDisplayText = FindViewById<TextView>(Resource.Id.RequestDialogText);
             _successfullyRequestedMessage = FindViewById<TextView>(Resource.Id.RequestSuccessDialogText);
-
             _yesToRequest = FindViewById<Button>(Resource.Id.YesRequestButton);
-            _yesToRequest.Click += showSuccessMessage;
-
             _doNotRequest = FindViewById<Button>(Resource.Id.NoDoNotRequestButton);
-            _doNotRequest.Click += showConfirmationPopUp;
-
             _OkSuccessfullyRequested = FindViewById<Button>(Resource.Id.OkRequestButton);
-            _OkSuccessfullyRequested.Click += showSuccessMessage;
-
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestUpArrow);
-            _firstUpArrow.Click += increaseInt;
-
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestUpArrow);
-            _secondUpArrow.Click += increaseInt;
-
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestUpArrow);
-            _thirdUpArrow.Click += increaseInt;
-
             _fourthUpArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestUpArrow);
-            _fourthUpArrow.Click += increaseInt;
-
-
-
             _firstDownArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestDownArrow);
-            _firstDownArrow.Click += decreaseInt;
-
             _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestDownArrow);
-            _secondDownArrow.Click += decreaseInt;
-
             _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestDownArrow);
-            _thirdDownArrow.Click += decreaseInt;
-
             _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestDownArrow);
-            _fourthDownArrow.Click += decreaseInt;
-
             _requestConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.RequestPagePopUpLayout);
             _requestSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.RequestPageSuccessfulPopUpLayout);
-
             _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
-            _requestButtonClicked.Click += showConfirmationPopUp;
-
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
-            _BackButton.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+        }
+
+        protected void setAllStringConstants()
+        {
+            _requestPageTitle.Text = StringConstants.Localizable.RequestPageTitle;
+            _requestDataFrom.Text = StringConstants.Localizable.RequestFrom;
+            _requestDataAmount.Text = StringConstants.Localizable.SelectAmountRequest;
+            _firstNumber.Text = StringConstants.Localizable.InitialAmount;
+            _secondNumber.Text = StringConstants.Localizable.InitialAmount;
+            _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
+            _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
+            _requestButtonClicked.Text = StringConstants.Localizable.RequestButton;
+            _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
         }
 
 

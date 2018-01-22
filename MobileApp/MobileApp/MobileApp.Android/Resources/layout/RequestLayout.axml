@@ -36,7 +36,6 @@
                     android:layout_alignParentLeft="true"
                     android:padding="15dp" />
                 <TextView
-                    android:text="Request Data"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/RequestPageTitle"
                     android:textAlignment="center"
@@ -60,7 +59,6 @@
             android:paddingBottom="40dp"
             android:paddingTop="40dp">
             <TextView
-                android:text="Request Data From:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +128,6 @@
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/RequestAmountSelectorTitleText"
-                android:text="Select Amount to Request:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <LinearLayout
@@ -159,7 +156,6 @@
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -198,7 +194,6 @@
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -229,7 +224,6 @@
                         android:rotation="180"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -260,7 +254,6 @@
                         android:rotation="180"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,7 +269,6 @@
                         android:padding="15dp" />
                 </LinearLayout>
                 <TextView
-                    android:text="MB"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -299,7 +291,6 @@
                 android:paddingLeft="45dp"
                 android:paddingRight="45dp">
                 <Button
-                    android:text="Request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/RequestButton"

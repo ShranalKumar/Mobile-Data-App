@@ -17,11 +17,6 @@ namespace MobileApp.Droid.Views
     public class AllocationPageView : Activity
     {
         private ImageButton _backButton;
-
-        private ImageView _userDataAllocationBorder;
-        private ImageView _userDataAllocationBorderMask;
-        private ImageView _userDataAllocationSlider;
-
         private TextView _allocatePageTitle;
         private RadialProgressView _radialProgress;
 
