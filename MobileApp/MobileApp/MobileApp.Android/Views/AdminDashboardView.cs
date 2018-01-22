@@ -14,17 +14,12 @@ namespace MobileApp.Droid.Views
         private ImageButton _hamburgerIcon;
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
-
         private ImageView _mobileIcon;
-
         private TextView _productName;
-
         private TextView _dataUsage;
         private TextView _user;
-        private TextView _daysRemaining;
-        
+        private TextView _daysRemaining;        
         private Button _allocateButton;
-
         private RelativeLayout _userTiles;
 
         protected override void OnCreate(Bundle savedInstanceState)

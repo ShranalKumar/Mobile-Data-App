@@ -26,7 +26,6 @@
                 p1:layout_alignParentLeft="true"
                 p1:padding="15dp" />
             <TextView
-                p1:text="Allocate Data"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:id="@+id/AllocationPageTitle"
                 p1:textAlignment="center"
@@ -59,14 +58,12 @@
             p1:gravity="center"
             p1:layout_weight="1">
             <TextView
-                p1:text="Current Plan"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:id="@+id/CurrentPlanText"
                 p1:gravity="center"
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content" />
             <TextView
-                p1:text="XX GB"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
@@ -83,14 +80,12 @@
             p1:gravity="center"
             p1:layout_weight="1">
             <TextView
-                p1:text="Remaining Data"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:id="@+id/RemainingDataText"
                 p1:gravity="center"
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content" />
             <TextView
-                p1:text="XX GB"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
@@ -132,7 +127,6 @@
             p1:id="@+id/WeeklyModeTextLayout"
             p1:layout_weight="50">
             <TextView
-                p1:text="Weekly Mode"
                 p1:textAppearance="?android:attr/textAppearanceMedium"
                 p1:id="@+id/WeeklyModeText"
                 p1:layout_width="match_parent"
@@ -388,7 +382,6 @@
         p1:paddingLeft="45dp"
         p1:paddingRight="45dp">
         <Button
-            p1:text="SAVE"
             p1:id="@+id/SaveButton"
             p1:background="@drawable/transparent_button"
             p1:textColor="@color/foreground_material_dark"
