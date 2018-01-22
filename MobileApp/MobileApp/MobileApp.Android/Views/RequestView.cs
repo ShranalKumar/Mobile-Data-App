@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "RequestView", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "RequestView", ScreenOrientation = ScreenOrientation.Portrait)]
     public class RequestView : Activity
     {
         private TextView _firstNumber;
@@ -105,7 +105,7 @@ namespace MobileApp.Droid.Views
             _requestButtonClicked.Click += showConfirmationPopUp;
 
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
-            _BackButton.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashbaordView)); };
         }
 
 

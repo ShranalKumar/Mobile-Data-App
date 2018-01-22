@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using MobileApp.Constants;
+using System;
 
 namespace MobileApp.Droid.Views
 {

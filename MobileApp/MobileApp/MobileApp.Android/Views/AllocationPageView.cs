@@ -42,8 +42,12 @@ namespace MobileApp.Droid.Views
             _radialProgress.LabelHidden = true;
 
             _backButton.SetImageResource(Resource.Drawable.ArrowBackIcon);
-            _backButton.Click += delegate { Finish(); };
-            _allocatePageTitle.Text = "Allocate Data";           
+			_backButton.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
+            _allocatePageTitle.Text = "Allocate Data";
+            
+
+            
+            
         }
 
         protected void findAllElements()
