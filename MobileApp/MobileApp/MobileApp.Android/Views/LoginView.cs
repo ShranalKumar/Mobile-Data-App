@@ -25,6 +25,7 @@ namespace MobileApp.Droid.Views
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
+		private TextView _text;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,10 +36,13 @@ namespace MobileApp.Droid.Views
             findAllElements();
             setAllStringConstants();
             
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;            
-        }
+            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
 
-        private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
+			_text = FindViewById<TextView>(Resource.Id.textView1);
+
+		}
+
+		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
@@ -50,11 +54,14 @@ namespace MobileApp.Droid.Views
 
 			if (logincontroller.getLoginStatus() && logincontroller.getAdminStatus()) 
 			{
+				_text.Text = "Loged In As Admin";
 				Intent intent = new Intent(this, typeof(AdminDashboardView));
 				StartActivity(intent);
 			}
 			else if (logincontroller.getLoginStatus())
 			{
+				_text.Text = "Loged In As Non Admin";
+
 				Intent intent = new Intent(this, typeof(NonAdminDashbaordView));
 				StartActivity(intent);
 			}

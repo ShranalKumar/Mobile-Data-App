@@ -108,52 +108,77 @@ namespace MobileApp.Droid
 					Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
 				}
 
-				List<string> uid = new List<string>();
-				List<string> firstname = new List<string>();
-				List<int> used = new List<int>();
-				List<int> allocated = new List<int>();
-				List<int> remainder = new List<int>();
-				List<string> AppName = new List<string>();
-				List<string> AppUsage = new List<string>();
-				string startDate ="";
-				string endDate="";
-				string adminStatusOnDB = "";
-
-
-
-
-				foreach (TodoItem item in Items)
+				if (Items[0].AdminStatus.ToUpper() == "TRUE")
 				{
+					_adminStatus = true;
 
-					foreach (NameList name in item.Name)
+					List<string> uid = new List<string>();
+					List<string> firstname = new List<string>();
+					List<int> used = new List<int>();
+					List<int> allocated = new List<int>();
+					List<int> remainder = new List<int>();
+					List<string> AppName = new List<string>();
+					List<string> AppUsage = new List<string>();
+					string startDate = "";
+					string endDate = "";
+					string adminStatusOnDB = "";
+					int planDataPool = 0;
+
+					foreach (TodoItem item in Items)
 					{
-						firstname.Add(name.FirstName);
-					}
-					uid.Add(item.uid);
-					allocated.Add(item.Allocated);
-					used.Add(item.Used);
-					foreach (GroupMembers gm in item.groupMembers)
-					{
-						uid.Add(gm.uid);
-						foreach (NameList name in gm.Name)
+
+						foreach (NameList name in item.Name)
 						{
 							firstname.Add(name.FirstName);
 						}
+						uid.Add(item.uid);
+						allocated.Add(item.Allocated);
+						used.Add(item.Used);
+						foreach (GroupMembers gm in item.groupMembers)
+						{
+							uid.Add(gm.uid);
+							foreach (NameList name in gm.Name)
+							{
+								firstname.Add(name.FirstName);
+							}
 
-						allocated.Add(gm.Allocated);
-						used.Add(gm.Used);
-					}
+							allocated.Add(gm.Allocated);
+							used.Add(gm.Used);
+						}
 					startDate = item.PlanStartDate;
 					endDate = item.PlanEndDate;
 					adminStatusOnDB = item.AdminStatus;
-					if (adminStatusOnDB.ToUpper() == "TRUE")
+					planDataPool = int.Parse(item.Plan.Substring(0, 2));
+
+					Controller controller = new Controller(uid, firstname, used, allocated, remainder, AppName, AppUsage, startDate, endDate, planDataPool);
+					}
+				}
+				else
+				{
+					int used = 0;
+					int allocated = 0;
+					string firstname = "";
+					string startDate = "";
+					string endDate = "";
+					string adminStatusOnDB = "";
+					int planDataPool = 0;
+					foreach (TodoItem item in Items)
 					{
-						_adminStatus = true;
+						foreach (NameList username in item.Name)
+						{
+							firstname = username.FirstName;
+						}
+						startDate = item.PlanStartDate;
+						endDate = item.PlanEndDate;
+						adminStatusOnDB = item.AdminStatus;
+						used = item.Used;
+						allocated = item.Allocated;
+						
 					}
 
-				}
-				Controller controller = new Controller(uid, firstname, used, allocated, remainder, AppName, AppUsage, startDate, endDate);
+					Controller controller = new Controller(firstname, used, allocated, startDate, endDate);
 
+				}
 			}
 			catch (Exception e)
 			{
