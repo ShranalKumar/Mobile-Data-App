@@ -132,20 +132,24 @@ namespace MobileApp.Droid
 							foreach (NameList name in gm.Name)
 							{
 								firstname.Add(name.FirstName);
-								//foreach (UsageBreakdownList app in gm.UsageBreakdown)
-								//{
+								foreach (UsageBreakdownList app in gm.UsageBreakdown)
+								{
+										appname.Add(app.App1);
+										appname.Add(app.App2);
+										appname.Add(app.App3);
+										appusage.Add(app.App1Usage);
+										appusage.Add(app.App2Usage);
+										appusage.Add(app.App3Usage);
 
-								//	for (int i = 0; i < groupmembercounter; i++)
-								//	{
-								//		appname.Add(app.);
-								//		appname.Add(gm.UsageBreakdown[i].App2);
-								//		appname.Add(gm.UsageBreakdown[i].App3);
-								//		appusage.Add(gm.UsageBreakdown[i].App1Usage);
-								//		appusage.Add(gm.UsageBreakdown[i].App2Usage);
-								//		appusage.Add(gm.UsageBreakdown[i].App3Usage);
 
-								//	}
-								//}
+									//appname.Add(gm.UsageBreakdown[i].App2);
+									//appname.Add(gm.UsageBreakdown[i].App3);
+									//appusage.Add(gm.UsageBreakdown[i].App1Usage);
+									//	appusage.Add(gm.UsageBreakdown[i].App2Usage);
+									//	appusage.Add(gm.UsageBreakdown[i].App3Usage);
+
+								}
+								
 
 							}
 							allocated.Add(gm.Allocated);
@@ -172,6 +176,8 @@ namespace MobileApp.Droid
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
+					List<string> appname = new List<string>();
+					List<string> appusage = new List<string>();
 					foreach (TodoItem item in _items)
 					{
 						foreach (NameList username in item.Name)
@@ -183,9 +189,24 @@ namespace MobileApp.Droid
 						adminStatusOnDB = item.AdminStatus;
 						used = item.Used;
 						allocated = item.Allocated;
-						
+						foreach (UsageBreakdownList inspectelement in item.UsageBreakdown)
+						{
+							appname.Add(inspectelement.App1);
+							appname.Add(inspectelement.App2);
+							appname.Add(inspectelement.App3);
+							appusage.Add(inspectelement.App1Usage);
+							appusage.Add(inspectelement.App2Usage);
+							appusage.Add(inspectelement.App3Usage);
+						}
+						//appname.Add(item.App1);
+						//appname.Add(item.App2);
+						//appname.Add(item.App3);
+						//appusage.Add(item.App1Usage);
+						//appusage.Add(item.App2Usage);
+						//appusage.Add(item.App3Usage);
+
 					}
-					Controller controller = new Controller(firstname, used, allocated, startDate, endDate);
+					Controller controller = new Controller(firstname, used, allocated, appname, appusage, startDate, endDate);
 				}
 			}
 			catch (Exception e)

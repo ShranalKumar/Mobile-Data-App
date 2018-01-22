@@ -39,6 +39,9 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "GroupMember")]
 		public List<GroupMembers> groupMembers { get; set; }
 
+
+		[JsonProperty(PropertyName = "UsageBreakdown")]
+		public List<UsageBreakdownList> UsageBreakdown { get; set; }
 	}
 
 	public class NameList

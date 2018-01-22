@@ -36,6 +36,8 @@ namespace MobileApp.Droid
 		public static DateTime _nonadminendDate;
 		public static DateTime _nonadmincurrentDate;
 		public static double _nonadmindaysRemaining;
+		public static List<string> _nonadminappName;
+		public static List<string> _nonadminappUsage;
 
 
 		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
@@ -74,7 +76,7 @@ namespace MobileApp.Droid
 
 		}
 
-		public Controller (string firstname, int used, int allocated, string startDate, string endDate)
+		public Controller (string firstname, int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate)
 		{
 			_nonadminfirstname = firstname;
 			_nonadminused = used;
@@ -82,6 +84,8 @@ namespace MobileApp.Droid
 			_nonadminstartDate = Convert.ToDateTime(startDate);
 			_nonadminendDate = Convert.ToDateTime(endDate);
 			_nonadmincurrentDate = DateTime.Now;
+			_nonadminappName = appname;
+			_nonadminappUsage = appusage;
 
 			_nonadmindaysRemaining = Math.Ceiling((_nonadminendDate - _nonadmincurrentDate).TotalDays);
 
