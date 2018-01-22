@@ -5,10 +5,11 @@ using Android.Support.V7.Widget;
 using System;
 using MobileApp.Droid.Adapters;
 using MobileApp.Constants;
+using Android.Content.PM;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme")]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class AdminDashboardView : Activity
     {
         private ImageButton _hamburgerIcon;
