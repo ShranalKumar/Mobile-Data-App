@@ -6,6 +6,8 @@ using System;
 using MobileApp.Droid.Adapters;
 using MobileApp.Constants;
 using Android.Content.PM;
+using System.Collections.Generic;
+using Android.Views;
 
 namespace MobileApp.Droid.Views
 {
@@ -21,7 +23,8 @@ namespace MobileApp.Droid.Views
         private TextView _user;
         private TextView _daysRemaining;        
         private Button _allocateButton;
-        private RelativeLayout _userTiles;
+        private ScrollView _userTiles;
+        private List<LinearLayout> UserTileList;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,11 +33,17 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-            
-            _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
-			_userTiles.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
 
-			Console.WriteLine("AAAAAAAA" + Controller._nonadminfirstname);
+            CustomUserTilesPage.getTiles(_userTiles);
+
+            UserTileList = CustomUserTilesPage.UserTiles;
+
+            foreach (LinearLayout tile in UserTileList)
+            {
+                tile.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+            }
+
+            _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
 
         protected void findAllElements()
@@ -48,7 +57,7 @@ namespace MobileApp.Droid.Views
             _user = FindViewById<TextView>(Resource.Id.UserName);
             _daysRemaining = FindViewById<TextView>(Resource.Id.DaysRemainingText);
             _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
-            _userTiles = FindViewById<RelativeLayout>(Resource.Id.UserTilesLayout);
+            _userTiles = FindViewById<ScrollView>(Resource.Id.UserTilesLayout);
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
             _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
@@ -61,9 +70,7 @@ namespace MobileApp.Droid.Views
             _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
             _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._remainder[0]);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
-		}
-
-		
+		}		
 	}
 }
 
