@@ -78,7 +78,7 @@ namespace MobileApp.Droid.Views
             _thirdDownArrow.Click += decreaseInt;            
             _fourthDownArrow.Click += decreaseInt;            
             _sendButtonClicked.Click += showConfirmationPopUp;           
-            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashbaordView)); };
+            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };
         }
 
         protected void findAllElements()

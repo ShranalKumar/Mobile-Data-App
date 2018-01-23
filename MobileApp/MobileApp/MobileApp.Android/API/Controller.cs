@@ -93,10 +93,5 @@ namespace MobileApp.Droid
 		}
 
 
-		public void LoadOntoScreen()
-		{
-
-		}
-
 	}
 }

@@ -62,7 +62,7 @@ namespace MobileApp.Droid.Views
 			{
 				_text.Text = "Loged In As Non Admin";
 
-				Intent intent = new Intent(this, typeof(NonAdminDashbaordView));
+				Intent intent = new Intent(this, typeof(NonAdminDashBoardView));
 				StartActivity(intent);
 			}
 			else
