@@ -38,17 +38,8 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-            
-            //_allocationSlider.Progress = Int32.Parse(_allocatedDataAmount.Text);
+            allocationSliderSettings();
 
-            
-
-            //_allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
-            //    if (e.FromUser)
-            //    {
-            //        _allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, e.Progress);
-            //    }
-            //};
         }
 
         protected void findAllElements()
@@ -78,6 +69,20 @@ namespace MobileApp.Droid.Views
             _usedDataText.Text = StringConstants.Localizable.UsedData;
             _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._used[1]);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
+        }
+
+        protected void allocationSliderSettings()
+        {
+            Console.WriteLine(Controller._allocated[1]);
+            double _sliderPresetValue = ((double)Controller._allocated[1] / Controller._planDataPool ) * 100;
+            _allocationSlider.Progress = (int)_sliderPresetValue;
+            _allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
+                if (e.FromUser)
+                {
+                    double changed = ( (double)e.Progress / 100) * (double)Controller._planDataPool;
+                    _allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, changed.ToString());
+                }
+            };
         }
     }
 }

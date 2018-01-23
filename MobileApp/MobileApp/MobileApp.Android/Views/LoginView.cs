@@ -44,9 +44,6 @@ namespace MobileApp.Droid.Views
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
 
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;            
-        }
-            
             _loginButtonClicked.Click += LoginButtonIsClickedAsync;
 
 			_text = FindViewById<TextView>(Resource.Id.textView1);
