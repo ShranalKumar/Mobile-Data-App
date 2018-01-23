@@ -12,10 +12,6 @@ namespace MobileApp.Droid
     public partial class CustomUserTilesPage : ContentView
     {
         public static List<LinearLayout> UserTiles;
-        public CustomUserTilesPage()
-        {
-            
-        }
 
         public static void getTiles(Android.Widget.ScrollView parent)
         {
@@ -43,6 +39,7 @@ namespace MobileApp.Droid
                 currentUser.SetMinimumWidth(25 * pixelDensity);
                 currentUser.SetGravity(Android.Views.GravityFlags.Center);
                 currentUser.SetPadding(10 * pixelDensity, 10 * pixelDensity, 10 * pixelDensity, 10 * pixelDensity);
+                currentUser.Tag = i;
 
                 TextView userName = new TextView(currentUser.Context);
                 userName.Text = Controller._firstname[i];
@@ -65,9 +62,13 @@ namespace MobileApp.Droid
                 UserTiles.Add(currentUser);
                 currentRow.AddView(currentUser);                
                 MainLinear.RemoveView(currentRow);
-                MainLinear.AddView(currentRow);
-                
+                MainLinear.AddView(currentRow);                
             }
+        }
+
+        private static void GoToUserDataPage(object sender, EventArgs e)
+        {
+            
         }
     }
 }

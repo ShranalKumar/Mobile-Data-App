@@ -8,6 +8,8 @@ using MobileApp.Constants;
 using Android.Content.PM;
 using System.Collections.Generic;
 using Android.Views;
+using Android.Content;
+using static Android.Views.View;
 
 namespace MobileApp.Droid.Views
 {
@@ -25,6 +27,7 @@ namespace MobileApp.Droid.Views
         private Button _allocateButton;
         private ScrollView _userTiles;
         private List<LinearLayout> UserTileList;
+        private LinearLayout _tileClickedOn;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,16 +38,48 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
             CustomUserTilesPage.getTiles(_userTiles);
-
             UserTileList = CustomUserTilesPage.UserTiles;
 
             foreach (LinearLayout tile in UserTileList)
             {
-                tile.Click += delegate { StartActivity(typeof(UsersDataUsageView)); };
+                tile.Click += (o,s) =>
+                {
+                    _tileClickedOn = tile;
+                    Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
+                    string username;
+                    for (int i = 0; i < _tileClickedOn.ChildCount; i++)
+                    {
+                        if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
+                        {
+                            TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
+                            username = userName.Text;
+                            loadUserDataPage.PutExtra("username", username);
+                            StartActivity(loadUserDataPage);
+                        }                        
+                    }
+                };
             }
 
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
+
+        //private EventHandler Tile_Click(LinearLayout tile)
+        //{
+        //    _tileClickedOn = tile;
+        //    Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
+
+        //    for (int i = 0; i < _tileClickedOn.ChildCount; i++)
+        //    {
+        //        if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
+        //        {
+        //            TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
+        //            var x = userName.Text;
+        //            loadUserDataPage.PutExtra("username", x);
+        //        }                
+        //    }
+        //    StartActivity(loadUserDataPage);
+        //    return null;
+        //}
 
         protected void findAllElements()
         {
@@ -70,7 +105,7 @@ namespace MobileApp.Droid.Views
             _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
             _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._remainder[0]);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
-		}		
-	}
+		}
+    }
 }
 

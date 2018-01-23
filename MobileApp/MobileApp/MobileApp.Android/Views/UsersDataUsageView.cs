@@ -29,15 +29,17 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataText;
         private TextView _usedDataTextAmount;
         private TextView _dataUsageSaveButtonText;
+        private String _test;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.UsersDataUsageLayout);
-
+            _test = Intent.GetStringExtra("username");
             findAllElements();
             setAllStringConstants();
+            
             
             //_allocationSlider.Progress = Int32.Parse(_allocatedDataAmount.Text);
 
@@ -70,7 +72,7 @@ namespace MobileApp.Droid.Views
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[1]);
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, Controller._firstname[1]);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, /*Controller._firstname[1]*/_test);
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
             _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
