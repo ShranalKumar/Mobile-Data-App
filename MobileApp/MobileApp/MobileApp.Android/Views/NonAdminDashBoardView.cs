@@ -63,9 +63,9 @@ namespace MobileApp.Droid.Views
 		public void DataBarFill()
 		{
 			
-			//trouble = (double) Controller._nonadminused / (double) Controller._nonadminallocated * widthassumed;
-			//_dataFillBar.ScaleX = (float)trouble;
-			_dataFillBar.ScaleX =(float)widthassumed;
+			trouble = (double) Controller._nonadminused / (double) Controller._nonadminallocated * widthassumed;
+			_dataFillBar.ScaleX = (float)trouble;
+			//_dataFillBar.ScaleX =(float)widthassumed;
 
 		}
 
