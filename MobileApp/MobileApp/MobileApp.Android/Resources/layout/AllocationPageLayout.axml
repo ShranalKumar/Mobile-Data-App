@@ -210,7 +210,14 @@
                     <SeekBar
                         p1:layout_width="match_parent"
                         p1:layout_height="wrap_content"
-                        p1:id="@+id/User1AllocationSlider" />
+                        p1:id="@+id/User1AllocationSlider"
+                        p1:scaleY="5"
+                        p1:progressBackgroundTintMode="src_in"
+                        p1:thumbTint="#ff8a2be2"
+                        p1:progress="50"
+                        p1:progressTint="#32ffffff"
+                        p1:progressBackgroundTint="#00ffffff"
+                        p1:thumbOffset="@dimen/design_fab_translation_z_pressed" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
