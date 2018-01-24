@@ -23,8 +23,8 @@ namespace MobileApp.Droid
 		private List<TodoItem> _items;
 		static TodoItemManager defaultInstance = new TodoItemManager();
 
-		private const string _accountURL = @"https://7cd241a9-0ee0-4-231-b9ee.documents.azure.com:443/";
-		private const string _accountKey = @"qd90jPFq21MhZ8i3HfJA943zmDWRqVBhTZJNOYYqKIFqvjuBau6k2CMKmqtowyz7jRkPObpYS1AO4Jvq9DFrdQ==";
+		private const string _accountURL = @"https://monsterdb.documents.azure.com:443/";
+		private const string _accountKey = @"I1qF7OwlQ22IfBCKXxjUGP3p6prmHEyqWIqU905oNavnM9aeAcuF6EXed69sfAG6cWzZpeX6ZsTBiEG5jvveUA==";
 		private const string _databaseId = @"ToDoList";
 		private const string _collectionId = @"Items";
 		private bool _authenticationStatus = false;
