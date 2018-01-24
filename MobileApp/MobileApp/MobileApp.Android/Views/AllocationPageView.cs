@@ -28,16 +28,24 @@ namespace MobileApp.Droid.Views
         private TextView _weeklyModeText;
         private Button _saveButon;
         private RadialProgressView _radialProgress;
+		private ScrollView _allocationUserScrollView;
+		private List<LinearLayout> _allocationUserTileList;
+		private LinearLayout _userDataAllocationListItem;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+
+		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.AllocationPageLayout);
+
             findAllElements();
             setAllStringConstants();
 
-            var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
+			AllocationPageCustomUserTilesPage.getTiles(_userDataAllocationListItem);
+			_allocationUserTileList = AllocationPageCustomUserTilesPage.UserTiles;
+
+			var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
 
             //Radial Progress            
             _radialProgress.LayoutParameters.Height = 100 * pixelToDp;
@@ -64,7 +72,10 @@ namespace MobileApp.Droid.Views
             _radialProgress = FindViewById<RadialProgressView>(Resource.Id.RadialProgressCircle);
             _weeklyModeText = FindViewById<TextView>(Resource.Id.WeeklyModeText);
             _saveButon = FindViewById<Button>(Resource.Id.SaveButton);
-        }
+			_allocationUserScrollView = FindViewById<ScrollView>(Resource.Id.ScrollableLayout);
+			_userDataAllocationListItem = FindViewById<LinearLayout>(Resource.Id.UserDataAllocationList);
+
+		}
 
         protected void setAllStringConstants()
         {
