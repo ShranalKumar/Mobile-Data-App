@@ -27,6 +27,8 @@ namespace MobileApp.Droid.Views
 		private string _password;
 		private TextView _text;
 
+        private ProgressDialog progress;
+
 		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,7 +37,13 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-            
+
+            progress = new Android.App.ProgressDialog(this);
+            progress.Indeterminate = true;
+            progress.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
+            progress.SetMessage("Retrieving your account info...");
+            progress.SetCancelable(false);
+
             _loginButtonClicked.Click += LoginButtonIsClickedAsync;
 
 			_text = FindViewById<TextView>(Resource.Id.textView1);
@@ -44,6 +52,8 @@ namespace MobileApp.Droid.Views
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {
+            progress.Show();
+
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
 			_loginId = _userInputID.Text;
@@ -69,6 +79,8 @@ namespace MobileApp.Droid.Views
 			{
 				Console.WriteLine("Log in Failed!");
 			}
+
+            progress.Hide();
 		}
 
         protected void findAllElements()
