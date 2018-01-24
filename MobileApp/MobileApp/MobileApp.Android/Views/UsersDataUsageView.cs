@@ -25,18 +25,18 @@ namespace MobileApp.Droid.Views
         private TextView _remainingDataText;
         private TextView _remainingDataAmount;
         private TextView _allocatedDataText;
-        private TextView _allocatedDataTextAmount;
         private TextView _usedDataText;
         private TextView _usedDataTextAmount;
         private TextView _dataUsageSaveButtonText;
-        private String _test;
+        private int _indexOfUser;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.UsersDataUsageLayout);
-            _test = Intent.GetStringExtra("username");
+
+            _indexOfUser = Controller._firstname.IndexOf(Intent.GetStringExtra("username"));
             findAllElements();
             setAllStringConstants();
             
@@ -71,14 +71,14 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
-            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[1]);
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, /*Controller._firstname[1]*/_test);
+            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[_indexOfUser]);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, Controller._firstname[_indexOfUser]);
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
             _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._remainder[1]);
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._remainder[_indexOfUser]);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
-            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._used[1]);
+            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._used[_indexOfUser]);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
         }
     }

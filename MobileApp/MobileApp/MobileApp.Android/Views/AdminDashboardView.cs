@@ -26,7 +26,7 @@ namespace MobileApp.Droid.Views
         private TextView _daysRemaining;        
         private Button _allocateButton;
         private ScrollView _userTiles;
-        private List<LinearLayout> UserTileList;
+        private List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -38,9 +38,9 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
             CustomUserTilesPage.getTiles(_userTiles);
-            UserTileList = CustomUserTilesPage.UserTiles;
+            _userTileList = CustomUserTilesPage.UserTiles;
 
-            foreach (LinearLayout tile in UserTileList)
+            foreach (LinearLayout tile in _userTileList)
             {
                 tile.Click += (o,s) =>
                 {
@@ -59,27 +59,8 @@ namespace MobileApp.Droid.Views
                     }
                 };
             }
-
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
-
-        //private EventHandler Tile_Click(LinearLayout tile)
-        //{
-        //    _tileClickedOn = tile;
-        //    Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
-
-        //    for (int i = 0; i < _tileClickedOn.ChildCount; i++)
-        //    {
-        //        if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
-        //        {
-        //            TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
-        //            var x = userName.Text;
-        //            loadUserDataPage.PutExtra("username", x);
-        //        }                
-        //    }
-        //    StartActivity(loadUserDataPage);
-        //    return null;
-        //}
 
         protected void findAllElements()
         {

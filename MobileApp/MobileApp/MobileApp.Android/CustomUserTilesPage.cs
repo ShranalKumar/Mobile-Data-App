@@ -1,4 +1,5 @@
-﻿using Android.Widget;
+﻿using Android.Views;
+using Android.Widget;
 using MobileApp.Droid.Views;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace MobileApp.Droid
             MainLinear.Orientation = Orientation.Vertical;
             parent.AddView(MainLinear);
             LinearLayout currentRow = null;
+
             for (int i = 0; i < userCount; i++)
             {
                 if (i % 2 == 0)
@@ -50,11 +52,22 @@ namespace MobileApp.Droid
                 currentUserBar.SetMinimumWidth(25 * pixelDensity);
                 currentUserBar.SetBackgroundResource(Resource.Drawable.ProgressBarBorder);
 
-                Android.Widget.RelativeLayout currentUserBarMask = new Android.Widget.RelativeLayout(currentUserBar.Context);
-                currentUserBarMask.SetMinimumHeight(25 * pixelDensity);
-                currentUserBarMask.SetMinimumWidth(25 * pixelDensity);
-                currentUserBarMask.Alpha = 0.3f;
-                currentUserBarMask.SetBackgroundResource(Resource.Drawable.ProgressBarMask);
+                Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(currentUserBar.Context, null, Android.Resource.Attribute.ProgressBarStyleHorizontal) {
+                    Progress = 50,
+                    LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent),
+                };
+                currentUserBarMask.Alpha = 30f;
+                //currentUserBarMask.Background = null;
+                currentUserBarMask.Progress = 90;
+                currentUserBarMask.ScaleY = 10;
+                //currentUserBarMask.
+
+
+                //Android.Widget.RelativeLayout currentUserBarMask = new Android.Widget.RelativeLayout(currentUserBar.Context);
+                //currentUserBarMask.SetMinimumHeight(25 * pixelDensity);
+                //currentUserBarMask.SetMinimumWidth(25 * pixelDensity);
+                //currentUserBarMask.Alpha = 0.3f;
+                //currentUserBarMask.SetBackgroundResource(Resource.Drawable.ProgressBarMask);
 
                 currentUserBar.AddView(currentUserBarMask);
                 currentUser.AddView(userName);
@@ -64,11 +77,6 @@ namespace MobileApp.Droid
                 MainLinear.RemoveView(currentRow);
                 MainLinear.AddView(currentRow);                
             }
-        }
-
-        private static void GoToUserDataPage(object sender, EventArgs e)
-        {
-            
         }
     }
 }
