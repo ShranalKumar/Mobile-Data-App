@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/BackgroundLayout"
-    android:background="@drawable/dashboardgradient1">
+    android:background="@drawable/dashboardgradient7">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -75,8 +75,7 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:id="@+id/UserSelectionSlidingLayout"
-                    android:layout_height="match_parent">
-                </LinearLayout>
+                    android:layout_height="match_parent" />
             </HorizontalScrollView>
         </LinearLayout>
         <LinearLayout

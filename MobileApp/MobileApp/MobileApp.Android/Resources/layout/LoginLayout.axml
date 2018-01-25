@@ -4,7 +4,8 @@
     p1:layout_height="match_parent"
     p1:id="@+id/LoginPageLayout"
     p1:gravity="center_vertical"
-    p1:padding="25dp">
+    p1:padding="25dp"
+    p1:background="@android:color/black">
     <ImageView
         p1:src="@drawable/splashscreenlogo"
         p1:layout_width="match_parent"
