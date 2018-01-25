@@ -13,13 +13,13 @@ namespace MobileApp.Droid
     public partial class CustomUserTilesPage : ContentView
     {
         public static List<LinearLayout> UserTiles;
-
         public static void getTiles(Android.Widget.ScrollView parent)
         {
             int userCount = Controller._uid.Count();
             UserTiles = new List<LinearLayout>();
             int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
-            LinearLayout MainLinear = new LinearLayout(parent.Context);
+            ContextThemeWrapper mainContext = new ContextThemeWrapper(parent.Context, Resource.Style.MainLinearForUserTiles);
+            LinearLayout MainLinear = new LinearLayout(mainContext);
             MainLinear.Orientation = Orientation.Vertical;
             parent.AddView(MainLinear);
             LinearLayout currentRow = null;
@@ -28,56 +28,31 @@ namespace MobileApp.Droid
             {
                 if (i % 2 == 0)
                 {
-                    currentRow = new LinearLayout(MainLinear.Context);
+                    ContextThemeWrapper rowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileRowLayoutStyle);
+                    currentRow = new LinearLayout(rowContext);
                     currentRow.Orientation = Orientation.Horizontal;
-                    currentRow.SetMinimumHeight(25 * pixelDensity);
-                    currentRow.SetMinimumWidth(25 * pixelDensity);
-                    currentRow.SetGravity(Android.Views.GravityFlags.Center);
-                    currentRow.SetPadding(5 * pixelDensity, 5 * pixelDensity, 5 * pixelDensity, 5 * pixelDensity);
                 }
-                LinearLayout currentUser = new LinearLayout(currentRow.Context);
+
+                ContextThemeWrapper userTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileLayoutStyle);
+                LinearLayout currentUser = new LinearLayout(userTileContext);
                 currentUser.Orientation = Orientation.Vertical;
-                currentUser.SetMinimumHeight(25 * pixelDensity);
-                currentUser.SetMinimumWidth(25 * pixelDensity);
-                currentUser.SetGravity(Android.Views.GravityFlags.Center);
-                currentUser.SetPadding(10 * pixelDensity, 10 * pixelDensity, 10 * pixelDensity, 10 * pixelDensity);
-                currentUser.Tag = i;
-
-                TextView userName = new TextView(currentUser.Context);
+                                
+                ContextThemeWrapper userNameContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserNameCenteredText);
+                TextView userName = new TextView(userNameContext);
                 userName.Text = Controller._firstname[i];
-                userName.Gravity = Android.Views.GravityFlags.Center;
 
-                Android.Widget.RelativeLayout currentUserBar = new Android.Widget.RelativeLayout(currentUser.Context);
-                currentUserBar.SetMinimumHeight(25 * pixelDensity);
-                currentUserBar.SetMinimumWidth(25 * pixelDensity);
-                currentUserBar.SetBackgroundResource(Resource.Drawable.ProgressBarBorder);
+                ContextThemeWrapper relativeLayoutStyle = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBorderStyle);
+                FrameLayout currentUserBar = new FrameLayout(relativeLayoutStyle);
                 
-                Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(currentUserBar.Context, null, Android.Resource.Attribute.ProgressBarStyleHorizontal) {
-                    Progress = 50,
-                };
-                currentUserBarMask.Alpha = 30f;
-                //currentUserBarMask.Background = null;
-                currentUserBarMask.Progress = 90;
-                currentUserBarMask.ScaleY = 10;
-                currentUserBarMask.LayoutParameters = new ViewGroup.LayoutParams(100, ViewGroup.LayoutParams.WrapContent);
-                currentUserBar.AddView(currentUserBarMask);
-                
-                //currentUserBarMask.
-
-
-                //Android.Widget.RelativeLayout currentUserBarMask = new Android.Widget.RelativeLayout(currentUserBar.Context);
-                //currentUserBarMask.SetMinimumHeight(25 * pixelDensity);
-                //currentUserBarMask.SetMinimumWidth(25 * pixelDensity);
-                //currentUserBarMask.Alpha = 0.3f;
-                //currentUserBarMask.SetBackgroundResource(Resource.Drawable.ProgressBarMask);
-
+                ContextThemeWrapper PgBarFillContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBarFillStyle);
+                Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
                 currentUser.AddView(userName);
                 currentUser.AddView(currentUserBar);
                 UserTiles.Add(currentUser);
                 currentRow.AddView(currentUser);                
                 MainLinear.RemoveView(currentRow);
-                MainLinear.AddView(currentRow);                
+                MainLinear.AddView(currentRow);
             }
         }
     }

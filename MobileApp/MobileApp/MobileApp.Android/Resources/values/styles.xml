@@ -184,4 +184,52 @@
 		<item name="android:textSize">200dp</item>
 	</style>
 
+  <style name="WhiteBorderTransperent">
+    <item name="android:background">@drawable/progressbarborder</item>
+  </style>
+  
+  <style name="ProgressBorderStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:background">@drawable/progressbarborder</item>
+  </style>
+
+  <style name="ProgressBarFillStyle" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:progressBackgroundTint">#00ffffff</item>
+    <item name="android:progressTint">#30ffffff</item>
+    <item name="android:progress">20</item>
+    <item name="android:padding">0px</item>
+    <item name="android:scaleY">20</item>
+  </style>
+  
+  <style name="MainLinearForUserTiles">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:padding">0dp</item>
+  </style>
+  
+  <style name="UserTileRowLayoutStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:padding">0dp</item>
+  </style>
+  
+  <style name="UserTileLayoutStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:padding">15dp</item>
+  </style>
+  
+  <style name="UserNameCenteredText">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+
 </resources>

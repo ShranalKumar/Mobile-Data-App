@@ -45,14 +45,17 @@ namespace MobileApp.Droid.Views
         private ImageButton _secondDownArrow;
         private ImageButton _thirdDownArrow;
         private ImageButton _fourthDownArrow;
+        private ImageButton _BackButton;
+
         private TextView _dataRemainingText;
         private TextView _gbRemainingText;
-        private ImageButton _BackButton;
 
         private RelativeLayout _transferConfirmationPopUp;
         private RelativeLayout _transferSuccessMessage;
         private RelativeLayout _backgroundLayout;
         private LinearLayout _userSelectionSlidingLayout;
+
+        private ProgressBar _progressBarFill;
 
         private string _getDataAmount;
         private string _getDataUnit;
@@ -111,6 +114,7 @@ namespace MobileApp.Droid.Views
             _gbRemainingText = FindViewById<TextView>(Resource.Id.DataRemainingTextInsidePgBar);
             _transferConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.TransferPagePopUpLayout);
             _transferSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.TransferPageSuccessfulPopUpLayout);
+            _progressBarFill = FindViewById<ProgressBar>(Resource.Id.DataRemainingFillMask);
             _sendButtonClicked = FindViewById<Button>(Resource.Id.SendButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
             _userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
@@ -129,6 +133,9 @@ namespace MobileApp.Droid.Views
             _dataRemainingText.Text = StringConstants.Localizable.DataRemaining;
             _gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, "1");
             _sendButtonClicked.Text = StringConstants.Localizable.SendButton;
+
+            //temporarily hard coded progress amount
+            _progressBarFill.Progress = 50;
         }
 
 
