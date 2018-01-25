@@ -24,6 +24,7 @@ namespace MobileApp.Droid
 
 		}
 
+
 		public static void getTiles(Android.Widget.LinearLayout parent)
 		{
 			int userCount = Controller._uid.Count();
@@ -34,36 +35,34 @@ namespace MobileApp.Droid
 			parent.AddView(MainLinear);
 			for (int i = 0; i < userCount; i++)
 			{
+				
 				LinearLayout User = new LinearLayout(MainLinear.Context);
 				User.Orientation = Orientation.Vertical;
 				User.Id = i;
 
-                //MainLinear.AddView(currentRow);
-
-				LinearLayout UserDetailsTextLayout = new LinearLayout(User.Context);
+				LinearLayout UserDetailsTextLayout = new LinearLayout(MainLinear.Context);				
 				UserDetailsTextLayout.Orientation = Orientation.Horizontal;
 
-				//MainLinear.AddView(currentRow);
-
-				TextView UserName = new TextView(UserDetailsTextLayout.Context);
+				//ContextThemeWrapper newContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.TestLayout);
+				TextView UserName = new TextView(User.Context);
 				UserName.Text = Controller._firstname[i];
 
 				TextView Allocated = new TextView(UserDetailsTextLayout.Context);
 				Allocated.Text = Controller._allocated[i].ToString();
-				Allocated.Gravity = Android.Views.GravityFlags.Right;
-
-
-				MainLinear.AddView(UserDetailsTextLayout);
-
+				Allocated.Gravity = Android.Views.GravityFlags.Right;			
+				
 				LinearLayout UserDataAllocationSliderLayout = new LinearLayout(User.Context);
 				UserDataAllocationSliderLayout.Orientation = Orientation.Horizontal;
-				//UserDataAllocationSliderLayout.Gravity = Android.Views.GravityFlags.Center;
+				UserDataAllocationSliderLayout.SetGravity(Android.Views.GravityFlags.Center);
 
 				SeekBar userAllocationSlider = new SeekBar(UserDataAllocationSliderLayout.Context);
-			
 
-
-
+				UserDetailsTextLayout.AddView(UserName);
+				UserDetailsTextLayout.AddView(Allocated);
+				UserDataAllocationSliderLayout.AddView(userAllocationSlider);
+				User.AddView(UserDetailsTextLayout);
+				User.AddView(UserDataAllocationSliderLayout);
+				MainLinear.AddView(User);
 			}
 		}
 	}

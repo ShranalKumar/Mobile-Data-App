@@ -180,4 +180,8 @@
     <item name="android:layout_height">1dp</item>
   </style>
 
+	<style name="TestLayout">
+		<item name="android:textSize">200dp</item>
+	</style>
+
 </resources>
