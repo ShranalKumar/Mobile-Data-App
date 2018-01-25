@@ -100,7 +100,6 @@ namespace MobileApp.Droid
 				if (_items[0].AdminStatus.ToUpper() == "TRUE")
 				{
 					_adminStatus = true;
-					;
 					List<string> uid = new List<string>();
 					List<string> firstname = new List<string>();
 					List<int> used = new List<int>();
@@ -129,6 +128,7 @@ namespace MobileApp.Droid
 							//user.Name = new UserName();
 							//user.Name.FirstName = name.FirstName;
 							//user.Name.LastName = name.LastName;  
+
 							foreach (UsageBreakdownList app in item.UsageBreakdown)
 							{
 								appname[name.FirstName] = new List<string>();
@@ -190,9 +190,10 @@ namespace MobileApp.Droid
 				}
 				else
 				{
+					List<string> firstname = new List<string>(); //added
 					int used = 0;
 					int allocated = 0;
-					string firstname = "";
+					//string firstname = "";
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
@@ -200,10 +201,21 @@ namespace MobileApp.Droid
 					List<string> appusage = new List<string>();
 					foreach (TodoItem item in _items)
 					{
-						foreach (NameList username in item.Name)
+						foreach (NameList name in item.Name)
 						{
-							firstname = username.FirstName;
+							//firstname = username.FirstName;
+							firstname.Add(name.FirstName); //added
 						}
+						foreach (GroupMembers gm in item.groupMembers)
+						{
+							foreach (NameList name in gm.Name)
+							{
+
+								firstname.Add(name.FirstName); //added
+							}
+						}
+						
+					
 						startDate = item.PlanStartDate;
 						endDate = item.PlanEndDate;
 						adminStatusOnDB = item.AdminStatus;
@@ -218,15 +230,8 @@ namespace MobileApp.Droid
 							appusage.Add(inspectelement.App2Usage);
 							appusage.Add(inspectelement.App3Usage);
 						}
-						//appname.Add(item.App1);
-						//appname.Add(item.App2);
-						//appname.Add(item.App3);
-						//appusage.Add(item.App1Usage);
-						//appusage.Add(item.App2Usage);
-						//appusage.Add(item.App3Usage);
-
 					}
-					Controller controller = new Controller(firstname, used, allocated, appname, appusage, startDate, endDate);
+					Controller controller = new Controller(/*firstname,*/ used, allocated, appname, appusage, startDate, endDate, firstname); //added);
 				}
 			}
 			catch (Exception e)
