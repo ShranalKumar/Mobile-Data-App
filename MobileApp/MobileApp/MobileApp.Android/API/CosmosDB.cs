@@ -107,9 +107,9 @@ namespace MobileApp.Droid
 					List<int> allocated = new List<int>();
 
 					//List<string> appname = new List<string>();
-					Dictionary<string, string> appname = new Dictionary<string, string>();
+					Dictionary<string, List<string>> appname = new Dictionary<string, List<string>>();
 
-					Dictionary<string,string> appusage = new Dictionary<string, string>();
+					Dictionary<string, List<string>> appusage = new Dictionary<string, List<string>>();
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
@@ -126,9 +126,21 @@ namespace MobileApp.Droid
                         foreach (NameList name in item.Name)
 						{
 							firstname.Add(name.FirstName);
-                            //user.Name = new UserName();
-                            //user.Name.FirstName = name.FirstName;
-                            //user.Name.LastName = name.LastName;                            
+							//user.Name = new UserName();
+							//user.Name.FirstName = name.FirstName;
+							//user.Name.LastName = name.LastName;  
+							foreach (UsageBreakdownList app in item.UsageBreakdown)
+							{
+								appname[name.FirstName] = new List<string>();
+								appname[name.FirstName].Add(app.App1);
+								appname[name.FirstName].Add(app.App2);
+								appname[name.FirstName].Add(app.App3);
+
+								appusage[name.FirstName] = new List<string>();
+								appusage[name.FirstName].Add(app.App1Usage);
+								appusage[name.FirstName].Add(app.App2Usage);
+								appusage[name.FirstName].Add(app.App3Usage);
+							}
 						}
 						uid.Add(item.uid);
 						allocated.Add(item.Allocated);
@@ -142,28 +154,28 @@ namespace MobileApp.Droid
 								firstname.Add(name.FirstName);
 								foreach (UsageBreakdownList app in gm.UsageBreakdown)
 								{
-										appname.Add(name.FirstName, app.App1);
-										appname.Add(name.FirstName, app.App2);
-										appname.Add(name.FirstName, app.App3);
-										appusage.Add(name.FirstName, app.App1Usage);
-										appusage.Add(name.FirstName, app.App2Usage);
-										appusage.Add(name.FirstName, app.App3Usage);
+									appname[name.FirstName] = new List<string>();
+									appname[name.FirstName].Add(app.App1);
+									appname[name.FirstName].Add(app.App2);
+									appname[name.FirstName].Add(app.App3);
+									
+									appusage[name.FirstName] = new List<string>();
+									appusage[name.FirstName].Add(app.App1Usage);
+									appusage[name.FirstName].Add(app.App2Usage);
+									appusage[name.FirstName].Add(app.App3Usage);
 
-
+									//appusage[name.FirstName].Add(app.App1Usage);
+									//appusage[name.FirstName].Add(app.App2Usage);
+									//appusage[name.FirstName].Add(app.App3Usage);
 									//appname.Add(gm.UsageBreakdown[i].App2);
 									//appname.Add(gm.UsageBreakdown[i].App3);
 									//appusage.Add(gm.UsageBreakdown[i].App1Usage);
 									//	appusage.Add(gm.UsageBreakdown[i].App2Usage);
 									//	appusage.Add(gm.UsageBreakdown[i].App3Usage);
-
 								}
-								
-
 							}
 							allocated.Add(gm.Allocated);
 							used.Add(gm.Used);
-							
-
 						}
 						startDate = item.PlanStartDate;
 						endDate = item.PlanEndDate;

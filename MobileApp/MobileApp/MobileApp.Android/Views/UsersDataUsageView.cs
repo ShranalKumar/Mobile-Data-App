@@ -40,7 +40,7 @@ namespace MobileApp.Droid.Views
             _indexOfUser = Controller._firstname.IndexOf(Intent.GetStringExtra("username"));
             findAllElements();
             setAllStringConstants();
-            CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout);
+            CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, Intent.GetStringExtra("username"));
             allocationSliderSettings();
 
         }

@@ -18,10 +18,9 @@ namespace MobileApp.Droid
 		public static List<string> _firstname;
 		public static List<int> _used;
 		public static List<int> _allocated;
-		//public static List<int> _remainder;
 		public static int[] _remainder;
-		public static Dictionary<string,string> _appName;
-		public static Dictionary<string> _appUsage;
+		public static Dictionary<string, List<string>> _appName;
+		public static Dictionary<string, List<string>> _appUsage;
 		public static DateTime _startDate;
 		public static DateTime _endDate;
 		public static DateTime _currentDate;
@@ -38,12 +37,9 @@ namespace MobileApp.Droid
 		public static double _nonadmindaysRemaining;
 		public static List<string> _nonadminappName;
 		public static List<string> _nonadminappUsage;
-		//public DateTime gz;
-		//public string gg;
-
 
 		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
-		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, Dictionary<string,string> appName, Dictionary<string,string> appUsage, string startDate, string endDate, int planDataPool)
+		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, Dictionary<string, List<string>> appName, Dictionary<string, List<string>> appUsage, string startDate, string endDate, int planDataPool)
 
 		{
 			_uid = uid;
