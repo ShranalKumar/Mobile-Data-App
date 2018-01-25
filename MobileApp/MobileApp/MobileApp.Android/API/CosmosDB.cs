@@ -100,14 +100,16 @@ namespace MobileApp.Droid
 				if (_items[0].AdminStatus.ToUpper() == "TRUE")
 				{
 					_adminStatus = true;
-
+					;
 					List<string> uid = new List<string>();
 					List<string> firstname = new List<string>();
 					List<int> used = new List<int>();
 					List<int> allocated = new List<int>();
-					
-					List<string> appname = new List<string>();
-					List<string> appusage = new List<string>();
+
+					//List<string> appname = new List<string>();
+					Dictionary<string, string> appname = new Dictionary<string, string>();
+
+					Dictionary<string,string> appusage = new Dictionary<string, string>();
 					string startDate = "";
 					string endDate = "";
 					string adminStatusOnDB = "";
@@ -134,12 +136,12 @@ namespace MobileApp.Droid
 								firstname.Add(name.FirstName);
 								foreach (UsageBreakdownList app in gm.UsageBreakdown)
 								{
-										appname.Add(app.App1);
-										appname.Add(app.App2);
-										appname.Add(app.App3);
-										appusage.Add(app.App1Usage);
-										appusage.Add(app.App2Usage);
-										appusage.Add(app.App3Usage);
+										appname.Add(name.FirstName, app.App1);
+										appname.Add(name.FirstName, app.App2);
+										appname.Add(name.FirstName, app.App3);
+										appusage.Add(name.FirstName, app.App1Usage);
+										appusage.Add(name.FirstName, app.App2Usage);
+										appusage.Add(name.FirstName, app.App3Usage);
 
 
 									//appname.Add(gm.UsageBreakdown[i].App2);
