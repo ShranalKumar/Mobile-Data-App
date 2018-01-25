@@ -112,7 +112,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/App1DetailsLayout"
-            android:background="@drawable/progressbarborder"
             android:padding="10dp"
             android:layout_marginBottom="-5dp">
             <LinearLayout
@@ -161,7 +160,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/App2DetailsLayout"
-            android:background="@drawable/progressbarborder"
             android:padding="10dp"
             android:layout_marginTop="-6dp"
             android:layout_marginBottom="-5dp">
@@ -211,7 +209,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/App3DetailsLayout"
-            android:background="@drawable/progressbarborder"
             android:padding="10dp"
             android:layout_marginTop="-5dp">
             <LinearLayout

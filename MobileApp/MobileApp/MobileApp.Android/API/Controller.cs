@@ -37,6 +37,7 @@ namespace MobileApp.Droid
 		public static double _nonadmindaysRemaining;
 		public static List<string> _nonadminappName;
 		public static List<string> _nonadminappUsage;
+	
 
 		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
 		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, Dictionary<string, List<string>> appName, Dictionary<string, List<string>> appUsage, string startDate, string endDate, int planDataPool)
@@ -56,6 +57,9 @@ namespace MobileApp.Droid
 			_currentDate = DateTime.Now;
 			_allocatedlistlength = _allocated.Count();
 
+			var changeDate = endDate.Split('/');
+			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
+			var printString = newEndDate.ToString("dd/MM/yyyy");
 
 			for (int i = 0; i < _allocatedlistlength; i++)
 			{
@@ -69,47 +73,29 @@ namespace MobileApp.Droid
 				}
 			}
 
-			_daysRemaining = Math.Ceiling((_endDate - _currentDate).TotalDays);
+			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
 		}
 
-		public Controller (string firstname, int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate)
+		public Controller (/*string firstname,*/ int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate, List<string> firstname)
 		{
-			_nonadminfirstname = firstname;
+			//_nonadminfirstname = firstname
 			_nonadminused = used;
 			_nonadminallocated = allocated;
 			_nonadminstartDate = Convert.ToDateTime(startDate);
-			
 			_nonadminendDate = Convert.ToDateTime(endDate);
-			//string temp = DateTime.Now.ToString("MM/dd/yyyy");
-			//_nonadmincurrentDate = Convert.ToDateTime(temp);
+			_firstname = firstname;
+			var changeDate = endDate.Split('/');
+			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
+			var printString = newEndDate.ToString("dd/MM/yyyy");
 
-			//_currentDate = DateTime.Now;
-			//int yr = _currentDate.Year;
-			//int mn = _currentDate.Month;
-			//int ds = _currentDate.Day;
-
-
-			//try
-			//{
-			//	string temp = DateTime.Now.ToString("MM/dd/yyyy");
-			//	_nonadmincurrentDate = Convert.ToDateTime(temp);
-
-
-			//}
-			//catch (Exception)
-			//{
-			//	DateTime newTemp = new DateTime(yr, mn, ds);
-			//	gg = _nonadminendDate.ToString("dd/MM/yyyy");
-			//	gz = Convert.ToDateTime(gg);
-			//	_nonadmindaysRemaining = Math.Ceiling((gz - newTemp).TotalDays);
-			//}
+	
 
 			_nonadminappName = appname;
 			_nonadminappUsage = appusage;
 
-			_nonadmindaysRemaining = Math.Ceiling((_nonadminendDate - _nonadmincurrentDate).TotalDays);
+			_nonadmindaysRemaining = Math.Ceiling((newEndDate - DateTime.Now).TotalDays);
 
 
 		}
