@@ -190,7 +190,8 @@ namespace MobileApp.Droid
 				}
 				else
 				{
-					List<string> firstname = new List<string>(); //added
+					string firstname = "";
+					List<string> groupmemberfirstname = new List<string>(); //added
 					int used = 0;
 					int allocated = 0;
 					//string firstname = "";
@@ -204,14 +205,14 @@ namespace MobileApp.Droid
 						foreach (NameList name in item.Name)
 						{
 							//firstname = username.FirstName;
-							firstname.Add(name.FirstName); //added
+							firstname = name.FirstName; //added
 						}
 						foreach (GroupMembers gm in item.groupMembers)
 						{
 							foreach (NameList name in gm.Name)
 							{
 
-								firstname.Add(name.FirstName); //added
+								groupmemberfirstname.Add(name.FirstName); //added
 							}
 						}
 						
@@ -231,7 +232,7 @@ namespace MobileApp.Droid
 							appusage.Add(inspectelement.App3Usage);
 						}
 					}
-					Controller controller = new Controller(/*firstname,*/ used, allocated, appname, appusage, startDate, endDate, firstname); //added);
+					Controller controller = new Controller(firstname, used, allocated, appname, appusage, startDate, endDate, groupmemberfirstname); //added);
 				}
 			}
 			catch (Exception e)

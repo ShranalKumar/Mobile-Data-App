@@ -47,9 +47,12 @@ namespace MobileApp.Droid.Views
 
         private RelativeLayout _requestConfirmationPopUp;
         private RelativeLayout _requestSuccessMessage;
+		private LinearLayout _userSelectionSlidingLayout;
 
-        private string _getDataAmount;
+
+		private string _getDataAmount;
         private string _getDataUnit;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -59,6 +62,7 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
+			CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
             
             _yesToRequest.Click += showSuccessMessage;
             _doNotRequest.Click += showConfirmationPopUp;
@@ -103,7 +107,9 @@ namespace MobileApp.Droid.Views
             _requestSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.RequestPageSuccessfulPopUpLayout);
             _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
-        }
+			_userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
+
+		}
 
         protected void setAllStringConstants()
         {
