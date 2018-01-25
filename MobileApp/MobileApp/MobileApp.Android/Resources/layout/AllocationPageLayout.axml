@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/AllocationPageMainLayout">
+    p1:id="@+id/AllocationPageMainLayout"
+    p1:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
         p1:minHeight="?android:attr/actionBarSize"
         p1:background="@drawable/progressbarborder"
@@ -161,8 +162,7 @@
             p1:layout_width="match_parent"
             p1:id="@+id/UserDataAllocationList"
             p1:layout_below="@id/WeeklyModeLayout"
-            p1:layout_height="wrap_content">
-        </LinearLayout>
+            p1:layout_height="wrap_content" />
     </ScrollView>
     <RelativeLayout
         p1:minWidth="25px"

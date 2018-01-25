@@ -5,7 +5,8 @@
     android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/UserDataUsageLayout">
+    android:id="@+id/UserDataUsageLayout"
+    android:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
         android:minHeight="?android:attr/actionBarSize"
         android:background="@drawable/progressbarborder"
@@ -114,7 +115,8 @@
             <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/AllocationSlider" />
+                android:id="@+id/AllocationSlider"
+                style="@style/SliderVerticleStyle" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -172,9 +174,9 @@
         </LinearLayout>
     </LinearLayout>
     <ScrollView
-      android:layout_height="200dp"
-      android:layout_width="match_parent"
-      android:id="@+id/DataUsageBreakdownScrollView" />
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:id="@+id/DataUsageBreakdownScrollView" />
     <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"
