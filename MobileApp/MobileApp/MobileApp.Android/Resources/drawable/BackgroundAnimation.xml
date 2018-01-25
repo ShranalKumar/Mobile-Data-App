@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@drawable/DashboardGradient1" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient2" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient3" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient4" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient5" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient6" android:duration="50" />
+  <item android:drawable="@drawable/DashboardGradient7" android:duration="50" />
+
+</animation-list>
