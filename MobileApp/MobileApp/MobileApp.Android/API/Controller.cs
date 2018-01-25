@@ -37,7 +37,8 @@ namespace MobileApp.Droid
 		public static double _nonadmindaysRemaining;
 		public static List<string> _nonadminappName;
 		public static List<string> _nonadminappUsage;
-	
+		public static List<string> _groupmemeberfirstname;
+
 
 		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
 		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, Dictionary<string, List<string>> appName, Dictionary<string, List<string>> appUsage, string startDate, string endDate, int planDataPool)
@@ -78,14 +79,14 @@ namespace MobileApp.Droid
 
 		}
 
-		public Controller (/*string firstname,*/ int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate, List<string> firstname)
+		public Controller (string firstname, int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate, List<string> groupmemberfirstname)
 		{
-			//_nonadminfirstname = firstname
+			_nonadminfirstname = firstname;
 			_nonadminused = used;
 			_nonadminallocated = allocated;
 			_nonadminstartDate = Convert.ToDateTime(startDate);
 			_nonadminendDate = Convert.ToDateTime(endDate);
-			_firstname = firstname;
+			_groupmemeberfirstname = groupmemberfirstname;
 			var changeDate = endDate.Split('/');
 			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
 			var printString = newEndDate.ToString("dd/MM/yyyy");

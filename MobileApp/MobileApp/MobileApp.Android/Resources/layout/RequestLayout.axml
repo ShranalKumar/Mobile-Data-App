@@ -79,38 +79,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/UserSelectionSlidingLayout"
                     android:layout_height="match_parent">
-                    <Button
-                        android:text="Louise"
-                        android:layout_width="140dp"
-                        android:id="@+id/UserSelectLouise"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder"
-                        android:layout_height="65dp" />
-                    <Button
-                        android:text="Steven"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectSteven"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder" />
-                    <Button
-                        android:text="Shranal"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectShranal"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder" />
-                    <Button
-                        android:text="Soumik"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectSoumik"
-                        android:height="45dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/progressbarborder" />
+                    
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
