@@ -28,6 +28,7 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataText;
         private TextView _usedDataTextAmount;
         private TextView _dataUsageSaveButtonText;
+        private ScrollView _dataUsageBreakdownlayout;
         private int _indexOfUser;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -39,6 +40,7 @@ namespace MobileApp.Droid.Views
             _indexOfUser = Controller._firstname.IndexOf(Intent.GetStringExtra("username"));
             findAllElements();
             setAllStringConstants();
+            CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout);
             allocationSliderSettings();
 
         }
@@ -56,6 +58,7 @@ namespace MobileApp.Droid.Views
             _usedDataTextAmount = FindViewById<TextView>(Resource.Id.UsedDataAmount);
             _dataUsageSaveButtonText = FindViewById<TextView>(Resource.Id.SaveButtonText);
             _allocationSlider = FindViewById<SeekBar>(Resource.Id.AllocationSlider);
+            _dataUsageBreakdownlayout = FindViewById<ScrollView>(Resource.Id.DataUsageBreakdownScrollView);
         }
 
         protected void setAllStringConstants()
@@ -74,8 +77,7 @@ namespace MobileApp.Droid.Views
 
         protected void allocationSliderSettings()
         {
-            Console.WriteLine(Controller._allocated[1]);
-            double _sliderPresetValue = ((double)Controller._allocated[1] / Controller._planDataPool ) * 100;
+            double _sliderPresetValue = ((double)Controller._allocated[_indexOfUser] / Controller._planDataPool ) * 100;
             _allocationSlider.Progress = (int)_sliderPresetValue;
             _allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
                 if (e.FromUser)

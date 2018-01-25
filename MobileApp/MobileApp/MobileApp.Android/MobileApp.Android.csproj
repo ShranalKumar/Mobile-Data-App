@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="Adapters\UserTileLayoutAdapter.cs" />
     <Compile Include="AllocationPageCustomUserTilesPage.cs" />
+    <Compile Include="CustomUserDataUsageView.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="CustomUserTilesPage.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />

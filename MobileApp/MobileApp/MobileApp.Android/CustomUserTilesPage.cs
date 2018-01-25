@@ -51,15 +51,17 @@ namespace MobileApp.Droid
                 currentUserBar.SetMinimumHeight(25 * pixelDensity);
                 currentUserBar.SetMinimumWidth(25 * pixelDensity);
                 currentUserBar.SetBackgroundResource(Resource.Drawable.ProgressBarBorder);
-
+                
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(currentUserBar.Context, null, Android.Resource.Attribute.ProgressBarStyleHorizontal) {
                     Progress = 50,
-                    LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent),
                 };
                 currentUserBarMask.Alpha = 30f;
                 //currentUserBarMask.Background = null;
                 currentUserBarMask.Progress = 90;
                 currentUserBarMask.ScaleY = 10;
+                currentUserBarMask.LayoutParameters = new ViewGroup.LayoutParams(100, ViewGroup.LayoutParams.WrapContent);
+                currentUserBar.AddView(currentUserBarMask);
+                
                 //currentUserBarMask.
 
 
@@ -69,7 +71,7 @@ namespace MobileApp.Droid
                 //currentUserBarMask.Alpha = 0.3f;
                 //currentUserBarMask.SetBackgroundResource(Resource.Drawable.ProgressBarMask);
 
-                currentUserBar.AddView(currentUserBarMask);
+
                 currentUser.AddView(userName);
                 currentUser.AddView(currentUserBar);
                 UserTiles.Add(currentUser);

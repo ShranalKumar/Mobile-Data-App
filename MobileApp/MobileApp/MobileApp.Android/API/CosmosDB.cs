@@ -117,10 +117,16 @@ namespace MobileApp.Droid
 
 					foreach (TodoItem item in _items)
 					{
+                        //User user = new User();
+                        //user.UID = item.uid;
+                        //user.Allocated = item.Allocated;
 
-						foreach (NameList name in item.Name)
+                        foreach (NameList name in item.Name)
 						{
 							firstname.Add(name.FirstName);
+                            //user.Name = new UserName();
+                            //user.Name.FirstName = name.FirstName;
+                            //user.Name.LastName = name.LastName;                            
 						}
 						uid.Add(item.uid);
 						allocated.Add(item.Allocated);

@@ -155,8 +155,7 @@
         p1:layout_below="@id/MobileInformationLayout"
         p1:id="@+id/UserTilesLayout"
         p1:minWidth="25px"
-        p1:minHeight="25px">
-    </ScrollView>
+        p1:minHeight="25px" />
     <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
