@@ -20,8 +20,8 @@ namespace MobileApp.Droid
 		public static List<int> _allocated;
 		//public static List<int> _remainder;
 		public static int[] _remainder;
-		public static List<string> _appName;
-		public static List<string> _appUsage;
+		public static Dictionary<string,string> _appName;
+		public static Dictionary<string> _appUsage;
 		public static DateTime _startDate;
 		public static DateTime _endDate;
 		public static DateTime _currentDate;
@@ -43,7 +43,7 @@ namespace MobileApp.Droid
 
 
 		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
-		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, List<string> appName, List<string> appUsage, string startDate, string endDate, int planDataPool)
+		public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, int[] remainder, Dictionary<string,string> appName, Dictionary<string,string> appUsage, string startDate, string endDate, int planDataPool)
 
 		{
 			_uid = uid;
