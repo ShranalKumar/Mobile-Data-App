@@ -2213,26 +2213,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f02005a
 			public const int avd_hide_password = 2130837594;
 			
-			// aapt resource value: 0x7f020161
-			public const int avd_hide_password_1 = 2130837857;
-			
-			// aapt resource value: 0x7f020162
-			public const int avd_hide_password_2 = 2130837858;
-			
-			// aapt resource value: 0x7f020163
-			public const int avd_hide_password_3 = 2130837859;
-			
 			// aapt resource value: 0x7f02005b
 			public const int avd_show_password = 2130837595;
-			
-			// aapt resource value: 0x7f020164
-			public const int avd_show_password_1 = 2130837860;
-			
-			// aapt resource value: 0x7f020165
-			public const int avd_show_password_2 = 2130837861;
-			
-			// aapt resource value: 0x7f020166
-			public const int avd_show_password_3 = 2130837862;
 			
 			// aapt resource value: 0x7f02005c
 			public const int BottledGas = 2130837596;

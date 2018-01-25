@@ -52,6 +52,7 @@ namespace MobileApp.Droid.Views
         private RelativeLayout _transferConfirmationPopUp;
         private RelativeLayout _transferSuccessMessage;
         private RelativeLayout _backgroundLayout;
+        private LinearLayout _userSelectionSlidingLayout;
 
         private string _getDataAmount;
         private string _getDataUnit;
@@ -65,6 +66,7 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
+            CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
             
             _yesToTransfer.Click += showSuccessMessage;            
             _doNotTransfer.Click += showConfirmationPopUp;            
@@ -111,6 +113,7 @@ namespace MobileApp.Droid.Views
             _transferSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.TransferPageSuccessfulPopUpLayout);
             _sendButtonClicked = FindViewById<Button>(Resource.Id.SendButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
+            _userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
         }
 
         protected void setAllStringConstants()
