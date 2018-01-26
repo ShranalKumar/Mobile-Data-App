@@ -231,5 +231,27 @@
     <item name="android:gravity">center</item>
   </style>
 
+  <style name="UserDataUsageAppTextLayout">
+    <item name="android:orientation">horizontal</item>
+  </style>
 
+  <style name="UserDataUsageAppText">
+    <item name="android:gravity">left</item>
+    <item name="android:textSize">18dp</item>
+    <item name="android:paddingBottom">10dp</item>
+  </style>
+
+  <style name="UserDataUsageAppMBAmount">
+    <item name="android:gravity">right</item>
+    <item name="android:textSize">18dp</item>
+    <item name="android:paddingBottom">10dp</item>
+  </style>
+
+  <style name="UserDataUsageBreakdown">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingLeft">15dp</item>
+    <item name="android:paddingRight">15dp</item>
+    <item name="android:paddingBottom">15dp</item>
+  </style>
 </resources>

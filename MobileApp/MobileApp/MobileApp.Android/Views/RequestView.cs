@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MobileApp.Constants;
+using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
 {

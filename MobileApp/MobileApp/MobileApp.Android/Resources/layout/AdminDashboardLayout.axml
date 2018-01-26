@@ -139,14 +139,11 @@
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
                 p1:layout_centerInParent="true" />
-            <RelativeLayout
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:layout_width="wrap_content"
+            <ProgressBar
+                style="@style/ProgressBarFillStyle"
+                p1:layout_width="match_parent"
                 p1:layout_height="match_parent"
-                p1:id="@+id/DataBarBorder"
-                p1:background="@drawable/progressbarmask"
-                p1:alpha="0.3" />
+                p1:id="@+id/DataProgressBar" />
         </RelativeLayout>
     </LinearLayout>
     <ScrollView

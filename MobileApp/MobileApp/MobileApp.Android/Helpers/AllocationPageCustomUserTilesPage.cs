@@ -14,16 +14,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 
-namespace MobileApp.Droid
-{			//this whole class can be extended from CustomerTilesPage or can be combined. (Use If condition to check current page then execute either Allocation PAge or Individual Allocation Page)
+namespace MobileApp.Droid.Helpers
+{			
 	public partial class AllocationPageCustomUserTilesPage : ContentView 
 	{
 		public static List<LinearLayout> UserTiles;
-		public AllocationPageCustomUserTilesPage ()
-		{
-
-		}
-
 
 		public static void getTiles(Android.Widget.LinearLayout parent)
 		{
@@ -34,16 +29,14 @@ namespace MobileApp.Droid
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 			for (int i = 0; i < userCount; i++)
-			{
-				
+			{				
 				LinearLayout User = new LinearLayout(MainLinear.Context);
 				User.Orientation = Orientation.Vertical;
 				User.Id = i;
 
 				LinearLayout UserDetailsTextLayout = new LinearLayout(MainLinear.Context);				
 				UserDetailsTextLayout.Orientation = Orientation.Horizontal;
-
-				//ContextThemeWrapper newContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.TestLayout);
+                
 				TextView UserName = new TextView(User.Context);
 				UserName.Text = Controller._firstname[i];
 

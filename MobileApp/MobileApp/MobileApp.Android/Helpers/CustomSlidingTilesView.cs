@@ -6,15 +6,15 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace MobileApp.Droid
+namespace MobileApp.Droid.Helpers
 {
-    public class CustomSlidingTilesView : ContentView
+    public partial class CustomSlidingTilesView : ContentView
     {
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
             int numOfTiles = Controller._groupmemeberfirstname.Count();
 
-            for (int i =0; i < numOfTiles; i++)
+            for (int i = 0; i < numOfTiles; i++)
             {
                 Android.Widget.Button UserTile = new Android.Widget.Button(parent.Context);
                 UserTile.Text = Controller._groupmemeberfirstname[i];
@@ -22,6 +22,5 @@ namespace MobileApp.Droid
                 parent.AddView(UserTile);
             }
         }
-
     }
 }
