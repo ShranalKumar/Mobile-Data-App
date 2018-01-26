@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MobileApp.Droid</RootNamespace>
     <AssemblyName>MobileApp.Android</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -125,6 +125,7 @@
     <Compile Include="AllocationPageCustomUserTilesPage.cs" />
     <Compile Include="CustomSlidingTilesView.cs" />
     <Compile Include="CustomUserDataUsageView.cs" />
+    <Compile Include="FixingSpaghettiCode.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="CustomUserTilesPage.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />

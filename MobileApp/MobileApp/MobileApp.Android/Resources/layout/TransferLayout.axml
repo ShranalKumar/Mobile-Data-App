@@ -54,7 +54,7 @@
             android:id="@+id/SendToLayout"
             android:padding="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="120dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
@@ -241,9 +241,9 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:id="@+id/RemainingDataLayoutForTransfer"
-            android:padding="10dp"
+            android:padding="15dp"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="110dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/DataRemainingTitleText"
