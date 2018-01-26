@@ -25,39 +25,35 @@ namespace MobileApp.Droid.Helpers
 			int userCount = Controller._uid.Count();
 			UserTiles = new List<LinearLayout>();
 			int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
-			LinearLayout MainLinear = new LinearLayout(parent.Context);
-			MainLinear.Orientation = Orientation.Vertical;
-			parent.AddView(MainLinear);
 			for (int i = 0; i < userCount; i++)
-			{				
-				LinearLayout User = new LinearLayout(MainLinear.Context);
+			{
+				
+                ContextThemeWrapper allocationUserTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.AllocationUserTileLayoutStyle);
+				LinearLayout User = new LinearLayout(allocationUserTileContext);
 				User.Orientation = Orientation.Vertical;
 				User.Id = i;
 
-				LinearLayout UserDetailsTextLayout = new LinearLayout(MainLinear.Context);				
-				UserDetailsTextLayout.Orientation = Orientation.Horizontal;
-                
-				TextView UserName = new TextView(User.Context);
+                ContextThemeWrapper TextLayoutContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTextLayoutStyle);
+                FrameLayout UserDetailsTextLayout = new FrameLayout(TextLayoutContext);
+
+				ContextThemeWrapper userNameContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextLeftAlignText);
+				TextView UserName = new TextView(userNameContext);
 				UserName.Text = Controller._firstname[i];
 
-				TextView Allocated = new TextView(UserDetailsTextLayout.Context);
+                ContextThemeWrapper userAllocatedContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextRightAlignText);
+                TextView Allocated = new TextView(userAllocatedContext);
 				Allocated.Text = Controller._allocated[i].ToString();
-				Allocated.Gravity = Android.Views.GravityFlags.Right;			
-				
-				LinearLayout UserDataAllocationSliderLayout = new LinearLayout(User.Context);
-				UserDataAllocationSliderLayout.Orientation = Orientation.Horizontal;
-				UserDataAllocationSliderLayout.SetGravity(Android.Views.GravityFlags.Center);
 
-				SeekBar userAllocationSlider = new SeekBar(UserDataAllocationSliderLayout.Context);
+                ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
+                SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
 
-				UserDetailsTextLayout.AddView(UserName);
-				UserDetailsTextLayout.AddView(Allocated);
-				UserDataAllocationSliderLayout.AddView(userAllocationSlider);
+                parent.AddView(User);                
 				User.AddView(UserDetailsTextLayout);
-				User.AddView(UserDataAllocationSliderLayout);
-				MainLinear.AddView(User);
-			}
-		}
+                UserDetailsTextLayout.AddView(UserName);
+                UserDetailsTextLayout.AddView(Allocated);
+                User.AddView(userAllocationSlider);
+            }
+        }
 	}
 
 }
