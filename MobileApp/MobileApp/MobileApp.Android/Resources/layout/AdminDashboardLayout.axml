@@ -10,22 +10,21 @@
         p1:orientation="vertical"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/ToolbarLayout"
-        p1:background="@drawable/progressbarborder">
+        p1:id="@+id/ToolbarLayout">
         <android.support.v7.widget.Toolbar
             p1:id="@+id/TitleBar"
             p1:minWidth="25px"
             p1:minHeight="25px"
             p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:padding="10dp">
+            p1:layout_height="wrap_content">
             <LinearLayout
                 p1:orientation="horizontal"
                 p1:minWidth="25px"
                 p1:minHeight="25px"
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
-                p1:id="@+id/ToolbarLayout">
+                p1:id="@+id/ToolbarLayout"
+                p1:padding="5dp">
                 <LinearLayout
                     p1:orientation="horizontal"
                     p1:minWidth="25px"
@@ -34,7 +33,9 @@
                     p1:layout_height="match_parent"
                     p1:id="@+id/MenuButtonLayout"
                     p1:layout_weight="1"
-                    p1:layout_gravity="left">
+                    p1:layout_gravity="left"
+                    p1:padding="3dp"
+                    p1:gravity="center">
                     <ImageButton
                         p1:id="@+id/MenuButton"
                         p1:layout_width="wrap_content"
@@ -53,13 +54,13 @@
                     p1:padding="10dp"
                     p1:layout_weight="1"
                     p1:layout_gravity="center">
-                    <android.support.v7.widget.DialogTitle
+                    <TextView
+                        p1:textAppearance="?android:attr/textAppearanceMedium"
                         p1:id="@+id/UserName"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
                         p1:text="MRS LOUISE SHIRLEY WESLEY"
-                        p1:layout_gravity="center"
-                        p1:padding="5dp" />
+                        p1:layout_gravity="center" />
                     <ImageButton
                         p1:id="@+id/AccountSwitcher"
                         p1:background="@android:color/transparent"
@@ -140,14 +141,11 @@
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
                 p1:layout_centerInParent="true" />
-            <RelativeLayout
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:layout_width="wrap_content"
+            <ProgressBar
+                style="@style/ProgressBarFillStyle"
+                p1:layout_width="match_parent"
                 p1:layout_height="match_parent"
-                p1:id="@+id/DataBarBorder"
-                p1:background="@drawable/progressbarmask"
-                p1:alpha="0.3" />
+                p1:id="@+id/DataProgressBar" />
         </RelativeLayout>
     </LinearLayout>
     <ScrollView
