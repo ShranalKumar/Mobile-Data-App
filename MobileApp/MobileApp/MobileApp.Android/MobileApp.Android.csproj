@@ -125,6 +125,7 @@
     <Compile Include="AllocationPageCustomUserTilesPage.cs" />
     <Compile Include="CustomSlidingTilesView.cs" />
     <Compile Include="CustomUserDataUsageView.cs" />
+    <Compile Include="FixingSpaghettiCode.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="CustomUserTilesPage.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />

@@ -1,26 +1,29 @@
-﻿using Android.Widget;
-using System;
-using System.Collections.Generic;
+﻿using Android.Views;
+using Android.Widget;
 using System.Linq;
-using System.Text;
-
 using Xamarin.Forms;
+
 
 namespace MobileApp.Droid
 {
-    public class CustomSlidingTilesView : ContentView
+	public class CustomSlidingTilesView : ContentView
     {
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
             int numOfTiles = Controller._groupmemeberfirstname.Count();
+			//FrameLayout buttonsLayout = new FrameLayout(parent.Context);
 
-            for (int i =0; i < numOfTiles; i++)
+            for (int i = 0; i < numOfTiles; i++)
             {
-                Android.Widget.Button UserTile = new Android.Widget.Button(parent.Context);
+				ContextThemeWrapper userButtonContext = new ContextThemeWrapper(parent.Context, Resource.Style.WhiteBorderTransperentButtonStyle);
+                Android.Widget.Button UserTile = new Android.Widget.Button(userButtonContext,null,0);
                 UserTile.Text = Controller._groupmemeberfirstname[i];
 
-                parent.AddView(UserTile);
-            }
+				//buttonsLayout.AddView(UserTile);
+				parent.AddView(UserTile);
+
+			}
+			//parent.AddView(buttonsLayout);
         }
 
     }

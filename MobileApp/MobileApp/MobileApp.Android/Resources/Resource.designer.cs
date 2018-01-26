@@ -5719,7 +5719,7 @@ namespace MobileApp.Droid
 			public const int UserTileRowLayoutStyle = 2131493290;
 			
 			// aapt resource value: 0x7f0c01a6
-			public const int WhiteBorderTransperent = 2131493286;
+			public const int WhiteBorderTransperentButtonStyle = 2131493286;
 			
 			// aapt resource value: 0x7f0c0126
 			public const int Widget_AppCompat_ActionBar = 2131493158;

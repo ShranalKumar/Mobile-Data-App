@@ -184,9 +184,61 @@
 		<item name="android:textSize">200dp</item>
 	</style>
 
-  <style name="WhiteBorderTransperent">
-    <item name="android:background">@drawable/progressbarborder</item>
-  </style>
+
+	
+
+  <!--<style name="WhiteBorderTransperentButtonStyle" parent="android:style/Widget.Button">
+    <item name ="android:background">@drawable/progressbarborder</item>
+	<item name ="android:textSize">50dp</item>
+	<item name ="android:padding">15dp</item>-->
+	<!--<item name ="android:buttonStyle">@style/tpbuttonstyle</item>-->
+	<!--<item name ="android:padding">5dp</item>
+		<item name="android:layout_height">300dp</item>
+  	<item name ="android:layout_width"> 400dp </item>
+	<item name ="android:layout_margin"> 100dp </item>
+
+	<item name="android:layout_height">40dp</item>
+  	<item name ="android:layout_width"> 710dp </item>
+	<item name ="android:layout_margin"> 500dp </item>-->
+  <!--</style>-->
+
+  	<!--<style name ="tpbuttonstyle" parent ="android:style/Widget.Button">
+	<item name ="android:padding">5dp</item>
+		<item name="android:layout_height">300dp</item>
+  	<item name ="android:layout_width"> 400dp </item>
+	<item name ="android:layout_margin"> 100dp </item>
+	<item name ="android:textSize">200dp</item>
+	</style>-->
+
+	  <style name="WhiteBorderTransperentButtonStyle" parent="@android:style/Widget.Button">
+	    <!--<item name="android:background">@drawable/progressbarborder</item>-->
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+		<item name="android:orientation">horizontal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:textSize">19dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+		<item name="android:layout_alignParentTop">true</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		
+    </style>
+
+
+
+
+
+
+
+
+
+
+
   
   <style name="ProgressBorderStyle">
     <item name="android:layout_width">match_parent</item>
