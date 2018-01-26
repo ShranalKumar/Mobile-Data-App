@@ -4,12 +4,13 @@ using Android.OS;
 using Android.Support.V7.Widget;
 using System;
 using MobileApp.Droid.Adapters;
+using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
 using Android.Content.PM;
 using System.Collections.Generic;
 using Android.Views;
 using Android.Content;
-using static Android.Views.View;
+using System.Linq;
 
 namespace MobileApp.Droid.Views
 {
@@ -23,7 +24,8 @@ namespace MobileApp.Droid.Views
         private TextView _productName;
         private TextView _dataUsage;
         private TextView _user;
-        private TextView _daysRemaining;        
+        private TextView _daysRemaining;
+        private ProgressBar _dataUsageProgressBar;
         private Button _allocateButton;
         private ScrollView _userTiles;
         private List<LinearLayout> _userTileList;
@@ -59,6 +61,10 @@ namespace MobileApp.Droid.Views
                     }
                 };
             }
+
+            double progress = (double)Controller._used.Sum() / Controller._planDataPool * 100;
+            _dataUsageProgressBar.Progress = (int)progress;
+
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
 
@@ -70,6 +76,7 @@ namespace MobileApp.Droid.Views
             _mobileIcon = FindViewById<ImageView>(Resource.Id.MobileIcon);
             _productName = FindViewById<TextView>(Resource.Id.ProductName);
             _dataUsage = FindViewById<TextView>(Resource.Id.DataUsageText);
+            _dataUsageProgressBar = FindViewById<ProgressBar>(Resource.Id.DataProgressBar);
             _user = FindViewById<TextView>(Resource.Id.UserName);
             _daysRemaining = FindViewById<TextView>(Resource.Id.DaysRemainingText);
             _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);

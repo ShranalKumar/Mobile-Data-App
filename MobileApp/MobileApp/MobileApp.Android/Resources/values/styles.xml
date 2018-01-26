@@ -210,35 +210,23 @@
 	<item name ="android:textSize">200dp</item>
 	</style>-->
 
-	  <style name="WhiteBorderTransperentButtonStyle" parent="@android:style/Widget.Button">
-	    <!--<item name="android:background">@drawable/progressbarborder</item>-->
-        <item name="android:gravity">center_vertical|center_horizontal</item>
-		<item name="android:orientation">horizontal</item>
-        <item name="android:textColor">#FFFFFFFF</item>
-        <item name="android:shadowColor">#FF000000</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">-1</item>
-        <item name="android:shadowRadius">0.2</item>
-        <item name="android:textSize">19dip</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-		<item name="android:layout_alignParentTop">true</item>
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:layout_height">wrap_content</item>
-		
-    </style>
-
-
-
-
-
-
-
-
-
-
-
+	<style name="WhiteBorderTransperentButtonStyle" parent="@android:style/Widget.Button">
+	<!--<item name="android:background">@drawable/progressbarborder</item>-->
+  <item name="android:gravity">center_vertical|center_horizontal</item>
+	<item name="android:orientation">horizontal</item>
+  <item name="android:textColor">#FFFFFFFF</item>
+  <item name="android:shadowColor">#FF000000</item>
+  <item name="android:shadowDx">0</item>
+  <item name="android:shadowDy">-1</item>
+  <item name="android:shadowRadius">0.2</item>
+  <item name="android:textSize">19dip</item>
+  <item name="android:textStyle">bold</item>
+  <item name="android:focusable">true</item>
+  <item name="android:clickable">true</item>
+  <item name="android:layout_alignParentTop">true</item>
+  <item name="android:layout_width">wrap_content</item>
+  <item name="android:layout_height">wrap_content</item>	
+  </style>
   
   <style name="ProgressBorderStyle">
     <item name="android:layout_width">match_parent</item>
@@ -288,7 +276,30 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:progressBackgroundTint">#ffffff</item>
     <item name="android:progressTint">#70ffffff</item>
-  <item name="android:thumb">@drawable/sliderthumbstyle</item>
+    <item name="android:thumb">@drawable/sliderthumbstyle</item>
   </style>
 
+  <style name="UserDataUsageAppTextLayout">
+    <item name="android:orientation">horizontal</item>
+  </style>
+
+  <style name="UserDataUsageAppText">
+    <item name="android:gravity">left</item>
+    <item name="android:textSize">18dp</item>
+    <item name="android:paddingBottom">10dp</item>
+  </style>
+
+  <style name="UserDataUsageAppMBAmount">
+    <item name="android:gravity">right</item>
+    <item name="android:textSize">18dp</item>
+    <item name="android:paddingBottom">10dp</item>
+  </style>
+
+  <style name="UserDataUsageBreakdown">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingLeft">15dp</item>
+    <item name="android:paddingRight">15dp</item>
+    <item name="android:paddingBottom">15dp</item>
+  </style>
 </resources>

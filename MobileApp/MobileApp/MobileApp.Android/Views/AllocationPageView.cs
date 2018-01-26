@@ -13,6 +13,7 @@ using Android.Widget;
 using RadialProgress;
 using MobileApp.Constants;
 using Android.Content.PM;
+using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
 {

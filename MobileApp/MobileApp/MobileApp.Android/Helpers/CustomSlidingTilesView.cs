@@ -3,10 +3,9 @@ using Android.Widget;
 using System.Linq;
 using Xamarin.Forms;
 
-
-namespace MobileApp.Droid
+namespace MobileApp.Droid.Helpers
 {
-	public class CustomSlidingTilesView : ContentView
+    public partial class CustomSlidingTilesView : ContentView
     {
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
@@ -25,6 +24,5 @@ namespace MobileApp.Droid
 			}
 			//parent.AddView(buttonsLayout);
         }
-
     }
 }

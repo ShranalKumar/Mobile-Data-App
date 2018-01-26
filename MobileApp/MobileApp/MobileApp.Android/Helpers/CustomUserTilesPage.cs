@@ -8,11 +8,12 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-namespace MobileApp.Droid
+namespace MobileApp.Droid.Helpers
 {
     public partial class CustomUserTilesPage : ContentView
     {
         public static List<LinearLayout> UserTiles;
+
         public static void getTiles(Android.Widget.ScrollView parent)
         {
             int userCount = Controller._uid.Count();
@@ -46,7 +47,21 @@ namespace MobileApp.Droid
                 
                 ContextThemeWrapper PgBarFillContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBarFillStyle);
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
+                try
+                {
+                    Console.WriteLine(Controller._used[i]);
+                    Console.WriteLine(Controller._allocated[i]);
+                    Console.WriteLine(Controller._used[i] / Controller._allocated[i]);
+                    double progress = (1 - (double)Controller._used[i] / Controller._allocated[i]) * 100;
+                    currentUserBarMask.Progress = (int)(progress);
+                }
+                catch (DivideByZeroException e)
+                {
+                    double progress = (1 - (double)Controller._used[i] / Controller._remainder[i]) * 100;
+                    currentUserBarMask.Progress = (int)(progress);
+                }                
 
+                currentUserBar.AddView(currentUserBarMask);
                 currentUser.AddView(userName);
                 currentUser.AddView(currentUserBar);
                 UserTiles.Add(currentUser);
