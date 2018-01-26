@@ -2,14 +2,14 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
-    <shape android:shape="oval">
+    <shape android:shape="rectangle">
       <gradient
       android:startColor="#008c75"
       android:endColor="#76e56c"
       android:angle="180"/>
       <size
-          android:width="25dp"
-          android:height="25dp"/>
+          android:width="10dp"
+          android:height="5dp"/>
     </shape>
   </item>
 </layer-list>

@@ -6,7 +6,6 @@
     p1:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
         p1:minHeight="?android:attr/actionBarSize"
-        p1:background="@drawable/progressbarborder"
         p1:minWidth="25px"
         p1:id="@+id/AllocationPageToolbar"
         p1:layout_width="wrap_content"

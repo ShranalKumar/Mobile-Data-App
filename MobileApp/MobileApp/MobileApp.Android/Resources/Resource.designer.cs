@@ -2213,26 +2213,26 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f02005a
 			public const int avd_hide_password = 2130837594;
 			
-			// aapt resource value: 0x7f020163
-			public const int avd_hide_password_1 = 2130837859;
-			
 			// aapt resource value: 0x7f020164
-			public const int avd_hide_password_2 = 2130837860;
+			public const int avd_hide_password_1 = 2130837860;
 			
 			// aapt resource value: 0x7f020165
-			public const int avd_hide_password_3 = 2130837861;
+			public const int avd_hide_password_2 = 2130837861;
+			
+			// aapt resource value: 0x7f020166
+			public const int avd_hide_password_3 = 2130837862;
 			
 			// aapt resource value: 0x7f02005b
 			public const int avd_show_password = 2130837595;
 			
-			// aapt resource value: 0x7f020166
-			public const int avd_show_password_1 = 2130837862;
-			
 			// aapt resource value: 0x7f020167
-			public const int avd_show_password_2 = 2130837863;
+			public const int avd_show_password_1 = 2130837863;
 			
 			// aapt resource value: 0x7f020168
-			public const int avd_show_password_3 = 2130837864;
+			public const int avd_show_password_2 = 2130837864;
+			
+			// aapt resource value: 0x7f020169
+			public const int avd_show_password_3 = 2130837865;
 			
 			// aapt resource value: 0x7f02005c
 			public const int BackgroundAnimation = 2130837596;
@@ -2939,11 +2939,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f020146
 			public const int notification_icon_background = 2130837830;
 			
-			// aapt resource value: 0x7f020161
-			public const int notification_template_icon_bg = 2130837857;
-			
 			// aapt resource value: 0x7f020162
-			public const int notification_template_icon_low_bg = 2130837858;
+			public const int notification_template_icon_bg = 2130837858;
+			
+			// aapt resource value: 0x7f020163
+			public const int notification_template_icon_low_bg = 2130837859;
 			
 			// aapt resource value: 0x7f020147
 			public const int notification_tile_bg = 2130837831;
@@ -3000,28 +3000,31 @@ namespace MobileApp.Droid
 			public const int SliderThumbStyle = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int SplashScreenLogo = 2130837849;
+			public const int SliderThumbStyle2 = 2130837849;
 			
 			// aapt resource value: 0x7f02015a
-			public const int StarFilled = 2130837850;
+			public const int SplashScreenLogo = 2130837850;
 			
 			// aapt resource value: 0x7f02015b
-			public const int StarUnfilled = 2130837851;
+			public const int StarFilled = 2130837851;
 			
 			// aapt resource value: 0x7f02015c
-			public const int StatusBarIcon = 2130837852;
+			public const int StarUnfilled = 2130837852;
 			
 			// aapt resource value: 0x7f02015d
-			public const int transparent_button = 2130837853;
+			public const int StatusBarIcon = 2130837853;
 			
 			// aapt resource value: 0x7f02015e
-			public const int TrustpowerLogo = 2130837854;
+			public const int transparent_button = 2130837854;
 			
 			// aapt resource value: 0x7f02015f
-			public const int UnlimitedIcon = 2130837855;
+			public const int TrustpowerLogo = 2130837855;
 			
 			// aapt resource value: 0x7f020160
-			public const int WelcomeTutorial = 2130837856;
+			public const int UnlimitedIcon = 2130837856;
+			
+			// aapt resource value: 0x7f020161
+			public const int WelcomeTutorial = 2130837857;
 			
 			static Drawable()
 			{
@@ -4701,6 +4704,9 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c00af
 			public const int AlertDialog_AppCompat_Light = 2131493039;
 			
+			// aapt resource value: 0x7f0c01ae
+			public const int AllocationUserTileLayoutStyle = 2131493294;
+			
 			// aapt resource value: 0x7f0c00b0
 			public const int Animation_AppCompat_Dialog = 2131493040;
 			
@@ -5709,8 +5715,20 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0008
 			public const int ThemeOverlay_MediaRouter_Light = 2131492872;
 			
+			// aapt resource value: 0x7f0c01b2
+			public const int UserAllocationSliderStyle = 2131493298;
+			
 			// aapt resource value: 0x7f0c01ac
 			public const int UserNameCenteredText = 2131493292;
+			
+			// aapt resource value: 0x7f0c01af
+			public const int UserTextLayoutStyle = 2131493295;
+			
+			// aapt resource value: 0x7f0c01b0
+			public const int UserTextLeftAlignText = 2131493296;
+			
+			// aapt resource value: 0x7f0c01b1
+			public const int UserTextRightAlignText = 2131493297;
 			
 			// aapt resource value: 0x7f0c01ab
 			public const int UserTileLayoutStyle = 2131493291;

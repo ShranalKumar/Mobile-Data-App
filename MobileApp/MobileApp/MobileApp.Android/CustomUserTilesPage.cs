@@ -47,6 +47,7 @@ namespace MobileApp.Droid
                 ContextThemeWrapper PgBarFillContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBarFillStyle);
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
+                currentUserBar.AddView(currentUserBarMask);
                 currentUser.AddView(userName);
                 currentUser.AddView(currentUserBar);
                 UserTiles.Add(currentUser);

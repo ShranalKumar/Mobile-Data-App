@@ -231,12 +231,45 @@
     <item name="android:gravity">center</item>
   </style>
 
-  <style name="SliderVerticleStyle">
+  <style name="SliderVerticleStyle" parent ="Widget.AppCompat.SeekBar">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>
     <item name="android:progressBackgroundTint">#ffffff</item>
     <item name="android:progressTint">#70ffffff</item>
   <item name="android:thumb">@drawable/sliderthumbstyle</item>
+  </style>
+
+  <style name="AllocationUserTileLayoutStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:background">@drawable/progressbarborder</item>
+  </style>
+
+  <style name="UserTextLayoutStyle">
+    <item name="android:orientation">horizontal</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="UserTextLeftAlignText">
+    <item name="android:textSize">18dp</item>
+    <item name="android:gravity">left</item>
+    <item name="android:paddingBottom">10dp</item>
+  </style>
+
+  <style name="UserTextRightAlignText">
+    <item name="android:textSize">18dp</item>
+    <item name="android:gravity">right</item>
+    <item name="android:paddingBottom">10dp</item>
+  
+  </style>
+
+  <style name="UserAllocationSliderStyle" parent ="Widget.AppCompat.SeekBar">
+    <item name="android:progressBackgroundTint">#70ffffff</item>
+    <item name="android:progressTint">#70ffffff</item>
+    <item name="android:thumb">@drawable/sliderthumbstyle2</item>
+    <item name="android:scaleY">3</item>
   </style>
 
 </resources>
