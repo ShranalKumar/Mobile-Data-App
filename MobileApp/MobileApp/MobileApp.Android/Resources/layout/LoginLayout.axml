@@ -45,12 +45,6 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/PasswordInputField" />
-        <TextView
-            p1:text="Medium Text"
-            p1:textAppearance="?android:attr/textAppearanceMedium"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/textView1" />
     </LinearLayout>
     <LinearLayout
         p1:orientation="vertical"
@@ -67,6 +61,7 @@
         <Button
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:id="@+id/LogInButton" />
+            p1:id="@+id/LogInButton"
+            style="@style/LoginButton" />
     </LinearLayout>
 </RelativeLayout>
