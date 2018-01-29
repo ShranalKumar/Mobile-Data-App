@@ -21,6 +21,7 @@ namespace MobileApp.Droid
 	public partial class TodoItemManager
 	{
 		private List<TodoItem> _items;
+		private Dictionary<string, User> user_list;
 		static TodoItemManager defaultInstance = new TodoItemManager();
 
 		private const string _accountURL = @"https://monsterdb.documents.azure.com:443/";
@@ -58,13 +59,45 @@ namespace MobileApp.Droid
 				var query = client.CreateDocumentQuery<TodoItem>(collectionLink, loginQuery)
 					  .AsDocumentQuery();
 
+				//user_list = new Dictionary<string, User>();
+
 				_items = new List<TodoItem>();
 				while (query.HasMoreResults)
 				{
 					_items.AddRange(await query.ExecuteNextAsync<TodoItem>());
 				}
 
-				if (_items.Count ==0)
+				//foreach(TodoItem tempItem in await query.ExecuteNextAsync<TodoItem>())
+				//{
+				//	user_list[tempItem.uid] = new User();
+				//	user_list[tempItem.uid].UID = tempItem.uid;
+				//	user_list[tempItem.uid].Name = new UserName();
+				//	user_list[tempItem.uid].Name.FirstName = tempItem.Name[0].FirstName;
+				//	user_list[tempItem.uid].Name.LastName = tempItem.Name[0].LastName;
+				//	user_list[tempItem.uid].Plan = tempItem.Plan;
+				//	user_list[tempItem.uid].AdminStatus = tempItem.AdminStatus;
+				//	user_list[tempItem.uid].Used = tempItem.Used;
+				//	user_list[tempItem.uid].Allocated = tempItem.Allocated;
+				//	user_list[tempItem.uid].PlanStartDate = tempItem.PlanStartDate;
+				//	user_list[tempItem.uid].PlanEndDate = tempItem.PlanEndDate;
+				// have to remake structure so that the apps have the same name for key and separated into different objects, i.e.{}
+				// possibly need to change to normal SQL structure if wanting to make this easier
+				//	user_list[tempItem.uid].UsageBreakdown = new List<UserUsageBreakdown>
+				//	{
+				//		[0] = new UserUsageBreakdown(),
+				//		[1] = new UserUsageBreakdown(),
+				//		[2] = new UserUsageBreakdown()
+				//	};
+				//	user_list[tempItem.uid].UsageBreakdown[0].AppName = tempItem.UsageBreakdown[0].App1;
+				//	user_list[tempItem.uid].UsageBreakdown[0].AppDataUsed = tempItem.UsageBreakdown[0].App1Usage;
+				//	user_list[tempItem.uid].UsageBreakdown[1].AppName = tempItem.UsageBreakdown[0].App2;
+				//	user_list[tempItem.uid].UsageBreakdown[1].AppDataUsed = tempItem.UsageBreakdown[0].App2Usage;
+				//	user_list[tempItem.uid].UsageBreakdown[2].AppName = tempItem.UsageBreakdown[0].App3;
+				//	user_list[tempItem.uid].UsageBreakdown[2].AppDataUsed = tempItem.UsageBreakdown[0].App3Usage;
+
+				//}
+
+				if (_items.Count == 0)
 				{
 					Console.WriteLine("Authentication failed");
 				}
@@ -80,7 +113,7 @@ namespace MobileApp.Droid
 						}
 						else
 						{
-							Console.WriteLine("Authentication failed");	
+							Console.WriteLine("Authentication failed");
 						}
 					}
 				}
@@ -118,11 +151,11 @@ namespace MobileApp.Droid
 
 					foreach (TodoItem item in _items)
 					{
-                        //User user = new User();
-                        //user.UID = item.uid;
-                        //user.Allocated = item.Allocated;
+						//User user = new User();
+						//user.UID = item.uid;
+						//user.Allocated = item.Allocated;
 
-                        foreach (NameList name in item.Name)
+						foreach (NameList name in item.Name)
 						{
 							firstname.Add(name.FirstName);
 							//user.Name = new UserName();
@@ -158,7 +191,7 @@ namespace MobileApp.Droid
 									appname[name.FirstName].Add(app.App1);
 									appname[name.FirstName].Add(app.App2);
 									appname[name.FirstName].Add(app.App3);
-									
+
 									appusage[name.FirstName] = new List<string>();
 									appusage[name.FirstName].Add(app.App1Usage);
 									appusage[name.FirstName].Add(app.App2Usage);
@@ -215,8 +248,8 @@ namespace MobileApp.Droid
 								groupmemberfirstname.Add(name.FirstName); //added
 							}
 						}
-						
-					
+
+
 						startDate = item.PlanStartDate;
 						endDate = item.PlanEndDate;
 						adminStatusOnDB = item.AdminStatus;
@@ -237,7 +270,7 @@ namespace MobileApp.Droid
 			}
 			catch (Exception e)
 			{
-				Console.Error.WriteLine(@"ERROR {0}", e.Message);
+				Console.Error.WriteLine(@"error {0}", e.Message);
 				return null;
 			}
 			return _items;
