@@ -17,6 +17,7 @@ namespace MobileApp.Droid.Views
     [Activity(Label = "UsersDataUsageView", ScreenOrientation = ScreenOrientation.Portrait)]
     public class UsersDataUsageView : Activity
     {
+        private ImageButton _backButton;
         private SeekBar _allocationSlider;
         private TextView _allocatedDataAmount;
         private TextView _allocationPageHeader;
@@ -43,6 +44,8 @@ namespace MobileApp.Droid.Views
             CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, Intent.GetStringExtra("username"));
             allocationSliderSettings();
 
+            _backButton.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
+
         }
 
         protected void findAllElements()
@@ -50,6 +53,7 @@ namespace MobileApp.Droid.Views
             _allocatedDataText = FindViewById<TextView>(Resource.Id.AllocatedDataText);
             _allocatedDataAmount = FindViewById<TextView>(Resource.Id.AllocatedDataAmount);
             _allocationPageHeader = FindViewById<TextView>(Resource.Id.UserDataUsageTitle);
+            _backButton = FindViewById<ImageButton>(Resource.Id.UserDataUsageBackButton);
             _currentPlanText = FindViewById<TextView>(Resource.Id.CurrentPlanText);
             _currentPlanDataAmount = FindViewById<TextView>(Resource.Id.CurrentPlanDataAmount);
             _remainingDataText = FindViewById<TextView>(Resource.Id.RemainingDataText);

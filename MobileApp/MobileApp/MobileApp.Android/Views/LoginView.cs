@@ -25,7 +25,6 @@ namespace MobileApp.Droid.Views
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
-		private TextView _text;
 
         private ProgressDialog progress;
 
@@ -46,7 +45,7 @@ namespace MobileApp.Droid.Views
 
             _loginButtonClicked.Click += LoginButtonIsClickedAsync;
 
-			_text = FindViewById<TextView>(Resource.Id.textView1);
+			
 
 		}
 
@@ -64,14 +63,11 @@ namespace MobileApp.Droid.Views
 
 			if (logincontroller.getLoginStatus() && logincontroller.getAdminStatus()) 
 			{
-				_text.Text = "Loged In As Admin";
 				Intent intent = new Intent(this, typeof(AdminDashboardView));
 				StartActivity(intent);
 			}
 			else if (logincontroller.getLoginStatus())
 			{
-				_text.Text = "Loged In As Non Admin";
-
 				Intent intent = new Intent(this, typeof(NonAdminDashBoardView));
 				StartActivity(intent);
 			}
