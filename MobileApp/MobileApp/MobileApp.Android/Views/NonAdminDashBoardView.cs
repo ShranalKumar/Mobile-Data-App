@@ -6,6 +6,7 @@ using System;
 using Android.Content.PM;
 using Android.Views;
 using Java.Lang;
+using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
 {
@@ -15,16 +16,9 @@ namespace MobileApp.Droid.Views
 		private TextView _nonAdminDataUsageUsageTitle;
 		private TextView _remainingDaysNonAdmin;
 		private TextView _gbRemainingNonAdmin;
-		private TextView _firstAppName;
-		private TextView _firstAppUsed;
-		private TextView _secondAppName;
-		private TextView _secondAppUsed;
-		private TextView _thirdAppName;
-		private TextView _thirdAppUsed;
 		private Button _requestButton;
 		private Button _transferButton;
-		private RelativeLayout _dataRemainingFill;
-		private RelativeLayout _dataRemainingPgBarLayout;
+		private LinearLayout _noneAdminUsageBreakdown;
 		private RelativeLayout _remainingDataBarBorder;
 		private RelativeLayout _dataFillBar;
 		public double widthassumed = 3.7;
@@ -40,33 +34,25 @@ namespace MobileApp.Droid.Views
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
-
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.NonAdminDashboardLayout);
 
 			findAllElements();
 			DataBarFill();
 			setAllStringConstants();
-			
+			CustomUserDataUsageView.GetUserDataUsageRows(_noneAdminUsageBreakdown, Controller._users[0]);
 
 			_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
 			_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
 
 			//_globalLayoutListener = new NonAdminDashboardOnGlobalLayoutListener(this);
-
 		}
 
-
-
-
-
 		public void DataBarFill()
-		{
-			
-			trouble = (double) Controller._nonadminused / (double) Controller._nonadminallocated * widthassumed;
+		{			
+			trouble = (double) Controller._users[0].Used / (double) Controller._users[0].Allocated * widthassumed;
 			_dataFillBar.ScaleX = (float)trouble;
 			//_dataFillBar.ScaleX =(float)widthassumed;
-
 		}
 
 		protected void findAllElements()
@@ -74,42 +60,21 @@ namespace MobileApp.Droid.Views
 			_nonAdminDataUsageUsageTitle = FindViewById<TextView>(Resource.Id.NonAdminDataUsageTitle);
 			_remainingDaysNonAdmin = FindViewById<TextView>(Resource.Id.RemainingDaysNonAdmin);
 			_gbRemainingNonAdmin = FindViewById<TextView>(Resource.Id.DataRemainingTextInsidePgBar);
-			_firstAppName = FindViewById<TextView>(Resource.Id.App1);
-			_firstAppUsed = FindViewById<TextView>(Resource.Id.App1MBLeft);
-			_secondAppName = FindViewById<TextView>(Resource.Id.App2);
-			_secondAppUsed = FindViewById<TextView>(Resource.Id.App2MBLeft);
-			_thirdAppName = FindViewById<TextView>(Resource.Id.App3);
-			_thirdAppUsed = FindViewById<TextView>(Resource.Id.App3MBLeft);
 			_transferButton = FindViewById<Button>(Resource.Id.TransferButton);
 			_requestButton = FindViewById<Button>(Resource.Id.RequestButton);
 			_remainingDataBarBorder = FindViewById<RelativeLayout>(Resource.Id.DataRemainingPgBarLayout);
 			_dataFillBar = FindViewById<RelativeLayout>(Resource.Id.DataRemainingFillMask);
-
-
+			_noneAdminUsageBreakdown = FindViewById<LinearLayout>(Resource.Id.NonAdminUsageBreakdown);
 		}
 
 		protected void setAllStringConstants()
 		{
-			_nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, Controller._nonadminfirstname);
-			_remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, Controller._nonadmindaysRemaining);
-			_gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, (Controller._nonadminallocated - Controller._nonadminused));
+			_nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, Controller._users[0].Name.FirstName);
+			_remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
+			_gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, (Controller._users[0].Allocated - Controller._users[0].Used));
 			_transferButton.Text = StringConstants.Localizable.TransferButton;
 			_requestButton.Text = StringConstants.Localizable.RequestButton;
-			_firstAppName.Text = Controller._nonadminappName[0];
-			_firstAppUsed.Text = Controller._nonadminappUsage[0];
-			_secondAppName.Text = Controller._nonadminappName[1];
-			_secondAppUsed.Text = Controller._nonadminappUsage[1];
-			_thirdAppName.Text = Controller._nonadminappName[2];
-			_thirdAppUsed.Text = Controller._nonadminappUsage[2];
-
-			//_widthsize = _remainingDataBarBorder.Width.ToString();
-			//_thirdAppUsed.Text = _widthsize;
 		}
-
-		
-
-
-
 	}
 }
 

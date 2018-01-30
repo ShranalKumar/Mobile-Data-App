@@ -22,27 +22,26 @@ namespace MobileApp.Droid.Helpers
 
 		public static void getTiles(Android.Widget.LinearLayout parent)
 		{
-			int userCount = Controller._uid.Count();
 			UserTiles = new List<LinearLayout>();
 			int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
-			for (int i = 0; i < userCount; i++)
+			foreach (User user in Controller._users)
 			{
 				
                 ContextThemeWrapper allocationUserTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.AllocationUserTileLayoutStyle);
 				LinearLayout User = new LinearLayout(allocationUserTileContext);
 				User.Orientation = Orientation.Vertical;
-				User.Id = i;
+				User.Id = Int32.Parse(user.UID);
 
                 ContextThemeWrapper TextLayoutContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTextLayoutStyle);
                 FrameLayout UserDetailsTextLayout = new FrameLayout(TextLayoutContext);
 
 				ContextThemeWrapper userNameContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextLeftAlignText);
 				TextView UserName = new TextView(userNameContext);
-				UserName.Text = Controller._firstname[i];
+				UserName.Text = user.Name.FirstName;
 
                 ContextThemeWrapper userAllocatedContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextRightAlignText);
                 TextView Allocated = new TextView(userAllocatedContext);
-				Allocated.Text = Controller._allocated[i].ToString();
+				Allocated.Text = user.Allocated.ToString();
 
                 ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
                 SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);

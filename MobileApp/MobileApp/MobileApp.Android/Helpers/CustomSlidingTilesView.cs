@@ -9,14 +9,13 @@ namespace MobileApp.Droid.Helpers
     {
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
-            int numOfTiles = Controller._groupmemeberfirstname.Count();
 			//FrameLayout buttonsLayout = new FrameLayout(parent.Context);
 
-            for (int i = 0; i < numOfTiles; i++)
+            foreach (User user in Controller._users)
             {
 				ContextThemeWrapper userButtonContext = new ContextThemeWrapper(parent.Context, Resource.Style.WhiteBorderTransperentButtonStyle);
                 Android.Widget.Button UserTile = new Android.Widget.Button(userButtonContext,null,0);
-                UserTile.Text = Controller._groupmemeberfirstname[i];
+                UserTile.Text = user.Name.FirstName;
 
 				//buttonsLayout.AddView(UserTile);
 				parent.AddView(UserTile);

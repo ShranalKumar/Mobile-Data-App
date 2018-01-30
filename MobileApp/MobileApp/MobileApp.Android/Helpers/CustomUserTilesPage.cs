@@ -16,7 +16,6 @@ namespace MobileApp.Droid.Helpers
 
         public static void getTiles(Android.Widget.ScrollView parent)
         {
-            int userCount = Controller._uid.Count();
             UserTiles = new List<LinearLayout>();
             int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
             ContextThemeWrapper mainContext = new ContextThemeWrapper(parent.Context, Resource.Style.MainLinearForUserTiles);
@@ -24,8 +23,8 @@ namespace MobileApp.Droid.Helpers
             MainLinear.Orientation = Orientation.Vertical;
             parent.AddView(MainLinear);
             LinearLayout currentRow = null;
-
-            for (int i = 0; i < userCount; i++)
+			int i = 0;
+            foreach (User user in Controller._users)
             {
                 if (i % 2 == 0)
                 {
@@ -37,10 +36,11 @@ namespace MobileApp.Droid.Helpers
                 ContextThemeWrapper userTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileLayoutStyle);
                 LinearLayout currentUser = new LinearLayout(userTileContext);
                 currentUser.Orientation = Orientation.Vertical;
+				currentUser.Id = i;
                                 
                 ContextThemeWrapper userNameContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserNameCenteredText);
                 TextView userName = new TextView(userNameContext);
-                userName.Text = Controller._firstname[i];
+                userName.Text = user.Name.FirstName;
 
                 ContextThemeWrapper relativeLayoutStyle = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBorderStyle);
                 FrameLayout currentUserBar = new FrameLayout(relativeLayoutStyle);
@@ -49,15 +49,13 @@ namespace MobileApp.Droid.Helpers
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
                 try
                 {
-                    Console.WriteLine(Controller._used[i]);
-                    Console.WriteLine(Controller._allocated[i]);
-                    Console.WriteLine(Controller._used[i] / Controller._allocated[i]);
-                    double progress = (1 - (double)Controller._used[i] / Controller._allocated[i]) * 100;
+                    double progress = (1 - (double)user.Used / user.Allocated) * 100;
                     currentUserBarMask.Progress = (int)(progress);
                 }
                 catch (DivideByZeroException e)
                 {
-                    double progress = (1 - (double)Controller._used[i] / Controller._remainder[i]) * 100;
+					//Need to fix 8.0 to remainder. Need to calculate it.
+                    double progress = (1 - (double)user.Used / 8.0) * 100;
                     currentUserBarMask.Progress = (int)(progress);
                 }                
 
@@ -68,6 +66,7 @@ namespace MobileApp.Droid.Helpers
                 currentRow.AddView(currentUser);                
                 MainLinear.RemoveView(currentRow);
                 MainLinear.AddView(currentRow);
+				i++;
             }
         }
     }

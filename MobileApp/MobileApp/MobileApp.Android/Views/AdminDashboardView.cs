@@ -55,14 +55,14 @@ namespace MobileApp.Droid.Views
                         {
                             TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
                             username = userName.Text;
-                            loadUserDataPage.PutExtra("username", username);
+                            loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
                             StartActivity(loadUserDataPage);
                         }                        
                     }
                 };
             }
-
-            double progress = (double)Controller._used.Sum() / Controller._planDataPool * 100;
+			//Plan data pool is temporary. Will need to be fixed.
+            double progress = (double)Controller._users.Sum(x => x.Used) / 10 * 100;
             _dataUsageProgressBar.Progress = (int)progress;
             _dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
 
@@ -92,7 +92,8 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._remainder[0]);
+			//Need to fix remainder
+            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, 8);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
 		}
     }
