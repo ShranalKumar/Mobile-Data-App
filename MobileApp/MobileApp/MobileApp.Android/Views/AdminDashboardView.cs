@@ -64,6 +64,7 @@ namespace MobileApp.Droid.Views
 
             double progress = (double)Controller._used.Sum() / Controller._planDataPool * 100;
             _dataUsageProgressBar.Progress = (int)progress;
+            _dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
 
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }

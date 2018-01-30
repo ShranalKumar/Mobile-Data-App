@@ -15,7 +15,7 @@ namespace MobileApp.Constants
 
 			//Admin Dashboard Screen
 			public const string DaysRemaining = "{0} Days Remaining";
-            public const string GbRemaining = "{0}GB Remaining";
+            public const string GbRemaining = "{0} GB Remaining";
             public const string AllocateData = "Allocate Data";
 
             //Transfer Screen
@@ -40,7 +40,7 @@ namespace MobileApp.Constants
             public const string UsedData = "Used Data";
             public const string CurrentPlan = "Current Plan";
             public const string RemainingData = "Remaining Data";
-            public const string DataAmount = "{0}GB";
+            public const string DataAmount = "{0} GB";
             public const string WeeklyMode = "Weekly Mode";
             public const string SaveButton = "Save";
 
@@ -48,6 +48,17 @@ namespace MobileApp.Constants
             public const string RequestPageTitle = "Request Data";
             public const string RequestFrom = "Reqeust Data From:";
             public const string SelectAmountRequest = "Select Amount to Request:";
+
+            //Request Screen
+            public const string OverviewTitle = "Plan Overview";
+            public const string PlanName = "Data Share";
+            public const string PlanDataAmount = "10 GB / month";
+            public const string PlanRemaining = "Plan Data Remaining";
+            public const string PlanAllocated = "Plan Data Allocated";
+            public const string PlanUsed = "Plan Data Remaining";
+            public const string PlanRemainingAmount = "XX GB"; //Need to get amount from DB, DB under construction
+            public const string PlanAllocatedAmount = "XX GB"; //Need to get amount from DB, DB under construction
+            public const string PlanUsedAmount = "XX GB"; //Need to get amount from DB, DB under construction
         }
     }
 }
