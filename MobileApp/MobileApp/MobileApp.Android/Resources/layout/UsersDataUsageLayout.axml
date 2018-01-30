@@ -45,61 +45,6 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/DataDetailsTextLayout"
-        android:padding="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/CurrentPlanLayout"
-            android:gravity="center"
-            android:layout_weight="1">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/CurrentPlanText"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/CurrentPlanDataAmount"
-                android:gravity="center" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/RemainingDataLayout"
-            android:gravity="center"
-            android:layout_weight="1">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/RemainingDataText"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/RemainingDataAmount"
-                android:gravity="center" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/DataAllocationLayout">
         <LinearLayout
             android:orientation="vertical"
@@ -130,11 +75,33 @@
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
+                android:id="@+id/RemainingDataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/RemainingDataText"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/RemainingDataAmount"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/AllocationTextLayout"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp">
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"
@@ -155,8 +122,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/UsedDataLayout"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp">
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="match_parent"

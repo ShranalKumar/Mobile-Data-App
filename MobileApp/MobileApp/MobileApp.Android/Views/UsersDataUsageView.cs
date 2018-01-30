@@ -21,8 +21,6 @@ namespace MobileApp.Droid.Views
         private SeekBar _allocationSlider;
         private TextView _allocatedDataAmount;
         private TextView _allocationPageHeader;
-        private TextView _currentPlanText;
-        private TextView _currentPlanDataAmount;
         private TextView _remainingDataText;
         private TextView _remainingDataAmount;
         private TextView _allocatedDataText;
@@ -54,8 +52,6 @@ namespace MobileApp.Droid.Views
             _allocatedDataAmount = FindViewById<TextView>(Resource.Id.AllocatedDataAmount);
             _allocationPageHeader = FindViewById<TextView>(Resource.Id.UserDataUsageTitle);
             _backButton = FindViewById<ImageButton>(Resource.Id.UserDataUsageBackButton);
-            _currentPlanText = FindViewById<TextView>(Resource.Id.CurrentPlanText);
-            _currentPlanDataAmount = FindViewById<TextView>(Resource.Id.CurrentPlanDataAmount);
             _remainingDataText = FindViewById<TextView>(Resource.Id.RemainingDataText);
             _remainingDataAmount = FindViewById<TextView>(Resource.Id.RemainingDataAmount);
             _usedDataText = FindViewById<TextView>(Resource.Id.UsedDataText);
@@ -70,8 +66,6 @@ namespace MobileApp.Droid.Views
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[_indexOfUser]);
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, Controller._firstname[_indexOfUser]);
-            _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
             _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._remainder[_indexOfUser]);
             _usedDataText.Text = StringConstants.Localizable.UsedData;

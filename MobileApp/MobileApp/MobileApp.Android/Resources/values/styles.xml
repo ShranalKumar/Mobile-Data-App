@@ -324,7 +324,6 @@
   <style name="UserTextRightAlignText">
     <item name="android:textSize">18dp</item>
     <item name="android:gravity">right</item>
-    <item name="android:paddingBottom">10dp</item>
   
   </style>
 
@@ -333,6 +332,9 @@
     <item name="android:progressTint">#70ffffff</item>
     <item name="android:thumb">@drawable/sliderthumbstyle2</item>
     <item name="android:scaleY">3</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
+
   </style>
 
 </resources>
