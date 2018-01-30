@@ -9,7 +9,7 @@ namespace MobileApp
         public string UID { get; set; }
         public UserName Name { get; set; }
         public string Plan { get; set; }
-        public string AdminStatus { get; set; }
+        public bool AdminStatus { get; set; }
         public int Used { get; set; }
         public int Allocated { get; set; }
         public string PlanStartDate { get; set; }
@@ -34,9 +34,9 @@ namespace MobileApp
     {
         public string UID { get; set; }
         public UserName Name { get; set; }
-        public string AdminStatus { get; set; }
-        public string  Used { get; set; }
-        public string Allocated { get; set; }
+        public bool AdminStatus { get; set; }
+        public int  Used { get; set; }
+        public int Allocated { get; set; }
         public List<UserUsageBreakdown> UsageBreakdown { get; set; }
     }
 }

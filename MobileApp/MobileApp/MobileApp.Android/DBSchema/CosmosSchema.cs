@@ -22,7 +22,7 @@ namespace DocumentDBTodo
 		public string Plan { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
-		public string AdminStatus { get; set; }
+		public bool AdminStatus { get; set; }
 
 		[JsonProperty(PropertyName = "Used")]
 		public int Used { get; set; }
@@ -63,7 +63,7 @@ namespace DocumentDBTodo
 		public List<NameList> Name { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
-		public string adminStatus { get; set; }
+		public bool adminStatus { get; set; }
 
 		[JsonProperty(PropertyName = "used")]
 		public int Used { get; set; }
@@ -77,23 +77,11 @@ namespace DocumentDBTodo
 
 	public class UsageBreakdownList
 	{
-		[JsonProperty(PropertyName = "App1")]
-		public string App1 { get; set; }
+		[JsonProperty(PropertyName = "App")]
+		public string App { get; set; }
 
-		[JsonProperty(PropertyName = "App1DataUsed")]
-		public string App1Usage { get; set; }
-
-		[JsonProperty(PropertyName = "App2")]
-		public string App2 { get; set; }
-
-		[JsonProperty(PropertyName = "App2DataUsed")]
-		public string App2Usage { get; set; }
-
-		[JsonProperty(PropertyName = "App3")]
-		public string App3 { get; set; }
-
-		[JsonProperty(PropertyName = "App3DataUsed")]
-		public string App3Usage { get; set; }
+		[JsonProperty(PropertyName = "AppDataUsed")]
+		public string AppUsage { get; set; }
 
 	}
 

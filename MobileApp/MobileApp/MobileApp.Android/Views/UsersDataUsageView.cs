@@ -29,20 +29,19 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataTextAmount;
         private TextView _dataUsageSaveButtonText;
         private ScrollView _dataUsageBreakdownlayout;
-        private int _indexOfUser;
+        private User _user;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.UsersDataUsageLayout);
-
-            _indexOfUser = Controller._firstname.IndexOf(Intent.GetStringExtra("username"));
+			int uid = Intent.GetIntExtra("tag", 0);
+			_user = Controller._users[uid];
             findAllElements();
             setAllStringConstants();
-            CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, Intent.GetStringExtra("username"));
+            CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, _user);
             allocationSliderSettings();
-
         }
 
         protected void findAllElements()
@@ -64,25 +63,25 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
-            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._allocated[_indexOfUser]);
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, Controller._firstname[_indexOfUser]);
+            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Allocated);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
+            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 10);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._remainder[_indexOfUser]);
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 8);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
-            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._used[_indexOfUser]);
+            _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
         }
 
         protected void allocationSliderSettings()
         {
-            double _sliderPresetValue = ((double)Controller._allocated[_indexOfUser] / Controller._planDataPool ) * 100;
+            double _sliderPresetValue = ((double)_user.Allocated / 10 ) * 100;
             _allocationSlider.Progress = (int)_sliderPresetValue;
             _allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
                 if (e.FromUser)
                 {
-                    double changed = ( (double)e.Progress / 100) * (double)Controller._planDataPool;
+                    double changed = ( (double)e.Progress / 100) * (double)10;
                     _allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, changed.ToString());
                 }
             };
