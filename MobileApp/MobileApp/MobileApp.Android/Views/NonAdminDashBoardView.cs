@@ -102,7 +102,7 @@ namespace MobileApp.Droid.Views
 //public void OnGlobalLayout()
 //{
 //	_hasHadGlobalLayout = true;
-//	ViewDidBecomeVisible();
+//	ViewDidBecomeVisibleV=
 //	_containerLayout.ViewTreeObserver.RemoveOnGlobalLayoutListener(_globalLayoutListener);
 //}
 

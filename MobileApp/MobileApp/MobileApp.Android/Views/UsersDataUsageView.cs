@@ -66,8 +66,6 @@ namespace MobileApp.Droid.Views
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Allocated);
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
-            _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 10);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
             _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 8);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
