@@ -52,7 +52,6 @@ namespace MobileApp.Droid.Views
 
         private RelativeLayout _transferConfirmationPopUp;
         private RelativeLayout _transferSuccessMessage;
-        private RelativeLayout _backgroundLayout;
         private LinearLayout _userSelectionSlidingLayout;
 
         private ProgressBar _progressBarFill;

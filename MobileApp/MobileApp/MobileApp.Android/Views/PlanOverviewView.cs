@@ -69,13 +69,13 @@ namespace MobileApp.Droid.Views
         {
             _overviewPageTitle.Text = StringConstants.Localizable.OverviewTitle;
             _dataPlanNameText.Text = StringConstants.Localizable.PlanName;
-            _dataPlanAmount.Text = StringConstants.Localizable.PlanDataAmount;
+            _dataPlanAmount.Text = string.Format(StringConstants.Localizable.PlanDataAmount, Controller._planDataPool);
             _planRemainingDataText.Text = StringConstants.Localizable.PlanRemaining;
-            _planRemainingDataAmount.Text = StringConstants.Localizable.PlanRemainingAmount; //Need to concat amount from DB, DB under construction
+            _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder); //Need to concat amount from DB, DB under construction
             _planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
-            _planAllocatedDataAmount.Text = StringConstants.Localizable.PlanAllocatedAmount; //Need to concat amount from DB, DB under construction
+            _planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Controller._totalAllocated); //Need to concat amount from DB, DB under construction
             _planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
-            _planUsedDataAmount.Text = StringConstants.Localizable.PlanUsedAmount; //Need to concat amount from DB, DB under construction
+            _planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
         }
 
         private void showMembersList()

@@ -19,7 +19,7 @@ namespace DocumentDBTodo
 		public List<NameList> Name { get; set; }
 
 		[JsonProperty(PropertyName = "Plan")]
-		public string Plan { get; set; }
+		public double Plan { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
 		public bool AdminStatus { get; set; }

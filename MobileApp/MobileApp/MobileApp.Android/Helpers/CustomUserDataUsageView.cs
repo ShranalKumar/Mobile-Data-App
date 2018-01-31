@@ -43,7 +43,7 @@ namespace MobileApp.Droid.Helpers
                 Android.Widget.ProgressBar UserDataUsageProgressBar = new Android.Widget.ProgressBar(newProgressBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
                 double AppUsage = Double.Parse(breakdown.AppDataUsed) / 1000;
-                double progress = (AppUsage / key.Used) * 100;
+                double progress = ((AppUsage / key.Used) * 100);
                 UserDataUsageProgressBar.Progress = (int)(progress);
 
                 currentUserProgressBar.AddView(UserDataUsageProgressBar);
@@ -59,7 +59,6 @@ namespace MobileApp.Droid.Helpers
 		{
 			LinearLayout MainLinear = new LinearLayout(parent.Context);
 			MainLinear.SetPadding(0, 25, 0, 0);
-			//User user = Controller._users.Where(x => x.UID == key).First();
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 
@@ -87,7 +86,7 @@ namespace MobileApp.Droid.Helpers
 				Android.Widget.ProgressBar UserDataUsageProgressBar = new Android.Widget.ProgressBar(newProgressBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
 				double AppUsage = Double.Parse(breakdown.AppDataUsed) / 1000;
-				double progress = (AppUsage / key.Used) * 100;
+				double progress = ((AppUsage / key.Used) * 100);
 				UserDataUsageProgressBar.Progress = (int)(progress);
 
 				currentUserProgressBar.AddView(UserDataUsageProgressBar);

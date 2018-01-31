@@ -8,7 +8,7 @@ namespace MobileApp
     {
         public string UID { get; set; }
         public UserName Name { get; set; }
-        public string Plan { get; set; }
+        public double Plan { get; set; }
         public bool AdminStatus { get; set; }
         public int Used { get; set; }
         public double Allocated { get; set; }

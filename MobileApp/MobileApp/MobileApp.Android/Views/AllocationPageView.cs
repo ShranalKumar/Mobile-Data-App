@@ -12,7 +12,6 @@ using Android.Views;
 using Android.Widget;
 using RadialProgress;
 using MobileApp.Constants;
-using Android.Content.PM;
 using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
@@ -55,11 +54,6 @@ namespace MobileApp.Droid.Views
 
             _backButton.SetImageResource(Resource.Drawable.ArrowBackIcon);
 			_backButton.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
-            _allocatePageTitle.Text = "Allocate Data";
-            
-
-            
-            
         }
 
         protected void findAllElements()
@@ -82,9 +76,9 @@ namespace MobileApp.Droid.Views
         {
             _allocatePageTitle.Text = StringConstants.Localizable.AllocateData;
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 10);
+            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, 8);
+            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
             _weeklyModeText.Text = StringConstants.Localizable.WeeklyMode;
             _saveButon.Text = StringConstants.Localizable.SaveButton;
         }

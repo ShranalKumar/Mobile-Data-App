@@ -47,7 +47,7 @@ namespace MobileApp.Droid.Views
 			SetTileClickable();
             
 			//Plan data pool is temporary. Will need to be fixed.
-            double progress = (double)Controller._users.Sum(x => x.Used) / 10 * 100;
+            double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
             _dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
 
@@ -77,8 +77,7 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-			//Need to fix remainder
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, 8);
+            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._totalRemainder);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
 		}
 

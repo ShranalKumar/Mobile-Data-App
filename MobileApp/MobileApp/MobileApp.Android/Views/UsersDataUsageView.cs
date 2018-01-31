@@ -70,8 +70,8 @@ namespace MobileApp.Droid.Views
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Allocated);
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
-            _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 8);
+            _remainingDataText.Text = StringConstants.Localizable.UnAllocatedData;
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._totalUnAllocated);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
             _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
@@ -79,12 +79,12 @@ namespace MobileApp.Droid.Views
 
         protected void allocationSliderSettings()
         {
-            double _sliderPresetValue = ((double)_user.Allocated / 10 ) * 100;
+            double _sliderPresetValue = ((double)_user.Allocated / Controller._planDataPool ) * 100;
             _allocationSlider.Progress = (int)_sliderPresetValue;
             _allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
                 if (e.FromUser)
                 {
-                    double changed = ( (double)e.Progress / 100) * (double)10;
+                    double changed = ( (double)e.Progress / 100) * Controller._planDataPool;
                     _allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, changed.ToString());
                 }
             };
@@ -92,7 +92,7 @@ namespace MobileApp.Droid.Views
 
 		protected async void UpdateUserDataAllocation(object sender, EventArgs e) 
 		{
-			var newAllocation = _allocationSlider.Progress / 100.0 * 20;
+			var newAllocation = _allocationSlider.Progress / 100.0 * Controller._planDataPool;
 			User changedUser = await Controller.UpdateAllocation(_user, newAllocation);
 			Controller._users[_uid] = changedUser;
 		}

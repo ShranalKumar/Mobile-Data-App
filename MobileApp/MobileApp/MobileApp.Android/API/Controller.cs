@@ -16,66 +16,30 @@ namespace MobileApp.Droid
 	{
 		public static List<User> _users;
 		public TodoItemManager cosmosDB;
-		//public static List<string> _uid = new List<string>();
-		//public static List<string> _firstname = new List<string>();
-		//public static List<int> _used = new List<int>();
-		//public static List<int> _allocated = new List<int>();
-		public static int _totalRemainder;
-		//public static Dictionary<string, List<string>> _appName;
-		//public static Dictionary<string, List<string>> _appUsage;
-		//public static DateTime _startDate;
-		//public static DateTime _endDate;
+		public static double _totalRemainder;
+		public static double _totalAllocated;
+		public static double _totalUnAllocated;
+		public static double _totalUsed;
+		public static double _planDataPool;
 		public static DateTime _currentDate;
 		public static double _daysRemaining;
-		//public static int _allocatedlistlength;
-		//public static int _planDataPool;
 
-		//public static string _nonadminfirstname;
-		//public static int _nonadminused;
-		//public static int _nonadminallocated;
-		//public static DateTime _nonadminstartDate;
-		//public static DateTime _nonadminendDate;
-		//public static DateTime _nonadmincurrentDate;
-		//public static double _nonadmindaysRemaining;
-		//public static List<string> _nonadminappName;
-		//public static List<string> _nonadminappUsage;
-		//public static List<string> _groupmemeberfirstname;
-
-
-		//public Controller(List<string> uid, List<string> firstname, List<int> used, List<int> allocated, List<int> remainder, List<string> appName, List<string> appUsage,string startDate, string endDate, int planDataPool)
 		public Controller(List<User> user)
 		{
 			_users = user;
-			//_uid.Add(user.UID);
-			//_firstname.Add(user.Name.FirstName);
-			//_used = used;
-			//_allocated = allocated;
-			//_remainder = remainder;
-			//_appName = appName;
-			//_appUsage = appUsage;
-			//_startDate = Convert.ToDateTime(startDate);
-			//_endDate = Convert.ToDateTime(endDate);
-			//_planDataPool = planDataPool;
-
 			_currentDate = DateTime.Now;
-			//_allocatedlistlength = _allocated.Count();
 
 			var changeDate = user[0].PlanEndDate.Split('/');
 			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
 			var printString = newEndDate.ToString("dd/MM/yyyy");
-
-			//for (int i = 0; i < _allocatedlistlength; i++)
-			//{
-			//	if ((_allocated[i] - _used[i]) < 0)
-			//	{
-			//		_remainder[i] = (_planDataPool - _allocated[i] - _used[i]);
-			//	}
-			//	else
-			//	{
-			//		_remainder[i] = _allocated[i] - _used[i];
-			//	}
-			//}
 			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
+
+			_users.ForEach(x => _totalAllocated += x.Allocated);
+			_users.ForEach(x => _totalUsed += x.Used);
+			_planDataPool = _users[0].Plan;
+			_totalRemainder = _planDataPool - _totalUsed;
+			_totalUnAllocated = _planDataPool - _totalAllocated;
+			_users[0].Allocated = _planDataPool - _totalAllocated;
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
 		}

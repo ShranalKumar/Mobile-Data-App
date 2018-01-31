@@ -198,19 +198,5 @@ namespace MobileApp.Droid
 		{
 			return _adminStatus;
 		}
-
-		private async void UpdateValues()
-		{
-			var query = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsDocumentQuery();
-
-			_items.Clear();
-			_groupMembers.Clear();
-			while (query.HasMoreResults)
-			{
-				_items.AddRange(await query.ExecuteNextAsync<TodoItem>());
-			}
-			AssignAllValues();
-		}
-
 	}
 }

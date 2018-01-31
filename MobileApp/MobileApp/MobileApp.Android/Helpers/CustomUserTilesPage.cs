@@ -51,13 +51,12 @@ namespace MobileApp.Droid.Helpers
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
                 try
                 {
-                    double progress = ((double)user.Used / user.Allocated * 100);
+                    double progress = (1 - ((double)user.Used / user.Allocated)) * 100;
                     currentUserBarMask.Progress = (int)(progress);
                 }
-                catch (DivideByZeroException e)
+                catch (DivideByZeroException)
                 {
-					//Need to fix 8.0 to remainder. Need to calculate it.
-                    double progress = ((double)user.Used / 8.0 * 100);
+                    double progress = (1 - ((double)user.Used / Controller._totalRemainder)) * 100;
                     currentUserBarMask.Progress = (int)(progress);
                 }                
 
