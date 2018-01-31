@@ -25,7 +25,6 @@ namespace MobileApp.Droid
 
 		public async System.Threading.Tasks.Task userLoginPhaseAsync()
 		{
-			Console.WriteLine("Hehehe");
 			string loginQuery = String.Format("select * from t where t.uid = '{0}'", _loginid);
 			manager = TodoItemManager.DefaultManager;
 

@@ -27,40 +27,25 @@ namespace MobileApp.Droid.Views
         private TextView _daysRemaining;
         private ProgressBar _dataUsageProgressBar;
         private Button _allocateButton;
-        private ScrollView _userTiles;
-        private List<LinearLayout> _userTileList;
+        private static ScrollView _userTiles;
+        private static List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
+		private static AdminDashboardView _instance;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminDashboardLayout);
+			_instance = this;
+			if (_userTileList != null) { _userTileList.Clear();	}
 
             findAllElements();
             setAllStringConstants();
 
             CustomUserTilesPage.getTiles(_userTiles);
             _userTileList = CustomUserTilesPage.UserTiles;
-
-            foreach (LinearLayout tile in _userTileList)
-            {
-                tile.Click += (o,s) =>
-                {
-                    _tileClickedOn = tile;
-                    Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
-                    string username;
-                    for (int i = 0; i < _tileClickedOn.ChildCount; i++)
-                    {
-                        if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
-                        {
-                            TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
-                            username = userName.Text;
-                            loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
-                            StartActivity(loadUserDataPage);
-                        }                        
-                    }
-                };
-            }
+			SetTileClickable();
+            
 			//Plan data pool is temporary. Will need to be fixed.
             double progress = (double)Controller._users.Sum(x => x.Used) / 10 * 100;
             _dataUsageProgressBar.Progress = (int)progress;
@@ -96,6 +81,47 @@ namespace MobileApp.Droid.Views
             _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, 8);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
 		}
-    }
+
+		public void Reload() 
+		{
+			CustomUserTilesPage.getTiles(_userTiles);
+			_userTileList = CustomUserTilesPage.UserTiles;
+			SetTileClickable();
+		}
+
+		public void SetTileClickable()
+		{
+			foreach (LinearLayout tile in _userTileList)
+			{
+				tile.Click += (o, s) =>
+				{
+					_tileClickedOn = tile;
+					Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
+					string username;
+					for (int i = 0; i < _tileClickedOn.ChildCount; i++)
+					{
+						if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
+						{
+							TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
+							username = userName.Text;
+							loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
+							StartActivity(loadUserDataPage);
+						}
+					}
+				};
+			}
+		}
+
+		public static AdminDashboardView GetInstance()
+		{
+			return _instance;
+		}
+
+		protected override void OnRestart()
+		{
+			base.OnRestart();
+			Reload();
+		}
+	}
 }
 

@@ -16,6 +16,8 @@ namespace MobileApp.Droid.Helpers
 
         public static void getTiles(Android.Widget.ScrollView parent)
         {
+			parent.RemoveAllViewsInLayout();
+			if (UserTiles != null) { UserTiles.Clear(); }
             UserTiles = new List<LinearLayout>();
             int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
             ContextThemeWrapper mainContext = new ContextThemeWrapper(parent.Context, Resource.Style.MainLinearForUserTiles);
@@ -49,13 +51,13 @@ namespace MobileApp.Droid.Helpers
                 Android.Widget.ProgressBar currentUserBarMask = new Android.Widget.ProgressBar(PgBarFillContext, null, Resource.Style.ProgressBarFillStyle);
                 try
                 {
-                    double progress = (1 - (double)user.Used / user.Allocated) * 100;
+                    double progress = ((double)user.Used / user.Allocated * 100);
                     currentUserBarMask.Progress = (int)(progress);
                 }
                 catch (DivideByZeroException e)
                 {
 					//Need to fix 8.0 to remainder. Need to calculate it.
-                    double progress = (1 - (double)user.Used / 8.0) * 100;
+                    double progress = ((double)user.Used / 8.0 * 100);
                     currentUserBarMask.Progress = (int)(progress);
                 }                
 

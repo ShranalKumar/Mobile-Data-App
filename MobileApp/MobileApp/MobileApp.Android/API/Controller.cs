@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -14,6 +15,7 @@ namespace MobileApp.Droid
 	public class Controller
 	{
 		public static List<User> _users;
+		public TodoItemManager cosmosDB;
 		//public static List<string> _uid = new List<string>();
 		//public static List<string> _firstname = new List<string>();
 		//public static List<int> _used = new List<int>();
@@ -77,20 +79,11 @@ namespace MobileApp.Droid
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
 		}
-		//public Controller (string firstname, int used, int allocated, List<string> appname, List<string> appusage, string startDate, string endDate, List<string> groupmemberfirstname)
-		//{
-		//	_nonadminfirstname = firstname;
-		//	_nonadminused = used;
-		//	_nonadminallocated = allocated;
-		//	_nonadminstartDate = Convert.ToDateTime(startDate);
-		//	_nonadminendDate = Convert.ToDateTime(endDate);
-		//	_groupmemeberfirstname = groupmemberfirstname;
-		//	var changeDate = endDate.Split('/');
-		//	DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
-		//	var printString = newEndDate.ToString("dd/MM/yyyy");
-		//	_nonadminappName = appname;
-		//	_nonadminappUsage = appusage;
-		//	_nonadmindaysRemaining = Math.Ceiling((newEndDate - DateTime.Now).TotalDays);
-		//}
+
+		public static async Task<User> UpdateAllocation(User user, double allocation)
+		{
+			User changedUser = await TodoItemManager.DefaultManager.UpdateDocumentDB(user, allocation);
+			return changedUser;
+		}
 	}
 }
