@@ -9,7 +9,7 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "id")]
 		public string id { get; set; }
 
-		[JsonProperty(PropertyName = "uID")]
+		[JsonProperty(PropertyName = "uid")]
 		public string uid { get; set; }
 
 		[JsonProperty(PropertyName = "Password")]
@@ -18,7 +18,7 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "Name")]
 		public List<NameList> Name { get; set; }
 
-		[JsonProperty(PropertyName = "plan")]
+		[JsonProperty(PropertyName = "Plan")]
 		public string Plan { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
@@ -28,7 +28,7 @@ namespace DocumentDBTodo
 		public int Used { get; set; }
 
 		[JsonProperty(PropertyName = "Allocated")]
-		public int Allocated { get; set; }
+		public double Allocated { get; set; }
 
 		[JsonProperty(PropertyName = "PlanStartDate")]
 		public string PlanStartDate { get; set; }
@@ -42,6 +42,11 @@ namespace DocumentDBTodo
 
 		[JsonProperty(PropertyName = "UsageBreakdown")]
 		public List<UsageBreakdownList> UsageBreakdown { get; set; }
+
+		internal void SetPropertyValue(string v1, string v2)
+		{
+			throw new NotImplementedException();
+		}
 	}
 
 	public class NameList
@@ -56,7 +61,7 @@ namespace DocumentDBTodo
 
 	public class GroupMembers
 	{
-		[JsonProperty(PropertyName = "uID")]
+		[JsonProperty(PropertyName = "uid")]
 		public string uid { get; set; }
 
 		[JsonProperty(PropertyName = "Name")]
@@ -65,11 +70,11 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "Admin")]
 		public bool adminStatus { get; set; }
 
-		[JsonProperty(PropertyName = "used")]
+		[JsonProperty(PropertyName = "Used")]
 		public int Used { get; set; }
 
-		[JsonProperty(PropertyName = "allocated")]
-		public int Allocated { get; set; }
+		[JsonProperty(PropertyName = "Allocated")]
+		public double Allocated { get; set; }
 
 		[JsonProperty(PropertyName = "UsageBreakdown")]
 		public List<UsageBreakdownList> UsageBreakdown { get; set; }

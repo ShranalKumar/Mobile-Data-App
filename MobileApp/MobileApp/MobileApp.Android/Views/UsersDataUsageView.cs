@@ -28,21 +28,24 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataTextAmount;
         private TextView _dataUsageSaveButtonText;
         private ScrollView _dataUsageBreakdownlayout;
-        private User _user;
+		private ImageButton _dataUsageSaveButton;
+		private User _user;
+		private int _uid;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.UsersDataUsageLayout);
-			int uid = Intent.GetIntExtra("tag", 0);
-			_user = Controller._users[uid];
+			_uid = Intent.GetIntExtra("tag", 0);
+			_user = Controller._users[_uid];
             findAllElements();
             setAllStringConstants();
             CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, _user);
             allocationSliderSettings();
 
-            _backButton.Click += delegate { StartActivity(typeof(AdminDashboardView)); };
+            _backButton.Click += delegate { Finish(); };
+			_dataUsageSaveButton.Click += UpdateUserDataAllocation;
 
         }
 
@@ -59,6 +62,7 @@ namespace MobileApp.Droid.Views
             _dataUsageSaveButtonText = FindViewById<TextView>(Resource.Id.SaveButtonText);
             _allocationSlider = FindViewById<SeekBar>(Resource.Id.AllocationSlider);
             _dataUsageBreakdownlayout = FindViewById<ScrollView>(Resource.Id.DataUsageBreakdownScrollView);
+			_dataUsageSaveButton = FindViewById<ImageButton>(Resource.Id.SaveButton);
         }
 
         protected void setAllStringConstants()
@@ -66,8 +70,6 @@ namespace MobileApp.Droid.Views
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Allocated);
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
-            _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
-            _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 10);
             _remainingDataText.Text = StringConstants.Localizable.RemainingData;
             _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, 8);
             _usedDataText.Text = StringConstants.Localizable.UsedData;
@@ -87,5 +89,12 @@ namespace MobileApp.Droid.Views
                 }
             };
         }
+
+		protected async void UpdateUserDataAllocation(object sender, EventArgs e) 
+		{
+			var newAllocation = _allocationSlider.Progress / 100.0 * 20;
+			User changedUser = await Controller.UpdateAllocation(_user, newAllocation);
+			Controller._users[_uid] = changedUser;
+		}
     }
 }

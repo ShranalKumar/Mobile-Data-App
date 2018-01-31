@@ -11,7 +11,7 @@ namespace MobileApp
         public string Plan { get; set; }
         public bool AdminStatus { get; set; }
         public int Used { get; set; }
-        public int Allocated { get; set; }
+        public double Allocated { get; set; }
         public string PlanStartDate { get; set; }
         public string PlanEndDate { get; set; }
         public List<UserUsageBreakdown> UsageBreakdown { get; set; }
@@ -36,7 +36,7 @@ namespace MobileApp
         public UserName Name { get; set; }
         public bool AdminStatus { get; set; }
         public int  Used { get; set; }
-        public int Allocated { get; set; }
+        public double Allocated { get; set; }
         public List<UserUsageBreakdown> UsageBreakdown { get; set; }
     }
 }
