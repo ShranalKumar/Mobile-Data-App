@@ -16,7 +16,7 @@ namespace DocumentDBTodo
 		public string password { get; set; }
 
 		[JsonProperty(PropertyName = "Name")]
-		public NameList Name { get; set; }
+		public List<NameList> Name { get; set; }
 
 		[JsonProperty(PropertyName = "Plan")]
 		public double Plan { get; set; }
@@ -60,7 +60,7 @@ namespace DocumentDBTodo
 		public string uid { get; set; }
 
 		[JsonProperty(PropertyName = "Name")]
-		public NameList Name { get; set; }
+		public List<NameList> Name { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
 		public bool AdminStatus { get; set; }

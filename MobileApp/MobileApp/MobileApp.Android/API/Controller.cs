@@ -57,11 +57,10 @@ namespace MobileApp.Droid
 		//	//User selectedUser = await TodoItemManager.DefaultManager.DeleteDocumentDB(user)
 		//}
 
-		public static async Task AddGroupMember(User user, Member newMember)
+		public static async Task<User> AddGroupMember(User user, Member newMember)
 		{
 			User changedUser = await TodoItemManager.DefaultManager.CreateDocumentDB(user, newMember);
-		}
-
-	
+			return changedUser;
+		}	
 	}
 }

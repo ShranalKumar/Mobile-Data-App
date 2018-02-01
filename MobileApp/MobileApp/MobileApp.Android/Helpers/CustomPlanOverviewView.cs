@@ -45,8 +45,16 @@ namespace MobileApp.Droid.Helpers
 
             Android.Widget.Button addButton = new Android.Widget.Button(parent.Context);
             addButton.Text = "+ Add";
+			addButton.Click += AddGroupMember;
 
             parent.AddView(addButton);
         }
+
+		public static async void AddGroupMember(object sender, EventArgs e)
+		{
+			User changedUser = await Controller.AddGroupMember(Controller._userLoggedIn, new Member());
+			Controller._users[0] = changedUser;
+
+		}
     }
 }

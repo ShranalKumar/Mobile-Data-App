@@ -48,8 +48,7 @@ namespace MobileApp.Droid.Views
 			//Plan data pool is temporary. Will need to be fixed.
             double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
-			_dataUsageProgressBar.Click += OverViewClicked;
-
+			_dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
 
@@ -114,11 +113,6 @@ namespace MobileApp.Droid.Views
 		{
 			base.OnRestart();
 			Reload();
-		}
-
-		protected void OverViewClicked(object sender, EventArgs e)
-		{
-			
 		}
 	}
 }

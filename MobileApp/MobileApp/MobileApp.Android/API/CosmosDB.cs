@@ -104,8 +104,14 @@ namespace MobileApp.Droid
 					User currentUser = new User();
 					currentUser.UID = item.uid;
 					UserName currentUserName = new UserName();
-					currentUserName.FirstName = item.Name.FirstName;
-					currentUserName.LastName = item.Name.LastName;
+
+					currentUserName.FirstName = item.Name[0].FirstName;
+					currentUserName.LastName = item.Name[0].LastName;
+					//foreach (NameList name in item.Name)
+					//{
+					//	currentUserName.FirstName = name.FirstName;
+					//	currentUserName.LastName = name.LastName;
+					//}
 
 					currentUser.Name = currentUserName;
 					currentUser.Plan = item.Plan;
@@ -130,8 +136,15 @@ namespace MobileApp.Droid
 						Member groupMember = new Member();						
 						groupMember.UID = member.uid;
 						UserName groupMemberName = new UserName();
-						groupMemberName.FirstName = member.Name.FirstName;
-						groupMemberName.LastName = member.Name.LastName;
+
+						groupMemberName.FirstName = member.Name[0].FirstName;
+						groupMemberName.LastName = member.Name[0].LastName;
+						//foreach (NameList name in member.Name)
+						//{
+						//	groupMemberName.FirstName = name.FirstName;
+						//	groupMemberName.LastName = name.LastName;
+						//}
+
 						groupMember.Name = groupMemberName;
 
 						User groupMemberUser = new User();
@@ -192,19 +205,44 @@ namespace MobileApp.Droid
 			//newUser.Used = user.Used;
 			//newUser.Allocated = user.Allocated;
 
-			GroupMembers newUser = new GroupMembers();
-			newUser.uid = "1234567890";
-			newUser.Name.FirstName = "Kim";
-			newUser.Name.LastName = "Jong Un";
-			newUser.AdminStatus = false;
-			newUser.Used = 0;
-			newUser.Allocated = 0;
+			GroupMembers newGroupMember = new GroupMembers();
+			newGroupMember.uid = "1234567890";
+			NameList newUserName = new NameList();
+			newUserName.FirstName = "Kim";
+			newUserName.LastName = "Jong Un";
+			newGroupMember.Name = new List<NameList>();
+			newGroupMember.Name.Add(newUserName);
+			newGroupMember.AdminStatus = false;
+			newGroupMember.Used = 0;
+			newGroupMember.Allocated = 0;
+			newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
+
+			newMember.UID = newGroupMember.uid;
+			newMember.Name = new UserName();
+			newMember.Name.FirstName = newGroupMember.Name[0].FirstName;
+			newMember.Name.LastName = newGroupMember.Name[0].LastName;
+			newMember.AdminStatus = newGroupMember.AdminStatus;
+			newMember.Used = newGroupMember.Used;
+			newMember.Allocated = newGroupMember.Allocated;
+			newMember.UsageBreakdown = new List<UserUsageBreakdown>();
+
+			User newUser = new User();
+			newUser.UID = newGroupMember.uid;
+			newUser.Name = new UserName();
+			newUser.Name.FirstName = newGroupMember.Name[0].FirstName;
+			newUser.Name.LastName = newGroupMember.Name[0].LastName;
+			newUser.AdminStatus = newGroupMember.AdminStatus;
+			newUser.Used = newGroupMember.Used;
+			newUser.Allocated = newGroupMember.Allocated;
+			newUser.UsageBreakdown = new List<UserUsageBreakdown>();
+
+			Controller._users.Add(newUser);
 
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-			queryDoc.groupMembers.Add(newUser);
+			queryDoc.groupMembers.Add(newGroupMember);
 			user.GroupMembers.Add(newMember);
 
-			await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
 			return user;
 		}
 
