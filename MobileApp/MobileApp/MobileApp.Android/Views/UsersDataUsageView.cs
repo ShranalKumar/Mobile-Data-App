@@ -112,6 +112,7 @@ namespace MobileApp.Droid.Views
 			Controller._users[0].Allocated = _tempUnAllocated;
 			User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
 			Controller._users[_uid] = changedUser;
-		}
+            Toast.MakeText(this, StringConstants.Localizable.SavedChangesMessage, ToastLength.Long).Show();
+        }
     }
 }
