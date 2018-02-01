@@ -30,13 +30,12 @@ namespace MobileApp.Droid.Views
         private static ScrollView _userTiles;
         private static List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
-		private static AdminDashboardView _instance;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminDashboardLayout);
-			_instance = this;
+
 			if (_userTileList != null) { _userTileList.Clear();	}
 
             findAllElements();
@@ -49,7 +48,7 @@ namespace MobileApp.Droid.Views
 			//Plan data pool is temporary. Will need to be fixed.
             double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
-            _dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
+			_dataUsageProgressBar.Click += OverViewClicked;
 
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
@@ -111,15 +110,15 @@ namespace MobileApp.Droid.Views
 			}
 		}
 
-		public static AdminDashboardView GetInstance()
-		{
-			return _instance;
-		}
-
 		protected override void OnRestart()
 		{
 			base.OnRestart();
 			Reload();
+		}
+
+		protected void OverViewClicked(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

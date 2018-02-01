@@ -16,7 +16,7 @@ namespace DocumentDBTodo
 		public string password { get; set; }
 
 		[JsonProperty(PropertyName = "Name")]
-		public List<NameList> Name { get; set; }
+		public NameList Name { get; set; }
 
 		[JsonProperty(PropertyName = "Plan")]
 		public double Plan { get; set; }
@@ -42,11 +42,6 @@ namespace DocumentDBTodo
 
 		[JsonProperty(PropertyName = "UsageBreakdown")]
 		public List<UsageBreakdownList> UsageBreakdown { get; set; }
-
-		internal void SetPropertyValue(string v1, string v2)
-		{
-			throw new NotImplementedException();
-		}
 	}
 
 	public class NameList
@@ -65,10 +60,10 @@ namespace DocumentDBTodo
 		public string uid { get; set; }
 
 		[JsonProperty(PropertyName = "Name")]
-		public List<NameList> Name { get; set; }
+		public NameList Name { get; set; }
 
 		[JsonProperty(PropertyName = "Admin")]
-		public bool adminStatus { get; set; }
+		public bool AdminStatus { get; set; }
 
 		[JsonProperty(PropertyName = "Used")]
 		public int Used { get; set; }
