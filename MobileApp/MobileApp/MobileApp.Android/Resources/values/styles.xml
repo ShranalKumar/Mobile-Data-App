@@ -184,34 +184,7 @@
 		<item name="android:textSize">200dp</item>
 	</style>
 
-
-	
-
-  <!--<style name="WhiteBorderTransperentButtonStyle" parent="android:style/Widget.Button">
-    <item name ="android:background">@drawable/progressbarborder</item>
-	<item name ="android:textSize">50dp</item>
-	<item name ="android:padding">15dp</item>-->
-	<!--<item name ="android:buttonStyle">@style/tpbuttonstyle</item>-->
-	<!--<item name ="android:padding">5dp</item>
-		<item name="android:layout_height">300dp</item>
-  	<item name ="android:layout_width"> 400dp </item>
-	<item name ="android:layout_margin"> 100dp </item>
-
-	<item name="android:layout_height">40dp</item>
-  	<item name ="android:layout_width"> 710dp </item>
-	<item name ="android:layout_margin"> 500dp </item>-->
-  <!--</style>-->
-
-  	<!--<style name ="tpbuttonstyle" parent ="android:style/Widget.Button">
-	<item name ="android:padding">5dp</item>
-		<item name="android:layout_height">300dp</item>
-  	<item name ="android:layout_width"> 400dp </item>
-	<item name ="android:layout_margin"> 100dp </item>
-	<item name ="android:textSize">200dp</item>
-	</style>-->
-
 	<style name="WhiteBorderTransperentButtonStyle" parent="@android:style/Widget.Button">
-	<!--<item name="android:background">@drawable/progressbarborder</item>-->
   <item name="android:gravity">center_vertical|center_horizontal</item>
 	<item name="android:orientation">horizontal</item>
   <item name="android:textColor">#FFFFFFFF</item>
@@ -334,7 +307,11 @@
     <item name="android:scaleY">3</item>
     <item name="android:paddingTop">10dp</item>
     <item name="android:paddingBottom">10dp</item>
+  </style>
 
+  <style name="OverviewPageMemberNames">
+    <item name="android:textSize">18dp</item>
+    <item name="android:padding">10dp</item>
   </style>
 
 </resources>
