@@ -61,6 +61,10 @@ namespace MobileApp.Droid.Helpers
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 
+            List<UserUsageBreakdown> a = new List<UserUsageBreakdown>();
+            a.Sort();
+
+            
 			foreach (UserUsageBreakdown breakdown in key.UsageBreakdown)
 			{
 				ContextThemeWrapper newAppDataUsageRowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserDataUsageBreakdown);

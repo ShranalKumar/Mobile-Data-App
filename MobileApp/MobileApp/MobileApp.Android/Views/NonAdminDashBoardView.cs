@@ -20,17 +20,8 @@ namespace MobileApp.Droid.Views
 		private Button _transferButton;
 		private LinearLayout _noneAdminUsageBreakdown;
 		private RelativeLayout _remainingDataBarBorder;
-		private RelativeLayout _dataFillBar;
-		public double widthassumed = 3.7;
-		public double trouble;
-		//private NonAdminDashboardOnGlobalLayoutListener _globalLayoutListener;
-
-
-
-		//private double _widthsize;
-
-
-		// DataRemainingFillMask ScaleX to a max of 3.7
+		private ProgressBar _dataFillBar;
+		
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -44,18 +35,16 @@ namespace MobileApp.Droid.Views
 
 			_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
 			_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
-
-			//_globalLayoutListener = new NonAdminDashboardOnGlobalLayoutListener(this);
+            
 		}
 
 		public void DataBarFill()
-		{			
-			trouble = (double) Controller._users[0].Used / (double) Controller._users[0].Allocated * widthassumed;
-			_dataFillBar.ScaleX = (float)trouble;
-			//_dataFillBar.ScaleX =(float)widthassumed;
-		}
+		{
+            double _fillNumber = (1 - (double)Controller._users[0].Used / (double)Controller._users[0].Allocated) * 100;
+            _dataFillBar.Progress = (int)_fillNumber;
+        }
 
-		protected void findAllElements()
+        protected void findAllElements()
 		{
 			_nonAdminDataUsageUsageTitle = FindViewById<TextView>(Resource.Id.NonAdminDataUsageTitle);
 			_remainingDaysNonAdmin = FindViewById<TextView>(Resource.Id.RemainingDaysNonAdmin);
@@ -63,7 +52,7 @@ namespace MobileApp.Droid.Views
 			_transferButton = FindViewById<Button>(Resource.Id.TransferButton);
 			_requestButton = FindViewById<Button>(Resource.Id.RequestButton);
 			_remainingDataBarBorder = FindViewById<RelativeLayout>(Resource.Id.DataRemainingPgBarLayout);
-			_dataFillBar = FindViewById<RelativeLayout>(Resource.Id.DataRemainingFillMask);
+			_dataFillBar = FindViewById<ProgressBar>(Resource.Id.DataRemainingFillMask);
 			_noneAdminUsageBreakdown = FindViewById<LinearLayout>(Resource.Id.NonAdminUsageBreakdown);
 		}
 
@@ -77,63 +66,3 @@ namespace MobileApp.Droid.Views
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-//public void OnGlobalLayout()
-//{
-//	_hasHadGlobalLayout = true;
-//	ViewDidBecomeVisible();
-//	_containerLayout.ViewTreeObserver.RemoveOnGlobalLayoutListener(_globalLayoutListener);
-//}
-
-
-
-
-
-//public void OnGlobalLayout()
-//{
-//	_hasHadGlobalLayout = true;
-//	ViewDidBecomeVisibleV=
-//	_containerLayout.ViewTreeObserver.RemoveOnGlobalLayoutListener(_globalLayoutListener);
-//}
-
-//private void UpdatePages()
-//{
-//	_mainViewPager.OffscreenPageLimit = PagedViewModels.Length;
-
-//	_fragmentPagerAdapter = new DashboardPagerAdapter(this, SupportFragmentManager, PagedViewModels);
-//	_mainViewPager.Adapter = _fragmentPagerAdapter;
-
-//	_hasHadGlobalLayout = false;
-//	_containerLayout.ViewTreeObserver.AddOnGlobalLayoutListener(_globalLayoutListener);
-//}
-
-
-
-//public void OnGlobalLayoutListener()
-//{
-//_remainingDataBarBorder.ViewTreeObserver.AddOnGlobalLayoutListener
-
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
