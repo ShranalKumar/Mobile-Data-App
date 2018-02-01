@@ -187,7 +187,17 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/MembersListScrollView"
-            p1:padding="15dp"
-            p1:visibility="invisible" />
+            p1:visibility="invisible">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/MembersListLinearLayout"
+                p1:paddingBottom="15dp"
+                p1:paddingLeft="15dp"
+                p1:paddingRight="15dp" />
+        </ScrollView>
     </LinearLayout>
 </RelativeLayout>
