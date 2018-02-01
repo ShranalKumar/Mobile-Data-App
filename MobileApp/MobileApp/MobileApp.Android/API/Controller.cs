@@ -15,6 +15,7 @@ namespace MobileApp.Droid
 	public class Controller
 	{
 		public static List<User> _users;
+		public static User _userLoggedIn;
 		public TodoItemManager cosmosDB;
 		public static double _totalRemainder;
 		public static double _totalAllocated;
@@ -27,6 +28,7 @@ namespace MobileApp.Droid
 		public Controller(List<User> user)
 		{
 			_users = user;
+			_userLoggedIn = _users[0];
 			_currentDate = DateTime.Now;
 
 			var changeDate = user[0].PlanEndDate.Split('/');
@@ -49,5 +51,17 @@ namespace MobileApp.Droid
 			User changedUser = await TodoItemManager.DefaultManager.UpdateDocumentDB(user, allocation);
 			return changedUser;
 		}
+
+		//public static async Task DeleteMember(User user)
+		//{
+		//	//User selectedUser = await TodoItemManager.DefaultManager.DeleteDocumentDB(user)
+		//}
+
+		public static async Task AddGroupMember(User user, Member newMember)
+		{
+			User changedUser = await TodoItemManager.DefaultManager.CreateDocumentDB(user, newMember);
+		}
+
+	
 	}
 }

@@ -30,6 +30,8 @@ namespace MobileApp.Droid.Views
         private ScrollView _dataUsageBreakdownlayout;
 		private ImageButton _dataUsageSaveButton;
 		private User _user;
+		private double _tempUnAllocated;
+		private double _progressChanged;
 		private int _uid;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -79,21 +81,36 @@ namespace MobileApp.Droid.Views
 
         protected void allocationSliderSettings()
         {
-            double _sliderPresetValue = ((double)_user.Allocated / Controller._planDataPool ) * 100;
-            _allocationSlider.Progress = (int)_sliderPresetValue;
-            _allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
-                if (e.FromUser)
-                {
-                    double changed = ( (double)e.Progress / 100) * Controller._planDataPool;
-                    _allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, changed.ToString());
-                }
-            };
+            double _sliderPresetValue = ((double)_user.Allocated / Controller._planDataPool) * 100;
+			_allocationSlider.Progress = (int)_sliderPresetValue;
+			_allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
+				if (e.FromUser)
+				{
+					_progressChanged = ((double)e.Progress / 100) * (Controller._totalUnAllocated + _user.Allocated);
+					var dif = _progressChanged - _user.Allocated;
+					_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif), 1);
+					if (_progressChanged <= _user.Used)
+					{
+						_progressChanged = _user.Used;
+						_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated + (_user.Allocated - _user.Used), 1));
+						_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 1));
+						_tempUnAllocated = Controller._totalUnAllocated + (_user.Allocated - _user.Used);
+					}
+					else
+					{
+						_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
+						_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_progressChanged, 1));
+						_tempUnAllocated = Controller._totalUnAllocated - dif;
+					}
+				}
+			};
         }
 
 		protected async void UpdateUserDataAllocation(object sender, EventArgs e) 
 		{
-			var newAllocation = _allocationSlider.Progress / 100.0 * Controller._planDataPool;
-			User changedUser = await Controller.UpdateAllocation(_user, newAllocation);
+			Controller._totalUnAllocated = _tempUnAllocated;
+			Controller._users[0].Allocated = _tempUnAllocated;
+			User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
 			Controller._users[_uid] = changedUser;
 		}
     }

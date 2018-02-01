@@ -123,7 +123,7 @@ namespace MobileApp.Droid.Views
 
             else if (_memberListScrollView.Visibility == ViewStates.Visible)
             {
-                //_dropdownListArrow.Rotation = -180;         Doesnt Work ATM!
+                _dropdownListArrow.Rotation = -180;
                 _memberListScrollView.Visibility = ViewStates.Invisible;
             }
         }

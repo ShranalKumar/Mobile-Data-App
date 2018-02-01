@@ -15,7 +15,6 @@ namespace MobileApp.Droid.Helpers
 		{
 			LinearLayout MainLinear = new LinearLayout(parent.Context);
             MainLinear.SetPadding(0, 25, 0, 0);
-            //User user = Controller._users.Where(x => x.UID == key).First();
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 

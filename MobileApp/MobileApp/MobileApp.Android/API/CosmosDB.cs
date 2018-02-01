@@ -104,11 +104,8 @@ namespace MobileApp.Droid
 					User currentUser = new User();
 					currentUser.UID = item.uid;
 					UserName currentUserName = new UserName();
-					foreach (NameList name in item.Name)
-					{
-						currentUserName.FirstName = name.FirstName;
-						currentUserName.LastName = name.LastName;
-					}
+					currentUserName.FirstName = item.Name.FirstName;
+					currentUserName.LastName = item.Name.LastName;
 
 					currentUser.Name = currentUserName;
 					currentUser.Plan = item.Plan;
@@ -133,12 +130,8 @@ namespace MobileApp.Droid
 						Member groupMember = new Member();						
 						groupMember.UID = member.uid;
 						UserName groupMemberName = new UserName();
-
-						foreach (NameList name in member.Name)
-						{
-							groupMemberName.FirstName = name.FirstName;
-							groupMemberName.LastName = name.LastName;
-						}
+						groupMemberName.FirstName = member.Name.FirstName;
+						groupMemberName.LastName = member.Name.LastName;
 						groupMember.Name = groupMemberName;
 
 						User groupMemberUser = new User();
@@ -148,7 +141,7 @@ namespace MobileApp.Droid
 						if (currentUser.AdminStatus)
 						{
 							_adminStatus = true;
-							groupMember.AdminStatus = member.adminStatus;
+							groupMember.AdminStatus = member.AdminStatus;
 							groupMember.Used = member.Used;
 							groupMember.Allocated = member.Allocated;
 							groupMember.UsageBreakdown = new List<UserUsageBreakdown>();							
@@ -161,7 +154,7 @@ namespace MobileApp.Droid
 								groupMember.UsageBreakdown.Add(breakdown);
 							}
 							currentUser.GroupMembers.Add(groupMember);
-							groupMemberUser.AdminStatus = member.adminStatus;
+							groupMemberUser.AdminStatus = member.AdminStatus;
 							groupMemberUser.Used = member.Used;
 							groupMemberUser.Allocated = member.Allocated;
 							groupMemberUser.UsageBreakdown = groupMember.UsageBreakdown;
@@ -188,6 +181,42 @@ namespace MobileApp.Droid
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
 			return user;
 		}
+
+		public async Task<User> CreateDocumentDB(User user, Member newMember)
+		{
+			//TodoItem newUser = new TodoItem();
+			//newUser.uid = user.UID;
+			//newUser.Name.FirstName = user.Name.FirstName;
+			//newUser.Name.LastName = user.Name.LastName;
+			//newUser.AdminStatus = user.AdminStatus;
+			//newUser.Used = user.Used;
+			//newUser.Allocated = user.Allocated;
+
+			GroupMembers newUser = new GroupMembers();
+			newUser.uid = "1234567890";
+			newUser.Name.FirstName = "Kim";
+			newUser.Name.LastName = "Jong Un";
+			newUser.AdminStatus = false;
+			newUser.Used = 0;
+			newUser.Allocated = 0;
+
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+			queryDoc.groupMembers.Add(newUser);
+			user.GroupMembers.Add(newMember);
+
+			await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+			return user;
+		}
+
+
+		public async Task DeleteDocumentDB(User user/*, string documentName*/)
+		{
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '0430'").AsEnumerable().First();
+			var userToDelete = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
+			await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id));
+
+		}
+
 
 		public Boolean getLoginStatus()
 		{
