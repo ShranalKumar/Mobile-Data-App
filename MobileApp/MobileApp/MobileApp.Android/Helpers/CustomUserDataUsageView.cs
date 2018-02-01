@@ -13,12 +13,17 @@ namespace MobileApp.Droid.Helpers
 	{
 		public static void GetUserDataUsageRows(Android.Widget.ScrollView parent, User key)
 		{
-			LinearLayout MainLinear = new LinearLayout(parent.Context);
+            var _usage = new List<UserUsageBreakdown>();
+            key.UsageBreakdown.ForEach(x => _usage.Add(x));
+            _usage.Sort((first, second) => string.Compare(first.AppDataUsed, second.AppDataUsed));
+            _usage.Reverse();
+
+            LinearLayout MainLinear = new LinearLayout(parent.Context);
             MainLinear.SetPadding(0, 25, 0, 0);
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 
-			foreach (UserUsageBreakdown breakdown in key.UsageBreakdown)
+			foreach (UserUsageBreakdown breakdown in _usage)
 			{
                 ContextThemeWrapper newAppDataUsageRowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserDataUsageBreakdown);
 				LinearLayout AppDataUsageRow = new LinearLayout(newAppDataUsageRowContext);
@@ -56,18 +61,19 @@ namespace MobileApp.Droid.Helpers
 
 		public static void GetUserDataUsageRows(Android.Widget.LinearLayout parent, User key)
 		{
+            var _usage = new List<UserUsageBreakdown>();
+            key.UsageBreakdown.ForEach(x => _usage.Add(x));
+            _usage.Sort((first, second) => string.Compare(first.AppDataUsed, second.AppDataUsed));
+            _usage.Reverse();
+            
 			LinearLayout MainLinear = new LinearLayout(parent.Context);
 			MainLinear.SetPadding(0, 25, 0, 0);
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 
-            List<UserUsageBreakdown> a = new List<UserUsageBreakdown>();
-            a.Sort();
-
-            
-			foreach (UserUsageBreakdown breakdown in key.UsageBreakdown)
+            foreach (UserUsageBreakdown breakdown in _usage)
 			{
-				ContextThemeWrapper newAppDataUsageRowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserDataUsageBreakdown);
+                ContextThemeWrapper newAppDataUsageRowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserDataUsageBreakdown);
 				LinearLayout AppDataUsageRow = new LinearLayout(newAppDataUsageRowContext);
 				AppDataUsageRow.Orientation = Orientation.Vertical;
 

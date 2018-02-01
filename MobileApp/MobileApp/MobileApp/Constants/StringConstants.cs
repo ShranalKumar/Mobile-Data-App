@@ -28,6 +28,8 @@ namespace MobileApp.Constants
             public const string MBUnit = "MB";
             public const string GBUnit = "GB";
 
+            //Users Data Usage Screen
+            public const string SavedChangesMessage = "Your changes have successfully been changed!";
 
             //Non-Admin Dashboard Screen
             public const string UsersDataUsage = "{0} Data Usage";
@@ -50,7 +52,7 @@ namespace MobileApp.Constants
             public const string RequestFrom = "Reqeust Data From:";
             public const string SelectAmountRequest = "Select Amount to Request:";
 
-            //Request Screen
+            //Plan Overview Screen
             public const string OverviewTitle = "Plan Overview";
             public const string PlanName = "Data Share";
             public const string PlanDataAmount = "{0} GB / month";
