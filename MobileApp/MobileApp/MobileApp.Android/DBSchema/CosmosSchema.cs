@@ -25,7 +25,7 @@ namespace DocumentDBTodo
 		public bool AdminStatus { get; set; }
 
 		[JsonProperty(PropertyName = "Used")]
-		public int Used { get; set; }
+		public double Used { get; set; }
 
 		[JsonProperty(PropertyName = "Allocated")]
 		public double Allocated { get; set; }
