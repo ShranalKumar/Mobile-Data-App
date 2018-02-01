@@ -63,6 +63,12 @@ namespace MobileApp.Droid.Helpers
 			MainLinear.Orientation = Orientation.Vertical;
 			parent.AddView(MainLinear);
 
+            int _used = key.Used;
+
+            List<UserUsageBreakdown> a = new List<UserUsageBreakdown>();
+            a.Sort();
+
+            
 			foreach (UserUsageBreakdown breakdown in key.UsageBreakdown)
 			{
 				ContextThemeWrapper newAppDataUsageRowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserDataUsageBreakdown);
@@ -87,7 +93,7 @@ namespace MobileApp.Droid.Helpers
 				Android.Widget.ProgressBar UserDataUsageProgressBar = new Android.Widget.ProgressBar(newProgressBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
 				double AppUsage = Double.Parse(breakdown.AppDataUsed) / 1000;
-				double progress = (AppUsage / key.Used) * 100;
+				double progress = (AppUsage / _used) * 100;
 				UserDataUsageProgressBar.Progress = (int)(progress);
 
 				currentUserProgressBar.AddView(UserDataUsageProgressBar);
