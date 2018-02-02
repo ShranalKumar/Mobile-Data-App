@@ -42,7 +42,7 @@ namespace MobileApp.Droid.Helpers
 
                 ContextThemeWrapper userAllocatedContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextRightAlignText);
                 TextView Allocated = new TextView(userAllocatedContext);
-				Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, user.Allocated);
+				Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(user.Allocated, 1));
 
                 ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
                 SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);

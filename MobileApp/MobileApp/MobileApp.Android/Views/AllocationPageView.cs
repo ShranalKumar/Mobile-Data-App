@@ -78,7 +78,7 @@ namespace MobileApp.Droid.Views
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
             _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
             _remainingDataText.Text = StringConstants.Localizable.UnAllocatedData;
-            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalUnAllocated);
+            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated, 2));
             _weeklyModeText.Text = StringConstants.Localizable.WeeklyMode;
             _saveButon.Text = StringConstants.Localizable.SaveButton;
         }

@@ -70,10 +70,10 @@ namespace MobileApp.Droid.Views
         protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedData;
-            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Allocated);
+            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 1));
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
             _remainingDataText.Text = StringConstants.Localizable.UnAllocatedData;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._totalUnAllocated);
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated, 1));
             _usedDataText.Text = StringConstants.Localizable.UsedData;
             _usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
             _dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
