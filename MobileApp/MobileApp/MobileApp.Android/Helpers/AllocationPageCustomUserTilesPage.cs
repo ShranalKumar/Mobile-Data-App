@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Constants;
 using MobileApp.Droid.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -41,18 +42,29 @@ namespace MobileApp.Droid.Helpers
 
                 ContextThemeWrapper userAllocatedContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserTextRightAlignText);
                 TextView Allocated = new TextView(userAllocatedContext);
-				Allocated.Text = user.Allocated.ToString();
+				Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, user.Allocated);
 
                 ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
                 SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
+                double progress = (user.Used / user.Allocated) * 100;
+                userAllocationSlider.Progress = (int)(progress);
+                userAllocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
+                {
+                    if (e.FromUser)
+                    {
+                        double progressChanged = ((double)e.Progress / 100) * (Controller._totalUnAllocated + user.Allocated);
+                        double dif = progressChanged - user.Allocated;
+                        AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
+                    }
+                };
 
                 parent.AddView(User);                
 				User.AddView(UserDetailsTextLayout);
                 UserDetailsTextLayout.AddView(UserName);
                 UserDetailsTextLayout.AddView(Allocated);
                 User.AddView(userAllocationSlider);
+                UserTiles.Add(User);
             }
         }
 	}
-
 }

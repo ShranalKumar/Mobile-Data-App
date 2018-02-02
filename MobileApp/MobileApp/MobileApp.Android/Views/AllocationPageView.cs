@@ -24,7 +24,7 @@ namespace MobileApp.Droid.Views
         private TextView _currentPlanText;
         private TextView _currentPlanDataAmount;
         private TextView _remainingDataText;
-        private TextView _remainingDataAmount;
+        public static TextView _remainingDataAmount;
         private TextView _weeklyModeText;
         private Button _saveButon;
         private RadialProgressView _radialProgress;
@@ -77,8 +77,8 @@ namespace MobileApp.Droid.Views
             _allocatePageTitle.Text = StringConstants.Localizable.AllocateData;
             _currentPlanText.Text = StringConstants.Localizable.CurrentPlan;
             _currentPlanDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._planDataPool);
-            _remainingDataText.Text = StringConstants.Localizable.RemainingData;
-            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
+            _remainingDataText.Text = StringConstants.Localizable.UnAllocatedData;
+            _remainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalUnAllocated);
             _weeklyModeText.Text = StringConstants.Localizable.WeeklyMode;
             _saveButon.Text = StringConstants.Localizable.SaveButton;
         }
