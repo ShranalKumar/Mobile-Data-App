@@ -188,8 +188,16 @@ namespace MobileApp.Droid
 		public async Task<User> UpdateDocumentDB(User user, double allocated)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-			var userToUpdate = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
-			userToUpdate.Allocated = allocated;
+            GroupMembers userToUpdate;
+            if (user.UID != queryDoc.uid)
+            {
+                userToUpdate = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
+                userToUpdate.Allocated = allocated;
+            } else
+            {
+                queryDoc.Allocated = allocated;
+            }
+            
 			user.Allocated = allocated;
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
 			return user;
