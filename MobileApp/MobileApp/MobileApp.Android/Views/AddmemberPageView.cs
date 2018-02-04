@@ -35,6 +35,7 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
             _addMemberBackButton.Click += delegate { Finish(); };
+            _addButtonTitle.Click += AddNewMember;
         }
 
         protected void findAllElements()
@@ -56,6 +57,22 @@ namespace MobileApp.Droid.Views
             _firstNametitle.Hint = StringConstants.Localizable.FirstName;
             _lastNameTitle.Hint = StringConstants.Localizable.LastName;
             _adminStatusTitle.Text = StringConstants.Localizable.AdminStatus;
+        }
+
+        protected async void AddNewMember(object sender, EventArgs e)
+        {
+            Member newUser = new Member();
+            newUser.UID = _phoneNumberTitle.Text;
+            newUser.Name = new UserName();
+            newUser.Name.FirstName = _firstNametitle.Text;
+            newUser.Name.LastName = _lastNameTitle.Text;
+            newUser.AdminStatus = _adminStatusTitle.Checked;
+            newUser.Used = 0;
+            newUser.Allocated = 0;
+            newUser.UsageBreakdown = new List<UserUsageBreakdown>();
+
+            await Controller.AddGroupMember(Controller._userLoggedIn, newUser);
+            Toast.MakeText(this, StringConstants.Localizable.NewMemberAddedToast, ToastLength.Long).Show();
         }
     }
 }

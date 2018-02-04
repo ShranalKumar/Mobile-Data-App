@@ -31,6 +31,9 @@ namespace MobileApp.Constants
             //Users Data Usage Screen
             public const string SavedChangesMessage = "Your changes have successfully been changed!";
 
+            //Overview Screen
+            public const string NewMemberAddedToast = "New group member has been successfully added!";
+
             //Non-Admin Dashboard Screen
             public const string UsersDataUsage = "{0} Data Usage";
             public const string DataUsageBreakdown = "{0} MB";

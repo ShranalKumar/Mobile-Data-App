@@ -22,6 +22,7 @@ namespace MobileApp.Droid.Helpers
 
         public static void getMembers(LinearLayout parent)
         {
+            parent.RemoveAllViewsInLayout();
             MemberNamesList = new List<TextView>();
 
             int count = 1;
