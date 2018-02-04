@@ -50,28 +50,7 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-
-            CustomPlanOverviewView.getMembers(_membersListLinearLayout);
-
-            foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
-            {
-                name.LongClick += (o, s) =>
-                {
-                    _tileClickedOn = name;
-
-                    _userId = _tileClickedOn.Id;
-                    _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
-                    _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
-                    
-                    AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-                    memberDeleteAlert.SetTitle("Remove Member");
-                    memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
-                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { deleteMemberRequest(); });
-                    memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
-                    Dialog deleteDialog = memberDeleteAlert.Create();
-                    deleteDialog.Show();
-                };
-            }
+            SetScrollableView();
 
             _overviewPageBackButton.Click += delegate { Finish(); };
             _memberListDropDown.Click += delegate { showMembersList(); };
@@ -128,6 +107,37 @@ namespace MobileApp.Droid.Views
                 _dropdownListArrow.Rotation = -180;
                 _memberListScrollView.Visibility = ViewStates.Invisible;
             }
+        }
+
+        protected void SetScrollableView()
+        {
+            CustomPlanOverviewView.getMembers(_membersListLinearLayout);
+
+            foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
+            {
+                name.LongClick += (o, s) =>
+                {
+                    _tileClickedOn = name;
+
+                    _userId = _tileClickedOn.Id;
+                    _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
+                    _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
+
+                    AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+                    memberDeleteAlert.SetTitle("Remove Member");
+                    memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
+                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { deleteMemberRequest(); });
+                    memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+                    Dialog deleteDialog = memberDeleteAlert.Create();
+                    deleteDialog.Show();
+                };
+            }
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            SetScrollableView();
         }
     }
 }
