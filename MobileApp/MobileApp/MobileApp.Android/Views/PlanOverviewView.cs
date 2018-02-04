@@ -57,12 +57,6 @@ namespace MobileApp.Droid.Views
             CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
-        private void deleteMemberRequest()
-        {
-            _toastMessage = _fullName + " was successfully removed from your plan.";
-            Toast.MakeText(this , _toastMessage, ToastLength.Long).Show();
-        }
-
         private void findAllElements()
         {
             _overviewPageTitle = FindViewById<TextView>(Resource.Id.OverviewPageTitle);
@@ -126,12 +120,19 @@ namespace MobileApp.Droid.Views
                     AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
                     memberDeleteAlert.SetTitle("Remove Member");
                     memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
-                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { deleteMemberRequest(); });
+                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
                     memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
                     Dialog deleteDialog = memberDeleteAlert.Create();
                     deleteDialog.Show();
                 };
             }
+        }
+
+        protected async void DeleteGroupMember()
+        {
+            await Controller.DeleteGroupMemeber(Controller._userLoggedIn, _getUser);
+            Toast.MakeText(this, string.Format(StringConstants.Localizable.DeleteMemberToast, _fullName), ToastLength.Short).Show();
+            SetScrollableView();
         }
 
         protected override void OnRestart()

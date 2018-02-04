@@ -226,20 +226,28 @@ namespace MobileApp.Droid
 		}
 
 
-		//public async Task<User> DeleteGroupMember(User user/*, Member targetMember*/)
-		//{
-		//	var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-		//	GroupMembers userToDelete;
-		//	if (user.UID != queryDoc.uid)
-		//	{
-		//		userToDelete = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
-		//	}
-		//	await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
-		//	return user;
-		//}
+        public async Task<User> DeleteGroupMember(User user, User targetMember)
+        {
+            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+            GroupMembers groupMemberToDelete;
+            Member memberToDelete;
 
+            Console.WriteLine(targetMember.Name.FirstName);
 
-		public Boolean getLoginStatus()
+            if (targetMember.UID != queryDoc.uid)
+            {
+                groupMemberToDelete = queryDoc.groupMembers.Where(x => x.uid == targetMember.UID).FirstOrDefault();
+                queryDoc.groupMembers.Remove(groupMemberToDelete);
+                Controller._users.Remove(targetMember);
+                memberToDelete = user.GroupMembers.Where(x => x.UID == targetMember.UID).FirstOrDefault();
+                user.GroupMembers.Remove(memberToDelete);
+            }     
+
+            await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+            return user;
+        }
+
+        public Boolean getLoginStatus()
 		{
 			return _authenticationStatus;
 		}

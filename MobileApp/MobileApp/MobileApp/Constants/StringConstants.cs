@@ -33,6 +33,7 @@ namespace MobileApp.Constants
 
             //Overview Screen
             public const string NewMemberAddedToast = "New group member has been successfully added!";
+            public const string DeleteMemberToast = "{0} has been removed from the plan!";
 
             //Non-Admin Dashboard Screen
             public const string UsersDataUsage = "{0} Data Usage";
