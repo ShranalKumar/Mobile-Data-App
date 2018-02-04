@@ -255,17 +255,17 @@ namespace MobileApp.Droid
 		}
 
 
-		public async Task<User> DeleteGroupMember(User user/*, Member targetMember*/)
-		{
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-			GroupMembers userToDelete;
-			if (user.UID != queryDoc.uid)
-			{
-				userToDelete = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
-			}
-			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
-			return user;
-		}
+		//public async Task<User> DeleteGroupMember(User user/*, Member targetMember*/)
+		//{
+		//	var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+		//	GroupMembers userToDelete;
+		//	if (user.UID != queryDoc.uid)
+		//	{
+		//		userToDelete = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
+		//	}
+		//	await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+		//	return user;
+		//}
 
 
 		public Boolean getLoginStatus()
