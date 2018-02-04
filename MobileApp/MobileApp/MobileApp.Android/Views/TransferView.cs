@@ -67,6 +67,7 @@ namespace MobileApp.Droid.Views
             SetContentView(Resource.Layout.TransferLayout);
 
             findAllElements();
+            DataBarFill();
             setAllStringConstants();
             CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
             
@@ -83,6 +84,12 @@ namespace MobileApp.Droid.Views
             _fourthDownArrow.Click += decreaseInt;            
             _sendButtonClicked.Click += showConfirmationPopUp;           
             _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };
+        }
+
+        public void DataBarFill()
+        {
+            double _fillNumber = (1 - (double)Controller._users[0].Used / (double)Controller._users[0].Allocated) * 100;
+            _progressBarFill.Progress = (int)_fillNumber;
         }
 
         protected void findAllElements()
@@ -132,9 +139,7 @@ namespace MobileApp.Droid.Views
             _dataRemainingText.Text = StringConstants.Localizable.DataRemaining;
             _gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, "1");
             _sendButtonClicked.Text = StringConstants.Localizable.SendButton;
-
-            //temporarily hard coded progress amount
-            _progressBarFill.Progress = 50;
+            
         }
 
 

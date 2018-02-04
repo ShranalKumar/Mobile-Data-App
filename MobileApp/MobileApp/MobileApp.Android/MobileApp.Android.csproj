@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MobileApp.Droid</RootNamespace>
     <AssemblyName>MobileApp.Android</AssemblyName>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -34,7 +34,7 @@
     <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -45,6 +45,8 @@
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -141,6 +143,7 @@
     <Compile Include="FixingSpaghettiCode.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="Helpers\CustomUserTilesPage.cs" />
+    <Compile Include="Views\AddmemberPageView.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />
     <Compile Include="API\Controller.cs" />
     <Compile Include="API\CosmosDB.cs" />
@@ -168,6 +171,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\PlanOverviewLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddNewMemberLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

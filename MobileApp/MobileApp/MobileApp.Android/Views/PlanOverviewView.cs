@@ -30,6 +30,7 @@ namespace MobileApp.Droid.Views
         private TextView _planUsedDataAmount;
         private TextView _tileClickedOn;
 
+
         private ImageButton _overviewPageBackButton;
         private ImageView _dropdownListArrow;
 
@@ -74,6 +75,7 @@ namespace MobileApp.Droid.Views
 
             _overviewPageBackButton.Click += delegate { Finish(); };
             _memberListDropDown.Click += delegate { showMembersList(); };
+            CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
         private void deleteMemberRequest()

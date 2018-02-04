@@ -167,7 +167,7 @@
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/SendButtonLayout"
-        p1:layout_width="match_parent"
+        p1:layout_width="wrap_content"
         p1:layout_below="@id/ScrollableLayout"
         p1:layout_height="wrap_content"
         p1:paddingTop="25dp"
@@ -179,6 +179,7 @@
             p1:background="@drawable/transparent_button"
             p1:textColor="@color/foreground_material_dark"
             p1:layout_width="match_parent"
-            p1:layout_height="match_parent" />
+            p1:layout_height="wrap_content"
+            p1:padding="10dp" />
     </RelativeLayout>
 </RelativeLayout>
