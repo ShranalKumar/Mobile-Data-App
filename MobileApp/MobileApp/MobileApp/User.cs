@@ -30,12 +30,12 @@ namespace MobileApp
         public string AppDataUsed { get; set; }
     }
 
-    public class Member
+    public class Member : User
     {
         public string UID { get; set; }
         public UserName Name { get; set; }
         public bool AdminStatus { get; set; }
-        public int  Used { get; set; }
+        public double  Used { get; set; }
         public double Allocated { get; set; }
         public List<UserUsageBreakdown> UsageBreakdown { get; set; }
     }

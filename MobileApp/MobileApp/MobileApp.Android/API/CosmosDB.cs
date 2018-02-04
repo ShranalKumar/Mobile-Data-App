@@ -173,7 +173,7 @@ namespace MobileApp.Droid
 			}
 		}
 
-		public async Task<User> UpdateDocumentDB(User user, double allocated)
+		public async Task<User> UpdateMemberAllocation(User user, double allocated)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
             GroupMembers userToUpdate;
@@ -191,39 +191,63 @@ namespace MobileApp.Droid
 			return user;
 		}
 
-		public async Task<User> CreateDocumentDB(User user, Member newMember)
+		public async Task<User> CreateNewUser(User user, Member newMember)
 		{
-			GroupMembers newGroupMember = new GroupMembers();
-			newGroupMember.uid = newMember.UID;
-			NameList newUserName = new NameList();
-			newUserName.FirstName = newMember.Name.FirstName;
-			newUserName.LastName = newMember.Name.LastName;
-			newGroupMember.Name = new List<NameList>();
-			newGroupMember.Name.Add(newUserName);
-			newGroupMember.AdminStatus = newMember.AdminStatus;
-			newGroupMember.Used = newMember.Used;
-			newGroupMember.Allocated = newMember.Allocated;
-			newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
+            TodoItem queryDoc;
 
-			User newUser = new User();
-			newUser.UID = newGroupMember.uid;
-			newUser.Name = new UserName();
-			newUser.Name.FirstName = newGroupMember.Name[0].FirstName;
-			newUser.Name.LastName = newGroupMember.Name[0].LastName;
-			newUser.AdminStatus = newGroupMember.AdminStatus;
-			newUser.Used = newGroupMember.Used;
-			newUser.Allocated = newGroupMember.Allocated;
-			newUser.UsageBreakdown = new List<UserUsageBreakdown>();
+            //if (!newMember.AdminStatus)
+            //{
+                queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+                GroupMembers newGroupMember = new GroupMembers();
+                newGroupMember.uid = newMember.UID;
+                NameList newUserName = new NameList();
+                newUserName.FirstName = newMember.Name.FirstName;
+                newUserName.LastName = newMember.Name.LastName;
+                newGroupMember.Name = new List<NameList>();
+                newGroupMember.Name.Add(newUserName);
+                newGroupMember.AdminStatus = newMember.AdminStatus;
+                newGroupMember.Used = newMember.Used;
+                newGroupMember.Allocated = newMember.Allocated;
+                newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
 
-			Controller._users.Add(newUser);
+                User newUser = new User();
+                newUser.UID = newGroupMember.uid;
+                newUser.Name = new UserName();
+                newUser.Name.FirstName = newGroupMember.Name[0].FirstName;
+                newUser.Name.LastName = newGroupMember.Name[0].LastName;
+                newUser.AdminStatus = newGroupMember.AdminStatus;
+                newUser.Used = newGroupMember.Used;
+                newUser.Allocated = newGroupMember.Allocated;
+                newUser.UsageBreakdown = new List<UserUsageBreakdown>();
 
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-			queryDoc.groupMembers.Add(newGroupMember);
+                Controller._users.Add(newUser);
+                queryDoc.groupMembers.Add(newGroupMember);
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+                //return user;
+            //}
+            //else
+            //{
+            //    User newAdminUser = newMember;
+            //    newAdminUser.GroupMembers = user.GroupMembers;
+            //    user.GroupMembers.Add(newMember);
+            //    newAdminUser.GroupMembers.Add(new Member
+            //    {
+            //        UID = user.UID,
+            //        Name = user.Name,
+            //        AdminStatus = user.AdminStatus,
+            //        Used = user.Used,
+            //        Allocated = user.Allocated,
+            //        UsageBreakdown = user.UsageBreakdown
+            //    });
+
+            //    CreateNewDocument(newAdminUser);
+
+            //    await client.CreateDocumentAsync(collectionLink, newAdminUser);
+            //}
+            
 			user.GroupMembers.Add(newMember);
-
-			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
-			return user;
-		}
+            return user;
+        }
 
 
         public async Task<User> DeleteGroupMember(User user, User targetMember)
@@ -256,5 +280,10 @@ namespace MobileApp.Droid
 		{
 			return _adminStatus;
 		}
+
+  //      public void CreateNewDocument(User newUser)
+  //      {
+
+  //      }
 	}
 }
