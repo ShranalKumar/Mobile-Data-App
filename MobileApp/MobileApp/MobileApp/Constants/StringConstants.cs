@@ -62,6 +62,14 @@ namespace MobileApp.Constants
             public const string PlanRemainingAmount = "{0} GB"; //Need to get amount from DB, DB under construction
             public const string PlanAllocatedAmount = "{0} GB"; //Need to get amount from DB, DB under construction
             public const string PlanUsedAmount = "{0} GB"; //Need to get amount from DB, DB under construction
+
+            //Add member Screen
+            public const string AddMemberTitle = "Add New Member";
+            public const string PhoneNumber = "Phone Number";
+            public const string FirstName = "First Name";
+            public const string LastName = "Last Name";
+            public const string AdminStatus = "Give Admin Rights";
+
         }
     }
 }

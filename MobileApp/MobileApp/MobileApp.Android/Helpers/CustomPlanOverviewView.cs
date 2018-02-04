@@ -18,6 +18,7 @@ namespace MobileApp.Droid.Helpers
     {
 
         public static List<TextView> MemberNamesList;
+        public static Android.Widget.Button _addButton;
 
         public static void getMembers(LinearLayout parent)
         {
@@ -43,11 +44,10 @@ namespace MobileApp.Droid.Helpers
 
             }
 
-            Android.Widget.Button addButton = new Android.Widget.Button(parent.Context);
-            addButton.Text = "+ Add";
-			addButton.Click += AddGroupMember;
+            _addButton = new Android.Widget.Button(parent.Context);
+            _addButton.Text = "+ Add";
 
-            parent.AddView(addButton);
+            parent.AddView(_addButton);
         }
 
 		public static async void AddGroupMember(object sender, EventArgs e)
