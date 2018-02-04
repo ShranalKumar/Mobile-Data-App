@@ -110,7 +110,7 @@ namespace MobileApp.Droid.Views
             _planRemainingDataText.Text = StringConstants.Localizable.PlanRemaining;
             _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder); //Need to concat amount from DB, DB under construction
             _planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
-            _planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Controller._totalAllocated); //Need to concat amount from DB, DB under construction
+            _planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
             _planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
             _planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
         }
