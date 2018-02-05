@@ -17,6 +17,7 @@ namespace MobileApp.Constants
 			public const string DaysRemaining = "{0} Days Remaining";
             public const string GbRemaining = "{0} GB Remaining";
             public const string AllocateData = "Allocate Data";
+            public const string MoreDetails = "More Details";
 
             //Transfer Screen
             public const string Transfer = "Transfer Data";
