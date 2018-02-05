@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Android.Views;
 using Android.Content;
 using System.Linq;
+using System.Threading;
 
 namespace MobileApp.Droid.Views
 {
@@ -27,6 +28,7 @@ namespace MobileApp.Droid.Views
         private TextView _daysRemaining;
         private ProgressBar _dataUsageProgressBar;
         private Button _allocateButton;
+        private Button _moreDetailsButton;
         private static ScrollView _userTiles;
         private static List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
@@ -44,14 +46,22 @@ namespace MobileApp.Droid.Views
             CustomUserTilesPage.getTiles(_userTiles);
             _userTileList = CustomUserTilesPage.UserTiles;
 			SetTileClickable();
-            
-			//Plan data pool is temporary. Will need to be fixed.
+
             double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
-			_dataUsageProgressBar.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
+
+            //for (double i = 0; i < progress;)
+            //{
+            //    _dataUsageProgressBar.Progress = (int)i;
+            //    Thread.Sleep(500);
+            //    i++;
+            //}
+
+            _moreDetailsButton.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
         }
 
+        
         protected void findAllElements()
         {
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
@@ -70,6 +80,7 @@ namespace MobileApp.Droid.Views
             _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
             _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
             _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
+            _moreDetailsButton = FindViewById<Button>(Resource.Id.MoreDetailsButton);
         }
 
         protected void setAllStringConstants()
@@ -77,9 +88,10 @@ namespace MobileApp.Droid.Views
             _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
             _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._totalRemainder);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
-		}
+            _moreDetailsButton.Text = StringConstants.Localizable.MoreDetails;
+        }
 
-		public void Reload() 
+        public void Reload() 
 		{
 			CustomUserTilesPage.getTiles(_userTiles);
 			_userTileList = CustomUserTilesPage.UserTiles;

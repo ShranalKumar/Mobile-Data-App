@@ -60,7 +60,9 @@
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
                         p1:text="MRS LOUISE SHIRLEY WESLEY"
-                        p1:layout_gravity="center" />
+                        p1:layout_gravity="center"
+                        p1:ellipsize="marquee"
+                        p1:singleLine="true" />
                     <ImageButton
                         p1:id="@+id/AccountSwitcher"
                         p1:background="@android:color/transparent"
@@ -113,13 +115,50 @@
             p1:padding="5dp" />
     </RelativeLayout>
     <LinearLayout
+        p1:orientation="horizontal"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/ProductLabelLayout"
+        p1:id="@+id/AllocateButtonLayout"
+        p1:paddingBottom="5dp"
+        p1:paddingLeft="15dp"
+        p1:paddingRight="15dp"
+        p1:paddingTop="5dp">
+        <Button
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/AllocateButton"
+            p1:textColor="@color/foreground_material_dark"
+            p1:layout_weight="1"
+            p1:layout_marginBottom="5dp"
+            p1:layout_marginLeft="10dp"
+            p1:layout_marginRight="10dp"
+            p1:layout_marginTop="5dp"
+            p1:padding="10dp"
+            p1:background="@drawable/RoundedBorder" />
+        <Button
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/MoreDetailsButton"
+            p1:textColor="@color/foreground_material_dark"
+            p1:padding="10dp"
+            p1:layout_weight="1"
+            p1:layout_marginBottom="5dp"
+            p1:layout_marginLeft="10dp"
+            p1:layout_marginRight="10dp"
+            p1:layout_marginTop="5dp"
+            p1:background="@drawable/roundedborder" />
+    </LinearLayout>
+    <LinearLayout
         p1:orientation="vertical"
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/MobileInformationLayout"
         p1:padding="25dp"
         p1:layout_width="match_parent"
-        p1:layout_below="@id/ProductLabelLayout"
+        p1:layout_below="@id/AllocateButtonLayout"
         p1:layout_height="130dp">
         <TextView
             p1:id="@+id/DaysRemainingText"
@@ -150,29 +189,12 @@
     </LinearLayout>
     <ScrollView
         p1:layout_width="match_parent"
-        p1:layout_height="200dp"
+        p1:layout_height="match_parent"
         p1:layout_below="@id/MobileInformationLayout"
         p1:id="@+id/UserTilesLayout"
         p1:minWidth="25px"
-        p1:minHeight="25px" />
-    <RelativeLayout
-        p1:minWidth="25px"
         p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="match_parent"
-        p1:layout_below="@id/UserTilesLayout"
-        p1:id="@+id/AllocateButtonLayout"
-        p1:layout_alignParentBottom="true"
-        p1:paddingLeft="45dp"
-        p1:paddingRight="45dp">
-        <Button
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/AllocateButton"
-            p1:background="@drawable/transparent_button"
-            p1:layout_centerHorizontal="false"
-            p1:layout_centerInParent="true"
-            p1:textColor="@color/foreground_material_dark"
-            p1:padding="10dp" />
-    </RelativeLayout>
+        p1:requiresFadingEdge="vertical"
+        p1:fadingEdgeLength="25dp"
+        p1:paddingBottom="10dp" />
 </RelativeLayout>
