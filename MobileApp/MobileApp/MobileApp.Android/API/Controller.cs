@@ -56,11 +56,6 @@ namespace MobileApp.Droid
 			return changedUser;
 		}
 
-		//public static async Task DeleteMember(User user)
-		//{
-		//	//User selectedUser = await TodoItemManager.DefaultManager.DeleteDocumentDB(user)
-		//}
-
 		public static async Task<User> AddGroupMember(User user, Member newMember)
 		{
 			User changedUser = await TodoItemManager.DefaultManager.CreateNewUser(user, newMember);
