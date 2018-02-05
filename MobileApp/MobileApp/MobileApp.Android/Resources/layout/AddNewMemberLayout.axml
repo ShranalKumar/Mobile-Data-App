@@ -61,7 +61,8 @@
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
                 p1:id="@+id/PhoneNumberInputField"
-                p1:inputType="phone" />
+                p1:inputType="phone"
+                p1:maxLength="10" />
         </LinearLayout>
         <LinearLayout
             p1:orientation="vertical"
@@ -75,7 +76,7 @@
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
                 p1:id="@+id/FirstNameInputField"
-                p1:inputType="textPersonName" />
+                p1:inputType="textCapWords" />
         </LinearLayout>
         <LinearLayout
             p1:orientation="vertical"
@@ -89,7 +90,7 @@
                 p1:layout_width="match_parent"
                 p1:layout_height="wrap_content"
                 p1:id="@+id/LastNameInputField"
-                p1:inputType="textPersonName" />
+                p1:inputType="textCapWords" />
         </LinearLayout>
         <LinearLayout
             p1:orientation="vertical"
