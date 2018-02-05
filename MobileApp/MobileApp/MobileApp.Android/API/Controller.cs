@@ -52,24 +52,20 @@ namespace MobileApp.Droid
 
 		public static async Task<User> UpdateAllocation(User user, double allocation)
 		{
-			User changedUser = await TodoItemManager.DefaultManager.UpdateDocumentDB(user, allocation);
+			User changedUser = await TodoItemManager.DefaultManager.UpdateMemberAllocation(user, allocation);
 			return changedUser;
 		}
 
-		//public static async Task DeleteMember(User user)
-		//{
-		//	//User selectedUser = await TodoItemManager.DefaultManager.DeleteDocumentDB(user)
-		//}
-
 		public static async Task<User> AddGroupMember(User user, Member newMember)
 		{
-			User changedUser = await TodoItemManager.DefaultManager.CreateDocumentDB(user, newMember);
+			User changedUser = await TodoItemManager.DefaultManager.CreateNewUser(user, newMember);
 			return changedUser;
-		}	
-		//public static async Task<User> DeleteGroupMemeber(User user, Member targetMember)
-		//{
-		//	User changedUser = await TodoItemManager.DefaultManager.DeleteGroupMember(user, targetMember);
-		//	return changedUser;
-		//}
-	}
+		}
+
+        public static async Task<User> DeleteGroupMemeber(User user, User targetMember)
+        {
+            User changedUser = await TodoItemManager.DefaultManager.DeleteGroupMember(user, targetMember);
+            return changedUser;
+        }
+    }
 } 

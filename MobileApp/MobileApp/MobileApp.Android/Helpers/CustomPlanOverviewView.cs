@@ -56,9 +56,5 @@ namespace MobileApp.Droid.Helpers
 			User changedUser = await Controller.AddGroupMember(Controller._userLoggedIn, new Member());
 			Controller._users[0] = changedUser;
 		}
-		//public static async void DeleteGroupMember(object sender, EventArgs e)
-		//{
-		//	User changedUser = await Controller.Delete
-		//}
     }
 }
