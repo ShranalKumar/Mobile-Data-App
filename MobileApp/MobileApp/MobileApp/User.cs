@@ -30,7 +30,7 @@ namespace MobileApp
         public string AppDataUsed { get; set; }
     }
 
-    public class Member : User
+    public class Member
     {
         public string UID { get; set; }
         public UserName Name { get; set; }

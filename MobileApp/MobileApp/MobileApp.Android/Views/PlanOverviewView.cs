@@ -54,7 +54,6 @@ namespace MobileApp.Droid.Views
 
             _overviewPageBackButton.Click += delegate { Finish(); };
             _memberListDropDown.Click += delegate { showMembersList(); };
-            CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
         private void findAllElements()
@@ -126,6 +125,7 @@ namespace MobileApp.Droid.Views
                     deleteDialog.Show();
                 };
             }
+            CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
         protected async void DeleteGroupMember()

@@ -15,6 +15,7 @@ using Microsoft.Azure.Documents.Linq;
 using DocumentDBTodo;
 using Microsoft.Azure.Documents;
 using MobileApp.Droid.Views;
+using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid
 {
@@ -175,7 +176,7 @@ namespace MobileApp.Droid
 
 		public async Task<User> UpdateMemberAllocation(User user, double allocated)
 		{
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
             GroupMembers userToUpdate;
             if (user.UID != queryDoc.uid)
             {
@@ -193,11 +194,20 @@ namespace MobileApp.Droid
 
 		public async Task<User> CreateNewUser(User user, Member newMember)
 		{
-            TodoItem queryDoc;
-
-            //if (!newMember.AdminStatus)
-            //{
-                queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+            if (!newMember.AdminStatus)
+            {
+                TodoItem queryDoc;
+                try
+                {
+                    queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'",Controller._userLoggedIn.UID)).AsEnumerable().First();
+                }
+                catch (Exception)
+                {
+                    queryDoc = null;
+                    Console.WriteLine("404 not found");
+                    return user;
+                }
+                
                 GroupMembers newGroupMember = new GroupMembers();
                 newGroupMember.uid = newMember.UID;
                 NameList newUserName = new NameList();
@@ -223,36 +233,62 @@ namespace MobileApp.Droid
                 Controller._users.Add(newUser);
                 queryDoc.groupMembers.Add(newGroupMember);
                 await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
-                //return user;
-            //}
-            //else
-            //{
-            //    User newAdminUser = newMember;
-            //    newAdminUser.GroupMembers = user.GroupMembers;
-            //    user.GroupMembers.Add(newMember);
-            //    newAdminUser.GroupMembers.Add(new Member
-            //    {
-            //        UID = user.UID,
-            //        Name = user.Name,
-            //        AdminStatus = user.AdminStatus,
-            //        Used = user.Used,
-            //        Allocated = user.Allocated,
-            //        UsageBreakdown = user.UsageBreakdown
-            //    });
+                return user;
+            }
+            else
+            {
+                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+                TodoItem newAdminDoc;
+                try
+                {
+                    newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", newMember.UID)).AsEnumerable().First();
+                }
+                catch (Exception)
+                {
+                    newAdminDoc = null;
+                    Console.WriteLine("404 not found");
+                    return user;
+                }
+                
+                newAdminDoc.uid = newMember.UID;
+                newAdminDoc.Name = new List<NameList>();
+                newAdminDoc.Name.Add(new NameList
+                {
+                    FirstName = newMember.Name.FirstName,
+                    LastName = newMember.Name.LastName
+                });                   
+                newAdminDoc.Plan = Controller._userLoggedIn.Plan;
+                newAdminDoc.AdminStatus = newMember.AdminStatus;
+                newAdminDoc.Used = newMember.Used;
+                newAdminDoc.Allocated = newMember.Allocated;
+                newAdminDoc.PlanStartDate = Controller._userLoggedIn.PlanStartDate;
+                newAdminDoc.PlanEndDate = Controller._userLoggedIn.PlanEndDate;
+                newAdminDoc.UsageBreakdown = new List<UsageBreakdownList>();
+                newMember.UsageBreakdown.ForEach(x => newAdminDoc.UsageBreakdown.Add(new UsageBreakdownList
+                {
+                    App = x.AppName,
+                    AppUsage = x.AppDataUsed
+                }));
 
-            //    CreateNewDocument(newAdminUser);
+                newAdminDoc.groupMembers = new List<GroupMembers>();
+                newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(user));
+                user.GroupMembers.ForEach(x => newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(x)));
 
-            //    await client.CreateDocumentAsync(collectionLink, newAdminUser);
-            //}
-            
-			user.GroupMembers.Add(newMember);
-            return user;
+                User newAdminUser = ClassConverterHelper.createUser(newMember);
+                newAdminDoc.groupMembers.ForEach(x => newAdminUser.GroupMembers.Add(ClassConverterHelper.createMember(x)));
+                adminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(newMember));
+
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, adminDoc.id), adminDoc);
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, newAdminDoc.id), newAdminDoc);
+                user.GroupMembers.Add(newMember);
+                Controller._users.Add(newAdminUser);
+                return user;
+            }            
         }
-
 
         public async Task<User> DeleteGroupMember(User user, User targetMember)
         {
-            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
             GroupMembers groupMemberToDelete;
             Member memberToDelete;
 
@@ -280,10 +316,5 @@ namespace MobileApp.Droid
 		{
 			return _adminStatus;
 		}
-
-  //      public void CreateNewDocument(User newUser)
-  //      {
-
-  //      }
-	}
+    }
 }
