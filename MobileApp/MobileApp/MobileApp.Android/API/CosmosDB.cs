@@ -15,6 +15,7 @@ using Microsoft.Azure.Documents.Linq;
 using DocumentDBTodo;
 using Microsoft.Azure.Documents;
 using MobileApp.Droid.Views;
+using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid
 {
@@ -195,8 +196,8 @@ namespace MobileApp.Droid
 		{
             TodoItem queryDoc;
 
-            //if (!newMember.AdminStatus)
-            //{
+            if (!newMember.AdminStatus)
+            {
                 queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
                 GroupMembers newGroupMember = new GroupMembers();
                 newGroupMember.uid = newMember.UID;
@@ -223,32 +224,50 @@ namespace MobileApp.Droid
                 Controller._users.Add(newUser);
                 queryDoc.groupMembers.Add(newGroupMember);
                 await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
-                //return user;
-            //}
-            //else
-            //{
-            //    User newAdminUser = newMember;
-            //    newAdminUser.GroupMembers = user.GroupMembers;
-            //    user.GroupMembers.Add(newMember);
-            //    newAdminUser.GroupMembers.Add(new Member
-            //    {
-            //        UID = user.UID,
-            //        Name = user.Name,
-            //        AdminStatus = user.AdminStatus,
-            //        Used = user.Used,
-            //        Allocated = user.Allocated,
-            //        UsageBreakdown = user.UsageBreakdown
-            //    });
+                return user;
+            }
+            else
+            {
+                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+                var newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", newMember.UID)).AsEnumerable().First();
 
-            //    CreateNewDocument(newAdminUser);
+                newAdminDoc.uid = newMember.UID;
+                newAdminDoc.Name = new List<NameList>();
+                newAdminDoc.Name.Add(new NameList
+                {
+                    FirstName = newMember.Name.FirstName,
+                    LastName = newMember.Name.LastName
+                });                   
+                newAdminDoc.Plan = Controller._userLoggedIn.Plan;
+                newAdminDoc.AdminStatus = newMember.AdminStatus;
+                newAdminDoc.Used = newMember.Used;
+                newAdminDoc.Allocated = newMember.Allocated;
+                newAdminDoc.PlanStartDate = Controller._userLoggedIn.PlanStartDate;
+                newAdminDoc.PlanEndDate = Controller._userLoggedIn.PlanEndDate;
+                newAdminDoc.UsageBreakdown = new List<UsageBreakdownList>();
+                newMember.UsageBreakdown.ForEach(x => newAdminDoc.UsageBreakdown.Add(new UsageBreakdownList
+                {
+                    App = x.AppName,
+                    AppUsage = x.AppDataUsed
+                }));
+                //All for cosmos DB
+                newAdminDoc.groupMembers = new List<GroupMembers>();
+                newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(user));
+                user.GroupMembers.ForEach(x => newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(x)));
 
-            //    await client.CreateDocumentAsync(collectionLink, newAdminUser);
-            //}
-            
-			user.GroupMembers.Add(newMember);
-            return user;
+                //All for local User class
+                User newAdminUser = ClassConverterHelper.createUser(newMember);
+                newAdminDoc.groupMembers.ForEach(x => newAdminUser.GroupMembers.Add(ClassConverterHelper.createMember(x)));
+                adminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(newMember));
+
+                //await client.CreateDocumentAsync(collectionLink, newDoc);
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, adminDoc.id), adminDoc);
+                await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, newAdminDoc.id), newAdminDoc);
+                user.GroupMembers.Add(newMember);
+                Controller._users.Add(newAdminUser);
+                return user;
+            }            
         }
-
 
         public async Task<User> DeleteGroupMember(User user, User targetMember)
         {
@@ -281,9 +300,44 @@ namespace MobileApp.Droid
 			return _adminStatus;
 		}
 
-  //      public void CreateNewDocument(User newUser)
-  //      {
+        //public TodoItem CreateNewDocument(User newUser)
+        //{
+        //    TodoItem newTodoItemUser = new TodoItem();
 
-  //      }
-	}
+        //    newTodoItemUser.uid = newUser.UID;
+        //    newTodoItemUser.password = "2";
+        //    newTodoItemUser.Name = new List<NameList>();
+        //    newTodoItemUser.Name.Add(new NameList
+        //    {
+        //        FirstName = newUser.Name.FirstName,
+        //        LastName = newUser.Name.LastName
+        //    });
+        //    newTodoItemUser.Name[0].FirstName = newUser.Name.FirstName;
+        //    newTodoItemUser.Name[0].LastName = newUser.Name.LastName;
+        //    newTodoItemUser.Plan = Controller._userLoggedIn.Plan;
+        //    newTodoItemUser.AdminStatus = newUser.AdminStatus;
+        //    newTodoItemUser.Used = newUser.Used;
+        //    newTodoItemUser.Allocated = newUser.Allocated;
+        //    newTodoItemUser.PlanStartDate = newUser.PlanStartDate;
+        //    newTodoItemUser.PlanEndDate = newUser.PlanEndDate;
+        //    newTodoItemUser.groupMembers = new List<GroupMembers>();
+        //    newUser.GroupMembers.ForEach(x => newTodoItemUser.groupMembers.Add(createGroupMember(x)));
+        //    newTodoItemUser.UsageBreakdown = new List<UsageBreakdownList>();
+        //    newUser.UsageBreakdown.ForEach(x => newTodoItemUser.UsageBreakdown.Add(new UsageBreakdownList
+        //    {
+        //        App = x.AppName,
+        //        AppUsage = x.AppDataUsed
+        //    }));
+
+        //    return newTodoItemUser;
+        //}
+
+        
+
+        
+
+        
+
+        
+    }
 }

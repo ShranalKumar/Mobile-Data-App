@@ -71,7 +71,9 @@ namespace MobileApp.Droid.Views
             newUser.Allocated = 0;
             newUser.UsageBreakdown = new List<UserUsageBreakdown>();
 
-            await Controller.AddGroupMember(Controller._userLoggedIn, newUser);
+            User changedUser = await Controller.AddGroupMember(Controller._userLoggedIn, newUser);
+            Controller._userLoggedIn = changedUser;
+            Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
             Toast.MakeText(this, StringConstants.Localizable.NewMemberAddedToast, ToastLength.Short).Show();
             Finish();
         }
