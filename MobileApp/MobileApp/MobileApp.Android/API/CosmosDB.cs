@@ -176,7 +176,7 @@ namespace MobileApp.Droid
 
 		public async Task<User> UpdateMemberAllocation(User user, double allocated)
 		{
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
             GroupMembers userToUpdate;
             if (user.UID != queryDoc.uid)
             {
@@ -194,11 +194,20 @@ namespace MobileApp.Droid
 
 		public async Task<User> CreateNewUser(User user, Member newMember)
 		{
-            TodoItem queryDoc;
-
             if (!newMember.AdminStatus)
             {
-                queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+                TodoItem queryDoc;
+                try
+                {
+                    queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'",Controller._userLoggedIn.UID)).AsEnumerable().First();
+                }
+                catch (Exception)
+                {
+                    queryDoc = null;
+                    Console.WriteLine("404 not found");
+                    return user;
+                }
+                
                 GroupMembers newGroupMember = new GroupMembers();
                 newGroupMember.uid = newMember.UID;
                 NameList newUserName = new NameList();
@@ -228,9 +237,19 @@ namespace MobileApp.Droid
             }
             else
             {
-                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
-                var newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", newMember.UID)).AsEnumerable().First();
-
+                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+                TodoItem newAdminDoc;
+                try
+                {
+                    newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", newMember.UID)).AsEnumerable().First();
+                }
+                catch (Exception)
+                {
+                    newAdminDoc = null;
+                    Console.WriteLine("404 not found");
+                    return user;
+                }
+                
                 newAdminDoc.uid = newMember.UID;
                 newAdminDoc.Name = new List<NameList>();
                 newAdminDoc.Name.Add(new NameList
@@ -250,17 +269,15 @@ namespace MobileApp.Droid
                     App = x.AppName,
                     AppUsage = x.AppDataUsed
                 }));
-                //All for cosmos DB
+
                 newAdminDoc.groupMembers = new List<GroupMembers>();
                 newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(user));
                 user.GroupMembers.ForEach(x => newAdminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(x)));
 
-                //All for local User class
                 User newAdminUser = ClassConverterHelper.createUser(newMember);
                 newAdminDoc.groupMembers.ForEach(x => newAdminUser.GroupMembers.Add(ClassConverterHelper.createMember(x)));
                 adminDoc.groupMembers.Add(ClassConverterHelper.createGroupMember(newMember));
 
-                //await client.CreateDocumentAsync(collectionLink, newDoc);
                 await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, adminDoc.id), adminDoc);
                 await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, newAdminDoc.id), newAdminDoc);
                 user.GroupMembers.Add(newMember);
@@ -271,7 +288,7 @@ namespace MobileApp.Droid
 
         public async Task<User> DeleteGroupMember(User user, User targetMember)
         {
-            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, "select * from t where t.uid = '1004'").AsEnumerable().First();
+            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
             GroupMembers groupMemberToDelete;
             Member memberToDelete;
 
@@ -299,45 +316,5 @@ namespace MobileApp.Droid
 		{
 			return _adminStatus;
 		}
-
-        //public TodoItem CreateNewDocument(User newUser)
-        //{
-        //    TodoItem newTodoItemUser = new TodoItem();
-
-        //    newTodoItemUser.uid = newUser.UID;
-        //    newTodoItemUser.password = "2";
-        //    newTodoItemUser.Name = new List<NameList>();
-        //    newTodoItemUser.Name.Add(new NameList
-        //    {
-        //        FirstName = newUser.Name.FirstName,
-        //        LastName = newUser.Name.LastName
-        //    });
-        //    newTodoItemUser.Name[0].FirstName = newUser.Name.FirstName;
-        //    newTodoItemUser.Name[0].LastName = newUser.Name.LastName;
-        //    newTodoItemUser.Plan = Controller._userLoggedIn.Plan;
-        //    newTodoItemUser.AdminStatus = newUser.AdminStatus;
-        //    newTodoItemUser.Used = newUser.Used;
-        //    newTodoItemUser.Allocated = newUser.Allocated;
-        //    newTodoItemUser.PlanStartDate = newUser.PlanStartDate;
-        //    newTodoItemUser.PlanEndDate = newUser.PlanEndDate;
-        //    newTodoItemUser.groupMembers = new List<GroupMembers>();
-        //    newUser.GroupMembers.ForEach(x => newTodoItemUser.groupMembers.Add(createGroupMember(x)));
-        //    newTodoItemUser.UsageBreakdown = new List<UsageBreakdownList>();
-        //    newUser.UsageBreakdown.ForEach(x => newTodoItemUser.UsageBreakdown.Add(new UsageBreakdownList
-        //    {
-        //        App = x.AppName,
-        //        AppUsage = x.AppDataUsed
-        //    }));
-
-        //    return newTodoItemUser;
-        //}
-
-        
-
-        
-
-        
-
-        
     }
 }
