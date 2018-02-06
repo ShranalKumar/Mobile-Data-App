@@ -143,6 +143,7 @@
     <Compile Include="Helpers\CustomSlidingTilesView.cs" />
     <Compile Include="Helpers\CustomUserDataUsageView.cs" />
     <Compile Include="FixingSpaghettiCode.cs" />
+    <Compile Include="Helpers\DashboardGradientTimerHelper.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="Helpers\CustomUserTilesPage.cs" />
     <Compile Include="Views\AddmemberPageView.cs" />

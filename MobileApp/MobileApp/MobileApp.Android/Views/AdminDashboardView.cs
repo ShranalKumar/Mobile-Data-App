@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System;
+using Java.Util;
 using MobileApp.Droid.Adapters;
 using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
@@ -11,7 +12,7 @@ using System.Collections.Generic;
 using Android.Views;
 using Android.Content;
 using System.Linq;
-using System.Threading;
+using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
@@ -32,6 +33,8 @@ namespace MobileApp.Droid.Views
         private static ScrollView _userTiles;
         private static List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
+        private RelativeLayout _dashboardLayout;
+        private DashboardGradientTimerHelper _dashboardGradientTask;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -49,16 +52,15 @@ namespace MobileApp.Droid.Views
 
             double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
-
-            //for (double i = 0; i < progress;)
-            //{
-            //    _dataUsageProgressBar.Progress = (int)i;
-            //    Thread.Sleep(500);
-            //    i++;
-            //}
-
+            
             _moreDetailsButton.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
             _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
+
+            var timer = new Timer();
+            _dashboardGradientTask = new DashboardGradientTimerHelper(this);
+            timer.Schedule(_dashboardGradientTask, 0, NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+
+
         }
 
         
@@ -81,6 +83,7 @@ namespace MobileApp.Droid.Views
             _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
             _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
             _moreDetailsButton = FindViewById<Button>(Resource.Id.MoreDetailsButton);
+            _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
         }
 
         protected void setAllStringConstants()
@@ -121,7 +124,16 @@ namespace MobileApp.Droid.Views
 			}
 		}
 
-		protected override void OnRestart()
+        public void BackgroundGradientThread(TransitionDrawable transition)
+        {
+            RunOnUiThread(() =>
+            {
+                _dashboardLayout.Background = transition;
+                transition.StartTransition(NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+            });
+        }
+
+        protected override void OnRestart()
 		{
 			base.OnRestart();
 			Reload();

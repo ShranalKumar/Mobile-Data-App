@@ -47,12 +47,12 @@ namespace MobileApp.Constants
             public const string UsedData = "Used Data";
             public const string CurrentPlan = "Current Plan";
             public const string RemainingData = "Data Remaining";
-			public const string UnAllocatedData = "UnAllocated Data";
+			public const string UnAllocatedData = "Reserved Data";
             public const string DataAmount = "{0} GB";
             public const string WeeklyMode = "Weekly Mode";
             public const string SaveButton = "Save";
             public const string AllocationUpdate = "Successfully updated users data allocation.";
-            public const string AllocationError = "Please ensure value for un-allocated data is a positive number to proceed.";
+            public const string AllocationError = "Please ensure value for reserved data is a positive number to proceed.";
 
             //Request Screen
             public const string RequestPageTitle = "Request Data";

@@ -70,7 +70,7 @@ namespace MobileApp.Droid.Helpers
                             user.Allocated = progressChanged;
                         }
 
-                        totalAllocated = 0;
+                        totalAllocated = unallocated = 0;
                         Controller._users.ForEach(x => totalAllocated += x.Allocated);
                         unallocated = Controller._planDataPool - totalAllocated;
                         AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(unallocated, 1));
