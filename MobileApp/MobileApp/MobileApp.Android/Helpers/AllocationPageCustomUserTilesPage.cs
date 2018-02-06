@@ -22,6 +22,7 @@ namespace MobileApp.Droid.Helpers
 		public static List<LinearLayout> UserTiles;
         public static double totalAllocated = 0;
         public static double progressChanged;
+        public static double unallocated;
 
 
         public static void getTiles(Android.Widget.LinearLayout parent)
@@ -50,7 +51,7 @@ namespace MobileApp.Droid.Helpers
 
                 ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
                 SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
-                double progress = (user.Used / Controller._planDataPool) * 100;
+                double progress = (user.Allocated / Controller._planDataPool) * 100;
                 userAllocationSlider.Progress = (int)(progress);
                 userAllocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
                 {
@@ -59,11 +60,25 @@ namespace MobileApp.Droid.Helpers
                         double progressChanged = ((double)e.Progress / 100) * (Controller._planDataPool);
                         Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
                         user.Allocated = progressChanged;
+
+
+
+                        if (progressChanged <= user.Used)
+                        {
+                            progressChanged = user.Used;
+                            Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
+                            user.Allocated = progressChanged;
+                        }
+
+                        totalAllocated = 0;
+                        Controller._users.ForEach(x => totalAllocated += x.Allocated);
+                        unallocated = Controller._planDataPool - totalAllocated;
+                        AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(unallocated, 1));
                     }
 
                 };
 
-                //AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
+                
 
 
                 parent.AddView(User);                

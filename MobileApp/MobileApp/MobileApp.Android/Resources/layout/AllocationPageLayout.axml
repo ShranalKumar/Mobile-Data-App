@@ -160,7 +160,9 @@
             p1:minWidth="25px"
             p1:minHeight="25px"
             p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            p1:layout_height="wrap_content"
+            p1:paddingLeft="10dp"
+            p1:paddingRight="10dp">
             <LinearLayout
                 p1:orientation="vertical"
                 p1:minWidth="25px"
@@ -182,7 +184,7 @@
                 p1:layout_alignParentBottom="true">
                 <Button
                     p1:id="@+id/SaveButton"
-                    p1:background="@drawable/transparent_button"
+                    p1:background="@drawable/roundedborder"
                     p1:textColor="@color/foreground_material_dark"
                     p1:layout_width="match_parent"
                     p1:layout_height="wrap_content"

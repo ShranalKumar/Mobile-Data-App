@@ -51,6 +51,8 @@ namespace MobileApp.Constants
             public const string DataAmount = "{0} GB";
             public const string WeeklyMode = "Weekly Mode";
             public const string SaveButton = "Save";
+            public const string AllocationUpdate = "Successfully updated users data allocation.";
+            public const string AllocationError = "Please ensure value for un-allocated data is a positive number to proceed.";
 
             //Request Screen
             public const string RequestPageTitle = "Request Data";
