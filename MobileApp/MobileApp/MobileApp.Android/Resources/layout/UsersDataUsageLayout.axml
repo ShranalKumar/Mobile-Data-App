@@ -39,6 +39,30 @@
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:id="@+id/UserLabelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ToolbarLayout"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/UserIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mobileicon"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/UserPhoneNumber"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/UserIcon"
+            android:text="021043865"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#d3d3d3" />
+    </RelativeLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -47,52 +71,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/DataAllocationLayout">
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:id="@+id/DataAllocationSliderLayout"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:rotation="270"
-            android:gravity="center">
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/AllocationSlider"
-                style="@style/SliderVerticleStyle" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/MainViewTextLayout"
             android:gravity="center"
-            android:padding="10dp">
-            <LinearLayout
-                android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:id="@+id/RemainingDataLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/RemainingDataText"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/RemainingDataAmount"
-                    android:gravity="center" />
-            </LinearLayout>
+            android:padding="15dp">
             <LinearLayout
                 android:orientation="vertical"
                 android:minWidth="25px"
@@ -100,19 +86,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/AllocationTextLayout"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
+                android:layout_weight="1"
+                android:gravity="center">
                 <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/AllocatedDataText"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:textColor="#F5F5F5" />
                 <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/AllocatedDataAmount"
+                    android:textColor="#F5F5F5"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/RemainingDataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/RemainingDataText"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:textColor="#F5F5F5"
+                    android:textSize="18dp" />
+                <TextView
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/RemainingDataAmount"
+                    android:textColor="#F5F5F5"
                     android:gravity="center" />
             </LinearLayout>
             <LinearLayout
@@ -121,25 +136,65 @@
                 android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/UsedDataLayout"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:id="@+id/PointsTextLayout"
+                android:layout_weight="1"
+                android:gravity="center">
                 <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/UsedDataText"
-                    android:gravity="center" />
+                    android:id="@+id/PointsText"
+                    android:gravity="center"
+                    android:textColor="#F5F5F5"
+                    android:paddingBottom="5dp" />
                 <TextView
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/UsedDataAmount"
+                    android:id="@+id/PointsAmount"
+                    android:textColor="#F5F5F5"
                     android:gravity="center" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GraphTitleTextLayout"
+        android:gravity="center">
+        <TextView
+            android:text="Data usage for past 6 days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/GraphTitleText"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp" />
+        <TextView
+            android:text="(Values in graph are in MB)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/GraphSubTitleText"
+            android:textSize="12dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:paddingTop="10dp">
+        <microcharts.droid.ChartView
+            android:id="@+id/chartView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+<!--<CharView x:name ="Chart" HeightRequest="150"/>-->
+<!--<ScrollView
         android:layout_height="200dp"
         android:layout_width="match_parent"
         android:id="@+id/DataUsageBreakdownScrollView" />
@@ -164,6 +219,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/SaveButtonText"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
+            android:layout_centerInParent="true" />-->
 </LinearLayout>

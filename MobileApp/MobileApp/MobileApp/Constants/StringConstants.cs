@@ -45,15 +45,19 @@ namespace MobileApp.Constants
             //Allocation Screen
             public const string AllocatedData = "Allocated Data";
             public const string UsedData = "Used Data";
-            public const string CurrentPlan = "Current Plan";
+            public const string UsedText = "Used";
+			public const string AllocatedText = "Allocated";
+			public const string CurrentPlan = "Current Plan";
             public const string RemainingData = "Data Remaining";
-			public const string UnAllocatedData = "UnAllocated Data";
+			public const string UnAllocatedData = "Reserved Data";
             public const string DataAmount = "{0} GB";
             public const string WeeklyMode = "Weekly Mode";
             public const string SaveButton = "Save";
+			public const string PointsText = "Points";
+			public const string PointsAmout = "{0}";
 
-            //Request Screen
-            public const string RequestPageTitle = "Request Data";
+			//Request Screen
+			public const string RequestPageTitle = "Request Data";
             public const string RequestFrom = "Reqeust Data From:";
             public const string SelectAmountRequest = "Select Amount to Request:";
 

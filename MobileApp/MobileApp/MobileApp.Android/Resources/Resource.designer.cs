@@ -3246,11 +3246,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090090
 			public const int AllocateButtonLayout = 2131296400;
 			
-			// aapt resource value: 0x7f09019e
-			public const int AllocatedDataAmount = 2131296670;
+			// aapt resource value: 0x7f09019f
+			public const int AllocatedDataAmount = 2131296671;
 			
-			// aapt resource value: 0x7f09019d
-			public const int AllocatedDataText = 2131296669;
+			// aapt resource value: 0x7f09019e
+			public const int AllocatedDataText = 2131296670;
 			
 			// aapt resource value: 0x7f09009c
 			public const int AllocationBackButton = 2131296412;
@@ -3264,11 +3264,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09009a
 			public const int AllocationPageToolbar = 2131296410;
 			
-			// aapt resource value: 0x7f09019a
-			public const int AllocationSlider = 2131296666;
-			
-			// aapt resource value: 0x7f09019c
-			public const int AllocationTextLayout = 2131296668;
+			// aapt resource value: 0x7f09019d
+			public const int AllocationTextLayout = 2131296669;
 			
 			// aapt resource value: 0x7f090083
 			public const int BackgroundLayout = 2131296387;
@@ -3294,11 +3291,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090130
 			public const int DataAllocatedTitle = 2131296560;
 			
-			// aapt resource value: 0x7f090198
-			public const int DataAllocationLayout = 2131296664;
-			
-			// aapt resource value: 0x7f090199
-			public const int DataAllocationSliderLayout = 2131296665;
+			// aapt resource value: 0x7f09019b
+			public const int DataAllocationLayout = 2131296667;
 			
 			// aapt resource value: 0x7f090170
 			public const int DataAmountSelectorButtonLayout = 2131296624;
@@ -3350,9 +3344,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f090175
 			public const int DataUnitDecimalText = 2131296629;
-			
-			// aapt resource value: 0x7f0901a2
-			public const int DataUsageBreakdownScrollView = 2131296674;
 			
 			// aapt resource value: 0x7f090096
 			public const int DataUsageText = 2131296406;
@@ -3423,6 +3414,15 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09017f
 			public const int FourthUpArrow = 2131296639;
 			
+			// aapt resource value: 0x7f0901a5
+			public const int GraphSubTitleText = 2131296677;
+			
+			// aapt resource value: 0x7f0901a4
+			public const int GraphTitleText = 2131296676;
+			
+			// aapt resource value: 0x7f0901a3
+			public const int GraphTitleTextLayout = 2131296675;
+			
 			// aapt resource value: 0x7f09007e
 			public const int LastNameInputField = 2131296382;
 			
@@ -3438,8 +3438,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0900da
 			public const int LoginPageLayout = 2131296474;
 			
-			// aapt resource value: 0x7f09019b
-			public const int MainViewTextLayout = 2131296667;
+			// aapt resource value: 0x7f09019c
+			public const int MainViewTextLayout = 2131296668;
 			
 			// aapt resource value: 0x7f090136
 			public const int MembersListHeadingText = 2131296566;
@@ -3558,6 +3558,15 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09012b
 			public const int PlaneNameAmount = 2131296555;
 			
+			// aapt resource value: 0x7f0901a2
+			public const int PointsAmount = 2131296674;
+			
+			// aapt resource value: 0x7f0901a1
+			public const int PointsText = 2131296673;
+			
+			// aapt resource value: 0x7f0901a0
+			public const int PointsTextLayout = 2131296672;
+			
 			// aapt resource value: 0x7f09008d
 			public const int ProductLabelLayout = 2131296397;
 			
@@ -3653,12 +3662,6 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900af
 			public const int SaveButton = 2131296431;
-			
-			// aapt resource value: 0x7f0901a3
-			public const int SaveButtonLayout = 2131296675;
-			
-			// aapt resource value: 0x7f0901a4
-			public const int SaveButtonText = 2131296676;
 			
 			// aapt resource value: 0x7f0900ac
 			public const int ScrollableLayout = 2131296428;
@@ -3783,17 +3786,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090165
 			public const int TrusppowerLogoSuccessDialog = 2131296613;
 			
-			// aapt resource value: 0x7f0901a1
-			public const int UsedDataAmount = 2131296673;
-			
 			// aapt resource value: 0x7f090132
 			public const int UsedDataFrame = 2131296562;
-			
-			// aapt resource value: 0x7f09019f
-			public const int UsedDataLayout = 2131296671;
-			
-			// aapt resource value: 0x7f0901a0
-			public const int UsedDataText = 2131296672;
 			
 			// aapt resource value: 0x7f0900ad
 			public const int UserDataAllocationList = 2131296429;
@@ -3813,8 +3807,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090195
 			public const int UserDataUsageToolbarLayout = 2131296661;
 			
+			// aapt resource value: 0x7f090199
+			public const int UserIcon = 2131296665;
+			
+			// aapt resource value: 0x7f090198
+			public const int UserLabelLayout = 2131296664;
+			
 			// aapt resource value: 0x7f090089
 			public const int UserName = 2131296393;
+			
+			// aapt resource value: 0x7f09019a
+			public const int UserPhoneNumber = 2131296666;
 			
 			// aapt resource value: 0x7f090143
 			public const int UserSelectionSlidingLayout = 2131296579;
@@ -3965,6 +3968,9 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f090032
 			public const int center_vertical = 2131296306;
+			
+			// aapt resource value: 0x7f0901a6
+			public const int chartView = 2131296678;
 			
 			// aapt resource value: 0x7f09005b
 			public const int checkbox = 2131296347;
@@ -4143,8 +4149,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090048
 			public const int list_item = 2131296328;
 			
-			// aapt resource value: 0x7f0901a6
-			public const int masked = 2131296678;
+			// aapt resource value: 0x7f0901a8
+			public const int masked = 2131296680;
 			
 			// aapt resource value: 0x7f090111
 			public const int media_actions = 2131296529;
@@ -4449,8 +4455,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09000e
 			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f0901a5
-			public const int visible = 2131296677;
+			// aapt resource value: 0x7f0901a7
+			public const int visible = 2131296679;
 			
 			// aapt resource value: 0x7f0900f4
 			public const int volume_item_container = 2131296500;
