@@ -12,120 +12,57 @@ using Android.Views;
 using Android.Content;
 using System.Linq;
 using System.Threading;
+using Android.Support.V4.View;
+using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
     [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class AdminDashboardView : Activity
     {
+        private ViewPager _mainViewPager;
+        private ViewPagerAdapter _mainPagerAdapter;
+        private RelativeLayout _dashboardLayout;
         private ImageButton _hamburgerIcon;
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
-        private ImageView _mobileIcon;
-        private TextView _productName;
-        private TextView _dataUsage;
-        private TextView _user;
-        private TextView _daysRemaining;
-        private ProgressBar _dataUsageProgressBar;
-        private Button _allocateButton;
-        private Button _moreDetailsButton;
-        private static ScrollView _userTiles;
-        private static List<LinearLayout> _userTileList;
-        private LinearLayout _tileClickedOn;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminDashboardLayout);
-
-			if (_userTileList != null) { _userTileList.Clear();	}
-
             findAllElements();
-            setAllStringConstants();
-
-            CustomUserTilesPage.getTiles(_userTiles);
-            _userTileList = CustomUserTilesPage.UserTiles;
-			SetTileClickable();
-
-            double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
-            _dataUsageProgressBar.Progress = (int)progress;
-
-            //for (double i = 0; i < progress;)
-            //{
-            //    _dataUsageProgressBar.Progress = (int)i;
-            //    Thread.Sleep(500);
-            //    i++;
-            //}
-
-            _moreDetailsButton.Click += delegate { StartActivity(typeof(PlanOverviewView)); };
-            _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
+            _mainPagerAdapter = new ViewPagerAdapter(this);
+            _mainViewPager.Adapter = _mainPagerAdapter;
         }
-
-        
+                
         protected void findAllElements()
         {
+            _mainViewPager = FindViewById<ViewPager>(Resource.Id.MainViewPager);
+            _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
             _notificationButton = FindViewById<ImageButton>(Resource.Id.NotificationButton);
             _accountSwitcher = FindViewById<ImageButton>(Resource.Id.AccountSwitcher);
-            _mobileIcon = FindViewById<ImageView>(Resource.Id.MobileIcon);
-            _productName = FindViewById<TextView>(Resource.Id.ProductName);
-            _dataUsage = FindViewById<TextView>(Resource.Id.DataUsageText);
-            _dataUsageProgressBar = FindViewById<ProgressBar>(Resource.Id.DataProgressBar);
-            _user = FindViewById<TextView>(Resource.Id.UserName);
-            _daysRemaining = FindViewById<TextView>(Resource.Id.DaysRemainingText);
-            _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
-            _userTiles = FindViewById<ScrollView>(Resource.Id.UserTilesLayout);
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
             _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
-            _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
-            _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
-            _moreDetailsButton = FindViewById<Button>(Resource.Id.MoreDetailsButton);
         }
 
-        protected void setAllStringConstants()
+		//protected override void OnRestart()
+		//{
+		//	base.OnRestart();
+		//	Reload();
+		//}
+
+        public void BackgroundGradientThread(TransitionDrawable transition)
         {
-            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._totalRemainder);
-            _allocateButton.Text = StringConstants.Localizable.AllocateData;
-            _moreDetailsButton.Text = StringConstants.Localizable.MoreDetails;
+            RunOnUiThread(() =>
+            {
+                _dashboardLayout.Background = transition;
+                transition.StartTransition(NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+            });
         }
 
-        public void Reload() 
-		{
-			CustomUserTilesPage.getTiles(_userTiles);
-			_userTileList = CustomUserTilesPage.UserTiles;
-			SetTileClickable();
-		}
-
-		public void SetTileClickable()
-		{
-			foreach (LinearLayout tile in _userTileList)
-			{
-				tile.Click += (o, s) =>
-				{
-					_tileClickedOn = tile;
-					Intent loadUserDataPage = new Intent(this, typeof(UsersDataUsageView));
-					string username;
-					for (int i = 0; i < _tileClickedOn.ChildCount; i++)
-					{
-						if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
-						{
-							TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
-							username = userName.Text;
-							loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
-							StartActivity(loadUserDataPage);
-						}
-					}
-				};
-			}
-		}
-
-		protected override void OnRestart()
-		{
-			base.OnRestart();
-			Reload();
-		}
-	}
+    }
 }
 
