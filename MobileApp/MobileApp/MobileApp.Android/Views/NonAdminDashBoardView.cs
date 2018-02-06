@@ -31,7 +31,7 @@ namespace MobileApp.Droid.Views
 			findAllElements();
 			DataBarFill();
 			setAllStringConstants();
-			CustomUserDataUsageView.GetUserDataUsageRows(_noneAdminUsageBreakdown, Controller._users[0]);
+			//CustomUserDataUsageView.GetUserDataUsageRows(_noneAdminUsageBreakdown, Controller._users[0]);
 
 			_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
 			_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };

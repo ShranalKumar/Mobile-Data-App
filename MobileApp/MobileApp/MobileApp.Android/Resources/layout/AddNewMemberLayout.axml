@@ -1,125 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:minWidth="25px"
-    p1:minHeight="25px"
-    p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:id="@+id/AddMemberPageLayout"
-    p1:background="@drawable/dashboardgradient7">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/AddMemberPageLayout"
+    android:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
-        p1:minHeight="?android:attr/actionBarSize"
-        p1:minWidth="25px"
-        p1:id="@+id/AddMemberPageToolbar"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content">
+        android:minHeight="?android:attr/actionBarSize"
+        android:minWidth="25px"
+        android:id="@+id/AddMemberPageToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <RelativeLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/AddMemberToolbarLayout"
-            p1:gravity="center">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AddMemberToolbarLayout"
+            android:gravity="center">
             <ImageButton
-                p1:src="@drawable/arrowbackicon"
-                p1:id="@+id/AddMemberBackButton"
-                p1:background="@android:color/transparent"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:layout_alignParentLeft="true"
-                p1:padding="15dp" />
+                android:src="@drawable/arrowbackicon"
+                android:id="@+id/AddMemberBackButton"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:padding="15dp" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/AddMemberPageTitle"
-                p1:textAlignment="center"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true"
-                p1:gravity="center"
-                p1:layout_centerHorizontal="true"
-                p1:layout_centerVertical="true" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/AddMemberPageTitle"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:id="@+id/linearLayout1"
-        p1:layout_width="match_parent"
-        p1:layout_height="match_parent"
-        p1:gravity="center_vertical"
-        p1:layout_below="@id/AddMemberPageToolbar"
-        p1:padding="25dp">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_below="@id/AddMemberPageToolbar"
+        android:padding="25dp">
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/PhoneNumberLayout"
-            p1:padding="5dp"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/PhoneNumberLayout"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <EditText
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/PhoneNumberInputField"
-                p1:inputType="phone" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/PhoneNumberInputField"
+                android:inputType="phone" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/FirstNameLayout"
-            p1:padding="5dp"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/FirstNameLayout"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <EditText
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/FirstNameInputField"
-                p1:inputType="textPersonName" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/FirstNameInputField"
+                android:inputType="textPersonName" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/LastNameLayout"
-            p1:padding="5dp"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/LastNameLayout"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <EditText
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/LastNameInputField"
-                p1:inputType="textPersonName" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LastNameInputField"
+                android:inputType="textPersonName" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/AdminRightsLayout"
-            p1:padding="5dp"
-            p1:paddingLeft="5dp"
-            p1:paddingRight="5dp"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/AdminRightsLayout"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <CheckBox
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/AdminRightsCheckBox" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AdminRightsCheckBox" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/ButtonLayout"
-            p1:paddingLeft="25dp"
-            p1:paddingRight="25dp"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/ButtonLayout"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <Button
-                p1:text="+ Add Member"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/AddButton" />
+                android:text="+ Add Member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddButton" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

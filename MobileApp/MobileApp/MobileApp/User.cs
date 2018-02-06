@@ -26,8 +26,8 @@ namespace MobileApp
 
     public class UserUsageBreakdown
     {
-        public string AppName { get; set; }
-        public string AppDataUsed { get; set; }
+        public string Day { get; set; }
+        public string DataUsed { get; set; }
     }
 
     public class Member

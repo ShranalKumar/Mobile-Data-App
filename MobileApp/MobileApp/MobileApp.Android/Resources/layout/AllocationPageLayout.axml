@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:id="@+id/AllocationPageMainLayout"
-    p1:background="@drawable/dashboardgradient7">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/AllocationPageMainLayout"
+    android:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
-        p1:minHeight="?android:attr/actionBarSize"
-        p1:minWidth="25px"
-        p1:id="@+id/AllocationPageToolbar"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content">
+        android:minHeight="?android:attr/actionBarSize"
+        android:minWidth="25px"
+        android:id="@+id/AllocationPageToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <RelativeLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/TransferToolbarLayout"
-            p1:gravity="center">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TransferToolbarLayout"
+            android:gravity="center">
             <ImageButton
-                p1:src="@drawable/arrowbackicon"
-                p1:id="@+id/AllocationBackButton"
-                p1:background="@android:color/transparent"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:layout_alignParentLeft="true"
-                p1:padding="15dp" />
+                android:src="@drawable/arrowbackicon"
+                android:id="@+id/AllocationBackButton"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:padding="15dp" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/AllocationPageTitle"
-                p1:textAlignment="center"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true"
-                p1:gravity="center"
-                p1:layout_centerHorizontal="true"
-                p1:layout_centerVertical="true" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/AllocationPageTitle"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <LinearLayout
-        p1:orientation="horizontal"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/DataDetailsTextLayout"
-        p1:padding="10dp"
-        p1:layout_marginTop="5dp"
-        p1:layout_marginBottom="10dp"
-        p1:layout_below="@id/AllocationPageToolbar">
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DataDetailsTextLayout"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/AllocationPageToolbar">
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="match_parent"
-            p1:id="@+id/CurrentPlanLayout"
-            p1:gravity="center"
-            p1:layout_weight="1">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/CurrentPlanLayout"
+            android:gravity="center"
+            android:layout_weight="1">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/CurrentPlanText"
-                p1:gravity="center"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/CurrentPlanText"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/CurrentPlanDataAmount"
-                p1:gravity="center" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CurrentPlanDataAmount"
+                android:gravity="center" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="match_parent"
-            p1:id="@+id/RemainingDataLayout"
-            p1:gravity="center"
-            p1:layout_weight="1">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/RemainingDataLayout"
+            android:gravity="center"
+            android:layout_weight="1">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/RemainingDataText"
-                p1:gravity="center"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/RemainingDataText"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/RemainingDataAmount"
-                p1:gravity="center" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RemainingDataAmount"
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 <!--<RelativeLayout
@@ -119,31 +119,31 @@
         p1:gravity="center"
         p1:padding="15dp">
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="match_parent"
-            p1:id="@+id/WeeklyModeTextLayout"
-            p1:layout_weight="50">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/WeeklyModeTextLayout"
+            android:layout_weight="50">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/WeeklyModeText"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/WeeklyModeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="match_parent"
-            p1:id="@+id/WeeklyModeSwitchLayout"
-            p1:layout_weight="0.5">
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/WeeklyModeSwitchLayout"
+            android:layout_weight="0.5">
             <Switch
-                p1:id="@+id/WeeklyModeOnOff"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content" />
+                android:id="@+id/WeeklyModeOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>-->
     <ScrollView

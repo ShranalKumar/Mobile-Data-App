@@ -121,8 +121,8 @@ namespace MobileApp.Droid
 					foreach (UsageBreakdownList usage in item.UsageBreakdown)
 					{
 						UserUsageBreakdown breakdown = new UserUsageBreakdown();
-						breakdown.AppName = usage.App;
-						breakdown.AppDataUsed = usage.AppUsage;
+						breakdown.Day = usage.Day;
+						breakdown.DataUsed = usage.DataUsed;
 						currentUser.UsageBreakdown.Add(breakdown);
 					}
 
@@ -151,8 +151,8 @@ namespace MobileApp.Droid
 							foreach (UsageBreakdownList usage in member.UsageBreakdown)
 							{
 								UserUsageBreakdown breakdown = new UserUsageBreakdown();
-								breakdown.AppName = usage.App;
-								breakdown.AppDataUsed = usage.AppUsage;
+								breakdown.Day = usage.Day;
+								breakdown.DataUsed = usage.DataUsed;
 								groupMember.UsageBreakdown.Add(breakdown);
 							}
 							currentUser.GroupMembers.Add(groupMember);
@@ -266,8 +266,8 @@ namespace MobileApp.Droid
                 newAdminDoc.UsageBreakdown = new List<UsageBreakdownList>();
                 newMember.UsageBreakdown.ForEach(x => newAdminDoc.UsageBreakdown.Add(new UsageBreakdownList
                 {
-                    App = x.AppName,
-                    AppUsage = x.AppDataUsed
+                    Day = x.Day,
+                    DataUsed = x.DataUsed
                 }));
 
                 newAdminDoc.groupMembers = new List<GroupMembers>();

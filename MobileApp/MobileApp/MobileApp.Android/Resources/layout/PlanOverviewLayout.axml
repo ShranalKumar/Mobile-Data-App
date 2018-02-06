@@ -1,203 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:minWidth="25px"
-    p1:minHeight="25px"
-    p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:id="@+id/OverviewPageLayout"
-    p1:background="@drawable/dashboardgradient7">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/OverviewPageLayout"
+    android:background="@drawable/dashboardgradient7">
     <android.support.v7.widget.Toolbar
-        p1:minHeight="?android:attr/actionBarSize"
-        p1:minWidth="25px"
-        p1:id="@+id/OverviewPageToolbar"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content">
+        android:minHeight="?android:attr/actionBarSize"
+        android:minWidth="25px"
+        android:id="@+id/OverviewPageToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <RelativeLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/OverviewPageToolbarLayout"
-            p1:gravity="center">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/OverviewPageToolbarLayout"
+            android:gravity="center">
             <ImageButton
-                p1:src="@drawable/arrowbackicon"
-                p1:id="@+id/OverviewPageBackButton"
-                p1:background="@android:color/transparent"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:layout_alignParentLeft="true"
-                p1:padding="15dp" />
+                android:src="@drawable/arrowbackicon"
+                android:id="@+id/OverviewPageBackButton"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:padding="15dp" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceLarge"
-                p1:id="@+id/OverviewPageTitle"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true"
-                p1:gravity="center"
-                p1:layout_centerHorizontal="true"
-                p1:layout_centerVertical="true" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/OverviewPageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <RelativeLayout
-        p1:id="@+id/OverviewPageProductLabelLayout"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:layout_below="@id/OverviewPageToolbar"
-        p1:padding="10dp">
+        android:id="@+id/OverviewPageProductLabelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/OverviewPageToolbar"
+        android:padding="10dp">
         <ImageView
-            p1:id="@+id/MobileIcon"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_centerHorizontal="true"
-            p1:src="@drawable/mobileicon"
-            p1:padding="5dp" />
+            android:id="@+id/MobileIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/mobileicon"
+            android:padding="5dp" />
         <TextView
-            p1:id="@+id/ProductName"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_centerHorizontal="true"
-            p1:layout_below="@id/MobileIcon"
-            p1:layout_centerInParent="true"
-            p1:text="Mobile"
-            p1:padding="5dp" />
+            android:id="@+id/ProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/MobileIcon"
+            android:layout_centerInParent="true"
+            android:text="Mobile"
+            android:padding="5dp" />
     </RelativeLayout>
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:id="@+id/PlanOverviewMainTextLayout"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:layout_below="@id/OverviewPageProductLabelLayout"
-        p1:padding="15dp">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/PlanOverviewMainTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/OverviewPageProductLabelLayout"
+        android:padding="15dp">
         <FrameLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/PlanNameFrame"
-            p1:paddingBottom="15dp">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/PlanNameFrame"
+            android:paddingBottom="15dp">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/PlanNameTitle"
-                p1:gravity="left" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/PlanNameTitle"
+                android:gravity="left" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/PlaneNameAmount"
-                p1:gravity="right" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/PlaneNameAmount"
+                android:gravity="right" />
         </FrameLayout>
         <FrameLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/DataRemainingFrame"
-            p1:paddingBottom="15dp">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/DataRemainingFrame"
+            android:paddingBottom="15dp">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataRemainingTitle"
-                p1:gravity="left" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataRemainingTitle"
+                android:gravity="left" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataRemainingAmount"
-                p1:gravity="right" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataRemainingAmount"
+                android:gravity="right" />
         </FrameLayout>
         <FrameLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/DataAllocatedFrame"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:paddingBottom="15dp">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/DataAllocatedFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataAllocatedTitle"
-                p1:gravity="left" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataAllocatedTitle"
+                android:gravity="left" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataAllocatedAmount"
-                p1:gravity="right" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataAllocatedAmount"
+                android:gravity="right" />
         </FrameLayout>
         <FrameLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/UsedDataFrame"
-            p1:paddingBottom="15dp">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/UsedDataFrame"
+            android:paddingBottom="15dp">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataUsedTitle"
-                p1:gravity="left" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataUsedTitle"
+                android:gravity="left" />
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DataUsedAmount"
-                p1:gravity="right" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/DataUsedAmount"
+                android:gravity="right" />
         </FrameLayout>
     </LinearLayout>
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="match_parent"
-        p1:id="@+id/MembersListLayout"
-        p1:layout_below="@id/PlanOverviewMainTextLayout">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/MembersListLayout"
+        android:layout_below="@id/PlanOverviewMainTextLayout">
         <FrameLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/MembersListHeadingText"
-            p1:padding="15dp">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/MembersListHeadingText"
+            android:padding="15dp">
             <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:layout_width="match_parent"
-                p1:layout_height="match_parent"
-                p1:id="@+id/MembersListTitle"
-                p1:gravity="left"
-                p1:text="Members List" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/MembersListTitle"
+                android:gravity="left"
+                android:text="Members List" />
             <ImageView
-                p1:src="@drawable/chevrondownicon"
-                p1:layout_width="wrap_content"
-                p1:layout_height="match_parent"
-                p1:id="@+id/OverviewPageDownArrow"
-                p1:layout_gravity="right"
-                p1:paddingRight="5dp" />
+                android:src="@drawable/chevrondownicon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/OverviewPageDownArrow"
+                android:layout_gravity="right"
+                android:paddingRight="5dp" />
         </FrameLayout>
         <ScrollView
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/MembersListScrollView"
-            p1:visibility="invisible">
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/MembersListScrollView"
+            android:visibility="invisible">
             <LinearLayout
-                p1:orientation="vertical"
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/MembersListLinearLayout"
-                p1:paddingBottom="15dp"
-                p1:paddingLeft="15dp"
-                p1:paddingRight="15dp" />
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/MembersListLinearLayout"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
         </ScrollView>
     </LinearLayout>
 </RelativeLayout>

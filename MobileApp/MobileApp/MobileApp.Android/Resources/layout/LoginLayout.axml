@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:id="@+id/LoginPageLayout"
-    p1:gravity="center_vertical"
-    p1:padding="25dp"
-    p1:background="@android:color/black">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/LoginPageLayout"
+    android:gravity="center_vertical"
+    android:padding="25dp"
+    android:background="@android:color/black">
     <ImageView
-        p1:src="@drawable/splashscreenlogo"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/SplashScreenLogo" />
+        android:src="@drawable/splashscreenlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SplashScreenLogo" />
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/UsernameLayout"
-        p1:padding="5dp"
-        p1:layout_marginTop="5dp"
-        p1:layout_marginBottom="5dp"
-        p1:layout_below="@id/SplashScreenLogo"
-        p1:animateLayoutChanges="true">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/UsernameLayout"
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/SplashScreenLogo"
+        android:animateLayoutChanges="true">
         <EditText
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/UsernameInputField"
-            p1:inputType="textEmailAddress" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/UsernameInputField"
+            android:inputType="textEmailAddress" />
     </LinearLayout>
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/PasswordLayout"
-        p1:padding="5dp"
-        p1:layout_marginBottom="5dp"
-        p1:layout_marginTop="5dp"
-        p1:layout_below="@id/UsernameLayout">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PasswordLayout"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/UsernameLayout">
         <EditText
-            p1:inputType="textPassword"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/PasswordInputField" />
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/PasswordInputField" />
     </LinearLayout>
     <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/LoginButtonLayout"
-        p1:padding="5dp"
-        p1:layout_marginBottom="5dp"
-        p1:layout_marginTop="5dp"
-        p1:layout_below="@id/PasswordLayout"
-        p1:animateLayoutChanges="true">
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LoginButtonLayout"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/PasswordLayout"
+        android:animateLayoutChanges="true">
         <Button
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/LogInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LogInButton"
             style="@style/LoginButton" />
     </LinearLayout>
 </RelativeLayout>

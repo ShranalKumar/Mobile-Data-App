@@ -77,11 +77,11 @@ namespace DocumentDBTodo
 
 	public class UsageBreakdownList
 	{
-		[JsonProperty(PropertyName = "App")]
-		public string App { get; set; }
+		[JsonProperty(PropertyName = "Day")]
+		public string Day { get; set; }
 
-		[JsonProperty(PropertyName = "AppDataUsed")]
-		public string AppUsage { get; set; }
+		[JsonProperty(PropertyName = "DataUsed")]
+		public string DataUsed { get; set; }
 
 	}
 
