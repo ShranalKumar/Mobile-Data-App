@@ -10,121 +10,52 @@ using Android.Runtime;
 using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 using MobileApp.Constants;
 using MobileApp.Droid.Helpers;
 using MobileApp.Droid.Views;
 
 namespace MobileApp.Droid.Adapters
 {
-    public class ViewPagerAdapter : BaseAdapter
+    public class ViewPagerAdapter : PagerAdapter
     {
         private AdminDashboardView _context;
-        private ImageView _mobileIcon;
-        private TextView _productName;
-        private TextView _dataUsage;
-        private TextView _user;
-        private TextView _daysRemaining;
-        private ProgressBar _dataUsageProgressBar;
-        private Button _allocateButton;
-        private Button _moreDetailsButton;
-        private static ScrollView _userTiles;
-        private static List<LinearLayout> _userTileList;
-        private LinearLayout _tileClickedOn;
+        private List<View> _views = new List<View>();
+        private AdminDashboardContentView _adminDashboardContentView;
+        private AllocationPageView _allocationPageView;
+        
+
+        public override int Count
+        {
+            get { return _views.Count(); }
+        }
 
         public ViewPagerAdapter(AdminDashboardView context)
         {
             _context = context;
         }
 
-        public override int Count => throw new NotImplementedException();
-
-
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override bool IsViewFromObject(View view, Java.Lang.Object obj)
         {
-            View view = convertView;
-
-            if (view == null)
-            {
-                view = _context.LayoutInflater.Inflate(Resource.Layout.AdminDashboardContentLayout, null);
-            }
-
-            if (_userTileList != null) { _userTileList.Clear(); }
-            findAllElements(view);
-            setAllStringConstants();
-
-            CustomUserTilesPage.getTiles(_userTiles);
-            _userTileList = CustomUserTilesPage.UserTiles;
-            SetTileClickable();
-
-            double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
-            _dataUsageProgressBar.Progress = (int)progress;
-
-            _moreDetailsButton.Click += delegate { _context.StartActivity(typeof(PlanOverviewView)); };
-            _allocateButton.Click += delegate { _context.StartActivity(typeof(AllocationPageView)); };
-
-            return view;
+            return view == obj;
         }
 
-        protected void findAllElements(View view)
+        public void GetAllViews(ViewPager pager)
         {
-            _mobileIcon = view.FindViewById<ImageView>(Resource.Id.MobileIcon);
-            _productName = view.FindViewById<TextView>(Resource.Id.ProductName);
-            _dataUsage = view.FindViewById<TextView>(Resource.Id.DataUsageText);
-            _dataUsageProgressBar = view.FindViewById<ProgressBar>(Resource.Id.DataProgressBar);
-            _user = view.FindViewById<TextView>(Resource.Id.UserName);
-            _daysRemaining = view.FindViewById<TextView>(Resource.Id.DaysRemainingText);
-            _allocateButton = view.FindViewById<Button>(Resource.Id.AllocateButton);
-            _userTiles = view.FindViewById<ScrollView>(Resource.Id.UserTilesLayout);
-            _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
-            _allocateButton = view.FindViewById<Button>(Resource.Id.AllocateButton);
-            _moreDetailsButton = view.FindViewById<Button>(Resource.Id.MoreDetailsButton);
+            _allocationPageView  = new AllocationPageView(_context);
+            _views.Add(_allocationPageView.GetView());
+            NotifyDataSetChanged();
+            _views.ForEach(x => pager.AddView(x));
         }
 
-        protected void setAllStringConstants()
-        {
-            _daysRemaining.Text = String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-            _dataUsage.Text = String.Format(StringConstants.Localizable.GbRemaining, Controller._totalRemainder);
-            _allocateButton.Text = StringConstants.Localizable.AllocateData;
-            _moreDetailsButton.Text = StringConstants.Localizable.MoreDetails;
+        public override Java.Lang.Object InstantiateItem(View container, int position)
+        {            
+            return _allocationPageView.GetView();
         }
 
-        public void SetTileClickable()
+        public override void DestroyItem(View container, int position, Java.Lang.Object @object)
         {
-            foreach (LinearLayout tile in _userTileList)
-            {
-                tile.Click += (o, s) =>
-                {
-                    _tileClickedOn = tile;
-                    Intent loadUserDataPage = new Intent(_context, typeof(UsersDataUsageView));
-                    string username;
-                    for (int i = 0; i < _tileClickedOn.ChildCount; i++)
-                    {
-                        if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
-                        {
-                            TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
-                            username = userName.Text;
-                            loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
-                            _context.StartActivity(loadUserDataPage);
-                        }
-                    }
-                };
-            }
-        }
-
-        public void Reload()
-        {
-            CustomUserTilesPage.getTiles(_userTiles);
-            _userTileList = CustomUserTilesPage.UserTiles;
-        }
-
-        public override Java.Lang.Object GetItem(int position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override long GetItemId(int position)
-        {
-            throw new NotImplementedException();
+            base.DestroyItem(container, position, @object);
         }
     }
 }

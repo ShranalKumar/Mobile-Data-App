@@ -3,40 +3,7 @@
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
     p1:id="@+id/AllocationPageMainLayout"
-    p1:background="@drawable/dashboardgradient7">
-    <android.support.v7.widget.Toolbar
-        p1:minHeight="?android:attr/actionBarSize"
-        p1:minWidth="25px"
-        p1:id="@+id/AllocationPageToolbar"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content">
-        <RelativeLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/TransferToolbarLayout"
-            p1:gravity="center">
-            <ImageButton
-                p1:src="@drawable/arrowbackicon"
-                p1:id="@+id/AllocationBackButton"
-                p1:background="@android:color/transparent"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:layout_alignParentLeft="true"
-                p1:padding="15dp" />
-            <TextView
-                p1:textAppearance="?android:attr/textAppearanceMedium"
-                p1:id="@+id/AllocationPageTitle"
-                p1:textAlignment="center"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true"
-                p1:gravity="center"
-                p1:layout_centerHorizontal="true"
-                p1:layout_centerVertical="true" />
-        </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
+    p1:background="#00000000">
     <LinearLayout
         p1:orientation="horizontal"
         p1:minWidth="25px"
@@ -46,8 +13,7 @@
         p1:id="@+id/DataDetailsTextLayout"
         p1:padding="10dp"
         p1:layout_marginTop="5dp"
-        p1:layout_marginBottom="10dp"
-        p1:layout_below="@id/AllocationPageToolbar">
+        p1:layout_marginBottom="10dp">
         <LinearLayout
             p1:orientation="vertical"
             p1:minWidth="25px"
@@ -93,7 +59,7 @@
                 p1:gravity="center" />
         </LinearLayout>
     </LinearLayout>
-    <RelativeLayout
+<!--<RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/DataPoolCircleLayout"
@@ -106,8 +72,8 @@
             p1:layout_height="100.0dp"
             p1:id="@+id/RadialProgressCircle"
             p1:background="@android:color/transparent" />
-    </RelativeLayout>
-    <LinearLayout
+    </RelativeLayout>-->
+<!--<LinearLayout
         p1:orientation="horizontal"
         p1:minWidth="25px"
         p1:minHeight="25px"
@@ -145,41 +111,51 @@
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout>-->
     <ScrollView
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="220dp"
+        p1:layout_height="match_parent"
         p1:id="@+id/ScrollableLayout"
-        p1:layout_below="@id/WeeklyModeLayout"
-        p1:padding="5dp">
+        p1:layout_below="@id/DataDetailsTextLayout"
+        p1:fadingEdgeLength="40dp"
+        p1:requiresFadingEdge="vertical">
         <LinearLayout
             p1:orientation="vertical"
             p1:minWidth="25px"
             p1:minHeight="25px"
             p1:layout_width="match_parent"
-            p1:id="@+id/UserDataAllocationList"
-            p1:layout_below="@id/WeeklyModeLayout"
-            p1:layout_height="wrap_content" />
-    </ScrollView>
-    <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:id="@+id/SendButtonLayout"
-        p1:layout_width="wrap_content"
-        p1:layout_below="@id/ScrollableLayout"
-        p1:layout_height="wrap_content"
-        p1:paddingTop="25dp"
-        p1:paddingBottom="25dp"
-        p1:paddingLeft="45dp"
-        p1:paddingRight="45dp">
-        <Button
-            p1:id="@+id/SaveButton"
-            p1:background="@drawable/transparent_button"
-            p1:textColor="@color/foreground_material_dark"
-            p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:padding="10dp" />
-    </RelativeLayout>
+            p1:paddingLeft="10dp"
+            p1:paddingRight="10dp">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:id="@+id/UserDataAllocationList"
+                p1:layout_height="wrap_content" />
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:id="@+id/SendButtonLayout"
+                p1:layout_width="match_parent"
+                p1:layout_height="match_parent"
+                p1:paddingTop="25dp"
+                p1:paddingBottom="25dp"
+                p1:paddingLeft="45dp"
+                p1:paddingRight="45dp"
+                p1:layout_alignParentBottom="true">
+                <Button
+                    p1:id="@+id/SaveButton"
+                    p1:background="@drawable/roundedborder"
+                    p1:textColor="@color/foreground_material_dark"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content"
+                    p1:padding="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

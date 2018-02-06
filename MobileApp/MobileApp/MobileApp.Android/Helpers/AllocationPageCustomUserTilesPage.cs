@@ -21,7 +21,7 @@ namespace MobileApp.Droid.Helpers
 	{
 		public static List<LinearLayout> UserTiles;
 
-		public static void getTiles(Android.Widget.LinearLayout parent)
+		public static void getTiles(LinearLayout parent)
 		{
 			UserTiles = new List<LinearLayout>();
 			int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;

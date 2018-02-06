@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System;
+using Java.Util;
 using MobileApp.Droid.Adapters;
 using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
@@ -11,7 +12,6 @@ using System.Collections.Generic;
 using Android.Views;
 using Android.Content;
 using System.Linq;
-using System.Threading;
 using Android.Support.V4.View;
 using Android.Graphics.Drawables;
 
@@ -26,6 +26,7 @@ namespace MobileApp.Droid.Views
         private ImageButton _hamburgerIcon;
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
+        private DashboardGradientTimerHelper _dashbardGradientTask;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,6 +35,11 @@ namespace MobileApp.Droid.Views
             findAllElements();
             _mainPagerAdapter = new ViewPagerAdapter(this);
             _mainViewPager.Adapter = _mainPagerAdapter;
+            _mainPagerAdapter.GetAllViews(_mainViewPager);
+
+            var timer = new Timer();
+            _dashbardGradientTask = new DashboardGradientTimerHelper(this);
+            timer.Schedule(_dashbardGradientTask, 0, NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
         }
                 
         protected void findAllElements()
