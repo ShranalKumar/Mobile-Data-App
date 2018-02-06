@@ -31,8 +31,8 @@ namespace MobileApp.Droid.Helpers
             newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
             member.UsageBreakdown.ForEach(x => newGroupMember.UsageBreakdown.Add(new UsageBreakdownList
             {
-                App = x.AppName,
-                AppUsage = x.AppDataUsed
+                Day = x.Day,
+                DataUsed = x.DataUsed
             }));
 
             return newGroupMember;
@@ -54,8 +54,8 @@ namespace MobileApp.Droid.Helpers
             newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
             user.UsageBreakdown.ForEach(x => newGroupMember.UsageBreakdown.Add(new UsageBreakdownList
             {
-                App = x.AppName,
-                AppUsage = x.AppDataUsed
+                Day = x.Day,
+                DataUsed = x.DataUsed
             }));
 
             return newGroupMember;
@@ -74,8 +74,8 @@ namespace MobileApp.Droid.Helpers
             member.UsageBreakdown = new List<UserUsageBreakdown>();
             groupMembers.UsageBreakdown.ForEach(x => member.UsageBreakdown.Add(new UserUsageBreakdown
             {
-                AppName = x.App,
-                AppDataUsed = x.AppUsage
+                Day = x.Day,
+                DataUsed = x.DataUsed
             }));
 
             return member;
@@ -93,8 +93,8 @@ namespace MobileApp.Droid.Helpers
             member.UsageBreakdown = new List<UserUsageBreakdown>();
             user.UsageBreakdown.ForEach(x => member.UsageBreakdown.Add(new UserUsageBreakdown
             {
-                AppName = x.AppName,
-                AppDataUsed = x.AppDataUsed
+                Day = x.Day,
+                DataUsed = x.DataUsed
             }));
 
             return member;
@@ -117,8 +117,8 @@ namespace MobileApp.Droid.Helpers
             user.UsageBreakdown = new List<UserUsageBreakdown>();
             member.UsageBreakdown.ForEach(x => user.UsageBreakdown.Add(new UserUsageBreakdown
             {
-                AppName = x.AppName,
-                AppDataUsed = x.AppDataUsed
+                Day = x.Day,
+                DataUsed = x.DataUsed
             }));
 
             return user;

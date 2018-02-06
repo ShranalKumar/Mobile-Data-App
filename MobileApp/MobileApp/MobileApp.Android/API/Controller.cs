@@ -41,10 +41,11 @@ namespace MobileApp.Droid
 			_planDataPool = _users[0].Plan;
 			_totalRemainder = _planDataPool - _totalUsed;
 			_totalUnAllocated = _planDataPool - _totalAllocated;
-            if (_users[0].AdminStatus)
-            {
-                _users[0].Allocated = _planDataPool - _totalAllocated;
-            }
+    //        if (_users[0].AdminStatus)
+    //        {
+    //            //_users[0].Allocated = _planDataPool - _totalAllocated;
+				//_users[0].Allocated = 
+    //        }
 			
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 

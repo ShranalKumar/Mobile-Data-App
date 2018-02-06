@@ -160,6 +160,7 @@ namespace MobileApp.Droid
 			global::HockeyApp.Resource.Style.HockeyApp_ButtonStyle = global::MobileApp.Droid.Resource.Style.HockeyApp_ButtonStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::MobileApp.Droid.Resource.Style.HockeyApp_EditTextStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::MobileApp.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
+			global::Microcharts.Droid.Resource.String.library_name = global::MobileApp.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MobileApp.Droid.Resource.Attribute.actionBarSize;
 		}
 		

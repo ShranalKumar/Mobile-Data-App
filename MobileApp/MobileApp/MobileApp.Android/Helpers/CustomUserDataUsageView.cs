@@ -15,7 +15,7 @@ namespace MobileApp.Droid.Helpers
 		{
             var _usage = new List<UserUsageBreakdown>();
             key.UsageBreakdown.ForEach(x => _usage.Add(x));
-            _usage.Sort((first, second) => string.Compare(first.AppDataUsed, second.AppDataUsed));
+            _usage.Sort((first, second) => string.Compare(first.DataUsed, second.DataUsed));
             _usage.Reverse();
 
             LinearLayout MainLinear = new LinearLayout(parent.Context);
@@ -34,11 +34,11 @@ namespace MobileApp.Droid.Helpers
 
                 ContextThemeWrapper newAppNameContext = new ContextThemeWrapper(newAppTextContext, Resource.Style.UserDataUsageAppText);
 				TextView AppName = new TextView(newAppNameContext);
-				AppName.Text = breakdown.AppName;
+				AppName.Text = breakdown.Day;
 
                 ContextThemeWrapper newAppDataUsageContext = new ContextThemeWrapper(newAppTextContext, Resource.Style.UserDataUsageAppMBAmount);
 				TextView AppDataUsage = new TextView(newAppDataUsageContext);
-				AppDataUsage.Text = String.Format(StringConstants.Localizable.DataUsageBreakdown, breakdown.AppDataUsed);
+				AppDataUsage.Text = String.Format(StringConstants.Localizable.DataUsageBreakdown, breakdown.DataUsed);
 
                 ContextThemeWrapper newProgressBarContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBorderStyle);
                 FrameLayout currentUserProgressBar = new FrameLayout(newProgressBarContext);
@@ -46,8 +46,8 @@ namespace MobileApp.Droid.Helpers
                 ContextThemeWrapper newProgressBarFillContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBarFillStyle);
                 Android.Widget.ProgressBar UserDataUsageProgressBar = new Android.Widget.ProgressBar(newProgressBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
-                double AppUsage = Double.Parse(breakdown.AppDataUsed) / 1000;
-                double progress = ((AppUsage / key.Used) * 100);
+                double DataUsed = Double.Parse(breakdown.DataUsed) / 1000;
+                double progress = ((DataUsed / key.Used) * 100);
                 UserDataUsageProgressBar.Progress = (int)(progress);
 
                 currentUserProgressBar.AddView(UserDataUsageProgressBar);
@@ -63,7 +63,7 @@ namespace MobileApp.Droid.Helpers
 		{
             var _usage = new List<UserUsageBreakdown>();
             key.UsageBreakdown.ForEach(x => _usage.Add(x));
-            _usage.Sort((first, second) => string.Compare(first.AppDataUsed, second.AppDataUsed));
+            _usage.Sort((first, second) => string.Compare(first.DataUsed, second.DataUsed));
             _usage.Reverse();
             
 			LinearLayout MainLinear = new LinearLayout(parent.Context);
@@ -82,11 +82,11 @@ namespace MobileApp.Droid.Helpers
 
 				ContextThemeWrapper newAppNameContext = new ContextThemeWrapper(newAppTextContext, Resource.Style.UserDataUsageAppText);
 				TextView AppName = new TextView(newAppNameContext);
-				AppName.Text = breakdown.AppName;
+				AppName.Text = breakdown.Day;
 
 				ContextThemeWrapper newAppDataUsageContext = new ContextThemeWrapper(newAppTextContext, Resource.Style.UserDataUsageAppMBAmount);
 				TextView AppDataUsage = new TextView(newAppDataUsageContext);
-				AppDataUsage.Text = String.Format(StringConstants.Localizable.DataUsageBreakdown, breakdown.AppDataUsed);
+				AppDataUsage.Text = String.Format(StringConstants.Localizable.DataUsageBreakdown, breakdown.DataUsed);
 
 				ContextThemeWrapper newProgressBarContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBorderStyle);
 				FrameLayout currentUserProgressBar = new FrameLayout(newProgressBarContext);
@@ -94,8 +94,8 @@ namespace MobileApp.Droid.Helpers
 				ContextThemeWrapper newProgressBarFillContext = new ContextThemeWrapper(parent.Context, Resource.Style.ProgressBarFillStyle);
 				Android.Widget.ProgressBar UserDataUsageProgressBar = new Android.Widget.ProgressBar(newProgressBarFillContext, null, Resource.Style.ProgressBarFillStyle);
 
-				double AppUsage = Double.Parse(breakdown.AppDataUsed) / 1000;
-				double progress = ((AppUsage / key.Used) * 100);
+				double DataUsed = Double.Parse(breakdown.DataUsed) / 1000;
+				double progress = ((DataUsed / key.Used) * 100);
 				UserDataUsageProgressBar.Progress = (int)(progress);
 
 				currentUserProgressBar.AddView(UserDataUsageProgressBar);
