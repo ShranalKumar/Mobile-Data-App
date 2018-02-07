@@ -27,15 +27,24 @@ namespace MobileApp.Droid.Views
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
         private DashboardGradientTimerHelper _dashbardGradientTask;
+        private AdminDashboardContentView _adminDashboardContentView;
+        private AllocationPageView _allocationPageView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminDashboardLayout);
             findAllElements();
+
             _mainPagerAdapter = new ViewPagerAdapter(this);
             _mainViewPager.Adapter = _mainPagerAdapter;
-            _mainPagerAdapter.GetAllViews(_mainViewPager);
+
+            _adminDashboardContentView = new AdminDashboardContentView(this);
+            _allocationPageView = new AllocationPageView(this);
+
+            _mainPagerAdapter.AddView(_adminDashboardContentView.GetView());
+            _mainPagerAdapter.AddView(_allocationPageView.GetView());
+            _mainPagerAdapter.NotifyDataSetChanged();            
 
             var timer = new Timer();
             _dashbardGradientTask = new DashboardGradientTimerHelper(this);
@@ -69,6 +78,11 @@ namespace MobileApp.Droid.Views
             });
         }
 
+        public void addView(View newView)
+        {
+            int pageIndex = _mainPagerAdapter.AddView(newView);
+            _mainViewPager.SetCurrentItem(pageIndex, true);
+        }
+
     }
 }
-

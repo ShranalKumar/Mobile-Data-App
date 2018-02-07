@@ -148,6 +148,7 @@
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="Helpers\CustomUserTilesPage.cs" />
     <Compile Include="Views\AddmemberPageView.cs" />
+    <Compile Include="Views\AdminDashboardContentView.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />
     <Compile Include="API\Controller.cs" />
     <Compile Include="API\CosmosDB.cs" />

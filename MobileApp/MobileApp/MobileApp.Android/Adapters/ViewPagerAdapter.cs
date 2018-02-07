@@ -23,6 +23,7 @@ namespace MobileApp.Droid.Adapters
         private List<View> _views = new List<View>();
         private AdminDashboardContentView _adminDashboardContentView;
         private AllocationPageView _allocationPageView;
+        private ViewPager _viewPager;
         
 
         public override int Count
@@ -40,22 +41,27 @@ namespace MobileApp.Droid.Adapters
             return view == obj;
         }
 
-        public void GetAllViews(ViewPager pager)
+        public int AddView(View view)
         {
-            _allocationPageView  = new AllocationPageView(_context);
-            _views.Add(_allocationPageView.GetView());
-            NotifyDataSetChanged();
-            _views.ForEach(x => pager.AddView(x));
+            return AddView(view, _views.Count());
+        }
+
+        public int AddView(View view, int position)
+        {
+            _views.Insert(position, view);
+            return position;
         }
 
         public override Java.Lang.Object InstantiateItem(View container, int position)
-        {            
-            return _allocationPageView.GetView();
+        {
+            View view = _views[position];
+            container.JavaCast<ViewPager>().AddView(view);
+            return view;
         }
 
         public override void DestroyItem(View container, int position, Java.Lang.Object @object)
         {
-            base.DestroyItem(container, position, @object);
+            container.JavaCast<ViewPager>().RemoveView(_views[position]);
         }
     }
 }

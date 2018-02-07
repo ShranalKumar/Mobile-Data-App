@@ -80,12 +80,6 @@ namespace MobileApp.Droid.Views
             _allocationUserTileList = AllocationPageCustomUserTilesPage.UserTiles;
 
             var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
-
-            //Radial Progress            
-            //_radialProgress.LayoutParameters.Height = 100 * pixelToDp;
-            //_radialProgress.LayoutParameters.Width = 100 * pixelToDp;
-            //_radialProgress.LabelHidden = true;
-
             return _view;
         }
 
