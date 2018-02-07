@@ -3528,8 +3528,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0900d4
 			public const int LoginPageLayout = 2131296468;
 			
-			// aapt resource value: 0x7f09009c
-			public const int MainViewPager = 2131296412;
+			// aapt resource value: 0x7f09009d
+			public const int MainViewPager = 2131296413;
 			
 			// aapt resource value: 0x7f090198
 			public const int MainViewTextLayout = 2131296664;
@@ -4053,8 +4053,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090111
 			public const int chronometer = 2131296529;
 			
-			// aapt resource value: 0x7f09009d
-			public const int circlePageIndicator = 2131296413;
+			// aapt resource value: 0x7f09009c
+			public const int circlePageIndicator = 2131296412;
 			
 			// aapt resource value: 0x7f090039
 			public const int clip_horizontal = 2131296313;

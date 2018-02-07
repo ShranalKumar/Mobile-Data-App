@@ -312,5 +312,4 @@
     <item name="android:textSize">18dp</item>
     <item name="android:padding">10dp</item>
   </style>
-
 </resources>

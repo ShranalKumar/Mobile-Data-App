@@ -4,8 +4,7 @@
     p1:minHeight="25px"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/BackgroundLayout"
-    p1:background="@drawable/dashboardgradient7">
+    p1:id="@+id/BackgroundLayout">
     <LinearLayout
         p1:orientation="vertical"
         p1:layout_width="match_parent"
@@ -91,15 +90,18 @@
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
     </LinearLayout>
+    <Com.ViewPagerIndicator.CirclePageIndicator
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/circlePageIndicator"
+        p1:layout_alignParentBottom="true"
+        p1:padding="30dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:vpiStrokeColor="#fffaebd7"
+        app:vpiFillColor="#ff00ffff" />
     <android.support.v4.view.ViewPager
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
         p1:layout_below="@id/ToolbarLayout"
         p1:id="@+id/MainViewPager" />
-    <Com.ViewPagerIndicator.CirclePageIndicator
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/circlePageIndicator"
-        p1:layout_alignParentBottom="true"
-        p1:paddingBottom="30dp" />
 </RelativeLayout>

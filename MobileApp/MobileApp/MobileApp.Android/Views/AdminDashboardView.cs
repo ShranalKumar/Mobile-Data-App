@@ -15,6 +15,7 @@ using System.Linq;
 using Android.Support.V4.View;
 using Android.Graphics.Drawables;
 using Com.ViewPagerIndicator;
+using Android.Graphics;
 
 namespace MobileApp.Droid.Views
 {
@@ -43,8 +44,9 @@ namespace MobileApp.Droid.Views
             
             _mainPagerAdapter = new ViewPagerAdapter(this);
             _mainViewPager.Adapter = _mainPagerAdapter;
-
             _circlePageIndicator.SetViewPager(_mainViewPager);
+            _circlePageIndicator.SetPageColor(new Color((byte)255, (byte)255, (byte)255, (byte)255));
+            _circlePageIndicator.SetFillColor(new Color((byte)255, (byte)255, (byte)255, (byte)63.75f));
 
             _adminDashboardContentInstance = new AdminDashboardContentView(this);
             _adminDashboardContentView = _adminDashboardContentInstance.GetView();
@@ -57,6 +59,8 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_adminDashboardContentView);
             _mainPagerAdapter.AddView(_allocationPageView);
             _mainPagerAdapter.NotifyDataSetChanged();
+
+            
 
             var timer = new Timer();
             _dashbardGradientTask = new DashboardGradientTimerHelper(this);
