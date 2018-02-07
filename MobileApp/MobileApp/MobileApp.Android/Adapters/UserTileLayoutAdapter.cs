@@ -40,7 +40,7 @@ namespace MobileApp.Droid.Adapters
 
             if (view == null)
             {
-                view = context.LayoutInflater.Inflate(Android.Resource.Layout.ActivityListItem, null);
+                view = context.LayoutInflater.Inflate(Resource.Layout.AdminDashboardContentLayout, null);
             }
 
             TextView UserName = view.FindViewById<TextView>(Android.Resource.Id.Text2);

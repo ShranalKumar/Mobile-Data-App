@@ -24,8 +24,7 @@ namespace MobileApp.Droid.Helpers
         public static double progressChanged;
         public static double unallocated;
 
-
-        public static void getTiles(Android.Widget.LinearLayout parent)
+		public static void getTiles(LinearLayout parent)
 		{
 			UserTiles = new List<LinearLayout>();
 			int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;

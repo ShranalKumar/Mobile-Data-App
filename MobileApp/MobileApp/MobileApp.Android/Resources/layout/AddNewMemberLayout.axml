@@ -61,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/PhoneNumberInputField"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:maxLength="10" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -75,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/FirstNameInputField"
-                android:inputType="textPersonName" />
+                android:inputType="textCapWords" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -89,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/LastNameInputField"
-                android:inputType="textPersonName" />
+                android:inputType="textCapWords" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
