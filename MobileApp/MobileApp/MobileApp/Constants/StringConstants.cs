@@ -55,8 +55,12 @@ namespace MobileApp.Constants
             public const string SaveButton = "Save";
             public const string AllocationUpdate = "Successfully updated users data allocation.";
             public const string AllocationError = "Please ensure value for reserved data is a positive number to proceed.";
-			public const string PointsText = "Points";
+			public const string PointsText = "My Points";
 			public const string PointsAmout = "{0}";
+			public const string GraphTitle = "Data usage from last week";
+			public const string GraphSubTitle = "(Values in graph are in MB)";
+			public const string UserPhoneNumber = "{0}";
+
 
 			//Request Screen
 			public const string RequestPageTitle = "Request Data";

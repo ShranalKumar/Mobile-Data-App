@@ -41,6 +41,9 @@ namespace MobileApp.Droid.Views
 		private TextView _pointsText;
 		private TextView _pointsAmount;
 		private Entry[] _entries;
+		private TextView _graphTitle;
+		private TextView _graphSubTitle;
+		private TextView _userPhoneNumber;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -82,9 +85,13 @@ namespace MobileApp.Droid.Views
 			_pointsText = FindViewById<TextView>(Resource.Id.PointsText);
 			_pointsAmount = FindViewById<TextView>(Resource.Id.PointsAmount);
 			_dataUsageSaveButton = FindViewById<ImageButton>(Resource.Id.SaveButton);
-        }
+			_graphTitle = FindViewById<TextView>(Resource.Id.GraphTitleText);
+			_graphSubTitle = FindViewById<TextView>(Resource.Id.GraphSubTitleText);
+			_userPhoneNumber = FindViewById<TextView>(Resource.Id.UserPhoneNumber);
 
-        protected void setAllStringConstants()
+		}
+
+		protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedText;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 1));
@@ -93,6 +100,9 @@ namespace MobileApp.Droid.Views
             _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._users[0].Used, 1));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
 			_pointsAmount.Text = String.Format(StringConstants.Localizable.PointsAmout, 10);
+			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
+			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
+			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
             //_usedDataText.Text = StringConstants.Localizable.UsedData;
             //_usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
             //_dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
@@ -144,7 +154,8 @@ namespace MobileApp.Droid.Views
 				{
 					Label = breakdown.Day,
 					ValueLabel = breakdown.DataUsed,
-					Color = SKColor.Parse("#FFFFFF")
+					Color = SKColor.Parse("#FFFFFF"),
+					TextColor = SKColor.Parse("#FFFFFF")
 				};
 				number++;
 			}
@@ -155,9 +166,8 @@ namespace MobileApp.Droid.Views
 
 				LineMode = LineMode.Spline,
 				LineSize = 8,
-				LabelTextSize = 25,
+				LabelTextSize = 20,
 				PointMode = PointMode.None,
-				PointSize = 18,
 				BackgroundColor = SKColor.Empty
 			};
 			_chartView.Chart = chart;
