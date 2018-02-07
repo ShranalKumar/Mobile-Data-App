@@ -174,20 +174,15 @@ namespace MobileApp.Droid
 			}
 		}
 
-		public async Task<User> UpdateMemberAllocation(User user, double allocated)
+		public async Task<List<User>> UpdateMemberAllocation(List<User> user)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
-            GroupMembers userToUpdate;
-            if (user.UID != queryDoc.uid)
-            {
-                userToUpdate = queryDoc.groupMembers.Where(x => x.uid == user.UID).FirstOrDefault();
-                userToUpdate.Allocated = allocated;
-            } else
-            {
-                queryDoc.Allocated = allocated;
-            }
-            
-			user.Allocated = allocated;
+			queryDoc.Allocated = _users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated;
+			foreach (var member in queryDoc.groupMembers)
+			{
+				member.Allocated = _users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated;
+			}
+			
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
 			return user;
 		}

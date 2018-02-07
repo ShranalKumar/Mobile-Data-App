@@ -30,8 +30,9 @@ namespace MobileApp.Droid.Views
 		private LinearLayout _userDataAllocationListItem;
         private AdminDashboardView _context;
         private View _view;
+		private User _user;
 
-        public override int Count => throw new NotImplementedException();
+		public override int Count => throw new NotImplementedException();
 
         public AllocationPageView(AdminDashboardView context) : base()
         {
@@ -80,12 +81,30 @@ namespace MobileApp.Droid.Views
             _allocationUserTileList = AllocationPageCustomUserTilesPage.UserTiles;
 
             var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
+			_saveButon.Click += SaveButtonClicked;
             return _view;
         }
 
         public View GetView()
         {
             return _view;
-        }
-    }
+		}
+		public async void SaveButtonClicked(object sender, EventArgs e)
+		{
+				var changedUser = await Controller.UpdateAllocation(Controller._users);
+				//Controller._users[_uid] = changedUser;
+
+		}
+
+
+		//protected async void UpdateUserDataAllocation(object sender, EventArgs e)
+		//{
+		//	Controller._totalUnAllocated = _tempUnAllocated;
+		//	Controller._users[0].Allocated = _tempUnAllocated;
+		//	User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
+		//Controller._users[_uid] = changedUser;
+		//	Toast.MakeText(this, StringConstants.Localizable.SavedChangesMessage, ToastLength.Long).Show();
+		////}
+
+	}
 }
