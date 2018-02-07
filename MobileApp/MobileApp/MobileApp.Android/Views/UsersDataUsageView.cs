@@ -90,7 +90,7 @@ namespace MobileApp.Droid.Views
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 1));
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
             _remainingDataText.Text = StringConstants.Localizable.UsedText;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._users[0].Used, 1));
+            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 1));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
 			_pointsAmount.Text = String.Format(StringConstants.Localizable.PointsAmout, 10);
             //_usedDataText.Text = StringConstants.Localizable.UsedData;
