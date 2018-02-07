@@ -63,5 +63,15 @@ namespace MobileApp.Droid.Adapters
         {
             container.JavaCast<ViewPager>().RemoveView(_views[position]);
         }
+
+        public View GetView()
+        {
+            return _views[0];
+        }
+
+        public int GetItemPosition(View view)
+        {
+            return _views.IndexOf(view);
+        }
     }
 }

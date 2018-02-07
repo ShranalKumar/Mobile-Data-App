@@ -96,4 +96,10 @@
         p1:layout_height="wrap_content"
         p1:layout_below="@id/ToolbarLayout"
         p1:id="@+id/MainViewPager" />
+    <Com.ViewPagerIndicator.CirclePageIndicator
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/circlePageIndicator"
+        p1:layout_alignParentBottom="true"
+        p1:paddingBottom="30dp" />
 </RelativeLayout>

@@ -66,7 +66,6 @@ namespace MobileApp.Droid.Views
             _dataUsageProgressBar.Progress = (int)progress;
 
             _moreDetailsButton.Click += delegate { _context.StartActivity(typeof(PlanOverviewView)); };
-            _allocateButton.Click += delegate { _context.StartActivity(typeof(AllocationPageView)); };
 
             return _view;
         }
@@ -126,6 +125,11 @@ namespace MobileApp.Droid.Views
         public View GetView()
         {
             return _view;
+        }
+
+        public Button GetAllocateButton()
+        {
+            return _allocateButton;
         }
     }
 }

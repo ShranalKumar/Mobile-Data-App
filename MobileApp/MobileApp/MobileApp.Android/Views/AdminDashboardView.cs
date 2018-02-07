@@ -14,6 +14,7 @@ using Android.Content;
 using System.Linq;
 using Android.Support.V4.View;
 using Android.Graphics.Drawables;
+using Com.ViewPagerIndicator;
 
 namespace MobileApp.Droid.Views
 {
@@ -27,24 +28,35 @@ namespace MobileApp.Droid.Views
         private ImageButton _notificationButton;
         private ImageButton _accountSwitcher;
         private DashboardGradientTimerHelper _dashbardGradientTask;
-        private AdminDashboardContentView _adminDashboardContentView;
-        private AllocationPageView _allocationPageView;
+        private AdminDashboardContentView _adminDashboardContentInstance;
+        private View _adminDashboardContentView;
+        private AllocationPageView _allocationPageInstance;
+        private View _allocationPageView;
+        private Button _allocateButton;
+        private CirclePageIndicator _circlePageIndicator;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AdminDashboardLayout);
             findAllElements();
-
+            
             _mainPagerAdapter = new ViewPagerAdapter(this);
             _mainViewPager.Adapter = _mainPagerAdapter;
 
-            _adminDashboardContentView = new AdminDashboardContentView(this);
-            _allocationPageView = new AllocationPageView(this);
+            _circlePageIndicator.SetViewPager(_mainViewPager);
 
-            _mainPagerAdapter.AddView(_adminDashboardContentView.GetView());
-            _mainPagerAdapter.AddView(_allocationPageView.GetView());
-            _mainPagerAdapter.NotifyDataSetChanged();            
+            _adminDashboardContentInstance = new AdminDashboardContentView(this);
+            _adminDashboardContentView = _adminDashboardContentInstance.GetView();
+            _allocateButton = _adminDashboardContentInstance.GetAllocateButton();
+            _allocateButton.Click += allocateButtonClickAction;
+
+            _allocationPageInstance = new AllocationPageView(this);
+            _allocationPageView = _allocationPageInstance.GetView();
+
+            _mainPagerAdapter.AddView(_adminDashboardContentView);
+            _mainPagerAdapter.AddView(_allocationPageView);
+            _mainPagerAdapter.NotifyDataSetChanged();
 
             var timer = new Timer();
             _dashbardGradientTask = new DashboardGradientTimerHelper(this);
@@ -53,6 +65,7 @@ namespace MobileApp.Droid.Views
                 
         protected void findAllElements()
         {
+            _circlePageIndicator = FindViewById<CirclePageIndicator>(Resource.Id.circlePageIndicator);
             _mainViewPager = FindViewById<ViewPager>(Resource.Id.MainViewPager);
             _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
@@ -82,6 +95,16 @@ namespace MobileApp.Droid.Views
         {
             int pageIndex = _mainPagerAdapter.AddView(newView);
             _mainViewPager.SetCurrentItem(pageIndex, true);
+        }
+
+        public void setCurrentPage(View pageToShow)
+        {
+            _mainViewPager.SetCurrentItem(_mainPagerAdapter.GetItemPosition(pageToShow), true);
+        }
+
+        public void allocateButtonClickAction(object sender, EventArgs e)
+        {
+            setCurrentPage(_allocationPageView);
         }
 
     }
