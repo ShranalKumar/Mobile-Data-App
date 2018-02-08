@@ -89,6 +89,8 @@ namespace MobileApp.Droid.Views
             ViewPagerAdapter._views.Clear();
             _mainViewPager.RemoveAllViewsInLayout();
             _mainPagerAdapter.AddView(_adminDashboardContentInstance.GetView(0, null, null));
+            _allocateButton = _adminDashboardContentInstance.GetAllocateButton();
+            _allocateButton.Click += allocateButtonClickAction;
             _mainPagerAdapter.AddView(_allocationPageInstance.GetView(0, null, null));
             _mainPagerAdapter.NotifyDataSetChanged();
         }
