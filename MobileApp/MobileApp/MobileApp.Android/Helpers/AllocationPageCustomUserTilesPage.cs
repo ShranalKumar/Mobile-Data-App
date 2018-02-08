@@ -20,18 +20,21 @@ namespace MobileApp.Droid.Helpers
 	public partial class AllocationPageCustomUserTilesPage : ContentView 
 	{
 		public static List<LinearLayout> UserTiles;
+        public static List<SeekBar> _seekbars;
         public static double totalAllocated = 0;
         public static double progressChanged;
         public static double unallocated;
+        private static User _currentUser;
 
 		public static void getTiles(LinearLayout parent)
 		{
 			UserTiles = new List<LinearLayout>();
 			int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
+            _seekbars = new List<SeekBar>();
             
 			foreach (User user in Controller._users)
 			{
-				
+                _currentUser = user;
                 ContextThemeWrapper allocationUserTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.AllocationUserTileLayoutStyle);
 				LinearLayout User = new LinearLayout(allocationUserTileContext);
 				User.Orientation = Orientation.Vertical;
@@ -50,35 +53,64 @@ namespace MobileApp.Droid.Helpers
 
                 ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
                 SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
+                userAllocationSlider.Id = Int32.Parse(user.UID);
+                _seekbars.Add(userAllocationSlider);
                 double progress = (user.Allocated / Controller._planDataPool) * 100;
                 userAllocationSlider.Progress = (int)(progress);
+                
                 userAllocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
                 {
                     if (e.FromUser)
                     {
+                        _seekbars.ForEach(x => totalAllocated += (((double)x.Progress / 100) * Controller._planDataPool));
                         double progressChanged = ((double)e.Progress / 100) * (Controller._planDataPool);
-                        Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
-                        user.Allocated = progressChanged;
-
-
+                        
+                        //var thisBar = _seekbars[_seekbars.IndexOf(userAllocationSlider)];
+                        //thisBar.Progress = e.Progress;                      
 
                         if (progressChanged <= user.Used)
                         {
                             progressChanged = user.Used;
                             Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
-                            user.Allocated = progressChanged;
+                            _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)((user.Used / Controller._planDataPool)  * 100);
+                            //thisBar = _seekbars[_seekbars.IndexOf(userAllocationSlider)];
+                            //thisBar.Progress = (int)((user.Used / Controller._planDataPool) * 100);
+                            //_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = thisBar.Progress;
+                        }                        
+                        //else if (totalAllocated  >= Controller._planDataPool)
+                        //{
+                        //    Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round((((double)_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress / 100) * Controller._planDataPool), 1));
+                        //    _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = /*(int)((*/_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress/* / Controller._planDataPool) * 100)*/;
+                        //}
+                        else
+                        {
+                            Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
+                            _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = e.Progress;
                         }
+                         
+
+                        //else if (totalAllocated >= Controller._planDataPool)
+                        //{
+                        //    progressChanged = user.Allocated;
+                        //    Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
+                        //    _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)((user.Allocated / Controller._planDataPool) * 100);
+                        //    thisBar = _seekbars[_seekbars.IndexOf(userAllocationSlider)];
+                        //    thisBar.Progress = (int)((user.Allocated / Controller._planDataPool) * 100);
+                        //    _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = thisBar.Progress;
+                        //}
 
                         totalAllocated = unallocated = 0;
-                        Controller._users.ForEach(x => totalAllocated += x.Allocated);
+                        _seekbars.ForEach(x => totalAllocated += (((double)x.Progress / 100) * Controller._planDataPool));
                         unallocated = Controller._planDataPool - totalAllocated;
+                        //if (unallocated == 0)
+                        //{
+                        //    Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round((((double)_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress / 100) * Controller._planDataPool), 1));
+                        //    _seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = /*(int)((*/_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress/* / Controller._planDataPool) * 100)*/;
+                        //}
                         AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(unallocated, 1));
                     }
 
-                };
-
-                
-
+                }; 
 
                 parent.AddView(User);                
 				User.AddView(UserDetailsTextLayout);
@@ -88,5 +120,5 @@ namespace MobileApp.Droid.Helpers
                 UserTiles.Add(User);
             }
         }
-	}
+    }
 }

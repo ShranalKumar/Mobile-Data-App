@@ -15,7 +15,7 @@ using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
+    [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
     public class LoginView : Activity
     {
         private Button _loginButtonClicked;
@@ -66,6 +66,7 @@ namespace MobileApp.Droid.Views
 			{
 				Intent intent = new Intent(this, typeof(AdminDashboardView));
 				StartActivity(intent);
+                Finish();
 			}
 			else if (logincontroller.getLoginStatus())
 			{
