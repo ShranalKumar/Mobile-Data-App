@@ -310,5 +310,12 @@ namespace MobileApp.Droid
 		{
 			return _adminStatus;
 		}
+
+        public void ClearAll()
+        {
+            _items = null;
+            _users = new List<User>();
+            _groupMembers = new List<User>();
+        }
     }
 }

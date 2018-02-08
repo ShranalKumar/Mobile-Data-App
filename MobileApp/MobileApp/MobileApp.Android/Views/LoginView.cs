@@ -37,7 +37,7 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-
+            
             progress = new Android.App.ProgressDialog(this);
             progress.Indeterminate = true;
             progress.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
@@ -53,7 +53,7 @@ namespace MobileApp.Droid.Views
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {
             progress.Show();
-
+            Controller.Clear();
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
 			_loginId = _userInputID.Text;

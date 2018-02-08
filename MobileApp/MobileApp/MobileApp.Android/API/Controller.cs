@@ -68,5 +68,10 @@ namespace MobileApp.Droid
             User changedUser = await TodoItemManager.DefaultManager.DeleteGroupMember(user, targetMember);
             return changedUser;
         }
+
+        public static void Clear()
+        {
+            TodoItemManager.DefaultManager.ClearAll();
+        }
     }
 } 
