@@ -24,8 +24,7 @@ namespace MobileApp.Droid.Views
         private SeekBar _allocationSlider;
         private TextView _allocatedDataAmount;
         private TextView _allocationPageHeader;
-        private TextView _remainingDataText;
-        private TextView _remainingDataAmount;
+		private TextView _usedDataAmount;
 		private ChartView _chartView;
 		private TextView _allocatedDataText;
         private TextView _usedDataText;
@@ -41,6 +40,9 @@ namespace MobileApp.Droid.Views
 		private TextView _pointsText;
 		private TextView _pointsAmount;
 		private Entry[] _entries;
+		private TextView _graphTitle;
+		private TextView _graphSubTitle;
+		private TextView _userPhoneNumber;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -71,8 +73,8 @@ namespace MobileApp.Droid.Views
             _allocatedDataAmount = FindViewById<TextView>(Resource.Id.AllocatedDataAmount);
             _allocationPageHeader = FindViewById<TextView>(Resource.Id.UserDataUsageTitle);
             _backButton = FindViewById<ImageButton>(Resource.Id.UserDataUsageBackButton);
-            _remainingDataText = FindViewById<TextView>(Resource.Id.RemainingDataText);
-            _remainingDataAmount = FindViewById<TextView>(Resource.Id.RemainingDataAmount);
+            _usedDataText = FindViewById<TextView>(Resource.Id.RemainingDataText);
+            _usedDataAmount = FindViewById<TextView>(Resource.Id.RemainingDataAmount);
             //_usedDataText = FindViewById<TextView>(Resource.Id.UsedDataText);
             //_usedDataTextAmount = FindViewById<TextView>(Resource.Id.UsedDataAmount);
             //_dataUsageSaveButtonText = FindViewById<TextView>(Resource.Id.SaveButtonText);
@@ -82,17 +84,24 @@ namespace MobileApp.Droid.Views
 			_pointsText = FindViewById<TextView>(Resource.Id.PointsText);
 			_pointsAmount = FindViewById<TextView>(Resource.Id.PointsAmount);
 			_dataUsageSaveButton = FindViewById<ImageButton>(Resource.Id.SaveButton);
-        }
+			_graphTitle = FindViewById<TextView>(Resource.Id.GraphTitleText);
+			_graphSubTitle = FindViewById<TextView>(Resource.Id.GraphSubTitleText);
+			_userPhoneNumber = FindViewById<TextView>(Resource.Id.UserPhoneNumber);
 
-        protected void setAllStringConstants()
+		}
+
+		protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedText;
-            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 1));
+            _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 2));
             _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
-            _remainingDataText.Text = StringConstants.Localizable.UsedText;
-            _remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 1));
+			_usedDataText.Text = StringConstants.Localizable.UsedText;
+			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 2));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
 			_pointsAmount.Text = String.Format(StringConstants.Localizable.PointsAmout, 10);
+			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
+			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
+			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
             //_usedDataText.Text = StringConstants.Localizable.UsedData;
             //_usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
             //_dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
@@ -108,17 +117,17 @@ namespace MobileApp.Droid.Views
 			//	{
 			//		_progressChanged = ((double)e.Progress / 100) * (Controller._totalUnAllocated + _user.Allocated);
 			//		var dif = _progressChanged - _user.Allocated;
-			//		_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif), 1);
+			//		_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif), 1);
 			//		if (_progressChanged <= _user.Used)
 			//		{
 			//			_progressChanged = _user.Used;
-			//			_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated + (_user.Allocated - _user.Used), 1));
+			//			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated + (_user.Allocated - _user.Used), 1));
 			//			_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 1));
 			//			_tempUnAllocated = Controller._totalUnAllocated + (_user.Allocated - _user.Used);
 			//		}
 			//		else
 			//		{
-			//			_remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
+			//			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
 			//			_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_progressChanged, 1));
 			//			_tempUnAllocated = Controller._totalUnAllocated - dif;
 			//		}
@@ -144,7 +153,8 @@ namespace MobileApp.Droid.Views
 				{
 					Label = breakdown.Day,
 					ValueLabel = breakdown.DataUsed,
-					Color = SKColor.Parse("#FFFFFF")
+					Color = SKColor.Parse("#FFFFFF"),
+					TextColor = SKColor.Parse("#FFFFFF")
 				};
 				number++;
 			}
@@ -155,9 +165,8 @@ namespace MobileApp.Droid.Views
 
 				LineMode = LineMode.Spline,
 				LineSize = 8,
-				LabelTextSize = 25,
+				LabelTextSize = 20,
 				PointMode = PointMode.None,
-				PointSize = 18,
 				BackgroundColor = SKColor.Empty
 			};
 			_chartView.Chart = chart;

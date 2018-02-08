@@ -58,7 +58,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/UserIcon"
-            android:text="021043865"
             android:padding="5dp"
             android:layout_centerHorizontal="true"
             android:textColor="#d3d3d3" />
@@ -166,7 +165,6 @@
         android:id="@+id/GraphTitleTextLayout"
         android:gravity="center">
         <TextView
-            android:text="Data usage for past 6 days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/GraphTitleText"
@@ -174,7 +172,6 @@
             android:layout_gravity="center_horizontal"
             android:paddingTop="10dp" />
         <TextView
-            android:text="(Values in graph are in MB)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/GraphSubTitleText"
@@ -187,7 +184,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
         <microcharts.droid.ChartView
             android:id="@+id/chartView"
             android:layout_width="match_parent"
