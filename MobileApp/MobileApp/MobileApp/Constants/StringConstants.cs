@@ -11,7 +11,7 @@ namespace MobileApp.Constants
             //Login Screen
             public const string UsernameHint = "Username";
             public const string PasswordHint = "Password";
-            public const string LogIn = "LogIn";
+            public const string LogIn = "Log In";
 
 			//Admin Dashboard Screen
 			public const string DaysRemaining = "{0} Days Remaining";

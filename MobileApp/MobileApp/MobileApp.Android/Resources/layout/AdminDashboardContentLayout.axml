@@ -25,7 +25,8 @@
             p1:layout_below="@+id/MobileIcon"
             p1:layout_centerInParent="true"
             p1:text="Mobile"
-            p1:padding="5dp" />
+            p1:padding="5dp"
+            p1:textColor="#FFFFFF" />
     </RelativeLayout>
     <LinearLayout
         p1:orientation="horizontal"
@@ -80,7 +81,8 @@
             p1:layout_alignWithParentIfMissing="true"
             p1:layout_centerHorizontal="true"
             p1:layout_gravity="center"
-            p1:paddingBottom="10dp" />
+            p1:paddingBottom="10dp"
+            p1:textColor="#FFFFFF" />
         <RelativeLayout
             p1:minWidth="25px"
             p1:minHeight="25px"
@@ -92,7 +94,8 @@
                 p1:id="@+id/DataUsageText"
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true" />
+                p1:layout_centerInParent="true"
+                p1:textColor="#FFFFFF" />
             <ProgressBar
                 style="@style/ProgressBarFillStyle"
                 p1:layout_width="match_parent"
