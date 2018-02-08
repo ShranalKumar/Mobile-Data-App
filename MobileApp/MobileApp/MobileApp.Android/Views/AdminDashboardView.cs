@@ -84,6 +84,12 @@ namespace MobileApp.Droid.Views
             Reload();
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Reload();
+        }
+
         public void Reload()
         {
             ViewPagerAdapter._views.Clear();
