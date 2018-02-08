@@ -60,8 +60,6 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_allocationPageView);
             _mainPagerAdapter.NotifyDataSetChanged();
 
-            
-
             var timer = new Timer();
             _dashbardGradientTask = new DashboardGradientTimerHelper(this);
             timer.Schedule(_dashbardGradientTask, 0, NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
@@ -80,11 +78,20 @@ namespace MobileApp.Droid.Views
             _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
         }
 
-		//protected override void OnRestart()
-		//{
-		//	base.OnRestart();
-		//	Reload();
-		//}
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            Reload();
+        }
+
+        public void Reload()
+        {
+            ViewPagerAdapter._views.Clear();
+            _mainViewPager.RemoveAllViewsInLayout();
+            _mainPagerAdapter.AddView(_adminDashboardContentInstance.GetView(0, null, null));
+            _mainPagerAdapter.AddView(_allocationPageInstance.GetView(0, null, null));
+            _mainPagerAdapter.NotifyDataSetChanged();
+        }
 
         public void BackgroundGradientThread(TransitionDrawable transition)
         {

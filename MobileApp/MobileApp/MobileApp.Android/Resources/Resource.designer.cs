@@ -2492,26 +2492,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f02005a
 			public const int avd_hide_password = 2130837594;
 			
-			// aapt resource value: 0x7f020166
-			public const int avd_hide_password_1 = 2130837862;
-			
-			// aapt resource value: 0x7f020167
-			public const int avd_hide_password_2 = 2130837863;
-			
-			// aapt resource value: 0x7f020168
-			public const int avd_hide_password_3 = 2130837864;
-			
 			// aapt resource value: 0x7f02005b
 			public const int avd_show_password = 2130837595;
-			
-			// aapt resource value: 0x7f020169
-			public const int avd_show_password_1 = 2130837865;
-			
-			// aapt resource value: 0x7f02016a
-			public const int avd_show_password_2 = 2130837866;
-			
-			// aapt resource value: 0x7f02016b
-			public const int avd_show_password_3 = 2130837867;
 			
 			// aapt resource value: 0x7f02005c
 			public const int BackgroundAnimation = 2130837596;
