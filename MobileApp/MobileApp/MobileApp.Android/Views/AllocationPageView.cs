@@ -91,7 +91,55 @@ namespace MobileApp.Droid.Views
 		}
 		public async void SaveButtonClicked(object sender, EventArgs e)
 		{
-				var changedUser = await Controller.UpdateAllocation(Controller._users);
+
+			//foreach (LinearLayout tile in _userTileList)
+			//{
+			//	tile.Click += (o, s) =>
+			//	{
+			//		_tileClickedOn = tile;
+			//		Intent loadUserDataPage = new Intent(_context, typeof(UsersDataUsageView));
+			//		string username;
+			//		for (int i = 0; i < _tileClickedOn.ChildCount; i++)
+			//		{
+			//			if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
+			//			{
+			//				TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
+			//				username = userName.Text;
+			//				loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
+			//				_context.StartActivity(loadUserDataPage);
+			//			}
+			//		}
+			//	};
+
+			double conversion;
+			int userID;
+			foreach (LinearLayout tile in AllocationPageCustomUserTilesPage.UserTiles)
+			{
+				for (int i = 0; i < tile.ChildCount; i ++)
+				{
+					if (tile.GetChildAt(i).GetType() == typeof(SeekBar))
+					{
+						SeekBar seekbar = (SeekBar)tile.GetChildAt(i);
+						userID = tile.Id;
+						conversion = seekbar.Progress / 100.0 * Controller._planDataPool;
+						var azb = Controller._totalRemainder;
+						Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID))
+											.ToList()
+											.ForEach(x =>
+											{
+												x.Allocated = conversion;
+											});
+						//Controller._users.ForEach(y => if (y.uid == tile) 
+						//{ 
+						//} y.Allocated = conversion);
+						//_user.Allocated = conversion;
+
+						//Controller._users.ForEach(
+					}
+				}
+			}
+
+			var changedUser = await Controller.UpdateAllocation(Controller._users);
 				//Controller._users[_uid] = changedUser;
 
 		}

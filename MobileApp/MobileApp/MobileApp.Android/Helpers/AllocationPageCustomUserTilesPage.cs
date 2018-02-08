@@ -58,7 +58,7 @@ namespace MobileApp.Droid.Helpers
                     {
                         double progressChanged = ((double)e.Progress / 100) * (Controller._planDataPool);
                         Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
-                        user.Allocated = progressChanged;
+                        //user.Allocated = progressChanged;
 
 
 
@@ -66,7 +66,7 @@ namespace MobileApp.Droid.Helpers
                         {
                             progressChanged = user.Used;
                             Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 1));
-                            user.Allocated = progressChanged;
+                            //user.Allocated = progressChanged;
                         }
 
                         totalAllocated = unallocated = 0;

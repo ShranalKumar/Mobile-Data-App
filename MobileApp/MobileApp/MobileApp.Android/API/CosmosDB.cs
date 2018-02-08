@@ -293,7 +293,6 @@ namespace MobileApp.Droid
             {
                 groupMemberToDelete = queryDoc.groupMembers.Where(x => x.uid == targetMember.UID).FirstOrDefault();
                 queryDoc.groupMembers.Remove(groupMemberToDelete);
-                Controller._users.Remove(targetMember);
                 memberToDelete = user.GroupMembers.Where(x => x.UID == targetMember.UID).FirstOrDefault();
                 user.GroupMembers.Remove(memberToDelete);
             }     
