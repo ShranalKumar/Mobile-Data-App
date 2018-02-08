@@ -6,6 +6,7 @@
     <item name="android:buttonStyle">@style/NoShadowButton</item>
     <item name="colorControlNormal">#E9E9EA</item>
     <item name="colorControlActivated">#1D79DE</item>
+	  <item name="android:textColor">#FFFFFF</item>
   </style>
 
   <style name="MainTheme" parent="MainTheme.Base">
@@ -212,7 +213,6 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:progressBackgroundTint">#00ffffff</item>
     <item name="android:progressTint">#30ffffff</item>
-    <item name="android:progress">20</item>
     <item name="android:padding">0px</item>
     <item name="android:scaleY">20</item>
   </style>
@@ -242,6 +242,7 @@
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:gravity">center</item>
+	  <item name="android:textColor">#FFFFFF</item>
   </style>
 
   <style name="SliderVerticleStyle" parent ="Widget.AppCompat.SeekBar">

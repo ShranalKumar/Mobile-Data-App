@@ -8,7 +8,7 @@ namespace MobileApp.Constants
     {
         public struct DashboardGradientTransition
         {
-            public const int DashboardGradientTransitionLengthInMilliseconds = 6000;
+            public const int DashboardGradientTransitionLengthInMilliseconds = 15000;
             public const int DashboardGradientCount = 7;
         }
     }
