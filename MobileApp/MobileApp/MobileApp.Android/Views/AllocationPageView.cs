@@ -30,8 +30,9 @@ namespace MobileApp.Droid.Views
 		private LinearLayout _userDataAllocationListItem;
         private AdminDashboardView _context;
         private View _view;
+		private User _user;
 
-        public override int Count => throw new NotImplementedException();
+		public override int Count => throw new NotImplementedException();
 
         public AllocationPageView(AdminDashboardView context) : base()
         {
@@ -80,12 +81,78 @@ namespace MobileApp.Droid.Views
             _allocationUserTileList = AllocationPageCustomUserTilesPage.UserTiles;
 
             var pixelToDp = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
+			_saveButon.Click += SaveButtonClicked;
             return _view;
         }
 
         public View GetView()
         {
             return _view;
-        }
-    }
+		}
+		public async void SaveButtonClicked(object sender, EventArgs e)
+		{
+
+			//foreach (LinearLayout tile in _userTileList)
+			//{
+			//	tile.Click += (o, s) =>
+			//	{
+			//		_tileClickedOn = tile;
+			//		Intent loadUserDataPage = new Intent(_context, typeof(UsersDataUsageView));
+			//		string username;
+			//		for (int i = 0; i < _tileClickedOn.ChildCount; i++)
+			//		{
+			//			if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
+			//			{
+			//				TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
+			//				username = userName.Text;
+			//				loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
+			//				_context.StartActivity(loadUserDataPage);
+			//			}
+			//		}
+			//	};
+
+			double conversion;
+			int userID;
+			foreach (LinearLayout tile in AllocationPageCustomUserTilesPage.UserTiles)
+			{
+				for (int i = 0; i < tile.ChildCount; i ++)
+				{
+					if (tile.GetChildAt(i).GetType() == typeof(SeekBar))
+					{
+						SeekBar seekbar = (SeekBar)tile.GetChildAt(i);
+						userID = tile.Id;
+						conversion = seekbar.Progress / 100.0 * Controller._planDataPool;
+						var azb = Controller._totalRemainder;
+						Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID))
+											.ToList()
+											.ForEach(x =>
+											{
+												x.Allocated = conversion;
+											});
+						//Controller._users.ForEach(y => if (y.uid == tile) 
+						//{ 
+						//} y.Allocated = conversion);
+						//_user.Allocated = conversion;
+
+						//Controller._users.ForEach(
+					}
+				}
+			}
+
+			var changedUser = await Controller.UpdateAllocation(Controller._users);
+				//Controller._users[_uid] = changedUser;
+
+		}
+
+
+		//protected async void UpdateUserDataAllocation(object sender, EventArgs e)
+		//{
+		//	Controller._totalUnAllocated = _tempUnAllocated;
+		//	Controller._users[0].Allocated = _tempUnAllocated;
+		//	User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
+		//Controller._users[_uid] = changedUser;
+		//	Toast.MakeText(this, StringConstants.Localizable.SavedChangesMessage, ToastLength.Long).Show();
+		////}
+
+	}
 }

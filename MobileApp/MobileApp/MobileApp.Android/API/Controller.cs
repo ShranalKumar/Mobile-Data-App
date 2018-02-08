@@ -51,9 +51,9 @@ namespace MobileApp.Droid
 
 		}
 
-		public static async Task<User> UpdateAllocation(User user, double allocation)
+		public static async Task<List<User>> UpdateAllocation(List<User> users)
 		{
-			User changedUser = await TodoItemManager.DefaultManager.UpdateMemberAllocation(user, allocation);
+			var changedUser = await TodoItemManager.DefaultManager.UpdateMemberAllocation(users);
 			return changedUser;
 		}
 
