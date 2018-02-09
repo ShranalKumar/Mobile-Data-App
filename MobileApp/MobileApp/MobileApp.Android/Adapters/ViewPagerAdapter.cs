@@ -20,11 +20,7 @@ namespace MobileApp.Droid.Adapters
     public class ViewPagerAdapter : PagerAdapter
     {
         private AdminDashboardView _context;
-        private List<View> _views = new List<View>();
-        private AdminDashboardContentView _adminDashboardContentView;
-        private AllocationPageView _allocationPageView;
-        private ViewPager _viewPager;
-        
+        public static List<View> _views = new List<View>();      
 
         public override int Count
         {
@@ -52,8 +48,13 @@ namespace MobileApp.Droid.Adapters
             return position;
         }
 
-        public override Java.Lang.Object InstantiateItem(View container, int position)
+        public void removeView(View view)
         {
+            _views.Remove(_views[GetItemPosition(view)]);
+        }
+
+        public override Java.Lang.Object InstantiateItem(View container, int position)
+        {            
             View view = _views[position];
             container.JavaCast<ViewPager>().AddView(view);
             return view;
@@ -72,6 +73,16 @@ namespace MobileApp.Droid.Adapters
         public int GetItemPosition(View view)
         {
             return _views.IndexOf(view);
+        }
+
+        public void ClearViews()
+        {
+            _views.Clear();
+        }
+
+        public override int GetItemPosition(Java.Lang.Object @object)
+        {
+            return PositionNone;
         }
     }
 }

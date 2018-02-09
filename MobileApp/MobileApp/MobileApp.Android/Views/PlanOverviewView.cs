@@ -132,6 +132,9 @@ namespace MobileApp.Droid.Views
         {
             await Controller.DeleteGroupMemeber(Controller._userLoggedIn, _getUser);
             Toast.MakeText(this, string.Format(StringConstants.Localizable.DeleteMemberToast, _fullName), ToastLength.Short).Show();
+            Member toRemove = Controller._userLoggedIn.GroupMembers.Where(x => x.UID == _getUser.UID).FirstOrDefault();
+            Controller._userLoggedIn.GroupMembers.Remove(toRemove);
+            Controller._users.Remove(_getUser);
             SetScrollableView();
         }
 
