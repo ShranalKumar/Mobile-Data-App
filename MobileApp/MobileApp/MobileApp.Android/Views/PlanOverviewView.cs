@@ -53,7 +53,7 @@ namespace MobileApp.Droid.Views
             SetScrollableView();
 
             _overviewPageBackButton.Click += delegate { Finish(); };
-            _memberListDropDown.Click += delegate { showMembersList(); };
+            //_memberListDropDown.Click += delegate { showMembersList(); };
         }
 
         private void findAllElements()
@@ -68,10 +68,10 @@ namespace MobileApp.Droid.Views
             _planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
             _planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
             _overviewPageBackButton = FindViewById<ImageButton>(Resource.Id.OverviewPageBackButton);
-            _dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
-            _memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
-            _memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
-            _membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
+            //_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
+            //_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
+            //_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
+            //_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
     }
 
         private void setAllStringConstants()
@@ -104,28 +104,28 @@ namespace MobileApp.Droid.Views
 
         protected void SetScrollableView()
         {
-            CustomPlanOverviewView.getMembers(_membersListLinearLayout);
+            //CustomPlanOverviewView.getMembers(_membersListLinearLayout);
 
-            foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
-            {
-                name.LongClick += (o, s) =>
-                {
-                    _tileClickedOn = name;
+            //foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
+            //{
+            //    name.LongClick += (o, s) =>
+            //    {
+            //        _tileClickedOn = name;
 
-                    _userId = _tileClickedOn.Id;
-                    _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
-                    _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
+            //        _userId = _tileClickedOn.Id;
+            //        _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
+            //        _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
 
-                    AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-                    memberDeleteAlert.SetTitle("Remove Member");
-                    memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
-                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
-                    memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
-                    Dialog deleteDialog = memberDeleteAlert.Create();
-                    deleteDialog.Show();
-                };
-            }
-            CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
+            //        AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            //        memberDeleteAlert.SetTitle("Remove Member");
+            //        memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
+            //        memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
+            //        memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            //        Dialog deleteDialog = memberDeleteAlert.Create();
+            //        deleteDialog.Show();
+            //    };
+            //}
+            //CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
         protected async void DeleteGroupMember()

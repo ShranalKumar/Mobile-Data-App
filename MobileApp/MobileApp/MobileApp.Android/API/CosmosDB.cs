@@ -113,6 +113,7 @@ namespace MobileApp.Droid
 					currentUser.AdminStatus = item.AdminStatus;
 					currentUser.Used = item.Used;
 					currentUser.Allocated = item.Allocated;
+					currentUser.AddOns = item.AddOns;
 					currentUser.PlanStartDate = item.PlanStartDate;
 					currentUser.PlanEndDate = item.PlanEndDate;
 					currentUser.UsageBreakdown = new List<UserUsageBreakdown>();

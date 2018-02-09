@@ -159,7 +159,7 @@
         android:layout_height="match_parent"
         android:id="@+id/MembersListLayout"
         android:layout_below="@id/PlanOverviewMainTextLayout">
-        <FrameLayout
+    <!--<FrameLayout
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
@@ -180,8 +180,8 @@
                 android:id="@+id/OverviewPageDownArrow"
                 android:layout_gravity="right"
                 android:paddingRight="5dp" />
-        </FrameLayout>
-        <ScrollView
+        </FrameLayout>-->
+    <!--<ScrollView
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
@@ -198,6 +198,79 @@
                 android:paddingBottom="15dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp" />
-        </ScrollView>
+        </ScrollView>-->
+        <TextView
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/BuyDataHeadingTextView"
+            android:padding="10dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/BuyOneGBAddOnLayout"
+            android:paddingBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cardstyle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/OneGBAddOnTextView"
+                android:gravity="center_vertical"
+                android:textColor="#151515" />
+            <Button
+                android:text="$ 22.22"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/BuyOneGBAddOnButton"
+                android:layout_gravity="right"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:textSize="16sp"
+                android:textColor="#151515"
+                android:backgroundTint="#ff939393" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/BuyTwoGBAddOnLayout"
+            android:paddingBottom="10dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cardstyle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/TwoGBAddOnTextView"
+                android:gravity="center_vertical"
+                android:textColor="#151515" />
+            <Button
+                android:text="$ 22.22"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/BuyTwoGBAddOnButton"
+                android:layout_gravity="right"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:textSize="16sp"
+                android:textColor="#151515"
+                android:backgroundTint="#ff939393" />
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>
