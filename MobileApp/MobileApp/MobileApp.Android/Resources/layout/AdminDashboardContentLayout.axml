@@ -55,7 +55,7 @@
         <Button
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:id="@+id/MoreDetailsButton"
+            p1:id="@+id/BuyDataButton"
             p1:textColor="@color/foreground_material_dark"
             p1:padding="10dp"
             p1:layout_weight="1"

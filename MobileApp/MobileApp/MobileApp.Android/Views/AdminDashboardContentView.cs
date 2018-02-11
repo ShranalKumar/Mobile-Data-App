@@ -26,7 +26,7 @@ namespace MobileApp.Droid.Views
         private TextView _daysRemaining;
         private ProgressBar _dataUsageProgressBar;
         private Button _allocateButton;
-        private Button _moreDetailsButton;
+        private Button _buyData;
         private static ScrollView _userTiles;
         private static List<LinearLayout> _userTileList;
         private LinearLayout _tileClickedOn;
@@ -65,7 +65,7 @@ namespace MobileApp.Droid.Views
             double progress = (1 - ((double)Controller._users.Sum(x => x.Used) / Controller._planDataPool)) * 100;
             _dataUsageProgressBar.Progress = (int)progress;
 
-            _moreDetailsButton.Click += delegate { _context.StartActivity(typeof(PlanOverviewView)); };
+            _buyData.Click += delegate { _context.StartActivity(typeof(PlanOverviewView)); };
 
             return _view;
         }
@@ -82,7 +82,7 @@ namespace MobileApp.Droid.Views
             _userTiles = view.FindViewById<ScrollView>(Resource.Id.UserTilesLayout);
             _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
             _allocateButton = view.FindViewById<Button>(Resource.Id.AllocateButton);
-            _moreDetailsButton = view.FindViewById<Button>(Resource.Id.MoreDetailsButton);
+            _buyData = view.FindViewById<Button>(Resource.Id.BuyDataButton);
         }
 
         protected void setAllStringConstants()
@@ -90,7 +90,7 @@ namespace MobileApp.Droid.Views
             _daysRemaining.Text = System.String.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
             _dataUsage.Text = System.String.Format(StringConstants.Localizable.GbRemaining, Controller._totalRemainder);
             _allocateButton.Text = StringConstants.Localizable.AllocateData;
-            _moreDetailsButton.Text = StringConstants.Localizable.MoreDetails;
+            _buyData.Text = StringConstants.Localizable.BuyData;
         }
 
         public void SetTileClickable()

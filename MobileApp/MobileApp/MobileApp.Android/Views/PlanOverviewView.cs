@@ -24,10 +24,14 @@ namespace MobileApp.Droid.Views
         private TextView _dataPlanAmount;
         private TextView _planRemainingDataText;
         private TextView _planRemainingDataAmount;
-        private TextView _planAllocatedDataText;
-        private TextView _planAllocatedDataAmount;
-        private TextView _planUsedDataText;
-        private TextView _planUsedDataAmount;
+        private TextView _selectDataPackHeading;
+        private TextView _buyOneGBText;
+        private TextView _buyTwoGBText;
+        private TextView _outstandingAmountText;
+        private TextView _outstandingAmount;
+        private Button _buyOneGBPrice;
+        private Button _buyTwoGBPrice;
+
         private TextView _tileClickedOn;
 
 
@@ -63,16 +67,23 @@ namespace MobileApp.Droid.Views
             _dataPlanAmount = FindViewById<TextView>(Resource.Id.PlaneNameAmount);
             _planRemainingDataText = FindViewById<TextView>(Resource.Id.DataRemainingTitle);
             _planRemainingDataAmount = FindViewById<TextView>(Resource.Id.DataRemainingAmount);
-            _planAllocatedDataText = FindViewById<TextView>(Resource.Id.DataAllocatedTitle);
-            _planAllocatedDataAmount = FindViewById<TextView>(Resource.Id.DataAllocatedAmount);
-            _planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
-            _planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
+            //_planAllocatedDataText = FindViewById<TextView>(Resource.Id.DataAllocatedTitle);
+            //_planAllocatedDataAmount = FindViewById<TextView>(Resource.Id.DataAllocatedAmount);
+            //_planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
+            //_planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
             _overviewPageBackButton = FindViewById<ImageButton>(Resource.Id.OverviewPageBackButton);
+            _selectDataPackHeading = FindViewById<TextView>(Resource.Id.SelectDataPackHeading);
+            _buyOneGBText = FindViewById<TextView>(Resource.Id.OneGBAddOnTextView);
+            _buyTwoGBText = FindViewById<TextView>(Resource.Id.TwoGBAddOnTextView);
+            _buyOneGBPrice = FindViewById<Button>(Resource.Id.BuyOneGBAddOnButton);
+            _buyTwoGBPrice = FindViewById<Button>(Resource.Id.BuyTwoGBAddOnButton);
+            _outstandingAmountText = FindViewById<TextView>(Resource.Id.OutStandingAmountText);
+            _outstandingAmount = FindViewById<TextView>(Resource.Id.OutstandingAmount);
             //_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
             //_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
             //_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
             //_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
-    }
+        }
 
         private void setAllStringConstants()
         {
@@ -81,10 +92,17 @@ namespace MobileApp.Droid.Views
             _dataPlanAmount.Text = string.Format(StringConstants.Localizable.PlanDataAmount, Controller._planDataPool);
             _planRemainingDataText.Text = StringConstants.Localizable.PlanRemaining;
             _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder); //Need to concat amount from DB, DB under construction
-            _planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
-            _planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
-            _planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
-            _planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
+            _selectDataPackHeading.Text = StringConstants.Localizable.SelectDataPackHeading;
+            _buyOneGBText.Text = StringConstants.Localizable.BuyOneGB;
+            _buyTwoGBText.Text = StringConstants.Localizable.BuyTwoGB;
+            _buyOneGBPrice.Text = StringConstants.Localizable.BuyOneGBPrice;
+            _buyTwoGBPrice.Text = StringConstants.Localizable.BuyTwoGBPrice;
+            _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, "5.00"); ;
+            //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
+            //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
+            //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
+            //_planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
         }
 
         private void showMembersList()
