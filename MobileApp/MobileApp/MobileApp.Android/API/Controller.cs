@@ -24,6 +24,7 @@ namespace MobileApp.Droid
 		public static double _planDataPool;
 		public static DateTime _currentDate;
 		public static double _daysRemaining;
+		public static double _addOns = 0;
 
 		public Controller(List<User> user)
 		{
@@ -38,7 +39,7 @@ namespace MobileApp.Droid
 
 			_users.ForEach(x => _totalAllocated += x.Allocated);
 			_users.ForEach(x => _totalUsed += x.Used);
-			_planDataPool = _users[0].Plan;
+			_planDataPool = _users[0].Plan + _addOns;
 			_totalRemainder = _planDataPool - _totalUsed;
 			_totalUnAllocated = _planDataPool - _totalAllocated;
     //        if (_users[0].AdminStatus)
@@ -68,6 +69,12 @@ namespace MobileApp.Droid
             User changedUser = await TodoItemManager.DefaultManager.DeleteGroupMember(user, targetMember);
             return changedUser;
         }
+
+		public static async Task<User> BuyAddOns(User user, double addOnAmount)
+		{
+			User changedUser = await TodoItemManager.DefaultManager.BuyAddOns(user, addOnAmount);
+			return changedUser;
+		}
 
         public static void Clear()
         {

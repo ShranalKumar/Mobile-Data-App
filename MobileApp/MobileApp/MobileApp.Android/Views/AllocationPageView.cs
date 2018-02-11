@@ -92,7 +92,7 @@ namespace MobileApp.Droid.Views
 		public async void SaveButtonClicked(object sender, EventArgs e)
 		{
 
-			if (AllocationPageCustomUserTilesPage.unallocated > 0)
+			if (AllocationPageCustomUserTilesPage.unallocated >= 0)
 			{
 				//foreach (LinearLayout tile in _userTileList)
 				//{
@@ -141,7 +141,7 @@ namespace MobileApp.Droid.Views
 				var changedUser = await Controller.UpdateAllocation(Controller._users);
                 Controller._totalUnAllocated = AllocationPageCustomUserTilesPage.unallocated;
                 Toast.MakeText(_context, "Allocations have successfully been updated", ToastLength.Short).Show();
-				//Controller._users[_uid] = changedUser;
+				Controller._users = changedUser;
 
 			}
 			else
