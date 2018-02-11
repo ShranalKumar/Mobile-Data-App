@@ -57,6 +57,7 @@ namespace MobileApp.Droid.Helpers
                 _seekbars.Add(userAllocationSlider);
                 double progress = (user.Allocated / Controller._planDataPool) * 100;
                 userAllocationSlider.Progress = (int)(progress);
+                userAllocationSlider.SecondaryProgress = (int)((user.Used/Controller._planDataPool)*100);
                 
                 userAllocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
                 {

@@ -110,46 +110,6 @@
                 android:id="@+id/DataRemainingAmount"
                 android:gravity="right" />
         </FrameLayout>
-        <FrameLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:id="@+id/DataAllocatedFrame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="15dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataAllocatedTitle"
-                android:gravity="left" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataAllocatedAmount"
-                android:gravity="right" />
-        </FrameLayout>
-        <FrameLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/UsedDataFrame"
-            android:paddingBottom="15dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataUsedTitle"
-                android:gravity="left" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataUsedAmount"
-                android:gravity="right" />
-        </FrameLayout>
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -157,8 +117,10 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/MembersListLayout"
-        android:layout_below="@id/PlanOverviewMainTextLayout">
+        android:id="@+id/DataPackLayout"
+        android:layout_below="@id/PlanOverviewMainTextLayout"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
     <!--<FrameLayout
             android:minWidth="25px"
             android:minHeight="25px"
@@ -200,11 +162,10 @@
                 android:paddingRight="15dp" />
         </ScrollView>-->
         <TextView
-            android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/BuyDataHeadingTextView"
+            android:id="@+id/SelectDataPackHeading"
             android:padding="10dp" />
         <FrameLayout
             android:layout_width="match_parent"
@@ -220,7 +181,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp">
             <TextView
-                android:text="Medium Text"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -228,13 +188,10 @@
                 android:gravity="center_vertical"
                 android:textColor="#151515" />
             <Button
-                android:text="$ 22.22"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:id="@+id/BuyOneGBAddOnButton"
                 android:layout_gravity="right"
-                android:paddingLeft="22dp"
-                android:paddingRight="22dp"
                 android:textSize="16sp"
                 android:textColor="#151515"
                 android:backgroundTint="#ff939393" />
@@ -253,7 +210,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp">
             <TextView
-                android:text="Medium Text"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -261,13 +217,10 @@
                 android:gravity="center_vertical"
                 android:textColor="#151515" />
             <Button
-                android:text="$ 22.22"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:id="@+id/BuyTwoGBAddOnButton"
                 android:layout_gravity="right"
-                android:paddingLeft="22dp"
-                android:paddingRight="22dp"
                 android:textSize="16sp"
                 android:textColor="#151515"
                 android:backgroundTint="#ff939393" />

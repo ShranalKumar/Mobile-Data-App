@@ -17,7 +17,7 @@ namespace MobileApp.Constants
 			public const string DaysRemaining = "{0} Days Remaining";
             public const string GbRemaining = "{0} GB Remaining";
             public const string AllocateData = "Allocate Data";
-            public const string MoreDetails = "More Details";
+            public const string BuyData = "Buy Data";
 
             //Transfer Screen
             public const string Transfer = "Transfer Data";
@@ -68,15 +68,21 @@ namespace MobileApp.Constants
             public const string SelectAmountRequest = "Select Amount to Request:";
 
             //Plan Overview Screen
-            public const string OverviewTitle = "Plan Overview";
+            public const string OverviewTitle = "Buy Data";
             public const string PlanName = "Data Share";
             public const string PlanDataAmount = "{0} GB / month";
-            public const string PlanRemaining = "Plan Data Remaining";
-            public const string PlanAllocated = "Plan Data Allocated";
-            public const string PlanUsed = "Plan Data Used";
-            public const string PlanRemainingAmount = "{0} GB"; //Need to get amount from DB, DB under construction
-            public const string PlanAllocatedAmount = "{0} GB"; //Need to get amount from DB, DB under construction
-            public const string PlanUsedAmount = "{0} GB"; //Need to get amount from DB, DB under construction
+            public const string PlanRemaining = "Data Remaining";
+            public const string PlanAllocated = "Data Allocated";
+            public const string PlanUsed = "Data Used";
+            public const string PlanRemainingAmount = "{0} GB";
+            public const string PlanAllocatedAmount = "{0} GB";
+            public const string PlanUsedAmount = "{0} GB";
+            public const string SelectDataPackHeading = "Select a data Pack";
+            public const string BuyOneGB = "1 GB";
+            public const string BuyTwoGB = "2 GB";
+            public const string BuyOneGBPrice = "$ 14.99";
+            public const string BuyTwoGBPrice = "$ 19.99";
+
 
             //Add member Screen
             public const string AddMemberTitle = "Add New Member";
