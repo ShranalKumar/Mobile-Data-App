@@ -325,7 +325,7 @@ namespace MobileApp.Droid
             return user;
         }
 
-		public async Task<User> BuyAddons(User user, double addonAmount)
+		public async Task<User> BuyAddOns(User user, double addonAmount)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
 			queryDoc.AddOns += addonAmount;

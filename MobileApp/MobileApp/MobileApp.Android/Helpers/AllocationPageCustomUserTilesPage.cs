@@ -92,14 +92,14 @@ namespace MobileApp.Droid.Helpers
 						{
 							progressChanged = user.Used;
 							Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 2));
-							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)((user.Used / Controller._planDataPool) * 100);   //This is where it's causing the problem
+							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((user.Used / Controller._planDataPool) * 100,2));   //This is where it's causing the problem
 
 						}
 						else if (e.Progress >= max)
 						{
 							progressChanged = ((double)(e.Progress + reservedToProgress) / 100) * Controller._planDataPool;
 							Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 2));
-							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)((progressChanged / Controller._planDataPool) * 100);
+							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((progressChanged / Controller._planDataPool) * 100, 2));
 						}
 						else
 						{
