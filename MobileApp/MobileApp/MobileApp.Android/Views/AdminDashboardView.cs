@@ -51,7 +51,7 @@ namespace MobileApp.Droid.Views
             _adminDashboardContentInstance = new AdminDashboardContentView(this);
             _adminDashboardContentView = _adminDashboardContentInstance.GetView();
             _allocateButton = _adminDashboardContentInstance.GetAllocateButton();
-            _allocateButton.Click += allocateButtonClickAction;
+            //_allocateButton.Click += allocateButtonClickAction;
 
             _allocationPageInstance = new AllocationPageView(this);
             _allocationPageView = _allocationPageInstance.GetView();

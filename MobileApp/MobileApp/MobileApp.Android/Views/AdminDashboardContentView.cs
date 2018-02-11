@@ -81,7 +81,6 @@ namespace MobileApp.Droid.Views
             _allocateButton = view.FindViewById<Button>(Resource.Id.AllocateButton);
             _userTiles = view.FindViewById<ScrollView>(Resource.Id.UserTilesLayout);
             _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
-            _allocateButton = view.FindViewById<Button>(Resource.Id.AllocateButton);
             _moreDetailsButton = view.FindViewById<Button>(Resource.Id.MoreDetailsButton);
         }
 

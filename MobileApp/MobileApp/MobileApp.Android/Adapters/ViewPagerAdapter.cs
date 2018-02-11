@@ -72,6 +72,7 @@ namespace MobileApp.Droid.Adapters
 
         public int GetItemPosition(View view)
         {
+            Console.WriteLine(_views.IndexOf(view));
             return _views.IndexOf(view);
         }
 
