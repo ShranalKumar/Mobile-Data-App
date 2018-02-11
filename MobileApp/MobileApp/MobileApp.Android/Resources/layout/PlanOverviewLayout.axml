@@ -5,17 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/OverviewPageLayout"
-    android:background="@drawable/dashboardgradient7">
+    android:background="#e9e9e9">
     <android.support.v7.widget.Toolbar
         android:minHeight="?android:attr/actionBarSize"
-        android:minWidth="25px"
         android:id="@+id/OverviewPageToolbar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbargradient">
         <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/OverviewPageToolbarLayout"
             android:gravity="center">
@@ -39,89 +37,71 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <RelativeLayout
-        android:id="@+id/OverviewPageProductLabelLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/OverviewPageToolbar"
-        android:padding="10dp">
-        <ImageView
-            android:id="@+id/MobileIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/mobileicon"
-            android:padding="5dp" />
-        <TextView
-            android:id="@+id/ProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/MobileIcon"
-            android:layout_centerInParent="true"
-            android:text="Mobile"
-            android:padding="5dp" />
-    </RelativeLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/PlanOverviewMainTextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/OverviewPageProductLabelLayout"
-        android:padding="15dp">
-        <FrameLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/PlanNameFrame"
-            android:paddingBottom="15dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/PlanNameTitle"
-                android:gravity="left" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/PlaneNameAmount"
-                android:gravity="right" />
-        </FrameLayout>
-        <FrameLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/DataRemainingFrame"
-            android:paddingBottom="15dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataRemainingTitle"
-                android:gravity="left" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/DataRemainingAmount"
-                android:gravity="right" />
-        </FrameLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/DataPackLayout"
-        android:layout_below="@id/PlanOverviewMainTextLayout"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-    <!--<FrameLayout
+        android:id="@+id/linearLayout1"
+        android:layout_below="@id/OverviewPageToolbar"
+        android:overScrollMode="ifContentScrolls">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/PlanOverviewMainTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/PlanNameFrame"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/PlanNameTitle"
+                    android:gravity="left"
+                    android:textColor="#3f3f3f" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/PlaneNameAmount"
+                    android:gravity="right"
+                    android:textColor="#3f3f3f" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/DataRemainingFrame"
+                android:paddingBottom="15dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/DataRemainingTitle"
+                    android:gravity="left"
+                    android:textColor="#3f3f3f" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/DataRemainingAmount"
+                    android:gravity="right"
+                    android:textColor="#3f3f3f" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/DataPackLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PlanOverviewMainTextLayout">
+        <!--<FrameLayout
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
@@ -143,7 +123,7 @@
                 android:layout_gravity="right"
                 android:paddingRight="5dp" />
         </FrameLayout>-->
-    <!--<ScrollView
+        <!--<ScrollView
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
@@ -161,69 +141,94 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp" />
         </ScrollView>-->
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/SelectDataPackHeading"
+                android:padding="10dp"
+                android:textColor="#3f3f3f" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/BuyOneGBAddOnLayout"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/cardstyle"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="20dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/OneGBAddOnTextView"
+                    android:gravity="center_vertical"
+                    android:textColor="#151515" />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/BuyOneGBAddOnButton"
+                    android:layout_gravity="right"
+                    android:textSize="16sp"
+                    android:textColor="#151515"
+                    android:backgroundTint="#ff72d0f4" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/BuyTwoGBAddOnLayout"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/cardstyle"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/TwoGBAddOnTextView"
+                    android:gravity="center_vertical"
+                    android:textColor="#151515" />
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/BuyTwoGBAddOnButton"
+                    android:layout_gravity="right"
+                    android:textSize="16sp"
+                    android:textColor="#151515"
+                    android:backgroundTint="#ff72d0f4" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/OutStandingAmountLayout"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:layout_gravity="center_vertical"
+        android:background="#fafafa"
+        android:layout_alignParentBottom="true">
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/SelectDataPackHeading"
-            android:padding="10dp" />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/BuyOneGBAddOnLayout"
-            android:paddingBottom="10dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/cardstyle"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/OneGBAddOnTextView"
-                android:gravity="center_vertical"
-                android:textColor="#151515" />
-            <Button
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:id="@+id/BuyOneGBAddOnButton"
-                android:layout_gravity="right"
-                android:textSize="16sp"
-                android:textColor="#151515"
-                android:backgroundTint="#ff939393" />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/BuyTwoGBAddOnLayout"
-            android:paddingBottom="10dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/cardstyle"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/TwoGBAddOnTextView"
-                android:gravity="center_vertical"
-                android:textColor="#151515" />
-            <Button
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:id="@+id/BuyTwoGBAddOnButton"
-                android:layout_gravity="right"
-                android:textSize="16sp"
-                android:textColor="#151515"
-                android:backgroundTint="#ff939393" />
-        </FrameLayout>
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/OutStandingAmountText"
+            android:gravity="center_vertical"
+            android:textColor="#151515" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/OutstandingAmount"
+            android:textColor="#151515"
+            android:gravity="center_vertical"
+            android:layout_gravity="right" />
+    </FrameLayout>
 </RelativeLayout>

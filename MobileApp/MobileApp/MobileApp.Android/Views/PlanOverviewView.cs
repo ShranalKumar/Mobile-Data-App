@@ -27,6 +27,8 @@ namespace MobileApp.Droid.Views
         private TextView _selectDataPackHeading;
         private TextView _buyOneGBText;
         private TextView _buyTwoGBText;
+        private TextView _outstandingAmountText;
+        private TextView _outstandingAmount;
         private Button _buyOneGBPrice;
         private Button _buyTwoGBPrice;
 
@@ -75,7 +77,8 @@ namespace MobileApp.Droid.Views
             _buyTwoGBText = FindViewById<TextView>(Resource.Id.TwoGBAddOnTextView);
             _buyOneGBPrice = FindViewById<Button>(Resource.Id.BuyOneGBAddOnButton);
             _buyTwoGBPrice = FindViewById<Button>(Resource.Id.BuyTwoGBAddOnButton);
-
+            _outstandingAmountText = FindViewById<TextView>(Resource.Id.OutStandingAmountText);
+            _outstandingAmount = FindViewById<TextView>(Resource.Id.OutstandingAmount);
             //_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
             //_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
             //_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
@@ -94,6 +97,8 @@ namespace MobileApp.Droid.Views
             _buyTwoGBText.Text = StringConstants.Localizable.BuyTwoGB;
             _buyOneGBPrice.Text = StringConstants.Localizable.BuyOneGBPrice;
             _buyTwoGBPrice.Text = StringConstants.Localizable.BuyTwoGBPrice;
+            _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, "5.00"); ;
             //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
             //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
             //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;

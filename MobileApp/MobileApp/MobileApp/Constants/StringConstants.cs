@@ -82,6 +82,9 @@ namespace MobileApp.Constants
             public const string BuyTwoGB = "2 GB";
             public const string BuyOneGBPrice = "$ 14.99";
             public const string BuyTwoGBPrice = "$ 19.99";
+            public const string OutStandingAmountText = "Outstanding Amount";
+            public const string OutstandingAmount = "$ {0}";
+
 
 
             //Add member Screen
