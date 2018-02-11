@@ -123,7 +123,7 @@ namespace MobileApp.Droid.Views
 						{
 							SeekBar seekbar = (SeekBar)tile.GetChildAt(i);
 							userID = tile.Id;
-							conversion = seekbar.Progress / 100.0 * Controller._planDataPool;
+							conversion = ((double)seekbar.Progress / seekbar.Max) * Controller._planDataPool;
 							Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID)).ToList().ForEach(x =>
 												{
 													x.Allocated = conversion;
