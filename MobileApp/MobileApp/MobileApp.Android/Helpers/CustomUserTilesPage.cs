@@ -28,12 +28,9 @@ namespace MobileApp.Droid.Helpers
 			int i = 0;
             foreach (User user in Controller._users)
             {
-                if (i % 2 == 0)
-                {
-                    ContextThemeWrapper rowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileRowLayoutStyle);
-                    currentRow = new LinearLayout(rowContext);
-                    currentRow.Orientation = Orientation.Horizontal;
-                }
+                ContextThemeWrapper rowContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileRowLayoutStyle);
+                currentRow = new LinearLayout(rowContext);
+                currentRow.Orientation = Orientation.Horizontal;
 
                 ContextThemeWrapper userTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileLayoutStyle);
                 LinearLayout currentUser = new LinearLayout(userTileContext);
