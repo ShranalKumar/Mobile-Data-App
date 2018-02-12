@@ -32,6 +32,8 @@ namespace MobileApp.Droid.Views
         private TextView _outstandingAmount;
         private Button _buyOneGBPrice;
         private Button _buyTwoGBPrice;
+		private TextView _addonsTitle;
+		private TextView _addonsAmount;
 
         private TextView _tileClickedOn;
 
@@ -75,6 +77,7 @@ namespace MobileApp.Droid.Views
 			Controller._userLoggedIn = changedUser;
 			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
 			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
 			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
 			settingPriceTextColor();
 			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyTwoGB), ToastLength.Short).Show();
@@ -90,6 +93,7 @@ namespace MobileApp.Droid.Views
 			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
 			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
 			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
 			settingPriceTextColor();
 			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyOneGB), ToastLength.Short).Show();
 		}
@@ -113,13 +117,16 @@ namespace MobileApp.Droid.Views
             _buyTwoGBPrice = FindViewById<Button>(Resource.Id.BuyTwoGBAddOnButton);
             _outstandingAmountText = FindViewById<TextView>(Resource.Id.OutStandingAmountText);
             _outstandingAmount = FindViewById<TextView>(Resource.Id.OutstandingAmount);
-            //_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
-            //_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
-            //_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
-            //_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
-        }
+			_addonsTitle = FindViewById<TextView>(Resource.Id.AddOnsTitle);
+			_addonsAmount = FindViewById<TextView>(Resource.Id.AddOnsAmount);
 
-        private void setAllStringConstants()
+			//_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
+			//_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
+			//_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
+			//_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
+		}
+
+		private void setAllStringConstants()
         {
             _overviewPageTitle.Text = StringConstants.Localizable.OverviewTitle;
             _dataPlanNameText.Text = StringConstants.Localizable.PlanName;
@@ -133,6 +140,8 @@ namespace MobileApp.Droid.Views
             _buyTwoGBPrice.Text = string.Format(StringConstants.Localizable.BuyTwoGBPrice,"19.99");
             _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
             _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+			_addonsTitle.Text = StringConstants.Localizable.AddOnsTitle;
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
             //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
             //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
             //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;

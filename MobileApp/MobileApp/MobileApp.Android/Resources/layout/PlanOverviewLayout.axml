@@ -92,6 +92,26 @@
                     android:gravity="right"
                     android:textColor="#3f3f3f" />
             </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddOnsFrame"
+                android:paddingBottom="15dp">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/AddOnsTitle"
+                    android:gravity="left"
+                    android:textColor="#3f3f3f" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/AddOnsAmount"
+                    android:gravity="right"
+                    android:textColor="#3f3f3f" />
+            </FrameLayout>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

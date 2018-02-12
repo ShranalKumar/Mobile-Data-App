@@ -87,6 +87,10 @@ namespace MobileApp.Constants
             public const string OutStandingAmountText = "Outstanding Amount";
             public const string OutstandingAmount = "$ {0}";
 			public const string ToastAfterBuying = "Succesfully added '{0}' to your plan!";
+			public const string AddOnsTitle = "Add-Ons";
+			public const string AddOnsAmount = "{0} GB";
+
+
 
 
 
