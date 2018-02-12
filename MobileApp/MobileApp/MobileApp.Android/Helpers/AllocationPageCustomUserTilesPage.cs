@@ -55,9 +55,10 @@ namespace MobileApp.Droid.Helpers
 				SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
 				userAllocationSlider.Max = ((int)Controller._planDataPool + (int)Controller._addOns) * 10;
 				userAllocationSlider.Id = Int32.Parse(user.UID);
-				
-				//userAllocationSlider.Max = (int)((user.Allocated + unallocated) / Controller._planDataPool) * 100;
-				_seekbars.Add(userAllocationSlider);
+                userAllocationSlider.SecondaryProgress = (int)((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max);
+
+                //userAllocationSlider.Max = (int)((user.Allocated + unallocated) / Controller._planDataPool) * 100;
+                _seekbars.Add(userAllocationSlider);
 				_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * Controller._planDataPool));
 				unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
 				double progress = (user.Allocated / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max;
@@ -68,7 +69,8 @@ namespace MobileApp.Droid.Helpers
 					if (e.FromUser)
 					{
 						userAllocationSlider.Max = ((int)Controller._planDataPool + (int)Controller._addOns) * 10;
-						totalAllocated = unallocated = 0;
+                        userAllocationSlider.SecondaryProgress = (int)((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max);
+                        totalAllocated = unallocated = 0;
 						_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns)));
 						unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
 						double progressChanged = ((double)e.Progress / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns);
