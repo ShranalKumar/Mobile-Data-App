@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/OverviewPageLayout"
-    android:background="#e9e9e9">
+    android:background="#ededed">
     <android.support.v7.widget.Toolbar
         android:minHeight="?android:attr/actionBarSize"
         android:id="@+id/OverviewPageToolbar"
@@ -150,7 +150,7 @@
                 android:textColor="#3f3f3f" />
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:id="@+id/BuyOneGBAddOnLayout"
                 android:paddingBottom="10dp"
                 android:paddingRight="20dp"
@@ -172,12 +172,12 @@
                     android:id="@+id/BuyOneGBAddOnButton"
                     android:layout_gravity="right"
                     android:textSize="16sp"
-                    android:textColor="#151515"
-                    android:backgroundTint="#ff72d0f4" />
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/buttonstyle" />
             </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:id="@+id/BuyTwoGBAddOnLayout"
                 android:paddingBottom="10dp"
                 android:paddingRight="20dp"
@@ -199,8 +199,8 @@
                     android:id="@+id/BuyTwoGBAddOnButton"
                     android:layout_gravity="right"
                     android:textSize="16sp"
-                    android:textColor="#151515"
-                    android:backgroundTint="#ff72d0f4" />
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/buttonstyle" />
             </FrameLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -213,7 +213,7 @@
         android:paddingTop="10dp"
         android:paddingLeft="20dp"
         android:layout_gravity="center_vertical"
-        android:background="#fafafa"
+        android:background="#FFFFFF"
         android:layout_alignParentBottom="true">
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
