@@ -24,6 +24,8 @@ namespace MobileApp.Droid
 		public static double _planDataPool;
 		public static DateTime _currentDate;
 		public static double _daysRemaining;
+		public static double _addOns = 0;
+		public static double _outstandingPriceValue;
 
 		public Controller(List<User> user)
 		{
@@ -35,12 +37,8 @@ namespace MobileApp.Droid
 			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
 			var printString = newEndDate.ToString("dd/MM/yyyy");
 			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
-
-			_users.ForEach(x => _totalAllocated += x.Allocated);
-			_users.ForEach(x => _totalUsed += x.Used);
-			_planDataPool = _users[0].Plan;
-			_totalRemainder = _planDataPool - _totalUsed;
-			_totalUnAllocated = _planDataPool - _totalAllocated;
+			SetGlobalValues();
+			_outstandingPriceValue = _userLoggedIn.Outstanding;
     //        if (_users[0].AdminStatus)
     //        {
     //            //_users[0].Allocated = _planDataPool - _totalAllocated;
@@ -49,6 +47,17 @@ namespace MobileApp.Droid
 			
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
+		}
+
+		public static void SetGlobalValues() 
+		{
+			_totalAllocated = _totalUsed = 0;
+			_users.ForEach(x => _totalAllocated += x.Allocated);
+			_users.ForEach(x => _totalUsed += x.Used);
+			_addOns = _users[0].AddOns;
+			_planDataPool = _users[0].Plan;
+			_totalRemainder = _planDataPool - _totalUsed + _addOns;
+			_totalUnAllocated = _planDataPool - _totalAllocated + _addOns;
 		}
 
 		public static async Task<List<User>> UpdateAllocation(List<User> users)
@@ -68,6 +77,12 @@ namespace MobileApp.Droid
             User changedUser = await TodoItemManager.DefaultManager.DeleteGroupMember(user, targetMember);
             return changedUser;
         }
+
+		public static async Task<User> BuyAddOns(User user, double addOnAmount)
+		{
+			User changedUser = await TodoItemManager.DefaultManager.BuyAddOns(user, addOnAmount, _outstandingPriceValue);
+			return changedUser;
+		}
 
         public static void Clear()
         {

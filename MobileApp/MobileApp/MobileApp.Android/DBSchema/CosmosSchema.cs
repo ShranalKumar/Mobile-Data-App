@@ -30,6 +30,12 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "Allocated")]
 		public double Allocated { get; set; }
 
+		[JsonProperty(PropertyName = "AddOns")]
+		public double AddOns { get; set; }
+
+		[JsonProperty(PropertyName = "Outstanding")]
+		public double Outstanding { get; set; }
+
 		[JsonProperty(PropertyName = "PlanStartDate")]
 		public string PlanStartDate { get; set; }
 

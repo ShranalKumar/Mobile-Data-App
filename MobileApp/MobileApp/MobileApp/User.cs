@@ -12,7 +12,9 @@ namespace MobileApp
         public bool AdminStatus { get; set; }
         public double Used { get; set; }
         public double Allocated { get; set; }
-        public string PlanStartDate { get; set; }
+		public double AddOns { get; set; }
+		public double Outstanding { get; set; }
+		public string PlanStartDate { get; set; }
         public string PlanEndDate { get; set; }
         public List<UserUsageBreakdown> UsageBreakdown { get; set; }
         public List<Member> GroupMembers { get; set; }

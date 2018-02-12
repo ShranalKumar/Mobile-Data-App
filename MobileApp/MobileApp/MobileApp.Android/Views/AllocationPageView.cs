@@ -92,7 +92,7 @@ namespace MobileApp.Droid.Views
 		public async void SaveButtonClicked(object sender, EventArgs e)
 		{
 
-			if (AllocationPageCustomUserTilesPage.unallocated > 0)
+			if (AllocationPageCustomUserTilesPage.unallocated >= 0)
 			{
 				//foreach (LinearLayout tile in _userTileList)
 				//{
@@ -123,7 +123,7 @@ namespace MobileApp.Droid.Views
 						{
 							SeekBar seekbar = (SeekBar)tile.GetChildAt(i);
 							userID = tile.Id;
-							conversion = seekbar.Progress / 100.0 * Controller._planDataPool;
+							conversion = ((double)seekbar.Progress / seekbar.Max) * (Controller._planDataPool + Controller._addOns);
 							Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID)).ToList().ForEach(x =>
 												{
 													x.Allocated = conversion;
@@ -141,7 +141,7 @@ namespace MobileApp.Droid.Views
 				var changedUser = await Controller.UpdateAllocation(Controller._users);
                 Controller._totalUnAllocated = AllocationPageCustomUserTilesPage.unallocated;
                 Toast.MakeText(_context, "Allocations have successfully been updated", ToastLength.Short).Show();
-				//Controller._users[_uid] = changedUser;
+				Controller._users = changedUser;
 
 			}
 			else

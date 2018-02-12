@@ -113,6 +113,8 @@ namespace MobileApp.Droid
 					currentUser.AdminStatus = item.AdminStatus;
 					currentUser.Used = item.Used;
 					currentUser.Allocated = item.Allocated;
+					currentUser.AddOns = item.AddOns;
+					currentUser.Outstanding = item.Outstanding;
 					currentUser.PlanStartDate = item.PlanStartDate;
 					currentUser.PlanEndDate = item.PlanEndDate;
 					currentUser.UsageBreakdown = new List<UserUsageBreakdown>();
@@ -177,10 +179,33 @@ namespace MobileApp.Droid
 		public async Task<List<User>> UpdateMemberAllocation(List<User> user)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
-			queryDoc.Allocated = _users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated;
+			if (Math.Round(_users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated, 2) <= queryDoc.Used) 
+			{
+				queryDoc.Allocated = queryDoc.Used;
+				User admin = user.Where(x => x.UID == queryDoc.uid).FirstOrDefault();
+				admin.Allocated = admin.Used;
+			}
+			else 
+			{
+				queryDoc.Allocated = Math.Round(_users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated, 2);
+				User admin = user.Where(x => x.UID == queryDoc.uid).FirstOrDefault();
+				admin.Allocated = Math.Round(_users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated, 2);
+			}
+			
 			foreach (var member in queryDoc.groupMembers)
 			{
-				member.Allocated = _users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated;
+				if (Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2) <= member.Used)
+				{ 
+					member.Allocated = member.Used;
+					User nonAdmin = user.Where(x => x.UID == member.uid).FirstOrDefault();
+					nonAdmin.Allocated = nonAdmin.Used;
+				}
+				else
+				{
+					member.Allocated = Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2);
+					User nonAdmin = user.Where(x => x.UID == member.uid).FirstOrDefault();
+					nonAdmin.Allocated = Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2);
+				}				
 			}
 			
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
@@ -300,6 +325,18 @@ namespace MobileApp.Droid
             await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
             return user;
         }
+
+		public async Task<User> BuyAddOns(User user, double addonAmount, double outstanding)
+		{
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+			queryDoc.AddOns += addonAmount;
+			queryDoc.Outstanding = outstanding;
+			user.AddOns += addonAmount;
+			user.Outstanding = outstanding;
+
+			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
+			return user;
+		}
 
         public Boolean getLoginStatus()
 		{

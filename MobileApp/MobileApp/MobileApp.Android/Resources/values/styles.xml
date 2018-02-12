@@ -301,10 +301,11 @@
   </style>
 
   <style name="UserAllocationSliderStyle" parent ="Widget.AppCompat.SeekBar">
-    <item name="android:progressBackgroundTint">#70ffffff</item>
-    <item name="android:progressTint">#70ffffff</item>
-    <item name="android:thumb">@drawable/sliderthumbstyle2</item>
     <item name="android:scaleY">3</item>
+    <item name="android:progressBackgroundTint">#50ffffff</item>
+    <item name="android:progressTint">#60ffffff</item>
+    <item name="android:secondaryProgressTint">#000000</item>
+    <item name="android:thumb">@drawable/sliderthumbstyle2</item>
     <item name="android:paddingTop">10dp</item>
     <item name="android:paddingBottom">10dp</item>
   </style>
@@ -313,4 +314,11 @@
     <item name="android:textSize">18dp</item>
     <item name="android:padding">10dp</item>
   </style>
+
+  <style name="Divider">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">?android:attr/listDivider</item>
+  </style>
+
 </resources>

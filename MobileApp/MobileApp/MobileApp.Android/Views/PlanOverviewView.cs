@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
+using Android.Graphics;
 
 namespace MobileApp.Droid.Views
 {
@@ -24,10 +25,16 @@ namespace MobileApp.Droid.Views
         private TextView _dataPlanAmount;
         private TextView _planRemainingDataText;
         private TextView _planRemainingDataAmount;
-        private TextView _planAllocatedDataText;
-        private TextView _planAllocatedDataAmount;
-        private TextView _planUsedDataText;
-        private TextView _planUsedDataAmount;
+        private TextView _selectDataPackHeading;
+        private TextView _buyOneGBText;
+        private TextView _buyTwoGBText;
+        private TextView _outstandingAmountText;
+        private TextView _outstandingAmount;
+        private Button _buyOneGBPrice;
+        private Button _buyTwoGBPrice;
+		private TextView _addonsTitle;
+		private TextView _addonsAmount;
+
         private TextView _tileClickedOn;
 
 
@@ -48,43 +55,132 @@ namespace MobileApp.Droid.Views
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PlanOverviewLayout);
 
+
             findAllElements();
             setAllStringConstants();
             SetScrollableView();
-
             _overviewPageBackButton.Click += delegate { Finish(); };
-            _memberListDropDown.Click += delegate { showMembersList(); };
+
+            _buyOneGBPrice.Click += delegate { BuyOneGBClicked(); };
+            _buyTwoGBPrice.Click += delegate { BuyTwoGBClicked(); };
+
+
+            settingPriceTextColor();
         }
 
-        private void findAllElements()
+		private async void _buyTwoGBClick(double outStanding)
+		{
+			Controller._outstandingPriceValue += outStanding;
+			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 2);
+			Controller._addOns = changedUser.AddOns;
+			Controller.SetGlobalValues();			
+			Controller._userLoggedIn = changedUser;
+			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
+			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
+			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
+			settingPriceTextColor();
+			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyTwoGB), ToastLength.Short).Show();
+		}
+
+		private async void _buyOneGBClick(double outStanding)
+		{
+			Controller._outstandingPriceValue += outStanding;
+			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 1);
+			Controller._addOns = changedUser.AddOns;
+			Controller.SetGlobalValues();			
+			Controller._userLoggedIn = changedUser;
+			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
+			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
+			settingPriceTextColor();
+			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyOneGB), ToastLength.Short).Show();
+		}
+
+		private void findAllElements()
         {
             _overviewPageTitle = FindViewById<TextView>(Resource.Id.OverviewPageTitle);
             _dataPlanNameText = FindViewById<TextView>(Resource.Id.PlanNameTitle);
             _dataPlanAmount = FindViewById<TextView>(Resource.Id.PlaneNameAmount);
             _planRemainingDataText = FindViewById<TextView>(Resource.Id.DataRemainingTitle);
             _planRemainingDataAmount = FindViewById<TextView>(Resource.Id.DataRemainingAmount);
-            _planAllocatedDataText = FindViewById<TextView>(Resource.Id.DataAllocatedTitle);
-            _planAllocatedDataAmount = FindViewById<TextView>(Resource.Id.DataAllocatedAmount);
-            _planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
-            _planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
+            //_planAllocatedDataText = FindViewById<TextView>(Resource.Id.DataAllocatedTitle);
+            //_planAllocatedDataAmount = FindViewById<TextView>(Resource.Id.DataAllocatedAmount);
+            //_planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
+            //_planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
             _overviewPageBackButton = FindViewById<ImageButton>(Resource.Id.OverviewPageBackButton);
-            _dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
-            _memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
-            _memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
-            _membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
-    }
+            _selectDataPackHeading = FindViewById<TextView>(Resource.Id.SelectDataPackHeading);
+            _buyOneGBText = FindViewById<TextView>(Resource.Id.OneGBAddOnTextView);
+            _buyTwoGBText = FindViewById<TextView>(Resource.Id.TwoGBAddOnTextView);
+            _buyOneGBPrice = FindViewById<Button>(Resource.Id.BuyOneGBAddOnButton);
+            _buyTwoGBPrice = FindViewById<Button>(Resource.Id.BuyTwoGBAddOnButton);
+            _outstandingAmountText = FindViewById<TextView>(Resource.Id.OutStandingAmountText);
+            _outstandingAmount = FindViewById<TextView>(Resource.Id.OutstandingAmount);
+			_addonsTitle = FindViewById<TextView>(Resource.Id.AddOnsTitle);
+			_addonsAmount = FindViewById<TextView>(Resource.Id.AddOnsAmount);
 
-        private void setAllStringConstants()
+			//_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
+			//_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
+			//_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
+			//_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
+		}
+
+		private void setAllStringConstants()
         {
             _overviewPageTitle.Text = StringConstants.Localizable.OverviewTitle;
             _dataPlanNameText.Text = StringConstants.Localizable.PlanName;
             _dataPlanAmount.Text = string.Format(StringConstants.Localizable.PlanDataAmount, Controller._planDataPool);
             _planRemainingDataText.Text = StringConstants.Localizable.PlanRemaining;
             _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder); //Need to concat amount from DB, DB under construction
-            _planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
-            _planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
-            _planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
-            _planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
+            _selectDataPackHeading.Text = StringConstants.Localizable.SelectDataPackHeading;
+            _buyOneGBText.Text = StringConstants.Localizable.BuyOneGB;
+            _buyTwoGBText.Text = StringConstants.Localizable.BuyTwoGB;
+            _buyOneGBPrice.Text = string.Format(StringConstants.Localizable.BuyOneGBPrice, "14.99");
+            _buyTwoGBPrice.Text = string.Format(StringConstants.Localizable.BuyTwoGBPrice,"19.99");
+            _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+			_addonsTitle.Text = StringConstants.Localizable.AddOnsTitle;
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
+            //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
+            //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
+            //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
+            //_planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
+        }
+
+        private void settingPriceTextColor()
+        {
+            if (Controller._outstandingPriceValue <= 0)
+            {
+                _outstandingAmount.SetTextColor(new Color(77, 155, 0));
+            }
+
+            else if (Controller._outstandingPriceValue > 0)
+            {
+                _outstandingAmount.SetTextColor(new Color(232, 151, 0));
+            }
+        }
+
+        private void BuyOneGBClicked()
+        {
+            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
+            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyOneGB));
+            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { _buyOneGBClick(14.99); });
+            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            Dialog deleteDialog = memberDeleteAlert.Create();
+            deleteDialog.Show();
+        }
+
+        private void BuyTwoGBClicked()
+        {
+            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
+            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyTwoGB));
+			memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { _buyTwoGBClick(19.99); });
+            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            Dialog deleteDialog = memberDeleteAlert.Create();
+            deleteDialog.Show();
         }
 
         private void showMembersList()
@@ -104,28 +200,28 @@ namespace MobileApp.Droid.Views
 
         protected void SetScrollableView()
         {
-            CustomPlanOverviewView.getMembers(_membersListLinearLayout);
+            //CustomPlanOverviewView.getMembers(_membersListLinearLayout);
 
-            foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
-            {
-                name.LongClick += (o, s) =>
-                {
-                    _tileClickedOn = name;
+            //foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
+            //{
+            //    name.LongClick += (o, s) =>
+            //    {
+            //        _tileClickedOn = name;
 
-                    _userId = _tileClickedOn.Id;
-                    _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
-                    _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
+            //        _userId = _tileClickedOn.Id;
+            //        _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
+            //        _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
 
-                    AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-                    memberDeleteAlert.SetTitle("Remove Member");
-                    memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
-                    memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
-                    memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
-                    Dialog deleteDialog = memberDeleteAlert.Create();
-                    deleteDialog.Show();
-                };
-            }
-            CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
+            //        AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            //        memberDeleteAlert.SetTitle("Remove Member");
+            //        memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
+            //        memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
+            //        memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            //        Dialog deleteDialog = memberDeleteAlert.Create();
+            //        deleteDialog.Show();
+            //    };
+            //}
+            //CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
         }
 
         protected async void DeleteGroupMember()
