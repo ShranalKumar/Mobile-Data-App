@@ -25,6 +25,7 @@ namespace MobileApp.Droid
 		public static DateTime _currentDate;
 		public static double _daysRemaining;
 		public static double _addOns = 0;
+		public static double _outstandingPriceValue;
 
 		public Controller(List<User> user)
 		{
@@ -37,6 +38,7 @@ namespace MobileApp.Droid
 			var printString = newEndDate.ToString("dd/MM/yyyy");
 			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
 			SetGlobalValues();
+			_outstandingPriceValue = _userLoggedIn.Outstanding;
     //        if (_users[0].AdminStatus)
     //        {
     //            //_users[0].Allocated = _planDataPool - _totalAllocated;
@@ -78,7 +80,7 @@ namespace MobileApp.Droid
 
 		public static async Task<User> BuyAddOns(User user, double addOnAmount)
 		{
-			User changedUser = await TodoItemManager.DefaultManager.BuyAddOns(user, addOnAmount);
+			User changedUser = await TodoItemManager.DefaultManager.BuyAddOns(user, addOnAmount, _outstandingPriceValue);
 			return changedUser;
 		}
 

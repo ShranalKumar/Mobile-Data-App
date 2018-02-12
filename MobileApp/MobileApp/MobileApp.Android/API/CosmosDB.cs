@@ -114,6 +114,7 @@ namespace MobileApp.Droid
 					currentUser.Used = item.Used;
 					currentUser.Allocated = item.Allocated;
 					currentUser.AddOns = item.AddOns;
+					currentUser.Outstanding = item.Outstanding;
 					currentUser.PlanStartDate = item.PlanStartDate;
 					currentUser.PlanEndDate = item.PlanEndDate;
 					currentUser.UsageBreakdown = new List<UserUsageBreakdown>();
@@ -325,11 +326,13 @@ namespace MobileApp.Droid
             return user;
         }
 
-		public async Task<User> BuyAddOns(User user, double addonAmount)
+		public async Task<User> BuyAddOns(User user, double addonAmount, double outstanding)
 		{
 			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
 			queryDoc.AddOns += addonAmount;
+			queryDoc.Outstanding = outstanding;
 			user.AddOns += addonAmount;
+			user.Outstanding = outstanding;
 
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
 			return user;

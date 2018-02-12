@@ -82,15 +82,17 @@ namespace MobileApp.Constants
             public const string AlertBeforeBuyingTitle = "Buy Data Pack";
             public const string BuyOneGB = "1GB Data Boost";
             public const string BuyTwoGB = "2GB Data Boost";
-            public const string BuyOneGBPrice = "$ 14.99";
-            public const string BuyTwoGBPrice = "$ 19.99";
+            public const string BuyOneGBPrice = "$ {0}";
+            public const string BuyTwoGBPrice = "$ {0}";
             public const string OutStandingAmountText = "Outstanding Amount";
             public const string OutstandingAmount = "$ {0}";
+			public const string ToastAfterBuying = "Succesfully added '{0}' to your plan!";
 
 
 
-            //Add member Screen
-            public const string AddMemberTitle = "Add New Member";
+
+			//Add member Screen
+			public const string AddMemberTitle = "Add New Member";
             public const string PhoneNumber = "Phone Number";
             public const string FirstName = "First Name";
             public const string LastName = "Last Name";
