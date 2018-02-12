@@ -53,7 +53,7 @@ namespace MobileApp.Droid.Views
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PlanOverviewLayout);
-            _outstandingPriceValue = 0.1;
+            _outstandingPriceValue = 0;
 
 
             findAllElements();
@@ -61,8 +61,8 @@ namespace MobileApp.Droid.Views
             SetScrollableView();
             _overviewPageBackButton.Click += delegate { Finish(); };
 
-            _buyOneGBPrice.Click += delegate { BuyOneGB(); };
-            _buyTwoGBPrice.Click += delegate { BuyTwoGB(); };
+            _buyOneGBPrice.Click += delegate { BuyOneGBClicked(); };
+            _buyTwoGBPrice.Click += delegate { BuyTwoGBClicked(); };
 
 
             settingPriceTextColor();
@@ -126,23 +126,23 @@ namespace MobileApp.Droid.Views
             }
         }
 
-        private void BuyOneGB()
+        private void BuyOneGBClicked()
         {
             AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
             memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
             memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyOneGB));
-            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy */ });
+            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy and also add price to variable _outstandingPriceValue */ });
             memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
             Dialog deleteDialog = memberDeleteAlert.Create();
             deleteDialog.Show();
         }
 
-        private void BuyTwoGB()
+        private void BuyTwoGBClicked()
         {
             AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
             memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
             memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyTwoGB));
-            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy */ });
+            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy and also add price to variable _outstandingPriceValue */ });
             memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
             Dialog deleteDialog = memberDeleteAlert.Create();
             deleteDialog.Show();
