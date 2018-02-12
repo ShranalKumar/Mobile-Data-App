@@ -57,10 +57,30 @@ namespace MobileApp.Droid.Views
             SetScrollableView();
 
             _overviewPageBackButton.Click += delegate { Finish(); };
+			_buyOneGBPrice.Click += _buyOneGBPrice_Click;
+			_buyTwoGBPrice.Click += _buyTwoGBPrice_Click;
             //_memberListDropDown.Click += delegate { showMembersList(); };
         }
 
-        private void findAllElements()
+		private async void _buyTwoGBPrice_Click(object sender, EventArgs e)
+		{
+			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 2);
+			Controller._addOns = changedUser.AddOns;
+			Controller.SetGlobalValues();
+			Controller._userLoggedIn = changedUser;
+			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
+		}
+
+		private async void _buyOneGBPrice_Click(object sender, EventArgs e)
+		{
+			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 1);
+			Controller._addOns = changedUser.AddOns;
+			Controller.SetGlobalValues();
+			Controller._userLoggedIn = changedUser;
+			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
+		}
+
+		private void findAllElements()
         {
             _overviewPageTitle = FindViewById<TextView>(Resource.Id.OverviewPageTitle);
             _dataPlanNameText = FindViewById<TextView>(Resource.Id.PlanNameTitle);

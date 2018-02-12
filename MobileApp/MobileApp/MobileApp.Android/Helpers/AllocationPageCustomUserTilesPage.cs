@@ -53,33 +53,34 @@ namespace MobileApp.Droid.Helpers
 
 				ContextThemeWrapper userAllocatedSliderContext = new ContextThemeWrapper(UserDetailsTextLayout.Context, Resource.Style.UserAllocationSliderStyle);
 				SeekBar userAllocationSlider = new SeekBar(userAllocatedSliderContext, null, Resource.Style.UserAllocationSliderStyle);
-				userAllocationSlider.Max = (int)Controller._planDataPool * 10;
+				userAllocationSlider.Max = ((int)Controller._planDataPool + (int)Controller._addOns) * 10;
 				userAllocationSlider.Id = Int32.Parse(user.UID);
 				
 				//userAllocationSlider.Max = (int)((user.Allocated + unallocated) / Controller._planDataPool) * 100;
 				_seekbars.Add(userAllocationSlider);
 				_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * Controller._planDataPool));
-				unallocated = Controller._planDataPool - totalAllocated;
-				double progress = (user.Allocated / Controller._planDataPool) * userAllocationSlider.Max;
+				unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
+				double progress = (user.Allocated / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max;
 				userAllocationSlider.Progress = (int)(progress);
 
 				userAllocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
 				{
 					if (e.FromUser)
 					{
+						userAllocationSlider.Max = ((int)Controller._planDataPool + (int)Controller._addOns) * 10;
 						totalAllocated = unallocated = 0;
-						_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * Controller._planDataPool));
-						unallocated = Controller._planDataPool - totalAllocated;
-						double progressChanged = ((double)e.Progress / userAllocationSlider.Max) * (Controller._planDataPool);
+						_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns)));
+						unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
+						double progressChanged = ((double)e.Progress / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns);
 
 						List<double> allocatedInProportion = new List<double>();
 						_seekbars.ForEach(x => allocatedInProportion.Add(x.Progress));
 						List<double> allocatedInGB = new List<double>();
-						allocatedInProportion.ForEach(x => allocatedInGB.Add((x / userAllocationSlider.Max) * Controller._planDataPool));
+						allocatedInProportion.ForEach(x => allocatedInGB.Add((x / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns)));
 						double sumAllocatedInGB = allocatedInGB.Sum();
-						double reservedData = Controller._planDataPool - sumAllocatedInGB;
+						double reservedData = (Controller._planDataPool - sumAllocatedInGB) + Controller._addOns;
 						reservedData = Math.Round(reservedData, 2);
-						double reservedToProgress = ((reservedData / Controller._planDataPool) * userAllocationSlider.Max);
+						double reservedToProgress = ((reservedData / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max);
 						double max = e.Progress + reservedToProgress;
 
 						//double tempGigaByte = unallocated + (((double)xyz[0] / 100) * (Controller._planDataPool / (progressChanged + unallocated)));
@@ -93,14 +94,14 @@ namespace MobileApp.Droid.Helpers
 						{
 							progressChanged = user.Used;
 							Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 2));
-							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((user.Used / Controller._planDataPool) * userAllocationSlider.Max,2));   //This is where it's causing the problem
+							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max,2));   //This is where it's causing the problem
 
 						}
 						else if (e.Progress >= max)
 						{
-							progressChanged = ((double)(e.Progress + reservedToProgress) / userAllocationSlider.Max) * Controller._planDataPool;
+							progressChanged = ((double)(e.Progress + reservedToProgress) / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns);
 							Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 2));
-							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((progressChanged / Controller._planDataPool) * userAllocationSlider.Max, 2));
+							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((progressChanged / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max, 2));
 						}
 						else
 						{
@@ -109,17 +110,17 @@ namespace MobileApp.Droid.Helpers
 						}
 
 						totalAllocated = unallocated = 0;
-						_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * Controller._planDataPool));
-						unallocated = Controller._planDataPool - totalAllocated;
+						_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns)));
+						unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
 
 						allocatedInProportion.Clear();
 						_seekbars.ForEach(x => allocatedInProportion.Add(x.Progress));
 						allocatedInGB.Clear();
-						allocatedInProportion.ForEach(x => allocatedInGB.Add((x / userAllocationSlider.Max) * Controller._planDataPool));
+						allocatedInProportion.ForEach(x => allocatedInGB.Add((x / userAllocationSlider.Max) * (Controller._planDataPool + Controller._addOns)));
 						sumAllocatedInGB = allocatedInGB.Sum();
-						reservedData = Controller._planDataPool - sumAllocatedInGB;
+						reservedData = Controller._planDataPool - sumAllocatedInGB + Controller._addOns;
 						AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(reservedData, 2));
-						unallocated = (int)Controller._planDataPool - (int)sumAllocatedInGB;
+						unallocated = (int)Controller._planDataPool - (int)sumAllocatedInGB + Controller._addOns;
 					}
 
 				};

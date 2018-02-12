@@ -36,12 +36,7 @@ namespace MobileApp.Droid
 			DateTime newEndDate = new DateTime(Int32.Parse(changeDate[2]), Int32.Parse(changeDate[0]), Int32.Parse(changeDate[1]));
 			var printString = newEndDate.ToString("dd/MM/yyyy");
 			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
-
-			_users.ForEach(x => _totalAllocated += x.Allocated);
-			_users.ForEach(x => _totalUsed += x.Used);
-			_planDataPool = _users[0].Plan + _addOns;
-			_totalRemainder = _planDataPool - _totalUsed;
-			_totalUnAllocated = _planDataPool - _totalAllocated;
+			SetGlobalValues();
     //        if (_users[0].AdminStatus)
     //        {
     //            //_users[0].Allocated = _planDataPool - _totalAllocated;
@@ -50,6 +45,17 @@ namespace MobileApp.Droid
 			
 			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
 
+		}
+
+		public static void SetGlobalValues() 
+		{
+			_totalAllocated = _totalUsed = 0;
+			_users.ForEach(x => _totalAllocated += x.Allocated);
+			_users.ForEach(x => _totalUsed += x.Used);
+			_addOns = _users[0].AddOns;
+			_planDataPool = _users[0].Plan;
+			_totalRemainder = _planDataPool - _totalUsed + _addOns;
+			_totalUnAllocated = _planDataPool - _totalAllocated + _addOns;
 		}
 
 		public static async Task<List<User>> UpdateAllocation(List<User> users)
