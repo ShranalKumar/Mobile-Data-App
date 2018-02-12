@@ -12,6 +12,7 @@ using Android.Views;
 using Android.Widget;
 using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
+using Android.Graphics;
 
 namespace MobileApp.Droid.Views
 {
@@ -31,6 +32,7 @@ namespace MobileApp.Droid.Views
         private TextView _outstandingAmount;
         private Button _buyOneGBPrice;
         private Button _buyTwoGBPrice;
+        private Double _outstandingPriceValue;
 
         private TextView _tileClickedOn;
 
@@ -51,15 +53,19 @@ namespace MobileApp.Droid.Views
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PlanOverviewLayout);
+            _outstandingPriceValue = 0;
+
 
             findAllElements();
             setAllStringConstants();
             SetScrollableView();
-
             _overviewPageBackButton.Click += delegate { Finish(); };
-			_buyOneGBPrice.Click += _buyOneGBPrice_Click;
-			_buyTwoGBPrice.Click += _buyTwoGBPrice_Click;
-            //_memberListDropDown.Click += delegate { showMembersList(); };
+
+            _buyOneGBPrice.Click += delegate { BuyOneGBClicked(); };
+            _buyTwoGBPrice.Click += delegate { BuyTwoGBClicked(); };
+
+
+            settingPriceTextColor();
         }
 
 		private async void _buyTwoGBPrice_Click(object sender, EventArgs e)
@@ -118,11 +124,46 @@ namespace MobileApp.Droid.Views
             _buyOneGBPrice.Text = StringConstants.Localizable.BuyOneGBPrice;
             _buyTwoGBPrice.Text = StringConstants.Localizable.BuyTwoGBPrice;
             _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
-            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, "5.00"); ;
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, _outstandingPriceValue.ToString());
             //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
             //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
             //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
             //_planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
+        }
+
+        private void settingPriceTextColor()
+        {
+            if (_outstandingPriceValue <= 0)
+            {
+                _outstandingAmount.SetTextColor(new Color(77, 155, 0));
+            }
+
+            else if (_outstandingPriceValue > 0)
+            {
+                _outstandingAmount.SetTextColor(new Color(232, 151, 0));
+            }
+        }
+
+        private void BuyOneGBClicked()
+        {
+            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
+            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyOneGB));
+            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy and also add price to variable _outstandingPriceValue */ });
+            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            Dialog deleteDialog = memberDeleteAlert.Create();
+            deleteDialog.Show();
+        }
+
+        private void BuyTwoGBClicked()
+        {
+            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
+            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyTwoGB));
+            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { /*Call Function to buy and also add price to variable _outstandingPriceValue */ });
+            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            Dialog deleteDialog = memberDeleteAlert.Create();
+            deleteDialog.Show();
         }
 
         private void showMembersList()

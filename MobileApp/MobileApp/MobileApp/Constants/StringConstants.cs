@@ -78,8 +78,10 @@ namespace MobileApp.Constants
             public const string PlanAllocatedAmount = "{0} GB";
             public const string PlanUsedAmount = "{0} GB";
             public const string SelectDataPackHeading = "Select a data Pack";
-            public const string BuyOneGB = "1 GB";
-            public const string BuyTwoGB = "2 GB";
+            public const string AlertBeforeBuying = "Are you sure you would like to add '{0}' pack to your plan?";
+            public const string AlertBeforeBuyingTitle = "Buy Data Pack";
+            public const string BuyOneGB = "1GB Data Boost";
+            public const string BuyTwoGB = "2GB Data Boost";
             public const string BuyOneGBPrice = "$ 14.99";
             public const string BuyTwoGBPrice = "$ 19.99";
             public const string OutStandingAmountText = "Outstanding Amount";
