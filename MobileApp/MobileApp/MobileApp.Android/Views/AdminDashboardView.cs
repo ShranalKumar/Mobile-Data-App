@@ -130,7 +130,7 @@ namespace MobileApp.Droid.Views
 
         public void allocateButtonClickAction(object sender, EventArgs e)
         {
-            setCurrentPage(_allocationPageView);
+            _mainViewPager.SetCurrentItem(2, true);
         }
 
     }

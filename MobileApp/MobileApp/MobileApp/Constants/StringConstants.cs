@@ -84,7 +84,7 @@ namespace MobileApp.Constants
             public const string BuyTwoGB = "2GB Data Boost";
             public const string BuyOneGBPrice = "$ {0}";
             public const string BuyTwoGBPrice = "$ {0}";
-            public const string OutStandingAmountText = "Outstanding Amount";
+            public const string OutStandingAmountText = "Off Plan Spent";
             public const string OutstandingAmount = "$ {0}";
 			public const string ToastAfterBuying = "Succesfully added '{0}' to your plan!";
 			public const string AddOnsTitle = "Add-Ons";
