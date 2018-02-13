@@ -3,7 +3,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
   <item 
     android:id="@+id/RemoveUser"
-    android:title="RemoveUser"
+    android:title="Remove User"
     showAsAction="always" />  
     <item
       android:id="@+id/GenerateQR"
