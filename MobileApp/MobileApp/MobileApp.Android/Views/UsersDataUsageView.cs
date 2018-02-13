@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Java.Util;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -14,6 +15,7 @@ using Microcharts.Droid;
 using MobileApp.Constants;
 using MobileApp.Droid.Helpers;
 using SkiaSharp;
+using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
@@ -43,8 +45,9 @@ namespace MobileApp.Droid.Views
 		private TextView _graphTitle;
 		private TextView _graphSubTitle;
 		private TextView _userPhoneNumber;
+        private DashboardGradientTimerHelper _dashbardGradientTask;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -60,12 +63,11 @@ namespace MobileApp.Droid.Views
 			_backButton.Click += delegate { Finish(); };
 			_entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
+            
 
-			
+            //_dataUsageSaveButton.Click += UpdateUserDataAllocation;
 
-			//_dataUsageSaveButton.Click += UpdateUserDataAllocation;
-
-		}
+        }
 
 		protected void findAllElements()
         {
@@ -153,8 +155,8 @@ namespace MobileApp.Droid.Views
 				{
 					Label = breakdown.Day,
 					ValueLabel = breakdown.DataUsed,
-					Color = SKColor.Parse("#FFFFFF"),
-					TextColor = SKColor.Parse("#FFFFFF")
+					Color = SKColor.Parse("#6191E8"),
+					TextColor = SKColor.Parse("#151515")
 				};
 				number++;
 			}
@@ -165,37 +167,37 @@ namespace MobileApp.Droid.Views
 
 				LineMode = LineMode.Spline,
 				LineSize = 8,
-				LabelTextSize = 20,
+				LabelTextSize = 27,
 				PointMode = PointMode.None,
 				BackgroundColor = SKColor.Empty
 			};
 			_chartView.Chart = chart;
 		}
 
-			//var entries = new[]
-			//{
-			//	new Entry(200)
-			//	{
-			//		Label = "January",
-			//		ValueLabel = "200",
-			//		Color = SKColor.Parse("#FFFFFF")
+        //var entries = new[]
+        //{
+        //	new Entry(200)
+        //	{
+        //		Label = "January",
+        //		ValueLabel = "200",
+        //		Color = SKColor.Parse("#FFFFFF")
 
-			//	},
-			//	new Entry(400)
-			//	{
-			//	Label = "February",
-			//	ValueLabel = "400",
-			//	Color = SKColor.Parse("#FFFFFF")
-			//	},
-			//	new Entry(-100)
-			//	{
-			//	Label = "March",
-			//	ValueLabel = "-100",
-			//	Color = SKColor.Parse("#FFFFFF")
-			//	}
-
-
+        //	},
+        //	new Entry(400)
+        //	{
+        //	Label = "February",
+        //	ValueLabel = "400",
+        //	Color = SKColor.Parse("#FFFFFF")
+        //	},
+        //	new Entry(-100)
+        //	{
+        //	Label = "March",
+        //	ValueLabel = "-100",
+        //	Color = SKColor.Parse("#FFFFFF")
+        //	}
 
 
-	}
+
+
+    }
 }

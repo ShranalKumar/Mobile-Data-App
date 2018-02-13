@@ -21,12 +21,13 @@ namespace MobileApp.Droid.Helpers
     {
         private bool _isPaused;
         private int _gradient;
-        private AdminDashboardView _dashboard;
+        private AdminDashboardView _adminDashboard;
+        private UsersDataUsageView _usageView;
 
         public DashboardGradientTimerHelper(AdminDashboardView dashboard)
         {
             _gradient = 0;
-            _dashboard = dashboard;
+            _adminDashboard = dashboard;
             _isPaused = false;
         }
 
@@ -82,13 +83,13 @@ namespace MobileApp.Droid.Helpers
                         break;
                 }
 
-                var transition = new TransitionDrawable(new Drawable[]
+                var adminTransition = new TransitionDrawable(new Drawable[]
                 {
-                    ResourcesCompat.GetDrawable(_dashboard.ApplicationContext.Resources, first, null),
-                    ResourcesCompat.GetDrawable(_dashboard.ApplicationContext.Resources, second, null)
+                    ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, first, null),
+                    ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, second, null)
                 });
 
-                _dashboard.BackgroundGradientThread(transition);
+                _adminDashboard.BackgroundGradientThread(adminTransition);
 
                 if (_gradient == NumberConstants.DashboardGradientTransition.DashboardGradientCount - 1)
                 {
