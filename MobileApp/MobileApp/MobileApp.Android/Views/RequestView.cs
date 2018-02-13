@@ -49,6 +49,8 @@ namespace MobileApp.Droid.Views
         private RelativeLayout _requestConfirmationPopUp;
         private RelativeLayout _requestSuccessMessage;
 		private LinearLayout _userSelectionSlidingLayout;
+        private List<Button> _userButtons;
+        private Button _selectedUser;
 
 
 		private string _getDataAmount;
@@ -64,20 +66,10 @@ namespace MobileApp.Droid.Views
             findAllElements();
             setAllStringConstants();
 			CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
+            _userButtons = CustomSlidingTilesView._userButtons;
+
+            SetClickable();
             
-            _yesToRequest.Click += showSuccessMessage;
-            _doNotRequest.Click += showConfirmationPopUp;
-            _OkSuccessfullyRequested.Click += showSuccessMessage;
-            _firstUpArrow.Click += increaseInt;
-            _secondUpArrow.Click += increaseInt;
-            _thirdUpArrow.Click += increaseInt;
-            _fourthUpArrow.Click += increaseInt;
-            _firstDownArrow.Click += decreaseInt;
-            _secondDownArrow.Click += decreaseInt;
-            _thirdDownArrow.Click += decreaseInt;
-            _fourthDownArrow.Click += decreaseInt;
-            _requestButtonClicked.Click += showConfirmationPopUp;
-            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };           
         }
 
         protected void findAllElements()
@@ -123,6 +115,32 @@ namespace MobileApp.Droid.Views
             _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
             _requestButtonClicked.Text = StringConstants.Localizable.RequestButton;
             _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
+        }
+
+        protected void SetClickable()
+        {
+            _yesToRequest.Click += showSuccessMessage;
+            _doNotRequest.Click += showConfirmationPopUp;
+            _OkSuccessfullyRequested.Click += showSuccessMessage;
+            _firstUpArrow.Click += increaseInt;
+            _secondUpArrow.Click += increaseInt;
+            _thirdUpArrow.Click += increaseInt;
+            _fourthUpArrow.Click += increaseInt;
+            _firstDownArrow.Click += decreaseInt;
+            _secondDownArrow.Click += decreaseInt;
+            _thirdDownArrow.Click += decreaseInt;
+            _fourthDownArrow.Click += decreaseInt;
+            _requestButtonClicked.Click += showConfirmationPopUp;
+            _BackButton.Click += delegate { Finish(); };
+
+            foreach (Button user in _userButtons)
+            {
+                user.Click += (o, s) =>
+                {
+                    user.Selected = true;
+                    _selectedUser = user;
+                };
+            }
         }
 
 
@@ -207,12 +225,12 @@ namespace MobileApp.Droid.Views
         {
             if (valueOfFirstNumber > 0)
             {
-                _dataUnitsToGB.Text = "GB";
+                _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
                 _decimalPointVisibility.Text = ".";
             }
             else
             {
-                _dataUnitsToGB.Text = "MB";
+                _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
                 _decimalPointVisibility.Text = "";
             }
         }

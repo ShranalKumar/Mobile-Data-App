@@ -15,6 +15,7 @@ namespace MobileApp.Droid.Helpers
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
 			//FrameLayout buttonsLayout = new FrameLayout(parent.Context);
+            if (_userButtons == null) { _userButtons = new List<Android.Widget.Button>(); }
 
             foreach (User user in Controller._users)
             {

@@ -70,7 +70,6 @@ namespace MobileApp.Droid.Views
             DataBarFill();
             setAllStringConstants();
             CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
-            getUser();
             
             _yesToTransfer.Click += showSuccessMessage;            
             _doNotTransfer.Click += showConfirmationPopUp;            
@@ -142,20 +141,6 @@ namespace MobileApp.Droid.Views
             _sendButtonClicked.Text = StringConstants.Localizable.SendButton;
             
         }
-
-        protected void getUser()
-        {
-            CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
-
-            foreach (Button userButton in CustomSlidingTilesView._userButtons)
-            {
-                userButton.Click += (o, s) =>
-                {
-
-                };
-            }
-        }
-
 
         private void increaseInt(object sender, EventArgs e)
         {
