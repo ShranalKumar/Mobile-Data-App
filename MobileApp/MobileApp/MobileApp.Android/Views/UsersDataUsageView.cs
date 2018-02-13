@@ -23,29 +23,22 @@ namespace MobileApp.Droid.Views
     public class UsersDataUsageView : Activity
     {
         private ImageButton _backButton;
-        private SeekBar _allocationSlider;
         private TextView _allocatedDataAmount;
         private TextView _allocationPageHeader;
 		private TextView _usedDataAmount;
 		private ChartView _chartView;
 		private TextView _allocatedDataText;
         private TextView _usedDataText;
-        private TextView _usedDataTextAmount;
-        private TextView _dataUsageSaveButtonText;
-        private ScrollView _dataUsageBreakdownlayout;
 		private ImageButton _dataUsageSaveButton;
-		private User _user;
-		private double _tempUnAllocated;
-		private double _progressChanged;
+        private ImageButton _dottedMenuButton;
+        private User _user;
 		private int _uid;
-		private Microcharts.Droid.ChartView chartView;
 		private TextView _pointsText;
 		private TextView _pointsAmount;
 		private Entry[] _entries;
 		private TextView _graphTitle;
 		private TextView _graphSubTitle;
 		private TextView _userPhoneNumber;
-        private DashboardGradientTimerHelper _dashbardGradientTask;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,16 +49,16 @@ namespace MobileApp.Droid.Views
 			_user = Controller._users[_uid];
             findAllElements();
             setAllStringConstants();
-			//CustomUserDataUsageView.GetUserDataUsageRows(_dataUsageBreakdownlayout, _user);
-			
-			allocationSliderSettings();		
 
 			_backButton.Click += delegate { Finish(); };
-			_entries = new Entry[_user.UsageBreakdown.Count()];
+            _dottedMenuButton.Click += (s, arg) =>
+            {
+                PopupMenu menu = new PopupMenu(this, _dottedMenuButton);
+                menu.Inflate(Resource.Menu.UsersDottedMenu);
+                menu.Show();
+            };
+            _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
-            
-
-            //_dataUsageSaveButton.Click += UpdateUserDataAllocation;
 
         }
 
@@ -77,11 +70,6 @@ namespace MobileApp.Droid.Views
             _backButton = FindViewById<ImageButton>(Resource.Id.UserDataUsageBackButton);
             _usedDataText = FindViewById<TextView>(Resource.Id.RemainingDataText);
             _usedDataAmount = FindViewById<TextView>(Resource.Id.RemainingDataAmount);
-            //_usedDataText = FindViewById<TextView>(Resource.Id.UsedDataText);
-            //_usedDataTextAmount = FindViewById<TextView>(Resource.Id.UsedDataAmount);
-            //_dataUsageSaveButtonText = FindViewById<TextView>(Resource.Id.SaveButtonText);
-            //_allocationSlider = FindViewById<SeekBar>(Resource.Id.AllocationSlider);
-			//_dataUsageBreakdownlayout = FindViewById<ScrollView>(Resource.Id.DataUsageBreakdownScrollView);
 			_chartView = FindViewById<ChartView>(Resource.Id.chartView);
 			_pointsText = FindViewById<TextView>(Resource.Id.PointsText);
 			_pointsAmount = FindViewById<TextView>(Resource.Id.PointsAmount);
@@ -89,8 +77,9 @@ namespace MobileApp.Droid.Views
 			_graphTitle = FindViewById<TextView>(Resource.Id.GraphTitleText);
 			_graphSubTitle = FindViewById<TextView>(Resource.Id.GraphSubTitleText);
 			_userPhoneNumber = FindViewById<TextView>(Resource.Id.UserPhoneNumber);
+            _dottedMenuButton = FindViewById<ImageButton>(Resource.Id.DottedButton);
 
-		}
+        }
 
 		protected void setAllStringConstants()
         {
@@ -104,47 +93,7 @@ namespace MobileApp.Droid.Views
 			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
 			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
 			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
-            //_usedDataText.Text = StringConstants.Localizable.UsedData;
-            //_usedDataTextAmount.Text = String.Format(StringConstants.Localizable.DataAmount, _user.Used);
-            //_dataUsageSaveButtonText.Text = StringConstants.Localizable.SaveButton;
         }
-
-        protected void allocationSliderSettings()
-        {
-
-			//         double _sliderPresetValue = ((double)_user.Allocated / Controller._planDataPool) * 100;
-			//_allocationSlider.Progress = (int)_sliderPresetValue;
-			//_allocationSlider.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
-			//	if (e.FromUser)
-			//	{
-			//		_progressChanged = ((double)e.Progress / 100) * (Controller._totalUnAllocated + _user.Allocated);
-			//		var dif = _progressChanged - _user.Allocated;
-			//		_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif), 1);
-			//		if (_progressChanged <= _user.Used)
-			//		{
-			//			_progressChanged = _user.Used;
-			//			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated + (_user.Allocated - _user.Used), 1));
-			//			_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 1));
-			//			_tempUnAllocated = Controller._totalUnAllocated + (_user.Allocated - _user.Used);
-			//		}
-			//		else
-			//		{
-			//			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(Controller._totalUnAllocated - dif, 1));
-			//			_allocatedDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(_progressChanged, 1));
-			//			_tempUnAllocated = Controller._totalUnAllocated - dif;
-			//		}
-			//	}
-			//};
-		}
-
-		//protected async void UpdateUserDataAllocation(object sender, EventArgs e) 
-		//{
-		//	Controller._totalUnAllocated = _tempUnAllocated;
-		//	Controller._users[0].Allocated = _tempUnAllocated;
-		//	User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
-		//	Controller._users[_uid] = changedUser;
-  //          Toast.MakeText(this, StringConstants.Localizable.SavedChangesMessage, ToastLength.Long).Show();
-  //      }
 
 		protected void setGraph()
 		{			
@@ -173,31 +122,5 @@ namespace MobileApp.Droid.Views
 			};
 			_chartView.Chart = chart;
 		}
-
-        //var entries = new[]
-        //{
-        //	new Entry(200)
-        //	{
-        //		Label = "January",
-        //		ValueLabel = "200",
-        //		Color = SKColor.Parse("#FFFFFF")
-
-        //	},
-        //	new Entry(400)
-        //	{
-        //	Label = "February",
-        //	ValueLabel = "400",
-        //	Color = SKColor.Parse("#FFFFFF")
-        //	},
-        //	new Entry(-100)
-        //	{
-        //	Label = "March",
-        //	ValueLabel = "-100",
-        //	Color = SKColor.Parse("#FFFFFF")
-        //	}
-
-
-
-
     }
 }

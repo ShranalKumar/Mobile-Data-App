@@ -3387,11 +3387,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090089
 			public const int AllocateButtonLayout = 2131296393;
 			
-			// aapt resource value: 0x7f09019e
-			public const int AllocatedDataAmount = 2131296670;
+			// aapt resource value: 0x7f09019f
+			public const int AllocatedDataAmount = 2131296671;
 			
-			// aapt resource value: 0x7f09019d
-			public const int AllocatedDataText = 2131296669;
+			// aapt resource value: 0x7f09019e
+			public const int AllocatedDataText = 2131296670;
 			
 			// aapt resource value: 0x7f09009e
 			public const int AllocationPageMainLayout = 2131296414;
@@ -3399,8 +3399,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090165
 			public const int AllocationPageToolbar = 2131296613;
 			
-			// aapt resource value: 0x7f09019c
-			public const int AllocationTextLayout = 2131296668;
+			// aapt resource value: 0x7f09019d
+			public const int AllocationTextLayout = 2131296669;
 			
 			// aapt resource value: 0x7f090092
 			public const int BackgroundLayout = 2131296402;
@@ -3432,8 +3432,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0900a1
 			public const int CurrentPlanText = 2131296417;
 			
-			// aapt resource value: 0x7f09019a
-			public const int DataAllocationLayout = 2131296666;
+			// aapt resource value: 0x7f09019b
+			public const int DataAllocationLayout = 2131296667;
 			
 			// aapt resource value: 0x7f09016d
 			public const int DataAmountSelectorButtonLayout = 2131296621;
@@ -3495,6 +3495,9 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09008d
 			public const int DaysRemainingText = 2131296397;
 			
+			// aapt resource value: 0x7f090195
+			public const int DottedButton = 2131296661;
+			
 			// aapt resource value: 0x7f09016e
 			public const int FirstButtonLayout = 2131296622;
 			
@@ -3549,14 +3552,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09017c
 			public const int FourthUpArrow = 2131296636;
 			
+			// aapt resource value: 0x7f0901ab
+			public const int GenerateQR = 2131296683;
+			
+			// aapt resource value: 0x7f0901a6
+			public const int GraphSubTitleText = 2131296678;
+			
 			// aapt resource value: 0x7f0901a5
-			public const int GraphSubTitleText = 2131296677;
+			public const int GraphTitleText = 2131296677;
 			
 			// aapt resource value: 0x7f0901a4
-			public const int GraphTitleText = 2131296676;
-			
-			// aapt resource value: 0x7f0901a3
-			public const int GraphTitleTextLayout = 2131296675;
+			public const int GraphTitleTextLayout = 2131296676;
 			
 			// aapt resource value: 0x7f090080
 			public const int LastNameInputField = 2131296384;
@@ -3576,8 +3582,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09009d
 			public const int MainViewPager = 2131296413;
 			
-			// aapt resource value: 0x7f09019b
-			public const int MainViewTextLayout = 2131296667;
+			// aapt resource value: 0x7f09019c
+			public const int MainViewTextLayout = 2131296668;
 			
 			// aapt resource value: 0x7f090096
 			public const int MenuButton = 2131296406;
@@ -3684,14 +3690,14 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090124
 			public const int PlaneNameAmount = 2131296548;
 			
+			// aapt resource value: 0x7f0901a2
+			public const int PointsAmount = 2131296674;
+			
 			// aapt resource value: 0x7f0901a1
-			public const int PointsAmount = 2131296673;
+			public const int PointsText = 2131296673;
 			
 			// aapt resource value: 0x7f0901a0
-			public const int PointsText = 2131296672;
-			
-			// aapt resource value: 0x7f09019f
-			public const int PointsTextLayout = 2131296671;
+			public const int PointsTextLayout = 2131296672;
 			
 			// aapt resource value: 0x7f090086
 			public const int ProductLabelLayout = 2131296390;
@@ -3713,6 +3719,9 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f0900fd
 			public const int RemainingDaysNonAdmin = 2131296509;
+			
+			// aapt resource value: 0x7f0901aa
+			public const int RemoveUser = 2131296682;
 			
 			// aapt resource value: 0x7f090141
 			public const int RequestAmountSelectorButtonLayout = 2131296577;
@@ -3933,17 +3942,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090192
 			public const int UserDataUsageToolbarLayout = 2131296658;
 			
-			// aapt resource value: 0x7f090197
-			public const int UserIcon = 2131296663;
+			// aapt resource value: 0x7f090198
+			public const int UserIcon = 2131296664;
 			
-			// aapt resource value: 0x7f090196
-			public const int UserLabelLayout = 2131296662;
+			// aapt resource value: 0x7f090197
+			public const int UserLabelLayout = 2131296663;
 			
 			// aapt resource value: 0x7f090098
 			public const int UserName = 2131296408;
 			
-			// aapt resource value: 0x7f090198
-			public const int UserPhoneNumber = 2131296664;
+			// aapt resource value: 0x7f090199
+			public const int UserPhoneNumber = 2131296665;
 			
 			// aapt resource value: 0x7f09013e
 			public const int UserSelectionSlidingLayout = 2131296574;
@@ -4080,8 +4089,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f090032
 			public const int center_vertical = 2131296306;
 			
-			// aapt resource value: 0x7f0901a6
-			public const int chartView = 2131296678;
+			// aapt resource value: 0x7f0901a7
+			public const int chartView = 2131296679;
 			
 			// aapt resource value: 0x7f09005d
 			public const int checkbox = 2131296349;
@@ -4266,8 +4275,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09004a
 			public const int list_item = 2131296330;
 			
-			// aapt resource value: 0x7f0901a8
-			public const int masked = 2131296680;
+			// aapt resource value: 0x7f0901a9
+			public const int masked = 2131296681;
 			
 			// aapt resource value: 0x7f09010b
 			public const int media_actions = 2131296523;
@@ -4395,14 +4404,14 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09005f
 			public const int radio = 2131296351;
 			
-			// aapt resource value: 0x7f090195
-			public const int relativeLayout1 = 2131296661;
+			// aapt resource value: 0x7f090196
+			public const int relativeLayout1 = 2131296662;
 			
-			// aapt resource value: 0x7f0901a2
-			public const int relativeLayout2 = 2131296674;
+			// aapt resource value: 0x7f0901a3
+			public const int relativeLayout2 = 2131296675;
 			
-			// aapt resource value: 0x7f090199
-			public const int relativeLayout3 = 2131296665;
+			// aapt resource value: 0x7f09019a
+			public const int relativeLayout3 = 2131296666;
 			
 			// aapt resource value: 0x7f090035
 			public const int right = 2131296309;
@@ -4584,8 +4593,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f09000e
 			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f0901a7
-			public const int visible = 2131296679;
+			// aapt resource value: 0x7f0901a8
+			public const int visible = 2131296680;
 			
 			// aapt resource value: 0x7f0900ee
 			public const int volume_item_container = 2131296494;
@@ -4947,6 +4956,22 @@ namespace MobileApp.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0f0000
+			public const int UsersDottedMenu = 2131689472;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
