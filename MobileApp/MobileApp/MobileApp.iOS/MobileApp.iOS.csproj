@@ -9,6 +9,8 @@
     <RootNamespace>MobileApp.iOS</RootNamespace>
     <AssemblyName>MobileApp.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,12 +87,45 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Common.2.4.1.35\lib\Xamarin.iOS\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="WaveEngine.Bepu, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Framework.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Bepu.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Box2D, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Box2D.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Box2D.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Box2DSharp, Version=2.0.6.30649, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Box2D.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Box2DSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Common, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Common.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Components, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Components.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Framework, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Framework.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Materials, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Materials.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Materials.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Physics, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Framework.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Physics.dll</HintPath>
+    </Reference>
+    <Reference Include="WaveEngine.Vuforia, Version=2.4.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Vuforia.2.4.1.35\lib\Xamarin.iOS\WaveEngine.Vuforia.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WaveEngine.Framework.2.4.1.35\lib\Xamarin.iOS\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -122,4 +157,13 @@
   </ItemGroup>
   <Import Project="..\MobileApp\MobileApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\..\packages\WaveEngine.Box2D.2.4.1.35\build\Xamarin.iOS\WaveEngine.Box2D.targets" Condition="Exists('..\..\packages\WaveEngine.Box2D.2.4.1.35\build\Xamarin.iOS\WaveEngine.Box2D.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\WaveEngine.Box2D.2.4.1.35\build\Xamarin.iOS\WaveEngine.Box2D.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WaveEngine.Box2D.2.4.1.35\build\Xamarin.iOS\WaveEngine.Box2D.targets'))" />
+    <Error Condition="!Exists('..\..\packages\WaveEngine.Vuforia.2.4.1.35\build\Xamarin.iOS\WaveEngine.Vuforia.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WaveEngine.Vuforia.2.4.1.35\build\Xamarin.iOS\WaveEngine.Vuforia.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\WaveEngine.Vuforia.2.4.1.35\build\Xamarin.iOS\WaveEngine.Vuforia.targets" Condition="Exists('..\..\packages\WaveEngine.Vuforia.2.4.1.35\build\Xamarin.iOS\WaveEngine.Vuforia.targets')" />
 </Project>
