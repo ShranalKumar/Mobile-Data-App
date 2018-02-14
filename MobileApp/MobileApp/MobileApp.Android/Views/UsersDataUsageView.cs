@@ -72,7 +72,13 @@ namespace MobileApp.Droid.Views
                 switch (arg1.Item.ItemId)
                 {
                     case Resource.Id.RemoveUser:
-                        Toast.MakeText(this, "remove", ToastLength.Short).Show();
+                        AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+                        memberDeleteAlert.SetTitle("Remove Member");
+                        memberDeleteAlert.SetMessage("Would you like to remove '" + _user.Name.FirstName + "' from your plan?");
+                        memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
+                        memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+                        Dialog deleteDialog = memberDeleteAlert.Create();
+                        deleteDialog.Show();
                         break;
                     case Resource.Id.GenerateQR:
                         Toast.MakeText(this, "QR", ToastLength.Short).Show();
@@ -83,9 +89,15 @@ namespace MobileApp.Droid.Views
             menu.Show();
         }
 
-
-
-
+        protected async void DeleteGroupMember()
+        {
+            await Controller.DeleteGroupMemeber(Controller._userLoggedIn, _user);
+            Toast.MakeText(this, string.Format(StringConstants.Localizable.DeleteMemberToast, _user.Name.FirstName), ToastLength.Short).Show();
+            Member toRemove = Controller._userLoggedIn.GroupMembers.Where(x => x.UID == _user.UID).FirstOrDefault();
+            Controller._userLoggedIn.GroupMembers.Remove(toRemove);
+            Controller._users.Remove(_user);
+            Finish();
+        }
 
         protected void findAllElements()
         {
