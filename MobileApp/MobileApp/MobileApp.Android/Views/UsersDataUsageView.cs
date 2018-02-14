@@ -31,6 +31,8 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataText;
 		private ImageButton _dataUsageSaveButton;
         private ImageButton _dottedMenuButton;
+        private Button _removeUser;
+        private Button _generateQR;
         private User _user;
 		private int _uid;
 		private TextView _pointsText;
@@ -51,18 +53,41 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
 			_backButton.Click += delegate { Finish(); };
-            _dottedMenuButton.Click += (s, arg) =>
-            {
-                PopupMenu menu = new PopupMenu(this, _dottedMenuButton);
-                menu.Inflate(Resource.Menu.UsersDottedMenu);
-                menu.Show();
-            };
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
+            _dottedMenuButton.Click += ShowPopUpMenu;
+
+            
         }
 
-		protected void findAllElements()
+        private void ShowPopUpMenu(object sender, EventArgs e)
+        {
+            Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
+            PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
+            menu.Inflate(Resource.Menu.UsersDottedMenu);
+
+            menu.MenuItemClick += (s1, arg1) =>
+            {
+                switch (arg1.Item.ItemId)
+                {
+                    case Resource.Id.RemoveUser:
+                        Toast.MakeText(this, "remove", ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.GenerateQR:
+                        Toast.MakeText(this, "QR", ToastLength.Short).Show();
+                        break;
+                }
+            };
+
+            menu.Show();
+        }
+
+
+
+
+
+        protected void findAllElements()
         {
             _allocatedDataText = FindViewById<TextView>(Resource.Id.AllocatedDataText);
             _allocatedDataAmount = FindViewById<TextView>(Resource.Id.AllocatedDataAmount);
@@ -78,6 +103,8 @@ namespace MobileApp.Droid.Views
 			_graphSubTitle = FindViewById<TextView>(Resource.Id.GraphSubTitleText);
 			_userPhoneNumber = FindViewById<TextView>(Resource.Id.UserPhoneNumber);
             _dottedMenuButton = FindViewById<ImageButton>(Resource.Id.DottedButton);
+            _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
+            _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
 
         }
 

@@ -6535,6 +6535,9 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c01b0
 			public const int UserTileRowLayoutStyle = 2131493296;
 			
+			// aapt resource value: 0x7f0c01bf
+			public const int UsersPopupMenu = 2131493311;
+			
 			// aapt resource value: 0x7f0c01ac
 			public const int WhiteBorderTransperentButtonStyle = 2131493292;
 			
