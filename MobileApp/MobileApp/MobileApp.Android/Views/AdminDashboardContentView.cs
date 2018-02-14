@@ -37,7 +37,6 @@ namespace MobileApp.Droid.Views
             GetView(0, null, null);
         }
 
-
         public override int Count => throw new NotImplementedException();
 
         public override Java.Lang.Object GetItem(int position)

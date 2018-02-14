@@ -6,7 +6,13 @@ using System;
 using Android.Content.PM;
 using Android.Views;
 using Java.Lang;
+using Java.Util;
 using MobileApp.Droid.Helpers;
+using Android.Support.V4.View;
+using MobileApp.Droid.Adapters;
+using Com.ViewPagerIndicator;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
@@ -14,55 +20,70 @@ namespace MobileApp.Droid.Views
 	public class NonAdminDashBoardView : Activity
 	{
 		private TextView _nonAdminDataUsageUsageTitle;
-		private TextView _remainingDaysNonAdmin;
-		private TextView _gbRemainingNonAdmin;
-		private Button _requestButton;
-		private Button _transferButton;
-		private LinearLayout _noneAdminUsageBreakdown;
-		private RelativeLayout _remainingDataBarBorder;
-		private ProgressBar _dataFillBar;
-		
+		//private TextView _remainingDaysNonAdmin;
+		//private TextView _gbRemainingNonAdmin;
+		//private Button _requestButton;
+		//private Button _transferButton;
+		//private LinearLayout _noneAdminUsageBreakdown;
+		//private RelativeLayout _remainingDataBarBorder;
+		//private ProgressBar _dataFillBar;
+        private DashboardGradientTimerHelper _dashbardGradientTask;
+        private ViewPager _mainViewPager;
+        private CirclePageIndicator _circlePageIndicator;
+        private RelativeLayout _dashboardLayout;
+        private ViewPagerAdapter _mainPagerAdapter;
+        private NonAdminContentAdapter _nonAdminDashboardContentInstance;
+        private View _nonAdminContentView;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.NonAdminDashboardLayout);
 
 			findAllElements();
-			DataBarFill();
 			setAllStringConstants();
-			//CustomUserDataUsageView.GetUserDataUsageRows(_noneAdminUsageBreakdown, Controller._users[0]);
 
-			_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
-			_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
-            
-		}
+            _mainPagerAdapter = new ViewPagerAdapter(this);
+            _mainViewPager.Adapter = _mainPagerAdapter;
+            _circlePageIndicator.SetViewPager(_mainViewPager);
+            _circlePageIndicator.SetPageColor(Color.White);
+            _circlePageIndicator.SetFillColor(new Color(255, 255, 255, 64));
 
-		public void DataBarFill()
-		{
-            double _fillNumber = (1 - (double)Controller._users[0].Used / (double)Controller._users[0].Allocated) * 100;
-            _dataFillBar.Progress = (int)_fillNumber;
+            _nonAdminDashboardContentInstance = new NonAdminContentAdapter(this);
+            _nonAdminContentView = _nonAdminDashboardContentInstance.GetView();
+
+            _mainPagerAdapter.AddView(_nonAdminContentView);
+            _mainPagerAdapter.NotifyDataSetChanged();
+            //CustomUserDataUsageView.GetUserDataUsageRows(_nonAdminUsageBreakdown, Controller._users[0]);
+
+            //_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
+            //_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
+
+            var timer = new Timer();
+            _dashbardGradientTask = new DashboardGradientTimerHelper(this);
+            timer.Schedule(_dashbardGradientTask, 0, NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
         }
 
         protected void findAllElements()
 		{
 			_nonAdminDataUsageUsageTitle = FindViewById<TextView>(Resource.Id.NonAdminDataUsageTitle);
-			_remainingDaysNonAdmin = FindViewById<TextView>(Resource.Id.RemainingDaysNonAdmin);
-			_gbRemainingNonAdmin = FindViewById<TextView>(Resource.Id.DataRemainingTextInsidePgBar);
-			_transferButton = FindViewById<Button>(Resource.Id.TransferButton);
-			_requestButton = FindViewById<Button>(Resource.Id.RequestButton);
-			_remainingDataBarBorder = FindViewById<RelativeLayout>(Resource.Id.DataRemainingPgBarLayout);
-			_dataFillBar = FindViewById<ProgressBar>(Resource.Id.DataRemainingFillMask);
-			_noneAdminUsageBreakdown = FindViewById<LinearLayout>(Resource.Id.NonAdminUsageBreakdown);
+            _mainViewPager = FindViewById<ViewPager>(Resource.Id.NonAdminViewPager);
+            _circlePageIndicator = FindViewById<CirclePageIndicator>(Resource.Id.NonAdminPageIndicator);
+            _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.NonAdminDashBoard);
 		}
 
 		protected void setAllStringConstants()
 		{
 			_nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, Controller._users[0].Name.FirstName);
-			_remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-			_gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, (Controller._users[0].Allocated - Controller._users[0].Used));
-			_transferButton.Text = StringConstants.Localizable.TransferButton;
-			_requestButton.Text = StringConstants.Localizable.RequestButton;
 		}
-	}
+
+        public void BackgroundGradientThread(TransitionDrawable transition)
+        {
+            RunOnUiThread(() =>
+            {
+                _dashboardLayout.Background = transition;
+                transition.StartTransition(NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+            });
+        }
+    }
 }
