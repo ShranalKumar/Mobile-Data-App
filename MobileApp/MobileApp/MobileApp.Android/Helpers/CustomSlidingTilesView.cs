@@ -19,17 +19,14 @@ namespace MobileApp.Droid.Helpers
 
             foreach (User user in Controller._users)
             {
-				ContextThemeWrapper userButtonContext = new ContextThemeWrapper(parent.Context, Resource.Style.WhiteBorderTransperentButtonStyle);
+				ContextThemeWrapper userButtonContext = new ContextThemeWrapper(parent.Context, Resource.Style.SlidingUserTileButton);
                 Android.Widget.Button UserTile = new Android.Widget.Button(userButtonContext,null,0);
                 UserTile.Id = Int32.Parse(user.UID);
                 UserTile.Text = user.Name.FirstName;
-
-				//buttonsLayout.AddView(UserTile);
+                
 				parent.AddView(UserTile);
                 _userButtons.Add(UserTile);
-
 			}
-			//parent.AddView(buttonsLayout);
         }
     }
 }

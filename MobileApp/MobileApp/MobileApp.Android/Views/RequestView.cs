@@ -5,6 +5,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -52,10 +53,9 @@ namespace MobileApp.Droid.Views
         private List<Button> _userButtons;
         private Button _selectedUser;
 
-
+        private DataAmountSelectorHelper _selectorHelper;
 		private string _getDataAmount;
         private string _getDataUnit;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -67,9 +67,9 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 			CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
             _userButtons = CustomSlidingTilesView._userButtons;
+            _selectorHelper = new DataAmountSelectorHelper();
 
-            SetClickable();
-            
+            SetClickable();            
         }
 
         protected void findAllElements()
@@ -101,7 +101,6 @@ namespace MobileApp.Droid.Views
             _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
 			_userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
-
 		}
 
         protected void setAllStringConstants()
@@ -137,47 +136,36 @@ namespace MobileApp.Droid.Views
             {
                 user.Click += (o, s) =>
                 {
-                    user.Selected = true;
+                    _userButtons.ForEach(x => x.SetBackgroundResource(Resource.Drawable.RoundedBorderButton));
+
+                    user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
                     _selectedUser = user;
+                    Console.WriteLine(_selectedUser.Text);
                 };
             }
         }
 
-
         private void increaseInt(object sender, EventArgs e)
         {
-            int num1 = Int32.Parse(_firstNumber.Text);
-            int num2 = Int32.Parse(_secondNumber.Text);
-            int num3 = Int32.Parse(_thirdNumber.Text);
-            int num4 = Int32.Parse(_fourthNumber.Text);
-
-            ImageButton _upArrowClicked = (ImageButton)sender;
+            ImageButton _upArrowClicked = (ImageButton)sender;         
 
             switch (_upArrowClicked.Id)
             {
                 case Resource.Id.FirstRequestUpArrow:
-                    if (num1 < 9) { num1++; }
-                    else if (num1 == 9) { num1 = 0; }
-                    _firstNumber.Text = num1.ToString();
-                    setGbOrMb(num1);
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _firstNumber);
+                    setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondRequestUpArrow:
-                    if (num2 < 9) { num2++; }
-                    else if (num2 == 9) { num2 = 0; }
-                    _secondNumber.Text = num2.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdRequestUpArrow:
-                    if (num3 < 9) { num3++; }
-                    else if (num3 == 9) { num3 = 0; }
-                    _thirdNumber.Text = num3.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthRequestUpArrow:
-                    if (num4 < 9) { num4++; }
-                    else if (num4 == 9) { num4 = 0; }
-                    _fourthNumber.Text = num4.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _fourthNumber);
                     break;
             }
         }
@@ -185,38 +173,25 @@ namespace MobileApp.Droid.Views
 
         private void decreaseInt(object sender, EventArgs e)
         {
-            int num1 = Int32.Parse(_firstNumber.Text);
-            int num2 = Int32.Parse(_secondNumber.Text);
-            int num3 = Int32.Parse(_thirdNumber.Text);
-            int num4 = Int32.Parse(_fourthNumber.Text);
-
             ImageButton _downArrowClicked = (ImageButton)sender;
 
             switch (_downArrowClicked.Id)
             {
                 case Resource.Id.FirstRequestDownArrow:
-                    num1--;
-                    if (num1 < 0) { num1 = 9; }
-                    _firstNumber.Text = num1.ToString();
-                    setGbOrMb(num1);
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _firstNumber);
+                    setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondRequestDownArrow:
-                    if (num2 > 0) { num2--; }
-                    else if (num2 == 0) { num2 = 9; }
-                    _secondNumber.Text = num2.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdRequestDownArrow:
-                    if (num3 > 0) { num3--; }
-                    else if (num3 == 0) { num3 = 9; }
-                    _thirdNumber.Text = num3.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthRequestDownArrow:
-                    if (num4 > 0) { num4--; }
-                    else if (num4 == 0) { num4 = 9; }
-                    _fourthNumber.Text = num4.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _fourthNumber);
                     break;
             }
         }
@@ -226,7 +201,7 @@ namespace MobileApp.Droid.Views
             if (valueOfFirstNumber > 0)
             {
                 _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
-                _decimalPointVisibility.Text = ".";
+                _decimalPointVisibility.Text = StringConstants.Localizable.RequestDecimalPoint;
             }
             else
             {
@@ -240,7 +215,7 @@ namespace MobileApp.Droid.Views
             _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
             _dataAmountDouble = Double.Parse(_getDataAmount);
             _getDataUnit = _dataUnitsToGB.Text;
-            _requestDialogDisplayText.Text = "Are you sure you would like to request " + _dataAmountDouble.ToString() + " " + _getDataUnit + " from Steven?";
+            _requestDialogDisplayText.Text = string.Format(StringConstants.Localizable.RequestPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
 
             if (_requestConfirmationPopUp.Visibility == ViewStates.Invisible)
             {
@@ -254,12 +229,12 @@ namespace MobileApp.Droid.Views
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-            _successfullyRequestedMessage.Text = "OK! " + _dataAmountDouble.ToString() + " " + _getDataUnit + " has successfully been requested from Steven!";
-            _firstNumber.Text = "0";
-            _secondNumber.Text = "0";
-            _thirdNumber.Text = "0";
-            _fourthNumber.Text = "0";
-            _dataUnitsToGB.Text = "MB";
+            _successfullyRequestedMessage.Text = string.Format(StringConstants.Localizable.RequestConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
+            _firstNumber.Text = StringConstants.Localizable.InitialAmount;
+            _secondNumber.Text = StringConstants.Localizable.InitialAmount;
+            _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
+            _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
+            _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
             _decimalPointVisibility.Text = "";
 
 
@@ -267,15 +242,11 @@ namespace MobileApp.Droid.Views
             {
                 _requestSuccessMessage.Visibility = ViewStates.Visible;
             }
-
             else
             {
                 _requestSuccessMessage.Visibility = ViewStates.Invisible;
                 _requestConfirmationPopUp.Visibility = ViewStates.Invisible;
             }
         }
-
-
-
     }
 }

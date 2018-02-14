@@ -36,6 +36,8 @@ namespace MobileApp.Droid.Views
         private Button _doNotTransfer;
         private Button _yesToTransfer;
         private Button _OkSuccessfullyTransfered;
+        private List<Button> _userButtons;
+        private Button _selectedUser;
 
         private ImageButton _firstUpArrow;
         private ImageButton _secondUpArrow;
@@ -55,6 +57,7 @@ namespace MobileApp.Droid.Views
         private LinearLayout _userSelectionSlidingLayout;
 
         private ProgressBar _progressBarFill;
+        private DataAmountSelectorHelper _selectorHelper;
 
         private string _getDataAmount;
         private string _getDataUnit;
@@ -70,25 +73,15 @@ namespace MobileApp.Droid.Views
             DataBarFill();
             setAllStringConstants();
             CustomSlidingTilesView.CreateSlidingTilesView(_userSelectionSlidingLayout);
-            
-            _yesToTransfer.Click += showSuccessMessage;            
-            _doNotTransfer.Click += showConfirmationPopUp;            
-            _OkSuccessfullyTransfered.Click += showSuccessMessage;            
-            _firstUpArrow.Click += increaseInt;            
-            _secondUpArrow.Click += increaseInt;            
-            _thirdUpArrow.Click += increaseInt;            
-            _fourthUpArrow.Click += increaseInt;
-            _firstDownArrow.Click += decreaseInt;            
-            _secondDownArrow.Click += decreaseInt;            
-            _thirdDownArrow.Click += decreaseInt;            
-            _fourthDownArrow.Click += decreaseInt;            
-            _sendButtonClicked.Click += showConfirmationPopUp;           
-            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };
+            _userButtons = CustomSlidingTilesView._userButtons;
+            _selectorHelper = new DataAmountSelectorHelper();
+
+            SetClickable();
         }
 
         public void DataBarFill()
         {
-            double _fillNumber = (1 - (double)Controller._users[0].Used / (double)Controller._users[0].Allocated) * 100;
+            double _fillNumber = (1 - Controller._users[0].Used / Controller._users[0].Allocated) * 100;
             _progressBarFill.Progress = (int)_fillNumber;
         }
 
@@ -142,40 +135,56 @@ namespace MobileApp.Droid.Views
             
         }
 
+        public void SetClickable()
+        {
+            _yesToTransfer.Click += showSuccessMessage;
+            _doNotTransfer.Click += showConfirmationPopUp;
+            _OkSuccessfullyTransfered.Click += showSuccessMessage;
+            _firstUpArrow.Click += increaseInt;
+            _secondUpArrow.Click += increaseInt;
+            _thirdUpArrow.Click += increaseInt;
+            _fourthUpArrow.Click += increaseInt;
+            _firstDownArrow.Click += decreaseInt;
+            _secondDownArrow.Click += decreaseInt;
+            _thirdDownArrow.Click += decreaseInt;
+            _fourthDownArrow.Click += decreaseInt;
+            _sendButtonClicked.Click += showConfirmationPopUp;
+            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };
+
+            foreach (Button user in _userButtons)
+            {
+                user.Click += (o, s) =>
+                {
+                    _userButtons.ForEach(x => x.SetBackgroundResource(Resource.Drawable.RoundedBorderButton));
+
+                    user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
+                    _selectedUser = user;
+                    Console.WriteLine(_selectedUser.Text);
+                };
+            }
+        }
+
         private void increaseInt(object sender, EventArgs e)
         {
-            int num1 = Int32.Parse(_firstNumber.Text);
-            int num2 = Int32.Parse(_secondNumber.Text);
-            int num3 = Int32.Parse(_thirdNumber.Text);
-            int num4 = Int32.Parse(_fourthNumber.Text);
-
             ImageButton _upArrowClicked = (ImageButton)sender;
 
             switch (_upArrowClicked.Id)
             {
                 case Resource.Id.FirstUpArrow:
-                    if (num1 < 9) { num1++; }
-                    else if (num1 == 9) { num1 = 0; }
-                    _firstNumber.Text = num1.ToString();
-                    setGbOrMb(num1);
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _firstNumber);
+                    setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondUpArrow:
-                    if (num2 < 9) { num2++; }
-                    else if (num2 == 9) { num2 = 0; }
-                    _secondNumber.Text = num2.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdUpArrow:
-                    if (num3 < 9) { num3++; }
-                    else if (num3 == 9) { num3 = 0; }
-                    _thirdNumber.Text = num3.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthUpArrow:
-                    if (num4 < 9) { num4++; }
-                    else if (num4 == 9) { num4 = 0; }
-                    _fourthNumber.Text = num4.ToString();
+                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _fourthNumber);
                     break;
             }
         }
@@ -183,38 +192,25 @@ namespace MobileApp.Droid.Views
 
         private void decreaseInt(object sender, EventArgs e)
         {
-            int num1 = Int32.Parse(_firstNumber.Text);
-            int num2 = Int32.Parse(_secondNumber.Text);
-            int num3 = Int32.Parse(_thirdNumber.Text);
-            int num4 = Int32.Parse(_fourthNumber.Text);
-
             ImageButton _downArrowClicked = (ImageButton)sender;
 
             switch (_downArrowClicked.Id)
             {
                 case Resource.Id.FirstDownArrow:
-                    num1--;
-                    if (num1 < 0) { num1 = 9; }
-                    _firstNumber.Text = num1.ToString();
-                    setGbOrMb(num1);
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _firstNumber);
+                    setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondDownArrow:
-                    if (num2 > 0) { num2--; }
-                    else if (num2 == 0) { num2 = 9; }
-                    _secondNumber.Text = num2.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdDownArrow:
-                    if (num3 > 0) { num3--; }
-                    else if (num3 == 0) { num3 = 9; }
-                    _thirdNumber.Text = num3.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthDownArrow:
-                    if (num4 > 0) { num4--; }
-                    else if (num4 == 0) { num4 = 9; }
-                    _fourthNumber.Text = num4.ToString();
+                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _fourthNumber);
                     break;
             }
         }
@@ -223,12 +219,12 @@ namespace MobileApp.Droid.Views
         {
             if (valueOfFirstNumber > 0)
             {
-                _dataUnitsToGB.Text = "GB";
-                _decimalPointVisibility.Text = ".";
+                _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
+                _decimalPointVisibility.Text = StringConstants.Localizable.RequestDecimalPoint;
             }
             else
             {
-                _dataUnitsToGB.Text = "MB";
+                _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
                 _decimalPointVisibility.Text = "";
             }
         }
@@ -238,7 +234,7 @@ namespace MobileApp.Droid.Views
             _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
             _dataAmountDouble = Double.Parse(_getDataAmount);
             _getDataUnit = _dataUnitsToGB.Text;
-            _transferDialogDisplayText.Text = "Are you sure you would like to transfer " + _dataAmountDouble.ToString() + " " + _getDataUnit + " to Steven?";
+            _transferDialogDisplayText.Text = string.Format(StringConstants.Localizable.TransferPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
 
             if (_transferConfirmationPopUp.Visibility == ViewStates.Invisible)
             {
@@ -252,12 +248,12 @@ namespace MobileApp.Droid.Views
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-            _successfullyTransferedMessage.Text = "OK! " + _dataAmountDouble.ToString() + " " + _getDataUnit + " has successfully been transfered to Steven!";
-            _firstNumber.Text = "0";
-            _secondNumber.Text = "0";
-            _thirdNumber.Text = "0";
-            _fourthNumber.Text = "0";
-            _dataUnitsToGB.Text = "MB";
+            _successfullyTransferedMessage.Text = string.Format(StringConstants.Localizable.TransferConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
+            _firstNumber.Text = StringConstants.Localizable.InitialAmount;
+            _secondNumber.Text = StringConstants.Localizable.InitialAmount;
+            _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
+            _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
+            _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
             _decimalPointVisibility.Text = "";
 
 
