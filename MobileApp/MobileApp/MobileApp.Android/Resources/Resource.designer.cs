@@ -204,6 +204,9 @@ namespace MobileApp.Droid
 			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::MobileApp.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
 			global::Microcharts.Droid.Resource.String.library_name = global::MobileApp.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MobileApp.Droid.Resource.Attribute.actionBarSize;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::MobileApp.Droid.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::MobileApp.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::MobileApp.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Animation
@@ -3723,8 +3726,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0189
 			public const int FourthUpArrow = 2131493257;
 			
-			// aapt resource value: 0x7f0c01b8
-			public const int GenerateQR = 2131493304;
+			// aapt resource value: 0x7f0c01b9
+			public const int GenerateQR = 2131493305;
 			
 			// aapt resource value: 0x7f0c00c2
 			public const int GoogleMap = 2131493058;
@@ -3900,8 +3903,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0108
 			public const int RemainingDaysNonAdmin = 2131493128;
 			
-			// aapt resource value: 0x7f0c01b7
-			public const int RemoveUser = 2131493303;
+			// aapt resource value: 0x7f0c01b8
+			public const int RemoveUser = 2131493304;
 			
 			// aapt resource value: 0x7f0c014e
 			public const int RequestAmountSelectorButtonLayout = 2131493198;
@@ -4299,6 +4302,9 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c00b6
 			public const int container = 2131493046;
 			
+			// aapt resource value: 0x7f0c01b5
+			public const int contentFrame = 2131493301;
+			
 			// aapt resource value: 0x7f0c005a
 			public const int contentPanel = 2131492954;
 			
@@ -4473,8 +4479,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0054
 			public const int list_item = 2131492948;
 			
-			// aapt resource value: 0x7f0c01b6
-			public const int masked = 2131493302;
+			// aapt resource value: 0x7f0c01b7
+			public const int masked = 2131493303;
 			
 			// aapt resource value: 0x7f0c0118
 			public const int media_actions = 2131493144;
@@ -4800,8 +4806,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c000e
 			public const int view_offset_helper = 2131492878;
 			
-			// aapt resource value: 0x7f0c01b5
-			public const int visible = 2131493301;
+			// aapt resource value: 0x7f0c01b6
+			public const int visible = 2131493302;
 			
 			// aapt resource value: 0x7f0c00f9
 			public const int volume_item_container = 2131493113;
@@ -5171,6 +5177,12 @@ namespace MobileApp.Droid
 			
 			// aapt resource value: 0x7f040053
 			public const int UsersDataUsageLayout = 2130968659;
+			
+			// aapt resource value: 0x7f040054
+			public const int zxingscanneractivitylayout = 2130968660;
+			
+			// aapt resource value: 0x7f040055
+			public const int zxingscannerfragmentlayout = 2130968661;
 			
 			static Layout()
 			{
