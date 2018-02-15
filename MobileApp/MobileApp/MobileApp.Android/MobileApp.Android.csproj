@@ -178,6 +178,7 @@
     <Compile Include="Views\AllocationPageView.cs" />
     <Compile Include="Views\PlanOverviewView.cs" />
     <Compile Include="Views\RequestView.cs" />
+    <Compile Include="Views\SplashScreenView.cs" />
     <Compile Include="Views\TransferView.cs" />
     <Compile Include="Views\UsersDataUsageView.cs" />
   </ItemGroup>
@@ -1197,7 +1198,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\menu\UsersDottedMenu.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash.xml" />
+  </ItemGroup>
   <Import Project="..\MobileApp\MobileApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />
