@@ -56,6 +56,11 @@ namespace MobileApp.Droid.Views
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
+            if (_user.AdminStatus)
+            {
+                _dottedMenuButton.Visibility = ViewStates.Gone;
+            }
+
             _dottedMenuButton.Click += ShowPopUpMenu;
 
             
@@ -66,11 +71,6 @@ namespace MobileApp.Droid.Views
             Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
             PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
             menu.Inflate(Resource.Menu.UsersDottedMenu);
-
-            if (_user.AdminStatus)
-            {
-                menu.Menu.FindItem(Resource.Id.RemoveUser).SetVisible(false);
-            }
 
             menu.MenuItemClick += (s1, arg1) =>
             {
