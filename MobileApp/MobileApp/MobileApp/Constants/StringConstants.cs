@@ -12,6 +12,8 @@ namespace MobileApp.Constants
             public const string UsernameHint = "Username";
             public const string PasswordHint = "Password";
             public const string LogIn = "Log In";
+			public const string QRLogIn = "QR Log In";
+			public const string LogInFailed = "Username and password do not match. Try again";
 
 			//Admin Dashboard Screen
 			public const string DaysRemaining = "{0} Days Remaining";

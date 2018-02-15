@@ -12,13 +12,16 @@ using Android.Views;
 using Android.Widget;
 using MobileApp.Droid;
 using MobileApp.Constants;
+using ZXing.Mobile;
+using Android.Support.V7.App;
 
 namespace MobileApp.Droid.Views
 {
     [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
-    public class LoginView : Activity
+    public class LoginView : AppCompatActivity
     {
         private Button _loginButtonClicked;
+		private Button _qrSignInButton;
         private LinearLayout _usernameField;
 		private LinearLayout _passwordField;
 		private EditText _userInputID;
@@ -31,9 +34,9 @@ namespace MobileApp.Droid.Views
 		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-			
+			MobileBarcodeScanner.Initialize(Application);
 
-            SetContentView(Resource.Layout.LoginLayout);
+			SetContentView(Resource.Layout.LoginLayout);
 
             findAllElements();
             setAllStringConstants();
@@ -44,21 +47,34 @@ namespace MobileApp.Droid.Views
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
 
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
+			_loginButtonClicked.Click += /*LoginButtonIsClickedAsync;*/(sender, e) =>
+			{
+				_loginId = _userInputID.Text;
+				_password = _userInputPassword.Text;
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
+			};
 
-			
+			_qrSignInButton.Click += async (sender, e) => {
+				var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+				//scanner.CustomOverlay
+				var result = await scanner.Scan();
 
+				var credentials = result.Text.Split();
+				_loginId = credentials[0];
+				_password = credentials[1];
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
+				//Toast.MakeText(this, result.Text, ToastLength.Long).Show();
+			};
 		}
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
-        {
-            progress.Show();
+        {            
             Controller.Clear();
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
-			_loginId = _userInputID.Text;
-			_password = _userInputPassword.Text;
-
+			
 			LoginController logincontroller = new LoginController(_loginId, _password);
 			await logincontroller.userLoginPhaseAsync();
 
@@ -75,19 +91,36 @@ namespace MobileApp.Droid.Views
 			}
 			else
 			{
-				Console.WriteLine("Log in Failed!");
+				Toast.MakeText(this, StringConstants.Localizable.LogInFailed, ToastLength.Short).Show();
 			}
 
-            progress.Hide();
+			progress.Hide();
 		}
 
-        protected void findAllElements()
+		private async void QRSignInButtonClickedAsync(object sender, EventArgs e)
+		{
+			MobileBarcodeScanner.Initialize(Application);
+
+			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			var result = await scanner.Scan();
+			Console.WriteLine(result);
+		}
+
+		//private void QRSignInButtonClicked()
+		//{
+		//	_qrSignInButton.Click += delegate { StartActivity(typeof(QRCodeScannerView)); };
+		//}
+
+
+
+		protected void findAllElements()
         {
             _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
             _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
             _passwordField = FindViewById<LinearLayout>(Resource.Id.PasswordLayout);
             _userInputID = FindViewById<EditText>(Resource.Id.UsernameInputField);
             _userInputPassword = FindViewById<EditText>(Resource.Id.PasswordInputField);
+			_qrSignInButton = FindViewById<Button>(Resource.Id.QRSignInButton);
         }
 
         protected void setAllStringConstants()
@@ -95,6 +128,7 @@ namespace MobileApp.Droid.Views
             _userInputID.Hint = StringConstants.Localizable.UsernameHint;
             _userInputPassword.Hint = StringConstants.Localizable.PasswordHint;
             _loginButtonClicked.Text = StringConstants.Localizable.LogIn;
+			_qrSignInButton.Text = StringConstants.Localizable.QRLogIn;
         }
 	}
 }

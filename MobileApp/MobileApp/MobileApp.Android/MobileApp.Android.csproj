@@ -73,6 +73,9 @@
     <Reference Include="Microcharts.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microcharts.0.7.1\lib\MonoAndroid10\Microcharts.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="QRCoder, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\QRCoder.1.3.2\lib\monoandroid\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="RadialProgress.Android, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.RadialProgress.1.0.2\lib\MonoAndroid10\RadialProgress.Android.dll</HintPath>
     </Reference>
@@ -93,7 +96,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android">
+      <Aliases>global</Aliases>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
     </Reference>
@@ -170,6 +175,9 @@
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ZKWeb.System.Drawing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ZKWeb.System.Drawing.4.0.0\lib\netstandard2.0\ZKWeb.System.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="ZXing.Net.Mobile.Core, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ZXing.Net.Mobile.2.3.2\lib\MonoAndroid403\ZXing.Net.Mobile.Core.dll</HintPath>
     </Reference>
@@ -185,12 +193,12 @@
     <Compile Include="Adapters\NonAdminContentAdapter.cs" />
     <Compile Include="Adapters\UserTileLayoutAdapter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
+    <Compile Include="API\QRAuth.cs" />
     <Compile Include="Helpers\AllocationPageCustomUserTilesPage.cs" />
     <Compile Include="Helpers\ClassConverterHelper.cs" />
     <Compile Include="Helpers\CustomPlanOverviewView.cs" />
     <Compile Include="Helpers\CustomSlidingTilesView.cs" />
     <Compile Include="Helpers\CustomUserDataUsageView.cs" />
-    <Compile Include="FixingSpaghettiCode.cs" />
     <Compile Include="Helpers\DashboardGradientTimerHelper.cs" />
     <Compile Include="Helpers\DataAmountSelectorHelper.cs" />
     <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
@@ -208,6 +216,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AllocationPageView.cs" />
     <Compile Include="Views\PlanOverviewView.cs" />
+    <Compile Include="Views\QRCodeScannerView.cs" />
+    <Compile Include="Views\QRCodeView.cs" />
     <Compile Include="Views\RequestView.cs" />
     <Compile Include="Views\TransferView.cs" />
     <Compile Include="Views\UsersDataUsageView.cs" />
@@ -244,6 +254,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\GamificationLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\QRCodeLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\QRcodeScannerLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
