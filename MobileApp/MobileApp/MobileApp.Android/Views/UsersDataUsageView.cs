@@ -19,7 +19,7 @@ using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "UsersDataUsageView", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class UsersDataUsageView : Activity
     {
         private ImageButton _backButton;
@@ -66,6 +66,11 @@ namespace MobileApp.Droid.Views
             Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
             PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
             menu.Inflate(Resource.Menu.UsersDottedMenu);
+
+            if (_user.AdminStatus)
+            {
+                menu.Menu.FindItem(Resource.Id.RemoveUser).SetVisible(false);
+            }
 
             menu.MenuItemClick += (s1, arg1) =>
             {
