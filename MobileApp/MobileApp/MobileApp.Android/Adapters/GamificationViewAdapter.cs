@@ -41,5 +41,10 @@ namespace MobileApp.Droid.Adapters
             _view = _context.LayoutInflater.Inflate(Resource.Layout.GamificationLayout, null);
             return _view;
         }
+
+        public View GetView()
+        {
+            return _view;
+        }
     }
 }

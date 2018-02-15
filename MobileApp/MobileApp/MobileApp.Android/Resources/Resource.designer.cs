@@ -3630,17 +3630,17 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0134
 			public const int DataRemainingAmount = 2131493172;
 			
-			// aapt resource value: 0x7f0c0108
-			public const int DataRemainingFillMask = 2131493128;
+			// aapt resource value: 0x7f0c010b
+			public const int DataRemainingFillMask = 2131493131;
 			
 			// aapt resource value: 0x7f0c0132
 			public const int DataRemainingFrame = 2131493170;
 			
-			// aapt resource value: 0x7f0c0106
-			public const int DataRemainingPgBarLayout = 2131493126;
+			// aapt resource value: 0x7f0c0109
+			public const int DataRemainingPgBarLayout = 2131493129;
 			
-			// aapt resource value: 0x7f0c0107
-			public const int DataRemainingTextInsidePgBar = 2131493127;
+			// aapt resource value: 0x7f0c010a
+			public const int DataRemainingTextInsidePgBar = 2131493130;
 			
 			// aapt resource value: 0x7f0c0133
 			public const int DataRemainingTitle = 2131493171;
@@ -3660,8 +3660,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0099
 			public const int DataUsageText = 2131493017;
 			
-			// aapt resource value: 0x7f0c0104
-			public const int DateLayout = 2131493124;
+			// aapt resource value: 0x7f0c0107
+			public const int DateLayout = 2131493127;
 			
 			// aapt resource value: 0x7f0c0097
 			public const int DaysRemainingText = 2131493015;
@@ -3786,8 +3786,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0196
 			public const int NoDoNotTransferButton = 2131493270;
 			
-			// aapt resource value: 0x7f0c0109
-			public const int NonAdminButtonLayout = 2131493129;
+			// aapt resource value: 0x7f0c0104
+			public const int NonAdminButtonLayout = 2131493124;
 			
 			// aapt resource value: 0x7f0c010c
 			public const int NonAdminDashBoard = 2131493132;
@@ -3801,11 +3801,11 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c010e
 			public const int NonAdminDataUsageToolbarLayout = 2131493134;
 			
-			// aapt resource value: 0x7f0c0111
-			public const int NonAdminPageIndicator = 2131493137;
-			
 			// aapt resource value: 0x7f0c0110
-			public const int NonAdminViewPager = 2131493136;
+			public const int NonAdminPageIndicator = 2131493136;
+			
+			// aapt resource value: 0x7f0c0111
+			public const int NonAdminViewPager = 2131493137;
 			
 			// aapt resource value: 0x7f0c00a5
 			public const int NotificationButton = 2131493029;
@@ -3897,8 +3897,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c00ae
 			public const int RemainingDataText = 2131493038;
 			
-			// aapt resource value: 0x7f0c0105
-			public const int RemainingDaysNonAdmin = 2131493125;
+			// aapt resource value: 0x7f0c0108
+			public const int RemainingDaysNonAdmin = 2131493128;
 			
 			// aapt resource value: 0x7f0c01b7
 			public const int RemoveUser = 2131493303;
@@ -3915,8 +3915,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0146
 			public const int RequestBackButton = 2131493190;
 			
-			// aapt resource value: 0x7f0c010a
-			public const int RequestButton = 2131493130;
+			// aapt resource value: 0x7f0c0105
+			public const int RequestButton = 2131493125;
 			
 			// aapt resource value: 0x7f0c0161
 			public const int RequestButtonLayout = 2131493217;
@@ -4053,8 +4053,8 @@ namespace MobileApp.Droid
 			// aapt resource value: 0x7f0c0174
 			public const int TransferBackButton = 2131493236;
 			
-			// aapt resource value: 0x7f0c010b
-			public const int TransferButton = 2131493131;
+			// aapt resource value: 0x7f0c0106
+			public const int TransferButton = 2131493126;
 			
 			// aapt resource value: 0x7f0c0194
 			public const int TransferDialogButtons = 2131493268;

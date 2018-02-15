@@ -34,6 +34,8 @@ namespace MobileApp.Droid.Views
         private ViewPagerAdapter _mainPagerAdapter;
         private NonAdminContentAdapter _nonAdminDashboardContentInstance;
         private View _nonAdminContentView;
+        private GamificationViewAdapter _gamificationContentInstance;
+        private View _gamificationView;
 
         protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -52,8 +54,13 @@ namespace MobileApp.Droid.Views
             _nonAdminDashboardContentInstance = new NonAdminContentAdapter(this);
             _nonAdminContentView = _nonAdminDashboardContentInstance.GetView();
 
+            _gamificationContentInstance = new GamificationViewAdapter(this);
+            _gamificationView = _gamificationContentInstance.GetView();
+
             _mainPagerAdapter.AddView(_nonAdminContentView);
+            _mainPagerAdapter.AddView(_gamificationView);
             _mainPagerAdapter.NotifyDataSetChanged();
+
             //CustomUserDataUsageView.GetUserDataUsageRows(_nonAdminUsageBreakdown, Controller._users[0]);
 
             //_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
@@ -84,6 +91,27 @@ namespace MobileApp.Droid.Views
                 _dashboardLayout.Background = transition;
                 transition.StartTransition(NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
             });
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            Reload();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Reload();
+        }
+
+        public void Reload()
+        {
+            ViewPagerAdapter._views.Clear();
+            _mainViewPager.RemoveAllViewsInLayout();
+            _mainPagerAdapter.AddView(_nonAdminDashboardContentInstance.GetView(0, null, null));
+            _mainPagerAdapter.AddView(_gamificationContentInstance.GetView(0, null, null));
+            _mainPagerAdapter.NotifyDataSetChanged();
         }
     }
 }

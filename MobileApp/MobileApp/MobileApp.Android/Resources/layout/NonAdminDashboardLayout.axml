@@ -31,9 +31,9 @@
     <Com.ViewPagerIndicator.CirclePageIndicator
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NonAdminViewPager"
         android:id="@+id/NonAdminPageIndicator"
-        android:paddingBottom="30dp" />
+        android:paddingBottom="30dp"
+        android:layout_alignParentBottom="true" />
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

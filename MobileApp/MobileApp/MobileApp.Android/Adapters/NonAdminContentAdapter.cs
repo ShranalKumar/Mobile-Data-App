@@ -25,7 +25,6 @@ namespace MobileApp.Droid.Adapters
         private Button _requestButton;
         private RelativeLayout _remainingDataBarBorder;
         private ProgressBar _dataFillBar;
-        private LinearLayout _nonAdminUsageBreakdown;
 
         public NonAdminContentAdapter(NonAdminDashBoardView context)
         {
