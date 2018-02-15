@@ -16,6 +16,7 @@ using Android.Support.V4.View;
 using Android.Graphics.Drawables;
 using Com.ViewPagerIndicator;
 using Android.Graphics;
+using System.IO;
 
 namespace MobileApp.Droid.Views
 {
@@ -33,7 +34,7 @@ namespace MobileApp.Droid.Views
         private View _adminDashboardContentView;
         private AllocationPageView _allocationPageInstance;
         private View _allocationPageView;
-		private GoogleMapsView _googleMapsViewInstance;
+		//private GoogleMapsView _googleMapsViewInstance;
 		private View _googleMap;
         private Button _allocateButton;
         private CirclePageIndicator _circlePageIndicator;
@@ -58,8 +59,8 @@ namespace MobileApp.Droid.Views
             _allocationPageInstance = new AllocationPageView(this);
             _allocationPageView = _allocationPageInstance.GetView();
 
-			_googleMapsViewInstance = new GoogleMapsView(this);
-			_googleMap = _googleMapsViewInstance.GetView();
+			//_googleMapsViewInstance = new GoogleMapsView(this);
+			//_googleMap = _googleMapsViewInstance.GetView();
 
             _mainPagerAdapter.AddView(_adminDashboardContentView);
             _mainPagerAdapter.AddView(_allocationPageView);
@@ -103,7 +104,7 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_adminDashboardContentInstance.GetView(0, null, null));
             _allocateButton = _adminDashboardContentInstance.GetAllocateButton();            
             _mainPagerAdapter.AddView(_allocationPageInstance.GetView(0, null, null));
-			_mainPagerAdapter.AddView(_googleMapsViewInstance.GetView(0, null, null));
+			//_mainPagerAdapter.AddView(_googleMapsViewInstance.GetView(0, null, null));
 			_allocateButton.Click += allocateButtonClickAction;
 			_mainPagerAdapter.NotifyDataSetChanged();
         }
@@ -130,8 +131,9 @@ namespace MobileApp.Droid.Views
 
         public void allocateButtonClickAction(object sender, EventArgs e)
         {
-            _mainViewPager.SetCurrentItem(2, true);
-        }
+			_mainViewPager.SetCurrentItem(2, true);
+
+		}
 
     }
 }
