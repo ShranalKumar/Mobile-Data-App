@@ -19,7 +19,7 @@ using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "UsersDataUsageView", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class UsersDataUsageView : Activity
     {
         private ImageButton _backButton;
@@ -31,6 +31,8 @@ namespace MobileApp.Droid.Views
         private TextView _usedDataText;
 		private ImageButton _dataUsageSaveButton;
         private ImageButton _dottedMenuButton;
+        private Button _removeUser;
+        private Button _generateQR;
         private User _user;
 		private int _uid;
 		private TextView _pointsText;
@@ -62,9 +64,55 @@ namespace MobileApp.Droid.Views
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
+            if (_user.AdminStatus)
+            {
+                _dottedMenuButton.Visibility = ViewStates.Gone;
+            }
+
+            _dottedMenuButton.Click += ShowPopUpMenu;
+
+            
         }
 
-		protected void findAllElements()
+        private void ShowPopUpMenu(object sender, EventArgs e)
+        {
+            Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
+            PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
+            menu.Inflate(Resource.Menu.UsersDottedMenu);
+
+            menu.MenuItemClick += (s1, arg1) =>
+            {
+                switch (arg1.Item.ItemId)
+                {
+                    case Resource.Id.RemoveUser:
+                        AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
+                        memberDeleteAlert.SetTitle("Remove Member");
+                        memberDeleteAlert.SetMessage("Would you like to remove '" + _user.Name.FirstName + "' from your plan?");
+                        memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
+                        memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+                        Dialog deleteDialog = memberDeleteAlert.Create();
+                        deleteDialog.Show();
+                        break;
+                    case Resource.Id.GenerateQR:
+                        Toast.MakeText(this, "QR", ToastLength.Short).Show();
+                        break;
+                }
+            };
+
+            menu.Show();
+        }
+
+        protected async void DeleteGroupMember()
+        {
+            await Controller.DeleteGroupMemeber(Controller._userLoggedIn, _user);
+            Toast.MakeText(this, string.Format(StringConstants.Localizable.DeleteMemberToast, _user.Name.FirstName), ToastLength.Short).Show();
+            Member toRemove = Controller._userLoggedIn.GroupMembers.Where(x => x.UID == _user.UID).FirstOrDefault();
+            Controller._userLoggedIn.GroupMembers.Remove(toRemove);
+            Controller._users.Remove(_user);
+            Finish();
+        }
+
+        protected void findAllElements()
         {
             _allocatedDataText = FindViewById<TextView>(Resource.Id.AllocatedDataText);
             _allocatedDataAmount = FindViewById<TextView>(Resource.Id.AllocatedDataAmount);
@@ -80,6 +128,8 @@ namespace MobileApp.Droid.Views
 			_graphSubTitle = FindViewById<TextView>(Resource.Id.GraphSubTitleText);
 			_userPhoneNumber = FindViewById<TextView>(Resource.Id.UserPhoneNumber);
             _dottedMenuButton = FindViewById<ImageButton>(Resource.Id.DottedButton);
+            _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
+            _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
 
         }
 

@@ -30,25 +30,11 @@ namespace MobileApp.Droid.Views
         private TextView _buyTwoGBText;
         private TextView _outstandingAmountText;
         private TextView _outstandingAmount;
+        private TextView _addonsTitle;
+        private TextView _addonsAmount;
         private Button _buyOneGBPrice;
         private Button _buyTwoGBPrice;
-		private TextView _addonsTitle;
-		private TextView _addonsAmount;
-
-        private TextView _tileClickedOn;
-
-
         private ImageButton _overviewPageBackButton;
-        private ImageView _dropdownListArrow;
-
-        private ScrollView _memberListScrollView;
-
-        private LinearLayout _membersListLinearLayout;
-        private FrameLayout _memberListDropDown;
-        User _getUser;
-        private int _userId;
-        private string _fullName;
-        private string _toastMessage;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -58,7 +44,6 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-            SetScrollableView();
             _overviewPageBackButton.Click += delegate { Finish(); };
 
             _buyOneGBPrice.Click += delegate { BuyOneGBClicked(); };
@@ -105,10 +90,6 @@ namespace MobileApp.Droid.Views
             _dataPlanAmount = FindViewById<TextView>(Resource.Id.PlaneNameAmount);
             _planRemainingDataText = FindViewById<TextView>(Resource.Id.DataRemainingTitle);
             _planRemainingDataAmount = FindViewById<TextView>(Resource.Id.DataRemainingAmount);
-            //_planAllocatedDataText = FindViewById<TextView>(Resource.Id.DataAllocatedTitle);
-            //_planAllocatedDataAmount = FindViewById<TextView>(Resource.Id.DataAllocatedAmount);
-            //_planUsedDataText = FindViewById<TextView>(Resource.Id.DataUsedTitle);
-            //_planUsedDataAmount = FindViewById<TextView>(Resource.Id.DataUsedAmount);
             _overviewPageBackButton = FindViewById<ImageButton>(Resource.Id.OverviewPageBackButton);
             _selectDataPackHeading = FindViewById<TextView>(Resource.Id.SelectDataPackHeading);
             _buyOneGBText = FindViewById<TextView>(Resource.Id.OneGBAddOnTextView);
@@ -119,11 +100,6 @@ namespace MobileApp.Droid.Views
             _outstandingAmount = FindViewById<TextView>(Resource.Id.OutstandingAmount);
 			_addonsTitle = FindViewById<TextView>(Resource.Id.AddOnsTitle);
 			_addonsAmount = FindViewById<TextView>(Resource.Id.AddOnsAmount);
-
-			//_dropdownListArrow = FindViewById<ImageView>(Resource.Id.OverviewPageDownArrow);
-			//_memberListDropDown = FindViewById<FrameLayout>(Resource.Id.MembersListHeadingText);
-			//_memberListScrollView = FindViewById<ScrollView>(Resource.Id.MembersListScrollView);
-			//_membersListLinearLayout = FindViewById<LinearLayout>(Resource.Id.MembersListLinearLayout);
 		}
 
 		private void setAllStringConstants()
@@ -142,10 +118,6 @@ namespace MobileApp.Droid.Views
             _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
 			_addonsTitle.Text = StringConstants.Localizable.AddOnsTitle;
 			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
-            //_planAllocatedDataText.Text = StringConstants.Localizable.PlanAllocated;
-            //_planAllocatedDataAmount.Text = string.Format(StringConstants.Localizable.PlanAllocatedAmount, Math.Round(Controller._totalAllocated, 2)); //Need to concat amount from DB, DB under construction
-            //_planUsedDataText.Text = StringConstants.Localizable.PlanUsed;
-            //_planUsedDataAmount.Text = string.Format(StringConstants.Localizable.PlanUsedAmount, Controller._totalUsed); //Need to concat amount from DB, DB under construction
         }
 
         private void settingPriceTextColor()
@@ -183,61 +155,9 @@ namespace MobileApp.Droid.Views
             deleteDialog.Show();
         }
 
-        private void showMembersList()
-        {
-            if (_memberListScrollView.Visibility == ViewStates.Invisible)
-            {
-                _dropdownListArrow.Rotation = 180;
-                _memberListScrollView.Visibility = ViewStates.Visible;
-            }
-
-            else if (_memberListScrollView.Visibility == ViewStates.Visible)
-            {
-                _dropdownListArrow.Rotation = -180;
-                _memberListScrollView.Visibility = ViewStates.Invisible;
-            }
-        }
-
-        protected void SetScrollableView()
-        {
-            //CustomPlanOverviewView.getMembers(_membersListLinearLayout);
-
-            //foreach (TextView name in CustomPlanOverviewView.MemberNamesList)
-            //{
-            //    name.LongClick += (o, s) =>
-            //    {
-            //        _tileClickedOn = name;
-
-            //        _userId = _tileClickedOn.Id;
-            //        _getUser = Controller._users.Find(x => Int32.Parse(x.UID) == _userId);
-            //        _fullName = _getUser.Name.FirstName + " " + _getUser.Name.LastName;
-
-            //        AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-            //        memberDeleteAlert.SetTitle("Remove Member");
-            //        memberDeleteAlert.SetMessage("Would you like to remove '" + _fullName + "' from your plan?");
-            //        memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { DeleteGroupMember(); });
-            //        memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
-            //        Dialog deleteDialog = memberDeleteAlert.Create();
-            //        deleteDialog.Show();
-            //    };
-            //}
-            //CustomPlanOverviewView._addButton.Click += delegate { StartActivity(typeof(AddmemberPageView)); };
-        }
-
-        protected async void DeleteGroupMember()
-        {
-            await Controller.DeleteGroupMemeber(Controller._userLoggedIn, _getUser);
-            Toast.MakeText(this, string.Format(StringConstants.Localizable.DeleteMemberToast, _fullName), ToastLength.Short).Show();
-            Member toRemove = Controller._userLoggedIn.GroupMembers.Where(x => x.UID == _getUser.UID).FirstOrDefault();
-            Controller._userLoggedIn.GroupMembers.Remove(toRemove);
-            Controller._users.Remove(_getUser);
-            SetScrollableView();
-        }
-
         protected override void OnRestart()
         {
             base.OnRestart();
-            SetScrollableView();
         }
     }
 }

@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@drawable/splash</item>
+
+  </style>
+  
   <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
     <item name="android:statusBarColor">@android:color/black</item>
     <item name="android:buttonStyle">@style/NoShadowButton</item>
@@ -336,5 +342,10 @@
 		<item name="android:layout_marginTop">10dp</item>
 		<item name="android:layout_marginBottom">10dp</item>
 	</style>
+  
+  <style name="UsersPopupMenu" parent="Widget.AppCompat.PopupMenu">
+    <item name="android:itemBackground">#FFFFFF</item>
+    <item name="android:textColor">#545454</item>
+  </style>
 
 </resources>

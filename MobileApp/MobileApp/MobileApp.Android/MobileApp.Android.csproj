@@ -219,6 +219,7 @@
     <Compile Include="Views\QRCodeScannerView.cs" />
     <Compile Include="Views\QRCodeView.cs" />
     <Compile Include="Views\RequestView.cs" />
+    <Compile Include="Views\SplashScreenView.cs" />
     <Compile Include="Views\TransferView.cs" />
     <Compile Include="Views\UsersDataUsageView.cs" />
     <Compile Include="Views\GoogleMapsView.cs" />
@@ -1263,6 +1264,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\RoundedBorderButtonClicked.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash.xml" />
   </ItemGroup>
   <Import Project="..\MobileApp\MobileApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

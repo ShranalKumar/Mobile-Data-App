@@ -17,8 +17,8 @@ using Android.Support.V7.App;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
-    public class LoginView : AppCompatActivity
+    [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
+    public class LoginView : Activity
     {
         private Button _loginButtonClicked;
 		private Button _qrSignInButton;
