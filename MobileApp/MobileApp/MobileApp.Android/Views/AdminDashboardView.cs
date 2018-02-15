@@ -132,6 +132,5 @@ namespace MobileApp.Droid.Views
         {
             _mainViewPager.SetCurrentItem(2, true);
         }
-
     }
 }

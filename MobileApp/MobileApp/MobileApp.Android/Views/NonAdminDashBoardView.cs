@@ -20,13 +20,6 @@ namespace MobileApp.Droid.Views
 	public class NonAdminDashBoardView : Activity
 	{
 		private TextView _nonAdminDataUsageUsageTitle;
-		//private TextView _remainingDaysNonAdmin;
-		//private TextView _gbRemainingNonAdmin;
-		//private Button _requestButton;
-		//private Button _transferButton;
-		//private LinearLayout _noneAdminUsageBreakdown;
-		//private RelativeLayout _remainingDataBarBorder;
-		//private ProgressBar _dataFillBar;
         private DashboardGradientTimerHelper _dashbardGradientTask;
         private ViewPager _mainViewPager;
         private CirclePageIndicator _circlePageIndicator;
@@ -60,11 +53,6 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_nonAdminContentView);
             _mainPagerAdapter.AddView(_gamificationView);
             _mainPagerAdapter.NotifyDataSetChanged();
-
-            //CustomUserDataUsageView.GetUserDataUsageRows(_nonAdminUsageBreakdown, Controller._users[0]);
-
-            //_transferButton.Click += delegate { StartActivity(typeof(TransferView)); };
-            //_requestButton.Click += delegate { StartActivity(typeof(RequestView)); };
 
             var timer = new Timer();
             _dashbardGradientTask = new DashboardGradientTimerHelper(this);
