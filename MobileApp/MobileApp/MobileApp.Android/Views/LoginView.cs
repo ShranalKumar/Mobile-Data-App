@@ -47,26 +47,34 @@ namespace MobileApp.Droid.Views
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
 
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
+			_loginButtonClicked.Click += /*LoginButtonIsClickedAsync;*/(sender, e) =>
+			{
+				_loginId = _userInputID.Text;
+				_password = _userInputPassword.Text;
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
+			};
+
 			_qrSignInButton.Click += async (sender, e) => {
 				var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+				//scanner.CustomOverlay
 				var result = await scanner.Scan();
 
-				Console.WriteLine(result.Text);
+				var credentials = result.Text.Split();
+				_loginId = credentials[0];
+				_password = credentials[1];
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
 				//Toast.MakeText(this, result.Text, ToastLength.Long).Show();
-
 			};
 		}
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
-        {
-            progress.Show();
+        {            
             Controller.Clear();
             _usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
-			_loginId = _userInputID.Text;
-			_password = _userInputPassword.Text;
-
+			
 			LoginController logincontroller = new LoginController(_loginId, _password);
 			await logincontroller.userLoginPhaseAsync();
 

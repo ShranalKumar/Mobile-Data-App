@@ -21,11 +21,11 @@ namespace MobileApp.Droid
 				Format = BarcodeFormat.QR_CODE,
 				Options = new ZXing.Common.EncodingOptions
 				{
-					Height = 600,
+					Height = 800,
 					Width = 600
 				}
 			};
-			return writer.Write("0210752833 1");
+			return writer.Write("0430 1");
 			//var writer = new BarcodeWriter();
 			//writer.Format = BarcodeFormat.QR_CODE;
 			//writer.Renderer = new ZXing.Rendering.BitmapRenderer()
