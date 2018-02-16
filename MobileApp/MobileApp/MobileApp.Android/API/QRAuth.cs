@@ -12,10 +12,8 @@ namespace MobileApp.Droid
 {
 	public class QRAuth
 	{
-
-		public static Bitmap GenerateQRCode(/*string userid*/)
+		public static Bitmap GenerateQRCode(string username, string password)
 		{
-
 			var writer = new BarcodeWriter
 			{
 				Format = BarcodeFormat.QR_CODE,
@@ -25,30 +23,9 @@ namespace MobileApp.Droid
 					Width = 600
 				}
 			};
-			return writer.Write("0430 1");
-			//var writer = new BarcodeWriter();
-			//writer.Format = BarcodeFormat.QR_CODE;
-			//writer.Renderer = new ZXing.Rendering.BitmapRenderer()
-			//{
-			//	 Background = Android.Graphics.Color.White,
-			//	 Foreground = Android.Graphics.Color.Black
-			//};
-			//writer.Options.Height = 300;
-			//writer.Options.Width = 300;
-			//writer.Options.Margin = 1;
 
-			//var bitmap = writer.Write(/*userid*/ "soumik is an idiot");
-			//return bitmap;
+			return writer.Write(username + " " + password);
 		}
-
-
-		//public static void ReadQRCode()
-		//{
-		//	var scanPage = new ZXingScannerPage();
-
-		//	var reader = new BarcodeReader();
-			
-		//}
 	}
 }
 

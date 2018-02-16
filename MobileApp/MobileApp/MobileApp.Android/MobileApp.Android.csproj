@@ -191,7 +191,6 @@
   <ItemGroup>
     <Compile Include="Adapters\GamificationViewAdapter.cs" />
     <Compile Include="Adapters\NonAdminContentAdapter.cs" />
-    <Compile Include="Adapters\UserTileLayoutAdapter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
     <Compile Include="API\QRAuth.cs" />
     <Compile Include="Helpers\AllocationPageCustomUserTilesPage.cs" />
@@ -201,7 +200,6 @@
     <Compile Include="Helpers\CustomUserDataUsageView.cs" />
     <Compile Include="Helpers\DashboardGradientTimerHelper.cs" />
     <Compile Include="Helpers\DataAmountSelectorHelper.cs" />
-    <Compile Include="NonAdminDashboardOnGlobalLayoutListener.cs" />
     <Compile Include="Helpers\CustomUserTilesPage.cs" />
     <Compile Include="Views\AddmemberPageView.cs" />
     <Compile Include="Views\AdminDashboardContentView.cs" />

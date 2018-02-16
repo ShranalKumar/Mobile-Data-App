@@ -53,13 +53,6 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
 			_backButton.Click += delegate { Finish(); };
-			//_dottedMenuButton.Click += (s, arg) =>
-			//{
-			//    PopupMenu menu = new PopupMenu(this, _dottedMenuButton);
-			//    menu.Inflate(Resource.Menu.UsersDottedMenu);
-			//    menu.Show();
-			//};
-            
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
@@ -93,7 +86,14 @@ namespace MobileApp.Droid.Views
                         deleteDialog.Show();
                         break;
                     case Resource.Id.GenerateQR:
+<<<<<<< HEAD
                         StartActivity(typeof(QRCodeView));
+=======
+                        Intent loadQRCode = new Intent(this, typeof(QRCodeView));
+                        loadQRCode.PutExtra("username", _user.UID);
+                        loadQRCode.PutExtra("password", "1");
+                        StartActivity(loadQRCode);
+>>>>>>> ShranalDevelop
                         break;
                 }
             };
@@ -129,7 +129,6 @@ namespace MobileApp.Droid.Views
             _dottedMenuButton = FindViewById<ImageButton>(Resource.Id.DottedButton);
             _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
             _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
-
         }
 
 		protected void setAllStringConstants()

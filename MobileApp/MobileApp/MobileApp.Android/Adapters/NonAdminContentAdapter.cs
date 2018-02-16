@@ -50,6 +50,7 @@ namespace MobileApp.Droid.Adapters
 
             findAllElements(_view);
             setAllStringConstants();
+            DataBarFill();
 
             _transferButton.Click += delegate { _context.StartActivity(typeof(TransferView)); };
             _requestButton.Click += delegate { _context.StartActivity(typeof(RequestView)); };
@@ -77,7 +78,7 @@ namespace MobileApp.Droid.Adapters
 
         public void DataBarFill()
         {
-            double _fillNumber = (1 - Controller._users[0].Used / Controller._users[0].Allocated) * 100;
+            double _fillNumber = (1 - (Controller._users[0].Used / Controller._users[0].Allocated)) * 100;
             _dataFillBar.Progress = (int)_fillNumber;
         }
 
