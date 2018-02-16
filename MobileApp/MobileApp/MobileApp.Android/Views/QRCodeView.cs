@@ -16,15 +16,19 @@ namespace MobileApp.Droid.Views
 	[Activity(Label = "QRCodeView")]
 	public class QRCodeView : Activity
 	{
+        private string _username;
+        private string _password;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.QRCodeLayout);
 			ImageView imageView = FindViewById<ImageView>(Resource.Id.QRCodeImageView);
-			
-			imageView.SetImageBitmap(QRAuth.GenerateQRCode());
 
-			// Create your application here
+            _username = Intent.GetStringExtra("username");
+            _password = Intent.GetStringExtra("password");
+
+			imageView.SetImageBitmap(QRAuth.GenerateQRCode(_username, _password));
 		}
 	}
 }

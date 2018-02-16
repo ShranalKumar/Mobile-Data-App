@@ -47,7 +47,7 @@ namespace MobileApp.Droid.Views
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
 
-			_loginButtonClicked.Click += /*LoginButtonIsClickedAsync;*/(sender, e) =>
+			_loginButtonClicked.Click += (sender, e) =>
 			{
 				_loginId = _userInputID.Text;
 				_password = _userInputPassword.Text;
@@ -55,18 +55,7 @@ namespace MobileApp.Droid.Views
 				LoginButtonIsClickedAsync(sender, e);
 			};
 
-			_qrSignInButton.Click += async (sender, e) => {
-				var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-				//scanner.CustomOverlay
-				var result = await scanner.Scan();
-
-				var credentials = result.Text.Split();
-				_loginId = credentials[0];
-				_password = credentials[1];
-				progress.Show();
-				LoginButtonIsClickedAsync(sender, e);
-				//Toast.MakeText(this, result.Text, ToastLength.Long).Show();
-			};
+            _qrSignInButton.Click += QRSignInButtonClickedAsync;
 		}
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
@@ -103,15 +92,19 @@ namespace MobileApp.Droid.Views
 
 			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
 			var result = await scanner.Scan();
-			Console.WriteLine(result);
+            try
+            {
+                if (result.Text != null)
+                {
+                    var credentials = result.Text.Split();
+                    _loginId = credentials[0];
+                    _password = credentials[1];
+                    progress.Show();
+                    LoginButtonIsClickedAsync(sender, e);
+                }
+            }
+            catch (Exception) { }            
 		}
-
-		//private void QRSignInButtonClicked()
-		//{
-		//	_qrSignInButton.Click += delegate { StartActivity(typeof(QRCodeScannerView)); };
-		//}
-
-
 
 		protected void findAllElements()
         {
