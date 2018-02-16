@@ -59,10 +59,6 @@ namespace MobileApp.Droid.Views
 				StartActivity(intent);
 			};
 			_backButton.Click += delegate { Finish(); };
-<<<<<<< HEAD
-=======
-
->>>>>>> SoumikDevelop
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
