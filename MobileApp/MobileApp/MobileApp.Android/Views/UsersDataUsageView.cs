@@ -41,6 +41,7 @@ namespace MobileApp.Droid.Views
 		private TextView _graphTitle;
 		private TextView _graphSubTitle;
 		private TextView _userPhoneNumber;
+		private RelativeLayout _clickToCall;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -52,7 +53,13 @@ namespace MobileApp.Droid.Views
             findAllElements();
             setAllStringConstants();
 
+			_clickToCall.Click += delegate {
+				var uri = Android.Net.Uri.Parse(String.Format("tel: {0}",_userPhoneNumber.Text));
+				var intent = new Intent(Intent.ActionDial, uri);
+				StartActivity(intent);
+			};
 			_backButton.Click += delegate { Finish(); };
+			
 			//_dottedMenuButton.Click += (s, arg) =>
 			//{
 			//    PopupMenu menu = new PopupMenu(this, _dottedMenuButton);
@@ -70,7 +77,6 @@ namespace MobileApp.Droid.Views
 
             _dottedMenuButton.Click += ShowPopUpMenu;
 
-            
         }
 
         private void ShowPopUpMenu(object sender, EventArgs e)
@@ -129,6 +135,7 @@ namespace MobileApp.Droid.Views
             _dottedMenuButton = FindViewById<ImageButton>(Resource.Id.DottedButton);
             _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
             _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
+			_clickToCall = FindViewById<RelativeLayout>(Resource.Id.UserLabelLayout);
 
         }
 
@@ -144,6 +151,8 @@ namespace MobileApp.Droid.Views
 			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
 			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
 			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
+
+
         }
 
 		protected void setGraph()

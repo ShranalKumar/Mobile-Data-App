@@ -79,7 +79,7 @@
                 android:layout_below="@id/UserIcon"
                 android:padding="5dp"
                 android:layout_centerHorizontal="true"
-                android:textColor="#545454" />
+                android:textColor="#6191E8" />
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout

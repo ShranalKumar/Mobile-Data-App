@@ -335,9 +335,9 @@
   </style>
 
 	<style name="QRLoginButton">
-		<item name="android:textSize">18dp</item>
+		<item name="android:textSize">17sp</item>
 		<item name="android:textStyle">normal</item>
-		<item name="android:textColor">#ffcc00</item>
+		<item name="android:textColor">#6191E8</item>
 		<item name="android:background">#00000000</item>
 		<item name="android:layout_marginTop">10dp</item>
 		<item name="android:layout_marginBottom">10dp</item>
