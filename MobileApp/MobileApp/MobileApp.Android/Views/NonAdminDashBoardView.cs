@@ -16,8 +16,8 @@ using Android.Graphics.Drawables;
 
 namespace MobileApp.Droid.Views
 {
-	[Activity(Label = "MobileApp", ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/icon")]
-	public class NonAdminDashBoardView : Activity
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
+    public class NonAdminDashBoardView : Activity
 	{
 		private TextView _nonAdminDataUsageUsageTitle;
         private DashboardGradientTimerHelper _dashbardGradientTask;

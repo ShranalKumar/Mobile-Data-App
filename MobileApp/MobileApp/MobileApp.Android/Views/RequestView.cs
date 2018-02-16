@@ -15,7 +15,7 @@ using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "RequestView", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class RequestView : Activity
     {
         private TextView _requestPageTitle;

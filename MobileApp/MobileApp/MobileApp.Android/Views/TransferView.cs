@@ -15,7 +15,7 @@ using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TransferView", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class TransferView : Activity
     {
         private TextView _transferPageTitle;

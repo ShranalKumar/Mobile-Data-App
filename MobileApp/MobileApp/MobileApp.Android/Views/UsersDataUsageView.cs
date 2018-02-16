@@ -53,14 +53,7 @@ namespace MobileApp.Droid.Views
             setAllStringConstants();
 
 			_backButton.Click += delegate { Finish(); };
-			//_dottedMenuButton.Click += (s, arg) =>
-			//{
-			//    PopupMenu menu = new PopupMenu(this, _dottedMenuButton);
-			//    menu.Inflate(Resource.Menu.UsersDottedMenu);
-			//    menu.Show();
-			//};
 
-			_dottedMenuButton.Click += delegate { StartActivity(typeof(QRCodeView)); };
             _entries = new Entry[_user.UsageBreakdown.Count()];
 			setGraph();
 
@@ -94,7 +87,7 @@ namespace MobileApp.Droid.Views
                         deleteDialog.Show();
                         break;
                     case Resource.Id.GenerateQR:
-                        Toast.MakeText(this, "QR", ToastLength.Short).Show();
+                        StartActivity(typeof(QRCodeView));
                         break;
                 }
             };

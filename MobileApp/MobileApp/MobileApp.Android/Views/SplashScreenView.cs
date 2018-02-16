@@ -13,14 +13,13 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TrustPowerMobile", MainLauncher = true, NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust", Theme = "@style/Theme.Splash")]
+    [Activity(Label = "TrustPowerMobile", MainLauncher = true, NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust", Theme = "@style/MainTheme.Splash")]
 
     public class SplashScreenView : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            System.Threading.Thread.Sleep(1000);
             StartActivity(typeof(LoginView));
         }
     }
