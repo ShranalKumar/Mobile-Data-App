@@ -9,7 +9,7 @@ namespace MobileApp.Constants
         public struct Localizable
         {
             //Login Screen
-            public const string UsernameHint = "Username";
+            public const string UsernameHint = "Phone Number";
             public const string PasswordHint = "Password";
             public const string LogIn = "Log In";
 			public const string QRLogIn = "QR Log In";

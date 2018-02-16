@@ -14,7 +14,7 @@ using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Label = "TrustPowerMobile", ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class AddmemberPageView : Activity
     {
 

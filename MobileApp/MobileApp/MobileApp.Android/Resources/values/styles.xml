@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
-  <style name="Theme.Splash" parent="android:Theme">
+  <style name="MainTheme.Splash" parent="android:Theme">
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowBackground">@drawable/splash</item>
 
@@ -15,6 +15,9 @@
 	  <item name="android:textColor">#FFFFFF</item>
   </style>
 
+    <style name="MainTheme.Dialog" parent="Theme.AppCompat.Dialog">
+  </style>
+  
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
 

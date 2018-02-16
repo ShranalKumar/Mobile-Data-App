@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -13,8 +14,8 @@ using Android.Widget;
 
 namespace MobileApp.Droid.Views
 {
-	[Activity(Label = "QRCodeView")]
-	public class QRCodeView : Activity
+    [Activity(Theme = "@style/MainTheme.Dialog", ScreenOrientation = ScreenOrientation.Portrait)]
+    public class QRCodeView : Activity
 	{
         private string _username;
         private string _password;
