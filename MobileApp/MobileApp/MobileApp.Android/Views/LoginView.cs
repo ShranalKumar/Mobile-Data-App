@@ -44,8 +44,8 @@ namespace MobileApp.Droid.Views
             findAllElements();
             setAllStringConstants();
 			SetClickActions();
-
-			_loginButtonClicked.Enabled = false;
+            _inputManager = (InputMethodManager)GetSystemService(InputMethodService);
+            _loginButtonClicked.Enabled = false;
 
             progress = new Android.App.ProgressDialog(this);
             progress.Indeterminate = true;
