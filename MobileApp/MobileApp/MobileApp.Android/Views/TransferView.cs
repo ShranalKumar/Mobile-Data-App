@@ -5,7 +5,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Graphics.Drawables;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -151,8 +151,10 @@ namespace MobileApp.Droid.Views
                 user.Click += (o, s) =>
                 {
                     _userButtons.ForEach(x => x.SetBackgroundResource(Resource.Drawable.RoundedBorderButton));
+                    _userButtons.ForEach(x => x.SetTextColor(Color.ParseColor("#3f3f3f")));
 
                     user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
+                    user.SetTextColor(Color.White);
                     _selectedUser = user;
                 };
             }
