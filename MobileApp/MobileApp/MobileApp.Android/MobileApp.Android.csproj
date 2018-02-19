@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MobileApp.Droid</RootNamespace>
     <AssemblyName>MobileApp.Android</AssemblyName>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -193,6 +193,7 @@
     <Compile Include="Adapters\NonAdminContentAdapter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
     <Compile Include="API\QRAuth.cs" />
+    <Compile Include="Converters\CoreColorConverter.cs" />
     <Compile Include="Helpers\AllocationPageCustomUserTilesPage.cs" />
     <Compile Include="Helpers\ClassConverterHelper.cs" />
     <Compile Include="Helpers\CustomPlanOverviewView.cs" />
@@ -1204,7 +1205,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RoundedBorder.xml" />
+    <AndroidResource Include="Resources\drawable\RoundedBorder.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\DashboardGradient1.xml" />
@@ -1258,13 +1261,25 @@
     <AndroidResource Include="Resources\menu\UsersDottedMenu.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RoundedBorderButton.xml" />
+    <AndroidResource Include="Resources\drawable\RoundedBorderButton.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RoundedBorderButtonClicked.xml" />
+    <AndroidResource Include="Resources\drawable\RoundedBorderButtonClicked.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\VerticleDividerInivisible.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ProgressBarBorderDark.xml" />
   </ItemGroup>
   <Import Project="..\MobileApp\MobileApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/BackgroundLayout"
-    android:background="@drawable/dashboardgradient7">
+    android:background="#ededed">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -18,7 +18,8 @@
             android:minWidth="25px"
             android:id="@+id/RequestPageToolbar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbargradient">
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -51,33 +52,37 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:id="@+id/RequestFromLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="40dp"
-            android:paddingTop="40dp">
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:padding="10dp"
+            android:background="@drawable/cardstyle"
+            android:layout_margin="5dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/RequestDataText"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginBottom="5dp"
+                android:textColor="#3f3f3f" />
             <HorizontalScrollView
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/UserTilesScrollViewLayout"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:layout_gravity="center_vertical"
+                android:fadingEdgeLength="25dp"
+                android:requiresFadingEdge="horizontal">
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:id="@+id/UserSelectionSlidingLayout"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:showDividers="middle"
+                    android:divider="@drawable/VerticleDividerInivisible" />
             </HorizontalScrollView>
         </LinearLayout>
         <LinearLayout
@@ -90,12 +95,17 @@
             android:paddingBottom="40dp"
             android:paddingTop="40dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardstyle"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/RequestAmountSelectorTitleText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#3f3f3f" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/RequestAmountSelectorButtonLayout"
@@ -114,11 +124,11 @@
                     android:layout_weight="1"
                     android:padding="10dp">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/FirstRequestUpArrow"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
@@ -128,22 +138,25 @@
                         android:id="@+id/FirstRequestNumberText"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="#3f3f3f" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/FirstRequestDownArrow"
                         android:background="@android:color/transparent"
                         android:layout_weight="1"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:id="@+id/RequestDataUnitDecimalText" />
+                    android:id="@+id/RequestDataUnitDecimalText"
+                    android:textColor="#3f3f3f" />
                 <LinearLayout
                     android:orientation="vertical"
                     android:id="@+id/SecondRequestButtonLayout"
@@ -152,11 +165,11 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/SecondRequestUpArrow"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
@@ -165,14 +178,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/SecondRequestNumberText" />
+                        android:id="@+id/SecondRequestNumberText"
+                        android:textColor="#3f3f3f" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/SecondRequestDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -182,12 +197,12 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ThirdRequestUpArrow"
                         android:background="@android:color/transparent"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:padding="15dp" />
                     <TextView
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -195,14 +210,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/ThirdRequestNumberText" />
+                        android:id="@+id/ThirdRequestNumberText"
+                        android:textColor="#3f3f3f" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ThirdRequestDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -212,12 +229,12 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/FourthRequestUpArrow"
                         android:background="@android:color/transparent"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:padding="15dp" />
                     <TextView
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -225,20 +242,23 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/FourthRequestNumberText" />
+                        android:id="@+id/FourthRequestNumberText"
+                        android:textColor="#3f3f3f" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/FourthRequestDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/DataRequestUnits" />
+                    android:id="@+id/DataRequestUnits"
+                    android:textColor="#3f3f3f" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -247,7 +267,8 @@
             android:minHeight="25px"
             android:id="@+id/RequestButtonLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -261,8 +282,10 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/RequestButton"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/progressbarborder"
-                    android:layout_alignParentBottom="true" />
+                    android:background="@drawable/buttonstyle"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="#ffffff"
+                    android:padding="10dp" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

@@ -48,7 +48,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:padding="10dp"
-            android:background="@drawable/RoundedBorder" />
+            android:background="@drawable/RoundedBorder"
+            android:textColor="#FFFFFF" />
         <Button
             android:id="@+id/TransferButton"
             android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/RoundedBorder" />
+            android:background="@drawable/RoundedBorder"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
