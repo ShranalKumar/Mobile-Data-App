@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MobileApp.Constants;
+using MobileApp.Droid.Converters;
 using MobileApp.Droid.Helpers;
 
 namespace MobileApp.Droid.Views
@@ -162,7 +163,7 @@ namespace MobileApp.Droid.Views
 
         private void increaseInt(object sender, EventArgs e)
         {
-            ImageButton _upArrowClicked = (ImageButton)sender;
+			ImageButton _upArrowClicked = (ImageButton)sender;
 
             switch (_upArrowClicked.Id)
             {
@@ -183,11 +184,37 @@ namespace MobileApp.Droid.Views
                     _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _fourthNumber);
                     break;
             }
-        }
 
-        private void decreaseInt(object sender, EventArgs e)
+			_getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
+			_dataAmountDouble = Double.Parse(_getDataAmount);
+			_transferAmount = _dataAmountDouble;
+
+			if (_getDataUnit == StringConstants.Localizable.MBUnit)
+			{
+				_transferAmount = _dataAmountDouble / 1000.0;
+			}
+
+			if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) < _transferAmount)
+			{
+				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+
+			}
+			else if (((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) > _transferAmount))
+			{
+				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+			}
+
+		}
+
+		private void decreaseInt(object sender, EventArgs e)
         {
-            ImageButton _downArrowClicked = (ImageButton)sender;
+			ImageButton _downArrowClicked = (ImageButton)sender;
 
             switch (_downArrowClicked.Id)
             {
@@ -208,7 +235,30 @@ namespace MobileApp.Droid.Views
                     _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _fourthNumber);
                     break;
             }
-        }
+
+			_getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
+			_dataAmountDouble = Double.Parse(_getDataAmount);
+			_transferAmount = _dataAmountDouble;
+
+			if (_getDataUnit == StringConstants.Localizable.MBUnit)
+			{
+				_transferAmount = _dataAmountDouble / 1000.0;
+			}
+			if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) < _transferAmount)
+			{
+				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+			}
+			else if (((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) > _transferAmount))
+			{
+				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+			}
+		}
 
         private void setGbOrMb(int valueOfFirstNumber)
         {
