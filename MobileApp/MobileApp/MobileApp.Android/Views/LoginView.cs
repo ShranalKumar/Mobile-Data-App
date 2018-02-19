@@ -14,6 +14,7 @@ using MobileApp.Droid;
 using MobileApp.Constants;
 using ZXing.Mobile;
 using Android.Support.V7.App;
+using Android.Views.InputMethods;
 
 namespace MobileApp.Droid.Views
 {
@@ -28,8 +29,9 @@ namespace MobileApp.Droid.Views
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
+		private InputMethodManager _inputManager;
 
-        private ProgressDialog progress;
+		private ProgressDialog progress;
 		private ProgressDialog QRProgress;
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -41,28 +43,22 @@ namespace MobileApp.Droid.Views
 
             findAllElements();
             setAllStringConstants();
-            
+			SetClickActions();
+
+			_loginButtonClicked.Enabled = false;
+
             progress = new Android.App.ProgressDialog(this);
             progress.Indeterminate = true;
             progress.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
-
-			_loginButtonClicked.Click += (sender, e) =>
-			{
-				_loginId = _userInputID.Text;
-				_password = _userInputPassword.Text;
-				progress.Show();
-				LoginButtonIsClickedAsync(sender, e);
-			};
-
-            _qrSignInButton.Click += QRSignInButtonClickedAsync;
 		}
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {            
             Controller.Clear();
-            _usernameField.Visibility = ViewStates.Visible;
+			_inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+			_usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
 			
 			LoginController logincontroller = new LoginController(_loginId, _password);
@@ -124,5 +120,47 @@ namespace MobileApp.Droid.Views
             _loginButtonClicked.Text = StringConstants.Localizable.LogIn;
 			_qrSignInButton.Text = StringConstants.Localizable.QRLogIn;
         }
+
+		protected void SetClickActions() 
+		{
+			_loginButtonClicked.Click += (sender, e) =>
+			{
+				_loginId = _userInputID.Text;
+				_password = _userInputPassword.Text;
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
+			};
+
+			_userInputPassword.EditorAction += (sender, e) =>
+			{
+				if (e.ActionId == ImeAction.Go)
+				{
+					_loginButtonClicked.PerformClick();
+				}
+			};
+
+			_userInputID.AfterTextChanged += EnableLogin;
+			_userInputPassword.AfterTextChanged += EnableLogin;
+			_qrSignInButton.Click += QRSignInButtonClickedAsync;
+		}
+
+		public override bool OnTouchEvent(MotionEvent e)
+		{
+			_inputManager = (InputMethodManager)GetSystemService(InputMethodService);
+			_inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+			return base.OnTouchEvent(e);
+		}
+
+		public void EnableLogin(object sender, EventArgs e)
+		{
+			if (_userInputID.Text != "" && _userInputPassword.Text != "")
+			{
+				_loginButtonClicked.Enabled = true;
+			}
+			else
+			{
+				_loginButtonClicked.Enabled = false;
+			}
+		}
 	}
 }
