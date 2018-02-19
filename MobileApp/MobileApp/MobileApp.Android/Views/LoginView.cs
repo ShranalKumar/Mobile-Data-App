@@ -30,6 +30,7 @@ namespace MobileApp.Droid.Views
 		private string _password;
 
         private ProgressDialog progress;
+		private ProgressDialog QRProgress;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -77,6 +78,7 @@ namespace MobileApp.Droid.Views
 			{
 				Intent intent = new Intent(this, typeof(NonAdminDashBoardView));
 				StartActivity(intent);
+				Finish();
 			}
 			else
 			{
@@ -89,7 +91,6 @@ namespace MobileApp.Droid.Views
 		private async void QRSignInButtonClickedAsync(object sender, EventArgs e)
 		{
 			MobileBarcodeScanner.Initialize(Application);
-
 			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
 			var result = await scanner.Scan();
             try

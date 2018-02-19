@@ -9,7 +9,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using MobileApp.Constants;
 using MobileApp.Droid.Views;
 
@@ -71,7 +70,7 @@ namespace MobileApp.Droid.Adapters
         protected void setAllStringConstants()
         {
             _remainingDaysNonAdmin.Text = string.Format(StringConstants.Localizable.DaysRemaining, Controller._daysRemaining);
-            _gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, (Controller._users[0].Allocated - Controller._users[0].Used));
+            _gbRemainingNonAdmin.Text = string.Format(StringConstants.Localizable.GbRemaining, Math.Round((Controller._users[0].Allocated - Controller._users[0].Used), 2));
             _transferButton.Text = StringConstants.Localizable.TransferButton;
             _requestButton.Text = StringConstants.Localizable.RequestButton;
         }

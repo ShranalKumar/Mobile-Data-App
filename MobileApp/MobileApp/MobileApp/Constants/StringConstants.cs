@@ -8,6 +8,7 @@ namespace MobileApp.Constants
     {
         public struct Localizable
         {
+
             //Login Screen
             public const string UsernameHint = "Phone Number";
             public const string PasswordHint = "Password";
@@ -30,11 +31,15 @@ namespace MobileApp.Constants
             public const string InitialAmount = "0";
             public const string MBUnit = "MB";
             public const string GBUnit = "GB";
+			public const string TransferDataDialogTitle = "Transfer Data";
             public const string TransferPopUpMessage = "Are you sure you would like to transfer {0}{1} to {2}";
             public const string TransferConfirmationMessage = "OK! {0}{1} has been successfully transfered  to {2}";
+			public const string TransferAmountWarning = "Transfer amount is greater than your remaining data!\nPlease change amount to transfer.";
+			public const string TransferAmountZeroWarning = "Transfer amount must be greater than 0!\nPlease change amount to transfer.";
+			public const string NoUserSelectedWarning = "Please select a user to transfer data to.";
 
-            //Users Data Usage Screen
-            public const string SavedChangesMessage = "Your changes have successfully been changed!";
+			//Users Data Usage Screen
+			public const string SavedChangesMessage = "Your changes have successfully been changed!";
 
             //Overview Screen
             public const string NewMemberAddedToast = "New group member has been successfully added!";
@@ -97,11 +102,6 @@ namespace MobileApp.Constants
 			public const string AddOnsTitle = "Add-Ons";
 			public const string AddOnsAmount = "{0}GB";
 
-
-
-
-
-
 			//Add member Screen
 			public const string AddMemberTitle = "Add New Member";
             public const string PhoneNumber = "Phone Number";
@@ -109,6 +109,16 @@ namespace MobileApp.Constants
             public const string LastName = "Last Name";
             public const string AdminStatus = "Give Admin Rights";
 
-        }
+			//General
+			public const string ReadQuery = "select * from t where t.uid = '{0}'";
+			public const string WarningDialogTitle = "WARNING!";
+			public const string SuccessDialogTitle = "Success!";
+			public const string YesDialogButton = "Yes";
+			public const string NoDialogButton = "No";
+			public const string OkDialogButton = "OK!";
+
+
+
+		}
     }
 }

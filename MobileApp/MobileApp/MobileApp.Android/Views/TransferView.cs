@@ -61,6 +61,7 @@ namespace MobileApp.Droid.Views
 
         private string _getDataAmount;
         private string _getDataUnit;
+		private double _transferAmount;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -98,9 +99,6 @@ namespace MobileApp.Droid.Views
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.DataUnitDecimalText);
             _transferDialogDisplayText = FindViewById<TextView>(Resource.Id.TransferDialogText);
             _successfullyTransferedMessage = FindViewById<TextView>(Resource.Id.TransferSuccessDialogText);
-            _yesToTransfer = FindViewById<Button>(Resource.Id.YesTransferButton);
-            _doNotTransfer = FindViewById<Button>(Resource.Id.NoDoNotTransferButton);
-            _OkSuccessfullyTransfered = FindViewById<Button>(Resource.Id.OkTransferButton);
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstUpArrow);
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondUpArrow);
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdUpArrow);
@@ -130,16 +128,13 @@ namespace MobileApp.Droid.Views
             _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
             _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
             _dataRemainingText.Text = StringConstants.Localizable.DataRemaining;
-            _gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, "1");
+            _gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, Math.Round((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used), 2));
             _sendButtonClicked.Text = StringConstants.Localizable.SendButton;
             
         }
 
         public void SetClickable()
         {
-            _yesToTransfer.Click += showSuccessMessage;
-            _doNotTransfer.Click += showConfirmationPopUp;
-            _OkSuccessfullyTransfered.Click += showSuccessMessage;
             _firstUpArrow.Click += increaseInt;
             _secondUpArrow.Click += increaseInt;
             _thirdUpArrow.Click += increaseInt;
@@ -149,7 +144,7 @@ namespace MobileApp.Droid.Views
             _thirdDownArrow.Click += decreaseInt;
             _fourthDownArrow.Click += decreaseInt;
             _sendButtonClicked.Click += showConfirmationPopUp;
-            _BackButton.Click += delegate { StartActivity(typeof(NonAdminDashBoardView)); };
+            _BackButton.Click += delegate { Finish(); };
 
             foreach (Button user in _userButtons)
             {
@@ -159,7 +154,6 @@ namespace MobileApp.Droid.Views
 
                     user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
                     _selectedUser = user;
-                    Console.WriteLine(_selectedUser.Text);
                 };
             }
         }
@@ -188,7 +182,6 @@ namespace MobileApp.Droid.Views
                     break;
             }
         }
-
 
         private void decreaseInt(object sender, EventArgs e)
         {
@@ -231,45 +224,84 @@ namespace MobileApp.Droid.Views
 
         private void showConfirmationPopUp(object sender, EventArgs e)
         {
-            _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
+			_getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
             _dataAmountDouble = Double.Parse(_getDataAmount);
             _getDataUnit = _dataUnitsToGB.Text;
-            _transferDialogDisplayText.Text = string.Format(StringConstants.Localizable.TransferPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
 
-            if (_transferConfirmationPopUp.Visibility == ViewStates.Invisible)
-            {
-                _transferConfirmationPopUp.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                _transferConfirmationPopUp.Visibility = ViewStates.Invisible;
-            }
-        }
+			try
+			{
+				_transferAmount = _dataAmountDouble;
+				if (_getDataUnit == StringConstants.Localizable.MBUnit)
+				{
+					_transferAmount = _dataAmountDouble / 1000.0;
+				}
+
+				if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) >= _transferAmount && _transferAmount != 0)
+				{
+					AlertDialog.Builder transferDataAlert = new AlertDialog.Builder(this);
+					transferDataAlert.SetTitle(StringConstants.Localizable.TransferDataDialogTitle);
+					transferDataAlert.SetMessage(string.Format(StringConstants.Localizable.TransferPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text));
+					transferDataAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (transferSender, transferArgs) => { TransferDataAsync(transferSender, transferArgs); });
+					transferDataAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (transferSender, transferArgs) => { });
+					Dialog transferDialog = transferDataAlert.Create();
+					transferDialog.Show();
+				}
+				else if (_transferAmount == 0)
+				{
+					AlertDialog.Builder zeroAmountAlert = new AlertDialog.Builder(this);
+					zeroAmountAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
+					zeroAmountAlert.SetMessage(StringConstants.Localizable.TransferAmountZeroWarning);
+					zeroAmountAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
+					Dialog zerAmountDialog = zeroAmountAlert.Create();
+					zerAmountDialog.Show();
+				}
+				else
+				{
+					AlertDialog.Builder transferAmountAlert = new AlertDialog.Builder(this);
+					transferAmountAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
+					transferAmountAlert.SetMessage(StringConstants.Localizable.TransferAmountWarning);
+					transferAmountAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
+					Dialog transferAmountDialog = transferAmountAlert.Create();
+					transferAmountDialog.Show();
+				}
+			}
+			catch
+			{
+				AlertDialog.Builder noUserSelectedAlert = new AlertDialog.Builder(this);
+				noUserSelectedAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
+				noUserSelectedAlert.SetMessage(StringConstants.Localizable.NoUserSelectedWarning);
+				noUserSelectedAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
+				Dialog noUserDialog = noUserSelectedAlert.Create();
+				noUserDialog.Show();
+			}		
+		}
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-            _successfullyTransferedMessage.Text = string.Format(StringConstants.Localizable.TransferConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
+			AlertDialog.Builder successAlert = new AlertDialog.Builder(this);
+			successAlert.SetTitle(StringConstants.Localizable.SuccessDialogTitle);
+			successAlert.SetMessage(string.Format(StringConstants.Localizable.TransferConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text));
+			successAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (successSender, successEventArgs) => { });
+			Dialog successDialog = successAlert.Create();
+			successDialog.Show();
+			
             _firstNumber.Text = StringConstants.Localizable.InitialAmount;
             _secondNumber.Text = StringConstants.Localizable.InitialAmount;
             _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
             _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
             _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
             _decimalPointVisibility.Text = "";
+			DataBarFill();
+			_gbRemainingText.Text = string.Format(StringConstants.Localizable.GbRemaining, Math.Round((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used), 2));
 
+		}
 
-            if (_transferSuccessMessage.Visibility == ViewStates.Invisible)
-            {
-                _transferSuccessMessage.Visibility = ViewStates.Visible;
-            }
-
-            else
-            {
-                _transferSuccessMessage.Visibility = ViewStates.Invisible;
-                _transferConfirmationPopUp.Visibility = ViewStates.Invisible;
-            }
-        }
-
-
-
+		private async void TransferDataAsync(object sender, EventArgs e)
+		{
+			User targetuser = Controller._users.Where(x => x.Name.FirstName == _selectedUser.Text).FirstOrDefault();
+			User changedUser = await Controller.TransferData(Controller._userLoggedIn, targetuser, _transferAmount);
+			Controller._userLoggedIn = changedUser;
+			showSuccessMessage(sender, e);
+		}
     }
 }
