@@ -83,11 +83,6 @@ namespace MobileApp.Droid.Views
             _fourthNumber = FindViewById<TextView>(Resource.Id.FourthRequestNumberText);
             _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataRequestUnits);
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.RequestDataUnitDecimalText);
-            _requestDialogDisplayText = FindViewById<TextView>(Resource.Id.RequestDialogText);
-            _successfullyRequestedMessage = FindViewById<TextView>(Resource.Id.RequestSuccessDialogText);
-            _yesToRequest = FindViewById<Button>(Resource.Id.YesRequestButton);
-            _doNotRequest = FindViewById<Button>(Resource.Id.NoDoNotRequestButton);
-            _OkSuccessfullyRequested = FindViewById<Button>(Resource.Id.OkRequestButton);
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestUpArrow);
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestUpArrow);
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestUpArrow);
@@ -96,8 +91,6 @@ namespace MobileApp.Droid.Views
             _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestDownArrow);
             _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestDownArrow);
             _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestDownArrow);
-            _requestConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.RequestPagePopUpLayout);
-            _requestSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.RequestPageSuccessfulPopUpLayout);
             _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
 			_userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
@@ -203,7 +196,7 @@ namespace MobileApp.Droid.Views
             if (valueOfFirstNumber > 0)
             {
                 _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
-                _decimalPointVisibility.Text = StringConstants.Localizable.RequestDecimalPoint;
+                _decimalPointVisibility.Text = StringConstants.Localizable.DecimalPoint;
             }
             else
             {

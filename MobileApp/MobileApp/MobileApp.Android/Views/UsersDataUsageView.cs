@@ -138,14 +138,14 @@ namespace MobileApp.Droid.Views
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedText;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 2));
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, _user.Name.FirstName);
 			_usedDataText.Text = StringConstants.Localizable.UsedText;
 			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 2));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
-			_pointsAmount.Text = String.Format(StringConstants.Localizable.PointsAmout, 10);
+			_pointsAmount.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, 10);
 			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
 			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
-			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
+			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, _user.UID);
 
 
         }

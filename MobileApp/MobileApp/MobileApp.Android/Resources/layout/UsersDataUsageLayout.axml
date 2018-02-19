@@ -242,32 +242,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
-    <!--<CharView x:name ="Chart" HeightRequest="150"/>-->
-    <!--<ScrollView
-        android:layout_height="200dp"
-        android:layout_width="match_parent"
-        android:id="@+id/DataUsageBreakdownScrollView" />
-    <RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/SaveButtonLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageButton
-            android:src="@drawable/progressbarborder"
-            android:layout_width="190dp"
-            android:layout_height="45dp"
-            android:id="@+id/SaveButton"
-            android:background="@android:color/transparent"
-            android:layout_centerInParent="true"
-            android:scaleX="1.6"
-            android:scaleY="1.7" />
-        <TextView
-            android:text="Save"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/SaveButtonText"
-            android:layout_centerInParent="true" />-->
     </RelativeLayout>
 </LinearLayout>

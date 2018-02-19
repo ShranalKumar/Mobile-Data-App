@@ -61,9 +61,9 @@ namespace MobileApp.Droid.Views
 			Controller.SetGlobalValues();			
 			Controller._userLoggedIn = changedUser;
 			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
-			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
-			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
-			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
+			_outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
+			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
 			settingPriceTextColor();
 			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyTwoGB), ToastLength.Short).Show();
 		}
@@ -76,9 +76,9 @@ namespace MobileApp.Droid.Views
 			Controller.SetGlobalValues();			
 			Controller._userLoggedIn = changedUser;
 			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
-			_outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
-			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder);
-			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
+			_outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
+			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
 			settingPriceTextColor();
 			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyOneGB), ToastLength.Short).Show();
 		}
@@ -108,16 +108,16 @@ namespace MobileApp.Droid.Views
             _dataPlanNameText.Text = StringConstants.Localizable.PlanName;
             _dataPlanAmount.Text = string.Format(StringConstants.Localizable.PlanDataAmount, Controller._planDataPool);
             _planRemainingDataText.Text = StringConstants.Localizable.PlanRemaining;
-            _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.PlanRemainingAmount, Controller._totalRemainder); //Need to concat amount from DB, DB under construction
+            _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
             _selectDataPackHeading.Text = StringConstants.Localizable.SelectDataPackHeading;
             _buyOneGBText.Text = StringConstants.Localizable.BuyOneGB;
             _buyTwoGBText.Text = StringConstants.Localizable.BuyTwoGB;
-            _buyOneGBPrice.Text = string.Format(StringConstants.Localizable.BuyOneGBPrice, "14.99");
-            _buyTwoGBPrice.Text = string.Format(StringConstants.Localizable.BuyTwoGBPrice,"19.99");
+            _buyOneGBPrice.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, "14.99");
+            _buyTwoGBPrice.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, "19.99");
             _outstandingAmountText.Text = StringConstants.Localizable.OutStandingAmountText;
-            _outstandingAmount.Text = string.Format(StringConstants.Localizable.OutstandingAmount, Controller._outstandingPriceValue.ToString());
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
 			_addonsTitle.Text = StringConstants.Localizable.AddOnsTitle;
-			_addonsAmount.Text = String.Format(StringConstants.Localizable.AddOnsAmount, Controller._addOns);
+			_addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
         }
 
         private void settingPriceTextColor()
@@ -138,8 +138,8 @@ namespace MobileApp.Droid.Views
             AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
             memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
             memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyOneGB));
-            memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { _buyOneGBClick(14.99); });
-            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+            memberDeleteAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (deleteSender, deleteEventArgs) => { _buyOneGBClick(14.99); });
+            memberDeleteAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (deleteSender, deleteEventArgs) => { });
             Dialog deleteDialog = memberDeleteAlert.Create();
             deleteDialog.Show();
         }
@@ -149,8 +149,8 @@ namespace MobileApp.Droid.Views
             AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
             memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
             memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyTwoGB));
-			memberDeleteAlert.SetPositiveButton("Yes", (deleteSender, deleteEventArgs) => { _buyTwoGBClick(19.99); });
-            memberDeleteAlert.SetNegativeButton("No", (deleteSender, deleteEventArgs) => { });
+			memberDeleteAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (deleteSender, deleteEventArgs) => { _buyTwoGBClick(19.99); });
+            memberDeleteAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (deleteSender, deleteEventArgs) => { });
             Dialog deleteDialog = memberDeleteAlert.Create();
             deleteDialog.Show();
         }

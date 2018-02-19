@@ -8,13 +8,11 @@ using Xamarin.Forms;
 namespace MobileApp.Droid.Helpers
 {
     public partial class CustomSlidingTilesView : ContentView
-    {
-        
+    {        
         public static List<Android.Widget.Button> _userButtons;
 
         public static void CreateSlidingTilesView(LinearLayout parent)
         {
-            //FrameLayout buttonsLayout = new FrameLayout(parent.Context);
             int pixelDensity = (int)Android.Content.Res.Resources.System.DisplayMetrics.Density;
             if (_userButtons == null) { _userButtons = new List<Android.Widget.Button>(); }
 

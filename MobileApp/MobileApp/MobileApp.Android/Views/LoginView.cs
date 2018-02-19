@@ -30,9 +30,7 @@ namespace MobileApp.Droid.Views
 		private string _loginId;
 		private string _password;
 		private InputMethodManager _inputManager;
-
 		private ProgressDialog progress;
-		private ProgressDialog QRProgress;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {

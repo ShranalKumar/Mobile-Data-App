@@ -35,7 +35,7 @@ namespace MobileApp.Droid.Helpers
                     currentRow.Orientation = Orientation.Horizontal;
                 }
 
-            ContextThemeWrapper userTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileLayoutStyle);
+                ContextThemeWrapper userTileContext = new ContextThemeWrapper(parent.Context, Resource.Style.UserTileLayoutStyle);
                 LinearLayout currentUser = new LinearLayout(userTileContext);
                 currentUser.Orientation = Orientation.Vertical;
 				currentUser.Id = i;

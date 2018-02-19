@@ -188,18 +188,15 @@
     <Compile Include="Adapters\GamificationViewAdapter.cs" />
     <Compile Include="Adapters\NonAdminContentAdapter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
-    <Compile Include="API\PushNotification.cs" />
     <Compile Include="API\QRAuth.cs" />
     <Compile Include="Converters\CoreColorConverter.cs" />
     <Compile Include="Helpers\AllocationPageCustomUserTilesPage.cs" />
     <Compile Include="Helpers\ClassConverterHelper.cs" />
-    <Compile Include="Helpers\CustomPlanOverviewView.cs" />
     <Compile Include="Helpers\CustomSlidingTilesView.cs" />
-    <Compile Include="Helpers\CustomUserDataUsageView.cs" />
     <Compile Include="Helpers\DashboardGradientTimerHelper.cs" />
     <Compile Include="Helpers\DataAmountSelectorHelper.cs" />
     <Compile Include="Helpers\CustomUserTilesPage.cs" />
-    <Compile Include="Views\AddmemberPageView.cs" />
+    <Compile Include="Helpers\DialogHelper.cs" />
     <Compile Include="Views\AdminDashboardContentView.cs" />
     <Compile Include="Views\AdminDashboardView.cs" />
     <Compile Include="API\Controller.cs" />
@@ -212,13 +209,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AllocationPageView.cs" />
     <Compile Include="Views\PlanOverviewView.cs" />
-    <Compile Include="Views\QRCodeScannerView.cs" />
     <Compile Include="Views\QRCodeView.cs" />
     <Compile Include="Views\RequestView.cs" />
     <Compile Include="Views\SplashScreenView.cs" />
     <Compile Include="Views\TransferView.cs" />
     <Compile Include="Views\UsersDataUsageView.cs" />
-    <Compile Include="Views\GoogleMapsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

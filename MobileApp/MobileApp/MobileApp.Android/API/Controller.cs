@@ -39,14 +39,6 @@ namespace MobileApp.Droid
 			_daysRemaining = Math.Ceiling((newEndDate - _currentDate).TotalDays);
 			SetGlobalValues();
 			_outstandingPriceValue = _userLoggedIn.Outstanding;
-    //        if (_users[0].AdminStatus)
-    //        {
-    //            //_users[0].Allocated = _planDataPool - _totalAllocated;
-				//_users[0].Allocated = 
-    //        }
-			
-			Console.WriteLine("Controller successfully loaded and all contents are ready to go!");
-
 		}
 
 		public static void SetGlobalValues() 

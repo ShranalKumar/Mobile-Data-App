@@ -69,7 +69,7 @@ namespace MobileApp.Droid.Views
 
 		protected void setAllStringConstants()
 		{
-			_nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UsersDataUsage, Controller._users[0].Name.FirstName);
+			_nonAdminDataUsageUsageTitle.Text = string.Format(StringConstants.Localizable.UserDataPageNumber, Controller._users[0].Name.FirstName);
 		}
 
         public void BackgroundGradientThread(TransitionDrawable transition)
