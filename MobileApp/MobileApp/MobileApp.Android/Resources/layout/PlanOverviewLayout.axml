@@ -193,7 +193,7 @@
                     android:layout_gravity="right"
                     android:textSize="16sp"
                     android:textColor="#FFFFFF"
-                    android:background="@drawable/buttonstyle" />
+                    android:background="@drawable/buttonbluebackgroundripple" />
             </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                     android:layout_gravity="right"
                     android:textSize="16sp"
                     android:textColor="#FFFFFF"
-                    android:background="@drawable/buttonstyle" />
+                    android:background="@drawable/buttonbluebackgroundripple" />
             </FrameLayout>
         </LinearLayout>
     </RelativeLayout>

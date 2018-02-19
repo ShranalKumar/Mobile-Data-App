@@ -51,7 +51,7 @@
             p1:layout_marginRight="10dp"
             p1:layout_marginTop="5dp"
             p1:padding="10dp"
-            p1:background="@drawable/RoundedBorder" />
+            p1:background="@drawable/roundedborderripple" />
         <Button
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             p1:layout_marginLeft="10dp"
             p1:layout_marginRight="10dp"
             p1:layout_marginTop="5dp"
-            p1:background="@drawable/roundedborder" />
+            p1:background="@drawable/roundedborderripple" />
     </LinearLayout>
     <LinearLayout
         p1:orientation="vertical"
@@ -112,5 +112,6 @@
         p1:minHeight="25px"
         p1:requiresFadingEdge="vertical"
         p1:fadingEdgeLength="25dp"
-        p1:paddingBottom="10dp" />
+        p1:paddingBottom="10dp"
+        p1:isScrollContainer="false" />
 </RelativeLayout>

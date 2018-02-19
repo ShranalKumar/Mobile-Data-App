@@ -282,7 +282,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/RequestButton"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/buttonstyle"
+                    android:background="@drawable/buttonbluebackgroundripple"
                     android:layout_alignParentBottom="true"
                     android:textColor="#ffffff"
                     android:padding="10dp" />
