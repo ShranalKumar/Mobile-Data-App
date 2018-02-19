@@ -94,25 +94,6 @@ namespace MobileApp.Droid.Views
 
 			if (AllocationPageCustomUserTilesPage.unallocated >= 0)
 			{
-				//foreach (LinearLayout tile in _userTileList)
-				//{
-				//	tile.Click += (o, s) =>
-				//	{
-				//		_tileClickedOn = tile;
-				//		Intent loadUserDataPage = new Intent(_context, typeof(UsersDataUsageView));
-				//		string username;
-				//		for (int i = 0; i < _tileClickedOn.ChildCount; i++)
-				//		{
-				//			if (_tileClickedOn.GetChildAt(i).GetType() == typeof(TextView))
-				//			{
-				//				TextView userName = (TextView)_tileClickedOn.GetChildAt(i);
-				//				username = userName.Text;
-				//				loadUserDataPage.PutExtra("tag", _tileClickedOn.Id);
-				//				_context.StartActivity(loadUserDataPage);
-				//			}
-				//		}
-				//	};
-
 				double conversion;
 				int userID;
 				foreach (LinearLayout tile in AllocationPageCustomUserTilesPage.UserTiles)
@@ -128,42 +109,14 @@ namespace MobileApp.Droid.Views
 												{
 													x.Allocated = conversion;
 												});
-							//Controller._users.ForEach(y => if (y.uid == tile) 
-							//{ 
-							//} y.Allocated = conversion);
-							//_user.Allocated = conversion;
-
-							//Controller._users.ForEach(
 						}
 					}
 				}
-
 				var changedUser = await Controller.UpdateAllocation(Controller._users);
                 Controller._totalUnAllocated = AllocationPageCustomUserTilesPage.unallocated;
                 Toast.MakeText(_context, "Allocations have successfully been updated", ToastLength.Short).Show();
 				Controller._users = changedUser;
-
 			}
-			else
-			{
-				AlertDialog.Builder allocationAlert = new AlertDialog.Builder(_context);
-				allocationAlert.SetTitle("Allocation Alert");
-				allocationAlert.SetMessage(StringConstants.Localizable.AllocationError);
-				allocationAlert.SetNegativeButton("Ok!", (deleteSender, deleteEventArgs) => { });
-				Dialog deleteDialog = allocationAlert.Create();
-				deleteDialog.Show();
-			}
-
-
-			//protected async void UpdateUserDataAllocation(object sender, EventArgs e)
-			//{
-			//	Controller._totalUnAllocated = _tempUnAllocated;
-			//	Controller._users[0].Allocated = _tempUnAllocated;
-			//	User changedUser = await Controller.UpdateAllocation(_user, _progressChanged);
-			//Controller._users[_uid] = changedUser;
-			//	Toast.MakeText(this, StringConstants.Localizable.SavedChangesMessage, ToastLength.Long).Show();
-			////}
-
 		}
 	}
 }

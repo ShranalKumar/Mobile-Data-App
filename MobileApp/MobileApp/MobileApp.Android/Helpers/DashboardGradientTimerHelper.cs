@@ -22,12 +22,19 @@ namespace MobileApp.Droid.Helpers
         private bool _isPaused;
         private int _gradient;
         private AdminDashboardView _adminDashboard;
-        private UsersDataUsageView _usageView;
+        private NonAdminDashBoardView _nonAdminDashBoard;
 
         public DashboardGradientTimerHelper(AdminDashboardView dashboard)
         {
             _gradient = 0;
             _adminDashboard = dashboard;
+            _isPaused = false;
+        }
+
+        public DashboardGradientTimerHelper(NonAdminDashBoardView dashboard)
+        {
+            _gradient = 0;
+            _nonAdminDashBoard = dashboard;
             _isPaused = false;
         }
 
@@ -83,13 +90,25 @@ namespace MobileApp.Droid.Helpers
                         break;
                 }
 
-                var adminTransition = new TransitionDrawable(new Drawable[]
+                if (_adminDashboard != null)
                 {
-                    ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, first, null),
-                    ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, second, null)
-                });
+                    var transition = new TransitionDrawable(new Drawable[]
+                    {
+                        ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, first, null),
+                        ResourcesCompat.GetDrawable(_adminDashboard.ApplicationContext.Resources, second, null)
+                    });
+                    _adminDashboard.BackgroundGradientThread(transition);
+                }
 
-                _adminDashboard.BackgroundGradientThread(adminTransition);
+                if (_nonAdminDashBoard != null)
+                {
+                    var transition = new TransitionDrawable(new Drawable[]
+                    {
+                        ResourcesCompat.GetDrawable(_nonAdminDashBoard.ApplicationContext.Resources, first, null),
+                        ResourcesCompat.GetDrawable(_nonAdminDashBoard.ApplicationContext.Resources, second, null)
+                    });
+                    _nonAdminDashBoard.BackgroundGradientThread(transition);
+                }                
 
                 if (_gradient == NumberConstants.DashboardGradientTransition.DashboardGradientCount - 1)
                 {

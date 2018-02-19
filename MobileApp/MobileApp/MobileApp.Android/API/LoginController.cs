@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid
 {
@@ -25,7 +26,7 @@ namespace MobileApp.Droid
 
 		public async System.Threading.Tasks.Task userLoginPhaseAsync()
 		{
-			string loginQuery = String.Format("select * from t where t.uid = '{0}'", _loginid);
+			string loginQuery = String.Format(StringConstants.Localizable.ReadQuery, _loginid);
 			manager = TodoItemManager.DefaultManager;
 
 			await manager.GetTodoItemsAsync(loginQuery, _loginid, _password);

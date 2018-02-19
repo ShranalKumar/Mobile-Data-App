@@ -12,53 +12,55 @@ using Android.Views;
 using Android.Widget;
 using MobileApp.Droid;
 using MobileApp.Constants;
+using ZXing.Mobile;
+using Android.Support.V7.App;
+using Android.Views.InputMethods;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
+    [Activity(Theme = "@style/MainTheme", Label = "TrustPowerMobile", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait, Icon = "@mipmap/trust")]
     public class LoginView : Activity
     {
         private Button _loginButtonClicked;
+		private Button _qrSignInButton;
         private LinearLayout _usernameField;
 		private LinearLayout _passwordField;
 		private EditText _userInputID;
 		private EditText _userInputPassword;
 		private string _loginId;
 		private string _password;
+		private InputMethodManager _inputManager;
 
-        private ProgressDialog progress;
+		private ProgressDialog progress;
+		private ProgressDialog QRProgress;
 
 		protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-			
+			MobileBarcodeScanner.Initialize(Application);
 
-            SetContentView(Resource.Layout.LoginLayout);
+			SetContentView(Resource.Layout.LoginLayout);
 
             findAllElements();
             setAllStringConstants();
-            
+			SetClickActions();
+            _inputManager = (InputMethodManager)GetSystemService(InputMethodService);
+            _loginButtonClicked.Enabled = false;
+
             progress = new Android.App.ProgressDialog(this);
             progress.Indeterminate = true;
             progress.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
-
-            _loginButtonClicked.Click += LoginButtonIsClickedAsync;
-
-			
-
 		}
 
 		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
-        {
-            progress.Show();
+        {            
             Controller.Clear();
-            _usernameField.Visibility = ViewStates.Visible;
+			_inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+			_usernameField.Visibility = ViewStates.Visible;
             _passwordField.Visibility = ViewStates.Visible;
-			_loginId = _userInputID.Text;
-			_password = _userInputPassword.Text;
-
+			
 			LoginController logincontroller = new LoginController(_loginId, _password);
 			await logincontroller.userLoginPhaseAsync();
 
@@ -72,22 +74,43 @@ namespace MobileApp.Droid.Views
 			{
 				Intent intent = new Intent(this, typeof(NonAdminDashBoardView));
 				StartActivity(intent);
+				Finish();
 			}
 			else
 			{
-				Console.WriteLine("Log in Failed!");
+				Toast.MakeText(this, StringConstants.Localizable.LogInFailed, ToastLength.Short).Show();
 			}
 
-            progress.Hide();
+			progress.Hide();
 		}
 
-        protected void findAllElements()
+		private async void QRSignInButtonClickedAsync(object sender, EventArgs e)
+		{
+			MobileBarcodeScanner.Initialize(Application);
+			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			var result = await scanner.Scan();
+            try
+            {
+                if (result.Text != null)
+                {
+                    var credentials = result.Text.Split();
+                    _loginId = credentials[0];
+                    _password = credentials[1];
+                    progress.Show();
+                    LoginButtonIsClickedAsync(sender, e);
+                }
+            }
+            catch (Exception) { }            
+		}
+
+		protected void findAllElements()
         {
             _loginButtonClicked = FindViewById<Button>(Resource.Id.LogInButton);
             _usernameField = FindViewById<LinearLayout>(Resource.Id.UsernameLayout);
             _passwordField = FindViewById<LinearLayout>(Resource.Id.PasswordLayout);
             _userInputID = FindViewById<EditText>(Resource.Id.UsernameInputField);
             _userInputPassword = FindViewById<EditText>(Resource.Id.PasswordInputField);
+			_qrSignInButton = FindViewById<Button>(Resource.Id.QRSignInButton);
         }
 
         protected void setAllStringConstants()
@@ -95,6 +118,49 @@ namespace MobileApp.Droid.Views
             _userInputID.Hint = StringConstants.Localizable.UsernameHint;
             _userInputPassword.Hint = StringConstants.Localizable.PasswordHint;
             _loginButtonClicked.Text = StringConstants.Localizable.LogIn;
+			_qrSignInButton.Text = StringConstants.Localizable.QRLogIn;
         }
+
+		protected void SetClickActions() 
+		{
+			_loginButtonClicked.Click += (sender, e) =>
+			{
+				_loginId = _userInputID.Text;
+				_password = _userInputPassword.Text;
+				progress.Show();
+				LoginButtonIsClickedAsync(sender, e);
+			};
+
+			_userInputPassword.EditorAction += (sender, e) =>
+			{
+				if (e.ActionId == ImeAction.Go)
+				{
+					_loginButtonClicked.PerformClick();
+				}
+			};
+
+			_userInputID.AfterTextChanged += EnableLogin;
+			_userInputPassword.AfterTextChanged += EnableLogin;
+			_qrSignInButton.Click += QRSignInButtonClickedAsync;
+		}
+
+		public override bool OnTouchEvent(MotionEvent e)
+		{
+			_inputManager = (InputMethodManager)GetSystemService(InputMethodService);
+			_inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
+			return base.OnTouchEvent(e);
+		}
+
+		public void EnableLogin(object sender, EventArgs e)
+		{
+			if (_userInputID.Text != "" && _userInputPassword.Text != "")
+			{
+				_loginButtonClicked.Enabled = true;
+			}
+			else
+			{
+				_loginButtonClicked.Enabled = false;
+			}
+		}
 	}
 }

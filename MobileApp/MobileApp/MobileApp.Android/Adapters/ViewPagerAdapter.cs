@@ -20,6 +20,7 @@ namespace MobileApp.Droid.Adapters
     public class ViewPagerAdapter : PagerAdapter
     {
         private AdminDashboardView _context;
+        private NonAdminDashBoardView _nonAdminContext;
         public static List<View> _views = new List<View>();      
 
         public override int Count
@@ -30,6 +31,11 @@ namespace MobileApp.Droid.Adapters
         public ViewPagerAdapter(AdminDashboardView context)
         {
             _context = context;
+        }
+
+        public ViewPagerAdapter(NonAdminDashBoardView context)
+        {
+            _nonAdminContext = context;
         }
 
         public override bool IsViewFromObject(View view, Java.Lang.Object obj)
@@ -72,6 +78,7 @@ namespace MobileApp.Droid.Adapters
 
         public int GetItemPosition(View view)
         {
+            Console.WriteLine(_views.IndexOf(view));
             return _views.IndexOf(view);
         }
 

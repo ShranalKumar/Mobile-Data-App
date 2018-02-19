@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 
+  <style name="MainTheme.Splash" parent="android:Theme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@drawable/splash</item>
+
+  </style>
+  
   <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
     <item name="android:statusBarColor">@android:color/black</item>
     <item name="android:buttonStyle">@style/NoShadowButton</item>
@@ -9,6 +15,9 @@
 	  <item name="android:textColor">#FFFFFF</item>
   </style>
 
+    <style name="MainTheme.Dialog" parent="Theme.AppCompat.Dialog">
+  </style>
+  
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
 
@@ -186,20 +195,22 @@
 	</style>
 
 	<style name="WhiteBorderTransperentButtonStyle" parent="@android:style/Widget.Button">
-  <item name="android:gravity">center_vertical|center_horizontal</item>
-	<item name="android:orientation">horizontal</item>
-  <item name="android:textColor">#FFFFFFFF</item>
-  <item name="android:shadowColor">#FF000000</item>
-  <item name="android:shadowDx">0</item>
-  <item name="android:shadowDy">-1</item>
-  <item name="android:shadowRadius">0.2</item>
-  <item name="android:textSize">19dip</item>
-  <item name="android:textStyle">bold</item>
-  <item name="android:focusable">true</item>
-  <item name="android:clickable">true</item>
-  <item name="android:layout_alignParentTop">true</item>
-  <item name="android:layout_width">wrap_content</item>
-  <item name="android:layout_height">wrap_content</item>	
+    <item name="android:gravity">center</item>
+	  <item name="android:orientation">horizontal</item>
+    <item name="android:background">@drawable/RoundedBorder</item>
+    <item name="android:textColor">#FFFFFFFF</item>
+    <item name="android:focusable">true</item>
+    <item name="android:clickable">true</item>
+    <item name="android:layout_alignParentTop">true</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>	
+  </style>
+
+  <style name="SlidingUserTileButton" parent="@android:style/Widget.Button">
+    <item name="android:gravity">center</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:background">@drawable/RoundedBorderButton</item>
+    <item name="android:textColor">#3f3f3f</item>
   </style>
   
   <style name="ProgressBorderStyle">
@@ -213,6 +224,21 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:progressBackgroundTint">#00ffffff</item>
     <item name="android:progressTint">#30ffffff</item>
+    <item name="android:padding">0px</item>
+    <item name="android:scaleY">20</item>
+  </style>
+
+  <style name="ProgressBorderStyleDark">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:background">@drawable/progressbarborderdark</item>
+  </style>
+
+  <style name="ProgressBarFillStyleGreen" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:progressBackgroundTint">#00ffffff</item>
+    <item name="android:progressTint">#00a000</item>
     <item name="android:padding">0px</item>
     <item name="android:scaleY">20</item>
   </style>
@@ -319,6 +345,20 @@
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">1dp</item>
     <item name="android:background">?android:attr/listDivider</item>
+  </style>
+
+	<style name="QRLoginButton">
+		<item name="android:textSize">17sp</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:textColor">#6191E8</item>
+		<item name="android:background">#00000000</item>
+		<item name="android:layout_marginTop">10dp</item>
+		<item name="android:layout_marginBottom">10dp</item>
+	</style>
+  
+  <style name="UsersPopupMenu" parent="Widget.AppCompat.PopupMenu">
+    <item name="android:itemBackground">#FFFFFF</item>
+    <item name="android:textColor">#545454</item>
   </style>
 
 </resources>

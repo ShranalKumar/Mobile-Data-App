@@ -16,6 +16,7 @@ using DocumentDBTodo;
 using Microsoft.Azure.Documents;
 using MobileApp.Droid.Views;
 using MobileApp.Droid.Helpers;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid
 {
@@ -141,11 +142,12 @@ namespace MobileApp.Droid
 						User groupMemberUser = new User();
 						groupMemberUser.UID = member.uid;
 						groupMemberUser.Name = groupMemberName;
-						
+						groupMember.AdminStatus = member.AdminStatus;
+
 						if (currentUser.AdminStatus)
 						{
 							_adminStatus = true;
-							groupMember.AdminStatus = member.AdminStatus;
+							
 							groupMember.Used = member.Used;
 							groupMember.Allocated = member.Allocated;
 							groupMember.UsageBreakdown = new List<UserUsageBreakdown>();							
@@ -163,6 +165,7 @@ namespace MobileApp.Droid
 							groupMemberUser.Allocated = member.Allocated;
 							groupMemberUser.UsageBreakdown = groupMember.UsageBreakdown;
 						}
+						currentUser.GroupMembers.Add(groupMember);
 						_groupMembers.Add(groupMemberUser);
 					}
 					_users.Add(currentUser);
@@ -178,7 +181,7 @@ namespace MobileApp.Droid
 
 		public async Task<List<User>> UpdateMemberAllocation(List<User> user)
 		{
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, Controller._userLoggedIn.UID)).AsEnumerable().First();
 			if (Math.Round(_users.Where(x => x.UID == queryDoc.uid).FirstOrDefault().Allocated, 2) <= queryDoc.Used) 
 			{
 				queryDoc.Allocated = queryDoc.Used;
@@ -219,7 +222,7 @@ namespace MobileApp.Droid
                 TodoItem queryDoc;
                 try
                 {
-                    queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'",Controller._userLoggedIn.UID)).AsEnumerable().First();
+                    queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery,Controller._userLoggedIn.UID)).AsEnumerable().First();
                 }
                 catch (Exception)
                 {
@@ -257,11 +260,11 @@ namespace MobileApp.Droid
             }
             else
             {
-                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+                var adminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, Controller._userLoggedIn.UID)).AsEnumerable().First();
                 TodoItem newAdminDoc;
                 try
                 {
-                    newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", newMember.UID)).AsEnumerable().First();
+                    newAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, newMember.UID)).AsEnumerable().First();
                 }
                 catch (Exception)
                 {
@@ -308,7 +311,7 @@ namespace MobileApp.Droid
 
         public async Task<User> DeleteGroupMember(User user, User targetMember)
         {
-            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+            var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, Controller._userLoggedIn.UID)).AsEnumerable().First();
             GroupMembers groupMemberToDelete;
             Member memberToDelete;
 
@@ -328,7 +331,7 @@ namespace MobileApp.Droid
 
 		public async Task<User> BuyAddOns(User user, double addonAmount, double outstanding)
 		{
-			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format("select * from t where t.uid = '{0}'", Controller._userLoggedIn.UID)).AsEnumerable().First();
+			var queryDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, Controller._userLoggedIn.UID)).AsEnumerable().First();
 			queryDoc.AddOns += addonAmount;
 			queryDoc.Outstanding = outstanding;
 			user.AddOns += addonAmount;
@@ -338,7 +341,36 @@ namespace MobileApp.Droid
 			return user;
 		}
 
-        public Boolean getLoginStatus()
+		public async Task<User> TransferData(User sourceUser, User targetUser, double transferAmount)
+		{
+			if ((sourceUser.Allocated - sourceUser.Used) > transferAmount)
+			{
+				string adminUser = sourceUser.GroupMembers.Where(x => x.AdminStatus == true).FirstOrDefault().UID;
+
+				var sourceUserDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, sourceUser.UID)).AsEnumerable().First();
+				sourceUserDoc.Allocated -= transferAmount;
+
+				var targetUserDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, targetUser.UID)).AsEnumerable().First();
+				targetUserDoc.Allocated += transferAmount;
+
+				var adminUserDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, adminUser)).AsEnumerable().First();
+				adminUserDoc.groupMembers.Where(x => x.uid == sourceUser.UID).FirstOrDefault().Allocated -= transferAmount;
+				adminUserDoc.groupMembers.Where(x => x.uid == targetUser.UID).FirstOrDefault().Allocated += transferAmount;
+
+				await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, sourceUserDoc.id), sourceUserDoc);
+				await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, targetUserDoc.id), targetUserDoc);
+				await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, adminUserDoc.id), adminUserDoc);
+
+				sourceUser.Allocated -= transferAmount;
+				sourceUser.GroupMembers.Where(x => x.UID == targetUser.UID).FirstOrDefault().Allocated += transferAmount;
+				Controller._users.Where(x => x.UID == targetUser.UID).FirstOrDefault().Allocated += transferAmount;
+				return sourceUser;
+			}
+			return sourceUser;			
+		}
+
+
+		public Boolean getLoginStatus()
 		{
 			return _authenticationStatus;
 		}

@@ -88,5 +88,11 @@ namespace MobileApp.Droid
         {
             TodoItemManager.DefaultManager.ClearAll();
         }
+
+		public static async Task<User> TransferData(User sourceUser, User destinationUser, double transferAmount)
+		{
+			User changedUser = await TodoItemManager.DefaultManager.TransferData(sourceUser, destinationUser, transferAmount);
+			return changedUser;
+		}
     }
 } 

@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/UsernameInputField"
-            android:inputType="textEmailAddress" />
+            android:inputType="number" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -44,7 +44,8 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/PasswordInputField" />
+            android:id="@+id/PasswordInputField"
+            android:imeOptions="actionGo" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -63,5 +64,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/LogInButton"
             style="@style/LoginButton" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/QRSignInButton"
+            style="@style/QRLoginButton" />
     </LinearLayout>
 </RelativeLayout>
