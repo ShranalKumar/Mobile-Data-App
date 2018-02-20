@@ -63,11 +63,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LogInButton"
-            style="@style/LoginButton" />
+            style="@style/LoginButton"
+            android:background="@drawable/roundedborderripple"
+            android:padding="10dp" />
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/QRSignInButton"
-            style="@style/QRLoginButton" />
+            style="@style/QRLoginButton"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp" />
     </LinearLayout>
 </RelativeLayout>

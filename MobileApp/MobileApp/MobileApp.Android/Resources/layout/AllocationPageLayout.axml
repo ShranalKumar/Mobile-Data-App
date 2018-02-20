@@ -97,7 +97,7 @@
                 android:layout_alignParentBottom="true">
                 <Button
                     android:id="@+id/SaveButton"
-                    android:background="@drawable/roundedborder"
+                    android:background="@drawable/roundedborderripple"
                     android:textColor="@color/foreground_material_dark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

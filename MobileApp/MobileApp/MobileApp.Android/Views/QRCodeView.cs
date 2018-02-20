@@ -11,6 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MobileApp.Constants;
 
 namespace MobileApp.Droid.Views
 {
@@ -19,17 +20,25 @@ namespace MobileApp.Droid.Views
 	{
         private string _username;
         private string _password;
+        private string _firstName;
+        private ImageView _imageView;
+        private TextView _qrTitleText;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.QRCodeLayout);
-			ImageView imageView = FindViewById<ImageView>(Resource.Id.QRCodeImageView);
+
+            _qrTitleText = FindViewById<TextView>(Resource.Id.QRTitleText);
+			_imageView = FindViewById<ImageView>(Resource.Id.QRCodeImageView);
 
             _username = Intent.GetStringExtra("username");
             _password = Intent.GetStringExtra("password");
+            _firstName = Intent.GetStringExtra("firstname");
+            _qrTitleText.Text = String.Format(StringConstants.Localizable.QRTitleText, _firstName);
 
-			imageView.SetImageBitmap(QRAuth.GenerateQRCode(_username, _password));
+
+            _imageView.SetImageBitmap(QRAuth.GenerateQRCode(_username, _password));
 		}
 	}
 }

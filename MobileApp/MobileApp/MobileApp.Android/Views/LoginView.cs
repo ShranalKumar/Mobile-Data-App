@@ -15,6 +15,7 @@ using MobileApp.Constants;
 using ZXing.Mobile;
 using Android.Support.V7.App;
 using Android.Views.InputMethods;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -45,14 +46,22 @@ namespace MobileApp.Droid.Views
             _inputManager = (InputMethodManager)GetSystemService(InputMethodService);
             _loginButtonClicked.Enabled = false;
 
-            progress = new Android.App.ProgressDialog(this);
+            progress = new ProgressDialog(this);
             progress.Indeterminate = true;
-            progress.SetProgressStyle(Android.App.ProgressDialogStyle.Spinner);
+            progress.SetProgressStyle(ProgressDialogStyle.Spinner);
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
-		}
 
-		private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
+            QRProgress = new ProgressDialog(this);
+            QRProgress.Indeterminate = true;
+            QRProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+            QRProgress.SetMessage("Launching QR Scanner...");
+            QRProgress.SetCancelable(false);
+
+            if (!_loginButtonClicked.Enabled) { _loginButtonClicked.SetTextColor(CoreColorConverter.GetColor(ColorConstants.GreyDisabeledButtonText)); }
+        }
+
+        private async void LoginButtonIsClickedAsync(object sender, EventArgs e)
         {            
             Controller.Clear();
 			_inputManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, HideSoftInputFlags.NotAlways);
@@ -84,9 +93,11 @@ namespace MobileApp.Droid.Views
 
 		private async void QRSignInButtonClickedAsync(object sender, EventArgs e)
 		{
+            QRProgress.Show();
 			MobileBarcodeScanner.Initialize(Application);
 			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
 			var result = await scanner.Scan();
+            QRProgress.Hide();
             try
             {
                 if (result.Text != null)
@@ -154,11 +165,13 @@ namespace MobileApp.Droid.Views
 			if (_userInputID.Text != "" && _userInputPassword.Text != "")
 			{
 				_loginButtonClicked.Enabled = true;
-			}
+                _loginButtonClicked.SetTextColor(CoreColorConverter.GetColor(ColorConstants.WhiteEnabeledButtonText));
+            }
 			else
 			{
 				_loginButtonClicked.Enabled = false;
-			}
-		}
+                _loginButtonClicked.SetTextColor(CoreColorConverter.GetColor(ColorConstants.GreyDisabeledButtonText));
+            }
+        }
 	}
 }
