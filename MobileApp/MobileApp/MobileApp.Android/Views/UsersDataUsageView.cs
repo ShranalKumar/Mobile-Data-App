@@ -76,7 +76,6 @@ namespace MobileApp.Droid.Views
             Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
             PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
             menu.Inflate(Resource.Menu.UsersDottedMenu);
-
             menu.MenuItemClick += (s1, arg1) =>
             {
                 switch (arg1.Item.ItemId)
@@ -94,6 +93,7 @@ namespace MobileApp.Droid.Views
                         Intent loadQRCode = new Intent(this, typeof(QRCodeView));
                         loadQRCode.PutExtra("username", _user.UID);
                         loadQRCode.PutExtra("password", "1");
+                        loadQRCode.PutExtra("firstname", _user.Name.FirstName);
                         StartActivity(loadQRCode);
                         break;
                 }

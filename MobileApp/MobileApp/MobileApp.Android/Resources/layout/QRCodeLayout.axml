@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/QRTitleText"
+        android:textColor="#151515"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center" />
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="match_parent"

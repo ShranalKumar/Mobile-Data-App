@@ -40,6 +40,7 @@ namespace MobileApp.Constants
 
 			//Users Data Usage Screen
 			public const string SavedChangesMessage = "Your changes have successfully been changed!";
+            public const string QRTitleText = "Please scan QR code to authenticate {0}";
 
             //Overview Screen
             public const string NewMemberAddedToast = "New group member has been successfully added!";
