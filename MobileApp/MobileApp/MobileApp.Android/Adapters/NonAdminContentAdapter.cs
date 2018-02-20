@@ -118,8 +118,8 @@ namespace MobileApp.Droid.Adapters
 				Entries = _entries,
 
 				LineMode = LineMode.Spline,
-				LineSize = 8,
-				LabelTextSize = 27,
+				LineSize = 5,
+				LabelTextSize = 23,
 				PointMode = PointMode.None,
 				BackgroundColor = SKColor.Empty
 			};

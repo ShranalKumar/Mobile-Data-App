@@ -117,8 +117,10 @@ namespace MobileApp.Constants
 			public const string NoDialogButton = "No";
 			public const string OkDialogButton = "OK!";
 
-
-
+			//Gamification
+			public const string TradeButton = "Trade";
+			public const string CaptureButton = "Capture";
+			
 		}
-    }
+	}
 }
