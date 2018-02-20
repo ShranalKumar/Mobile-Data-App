@@ -59,59 +59,6 @@
                 android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
-<!--<RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/DataPoolCircleLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/DataDetailsTextLayout"
-        android:layout_centerInParent="true">
-        <RadialProgress.RadialProgressView
-            android:layout_width="match_parent"
-            android:layout_height="100.0dp"
-            android:id="@+id/RadialProgressCircle"
-            android:background="@android:color/transparent" />
-    </RelativeLayout>-->
-<!--<LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/WeeklyModeLayout"
-        android:columnCount="2"
-        android:layout_below="@id/DataPoolCircleLayout"
-        android:gravity="center"
-        android:padding="15dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/WeeklyModeTextLayout"
-            android:layout_weight="50">
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/WeeklyModeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/WeeklyModeSwitchLayout"
-            android:layout_weight="0.5">
-            <Switch
-                android:id="@+id/WeeklyModeOnOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>-->
     <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"

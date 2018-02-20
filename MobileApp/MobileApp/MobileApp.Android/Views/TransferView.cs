@@ -139,7 +139,7 @@ namespace MobileApp.Droid.Views
                 user.Click += (o, s) =>
                 {
                     _userButtons.ForEach(x => x.SetBackgroundResource(Resource.Drawable.RoundedBorderButton));
-                    _userButtons.ForEach(x => x.SetTextColor(Color.ParseColor("#3f3f3f")));
+                    _userButtons.ForEach(x => x.SetTextColor(CoreColorConverter.GetColor(ColorConstants.UserButtonsColor)));
 
                     user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
                     user.SetTextColor(Color.White);

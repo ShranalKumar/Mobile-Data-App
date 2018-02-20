@@ -17,6 +17,7 @@ using Android.Graphics.Drawables;
 using Com.ViewPagerIndicator;
 using Android.Graphics;
 using System.IO;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -47,7 +48,7 @@ namespace MobileApp.Droid.Views
             _mainViewPager.Adapter = _mainPagerAdapter;
             _circlePageIndicator.SetViewPager(_mainViewPager);
             _circlePageIndicator.SetPageColor(Color.White);
-            _circlePageIndicator.SetFillColor(new Color(255, 255, 255, 64));
+            _circlePageIndicator.SetFillColor(CoreColorConverter.GetColor(ColorConstants.CirclePageIndicatorColor));
 
             _adminDashboardContentInstance = new AdminDashboardContentView(this);
             _adminDashboardContentView = _adminDashboardContentInstance.GetView();
