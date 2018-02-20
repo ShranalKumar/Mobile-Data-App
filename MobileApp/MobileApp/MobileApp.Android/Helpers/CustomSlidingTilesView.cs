@@ -25,7 +25,6 @@ namespace MobileApp.Droid.Helpers
                     UserTile.Id = Int32.Parse(user.UID);
                     UserTile.Text = user.Name.FirstName;
 
-
                     parent.AddView(UserTile);
                     _userButtons.Add(UserTile);
                 }				

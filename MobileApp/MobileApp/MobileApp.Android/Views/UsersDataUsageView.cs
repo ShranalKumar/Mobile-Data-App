@@ -68,7 +68,6 @@ namespace MobileApp.Droid.Views
             }
 
             _dottedMenuButton.Click += ShowPopUpMenu;
-
         }
 
         private void ShowPopUpMenu(object sender, EventArgs e)
@@ -131,14 +130,13 @@ namespace MobileApp.Droid.Views
             _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
             _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
 			_clickToCall = FindViewById<RelativeLayout>(Resource.Id.UserLabelLayout);
-
         }
 
 		protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedText;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 2));
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, _user.Name.FirstName);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UserDataUsageTitle, _user.Name.FirstName);
 			_usedDataText.Text = StringConstants.Localizable.UsedText;
 			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 2));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
@@ -146,8 +144,6 @@ namespace MobileApp.Droid.Views
 			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
 			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
 			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, _user.UID);
-
-
         }
 
 		protected void setGraph()

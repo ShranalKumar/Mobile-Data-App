@@ -28,8 +28,6 @@ namespace MobileApp.Droid.Views
         private TextView _fourthNumber;
         private TextView _dataUnitsToGB;
         private TextView _decimalPointVisibility;
-        private TextView _transferDialogDisplayText;
-        private TextView _successfullyTransferedMessage;
 
         private double _dataAmountDouble;
 
@@ -49,9 +47,7 @@ namespace MobileApp.Droid.Views
 
         private TextView _dataRemainingText;
         private TextView _gbRemainingText;
-
-        private RelativeLayout _transferConfirmationPopUp;
-        private RelativeLayout _transferSuccessMessage;
+        
         private LinearLayout _userSelectionSlidingLayout;
 
         private ProgressBar _progressBarFill;

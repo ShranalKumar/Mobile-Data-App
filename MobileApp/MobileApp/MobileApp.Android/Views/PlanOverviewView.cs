@@ -13,6 +13,7 @@ using Android.Widget;
 using MobileApp.Droid.Helpers;
 using MobileApp.Constants;
 using Android.Graphics;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -41,47 +42,51 @@ namespace MobileApp.Droid.Views
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.PlanOverviewLayout);
 
-
             findAllElements();
             setAllStringConstants();
             _overviewPageBackButton.Click += delegate { Finish(); };
 
-            _buyOneGBPrice.Click += delegate { BuyOneGBClicked(); };
-            _buyTwoGBPrice.Click += delegate { BuyTwoGBClicked(); };
-
-
+            _buyOneGBPrice.Click += BuyDataButtonClicked;
+            _buyTwoGBPrice.Click += BuyDataButtonClicked;
             settingPriceTextColor();
         }
 
-		private async void _buyTwoGBClick(double outStanding)
-		{
-			Controller._outstandingPriceValue += outStanding;
-			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 2);
-			Controller._addOns = changedUser.AddOns;
-			Controller.SetGlobalValues();			
-			Controller._userLoggedIn = changedUser;
-			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
-			_outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
-			_addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
-			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
-			settingPriceTextColor();
-			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyTwoGB), ToastLength.Short).Show();
-		}
+        private void BuyDataButtonClicked(object sender, EventArgs e)
+        {
+            Button _buttonClicked = (Button)sender;
 
-		private async void _buyOneGBClick(double outStanding)
-		{
-			Controller._outstandingPriceValue += outStanding;
-			User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, 1);
-			Controller._addOns = changedUser.AddOns;
-			Controller.SetGlobalValues();			
-			Controller._userLoggedIn = changedUser;
-			Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
-			_outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
-			_planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
-			_addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
-			settingPriceTextColor();
-			Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, StringConstants.Localizable.BuyOneGB), ToastLength.Short).Show();
-		}
+            switch (_buttonClicked.Id)
+            {
+                case Resource.Id.BuyOneGBAddOnButton:
+                    BuyAddOnClicked(1, 14.99, StringConstants.Localizable.BuyOneGB);
+                    break;
+
+                case Resource.Id.BuyTwoGBAddOnButton:
+                    BuyAddOnClicked(2, 19.99, StringConstants.Localizable.BuyTwoGB);
+                    break;
+            }
+        }
+
+        private void BuyAddOnClicked(double addOnAmount, double amount, string constant)
+        {
+            Dialog buyDataDialog = DialogHelper.BuyAddOn(this, BuyAddOns, addOnAmount, amount, constant);
+            buyDataDialog.Show();
+        }
+
+        private async void BuyAddOns(object sender, EventArgs e, double addOnAmount, double amount, string constant)
+        {
+            Controller._outstandingPriceValue += amount;
+            User changedUser = await Controller.BuyAddOns(Controller._userLoggedIn, addOnAmount);
+            Controller._addOns = changedUser.AddOns;
+            Controller.SetGlobalValues();
+            Controller._userLoggedIn = changedUser;
+            Controller._users[Controller._users.IndexOf(Controller._userLoggedIn)] = changedUser;
+            _outstandingAmount.Text = string.Format(StringConstants.Localizable.BuyDataAmountInDollars, Controller._outstandingPriceValue.ToString());
+            _addonsAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Controller._addOns);
+            _planRemainingDataAmount.Text = string.Format(StringConstants.Localizable.DataAmount, Controller._totalRemainder);
+            settingPriceTextColor();
+            Toast.MakeText(this, string.Format(StringConstants.Localizable.ToastAfterBuying, constant), ToastLength.Short).Show();
+        }
 
 		private void findAllElements()
         {
@@ -124,37 +129,15 @@ namespace MobileApp.Droid.Views
         {
             if (Controller._outstandingPriceValue <= 0)
             {
-                _outstandingAmount.SetTextColor(new Color(77, 155, 0));
+                _outstandingAmount.SetTextColor(CoreColorConverter.GetColor(ColorConstants.GreenOffSpentData));
             }
 
             else if (Controller._outstandingPriceValue > 0)
             {
-                _outstandingAmount.SetTextColor(new Color(232, 151, 0));
+                _outstandingAmount.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
             }
-        }
-
-        private void BuyOneGBClicked()
-        {
-            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
-            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyOneGB));
-            memberDeleteAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (deleteSender, deleteEventArgs) => { _buyOneGBClick(14.99); });
-            memberDeleteAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (deleteSender, deleteEventArgs) => { });
-            Dialog deleteDialog = memberDeleteAlert.Create();
-            deleteDialog.Show();
-        }
-
-        private void BuyTwoGBClicked()
-        {
-            AlertDialog.Builder memberDeleteAlert = new AlertDialog.Builder(this);
-            memberDeleteAlert.SetTitle(StringConstants.Localizable.AlertBeforeBuyingTitle);
-            memberDeleteAlert.SetMessage(String.Format(StringConstants.Localizable.AlertBeforeBuying, StringConstants.Localizable.BuyTwoGB));
-			memberDeleteAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (deleteSender, deleteEventArgs) => { _buyTwoGBClick(19.99); });
-            memberDeleteAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (deleteSender, deleteEventArgs) => { });
-            Dialog deleteDialog = memberDeleteAlert.Create();
-            deleteDialog.Show();
-        }
-
+        }    
+        
         protected override void OnRestart()
         {
             base.OnRestart();

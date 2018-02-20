@@ -24,6 +24,7 @@ namespace MobileApp.Constants
             //Users Data Usage Screen
             public const string AllocatedText = "Allocated";
             public const string UsedText = "Used";
+            public const string UserDataUsageTitle = "{0}'s Data Usage";
             public const string PointsText = "My Points";
             public const string GraphTitle = "Data usage from last week";
             public const string GraphSubTitle = "(Values in graph are in MB)";
