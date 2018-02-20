@@ -32,8 +32,9 @@ namespace MobileApp.Droid.Views
 		private string _password;
 		private InputMethodManager _inputManager;
 		private ProgressDialog progress;
+        private ProgressDialog QRProgress;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 			MobileBarcodeScanner.Initialize(Application);
@@ -51,7 +52,7 @@ namespace MobileApp.Droid.Views
             progress.SetProgressStyle(ProgressDialogStyle.Spinner);
             progress.SetMessage("Retrieving your account info...");
             progress.SetCancelable(false);
-
+  
             QRProgress = new ProgressDialog(this);
             QRProgress.Indeterminate = true;
             QRProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
