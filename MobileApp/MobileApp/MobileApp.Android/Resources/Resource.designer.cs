@@ -6365,7 +6365,7 @@ namespace MobileApp.Droid
 			public const int ProgressBarFillStyle = 2131558833;
 			
 			// aapt resource value: 0x7f0d01b3
-			public const int ProgressBarFillStyleGreen = 2131558835;
+			public const int ProgressBarFillStyleDark = 2131558835;
 			
 			// aapt resource value: 0x7f0d01b0
 			public const int ProgressBorderStyle = 2131558832;

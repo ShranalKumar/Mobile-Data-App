@@ -282,7 +282,7 @@
                 android:background="@drawable/progressbarborderdark">
                 <ProgressBar
                     android:id="@+id/DataRemainingFillMask"
-                    style="@style/ProgressBarFillStyleGreen" />
+                    style="@style/ProgressBarFillStyleDark" />
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="wrap_content"

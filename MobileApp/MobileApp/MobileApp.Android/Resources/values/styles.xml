@@ -234,11 +234,11 @@
     <item name="android:background">@drawable/progressbarborderdark</item>
   </style>
 
-  <style name="ProgressBarFillStyleGreen" parent="Widget.AppCompat.ProgressBar.Horizontal">
+  <style name="ProgressBarFillStyleDark" parent="Widget.AppCompat.ProgressBar.Horizontal">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>
     <item name="android:progressBackgroundTint">#00ffffff</item>
-    <item name="android:progressTint">#00a000</item>
+    <item name="android:progressTint">#30000000</item>
     <item name="android:padding">0px</item>
     <item name="android:scaleY">20</item>
   </style>
