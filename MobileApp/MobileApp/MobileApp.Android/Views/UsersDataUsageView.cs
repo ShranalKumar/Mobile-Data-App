@@ -16,6 +16,7 @@ using MobileApp.Constants;
 using MobileApp.Droid.Helpers;
 using SkiaSharp;
 using Android.Graphics.Drawables;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -157,7 +158,7 @@ namespace MobileApp.Droid.Views
 					ValueLabel = breakdown.DataUsed,
 					Color = SKColor.Parse("#6191E8"),
 					TextColor = SKColor.Parse("#151515")
-				};
+                };
 				number++;
 			}
 

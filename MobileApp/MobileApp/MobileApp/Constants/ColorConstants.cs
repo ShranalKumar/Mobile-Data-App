@@ -10,5 +10,7 @@ namespace MobileApp.Constants
         public static CoreColor GreenOffSpentData = new CoreColor { Red = 77, Green = 155, Blue = 0, Alpha = 255 };
         public static CoreColor CirclePageIndicatorColor = new CoreColor { Red = 255, Green = 255, Blue = 255, Alpha = 64 };
         public static CoreColor UserButtonsColor = new CoreColor { Red = 63, Green = 63, Blue = 63, Alpha = 255 };
-	}
+        public static CoreColor GraphColor = new CoreColor { Red = 97, Green = 145, Blue = 232, Alpha = 255 };
+        public static CoreColor GraphTextColor = new CoreColor { Red = 97, Green = 145, Blue = 232, Alpha = 255 };
+    }
 }
