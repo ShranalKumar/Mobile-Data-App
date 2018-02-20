@@ -13,6 +13,9 @@ using MobileApp.Droid.Adapters;
 using Com.ViewPagerIndicator;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Microcharts;
+using SkiaSharp;
+using Microcharts.Droid;
 
 namespace MobileApp.Droid.Views
 {
@@ -28,9 +31,11 @@ namespace MobileApp.Droid.Views
         private NonAdminContentAdapter _nonAdminDashboardContentInstance;
         private View _nonAdminContentView;
         private GamificationViewAdapter _gamificationContentInstance;
-        private View _gamificationView;
+		private View _gamificationView;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+
+
+		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.NonAdminDashboardLayout);
@@ -38,7 +43,7 @@ namespace MobileApp.Droid.Views
 			findAllElements();
 			setAllStringConstants();
 
-            _mainPagerAdapter = new ViewPagerAdapter(this);
+			_mainPagerAdapter = new ViewPagerAdapter(this);
             _mainViewPager.Adapter = _mainPagerAdapter;
             _circlePageIndicator.SetViewPager(_mainViewPager);
             _circlePageIndicator.SetPageColor(Color.White);
@@ -65,6 +70,8 @@ namespace MobileApp.Droid.Views
             _mainViewPager = FindViewById<ViewPager>(Resource.Id.NonAdminViewPager);
             _circlePageIndicator = FindViewById<CirclePageIndicator>(Resource.Id.NonAdminPageIndicator);
             _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.NonAdminDashBoard);
+
+
 		}
 
 		protected void setAllStringConstants()
@@ -101,5 +108,5 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_gamificationContentInstance.GetView(0, null, null));
             _mainPagerAdapter.NotifyDataSetChanged();
         }
-    }
+	}
 }

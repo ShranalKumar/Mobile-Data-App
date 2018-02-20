@@ -99,6 +99,10 @@ namespace MobileApp.Constants
             public const string InitialAmount = "0";
             public const string MBUnit = "MB";
             public const string GBUnit = "GB";
+
+            //Gamification
+			public const string TradeButton = "Trade";
+			public const string CaptureButton = "Capture";
         }
     }
 }
