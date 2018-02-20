@@ -30,6 +30,7 @@ namespace MobileApp.Constants
             public const string GraphSubTitle = "(Values in graph are in MB)";
             public const string UserDataPageNumber = "{0}";
             public const string DeleteMemberToast = "{0} has been removed from the plan!";
+            public const string QRTitleText = "Please scan QR code below to authenticate {0}";
 
             //Allocate Data Screen
             public const string AllocatedData = "Allocated Data";
