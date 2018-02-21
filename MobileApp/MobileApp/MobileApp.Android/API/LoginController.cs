@@ -41,7 +41,5 @@ namespace MobileApp.Droid
 		{
 			return manager.getAdminStatus();
 		}
-
-
 	}
 }

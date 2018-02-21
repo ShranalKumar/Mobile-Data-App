@@ -14,7 +14,6 @@ using MobileApp.Droid.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-
 namespace MobileApp.Droid.Helpers
 {
 	public partial class AllocationPageCustomUserTilesPage : ContentView
@@ -56,8 +55,7 @@ namespace MobileApp.Droid.Helpers
 				userAllocationSlider.Max = ((int)Controller._planDataPool + (int)Controller._addOns) * 10;
 				userAllocationSlider.Id = Int32.Parse(user.UID);
                 userAllocationSlider.SecondaryProgress = (int)((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max);
-
-                //userAllocationSlider.Max = (int)((user.Allocated + unallocated) / Controller._planDataPool) * 100;
+                
                 _seekbars.Add(userAllocationSlider);
 				_seekbars.ForEach(x => totalAllocated += (((double)x.Progress / userAllocationSlider.Max) * Controller._planDataPool));
 				unallocated = Controller._planDataPool - totalAllocated + Controller._addOns;
@@ -84,20 +82,12 @@ namespace MobileApp.Droid.Helpers
 						reservedData = Math.Round(reservedData, 2);
 						double reservedToProgress = ((reservedData / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max);
 						double max = e.Progress + reservedToProgress;
-
-						//double tempGigaByte = unallocated + (((double)xyz[0] / 100) * (Controller._planDataPool / (progressChanged + unallocated)));
-						//int maxBound = (int)((tempGigaByte / Controller._planDataPool) * 100);
-
-
-						//var thisBar = _seekbars[_seekbars.IndexOf(userAllocationSlider)];
-						//thisBar.Progress = e.Progress;                      
-
+                        
 						if (progressChanged <= user.Used)
 						{
 							progressChanged = user.Used;
 							Allocated.Text = string.Format(StringConstants.Localizable.DataAmount, Math.Round(progressChanged, 2));
-							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max,2));   //This is where it's causing the problem
-
+							_seekbars[_seekbars.IndexOf(userAllocationSlider)].Progress = (int)(Math.Round((user.Used / (Controller._planDataPool + Controller._addOns)) * userAllocationSlider.Max,2));
 						}
 						else if (e.Progress >= max)
 						{
@@ -124,7 +114,6 @@ namespace MobileApp.Droid.Helpers
 						AllocationPageView._remainingDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(reservedData, 2));
 						unallocated = (int)Controller._planDataPool - (int)sumAllocatedInGB + Controller._addOns;
 					}
-
 				};
 				parent.AddView(User);
 				User.AddView(UserDetailsTextLayout);

@@ -23,7 +23,6 @@ namespace MobileApp.Droid
 					Width = 600
 				}
 			};
-
 			return writer.Write(username + " " + password);
 		}
 	}

@@ -16,6 +16,7 @@ using MobileApp.Constants;
 using MobileApp.Droid.Helpers;
 using SkiaSharp;
 using Android.Graphics.Drawables;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -68,7 +69,6 @@ namespace MobileApp.Droid.Views
             }
 
             _dottedMenuButton.Click += ShowPopUpMenu;
-
         }
 
         private void ShowPopUpMenu(object sender, EventArgs e)
@@ -76,7 +76,6 @@ namespace MobileApp.Droid.Views
             Context popup = new ContextThemeWrapper(this, Resource.Style.UsersPopupMenu);
             PopupMenu menu = new PopupMenu(popup, _dottedMenuButton);
             menu.Inflate(Resource.Menu.UsersDottedMenu);
-
             menu.MenuItemClick += (s1, arg1) =>
             {
                 switch (arg1.Item.ItemId)
@@ -94,6 +93,7 @@ namespace MobileApp.Droid.Views
                         Intent loadQRCode = new Intent(this, typeof(QRCodeView));
                         loadQRCode.PutExtra("username", _user.UID);
                         loadQRCode.PutExtra("password", "1");
+                        loadQRCode.PutExtra("firstname", _user.Name.FirstName);
                         StartActivity(loadQRCode);
                         break;
                 }
@@ -131,23 +131,20 @@ namespace MobileApp.Droid.Views
             _removeUser = FindViewById<Button>(Resource.Id.RemoveUser);
             _generateQR = FindViewById<Button>(Resource.Id.GenerateQR);
 			_clickToCall = FindViewById<RelativeLayout>(Resource.Id.UserLabelLayout);
-
         }
 
 		protected void setAllStringConstants()
         {
             _allocatedDataText.Text = StringConstants.Localizable.AllocatedText;
             _allocatedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Allocated, 2));
-            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UsersDataUsage, _user.Name.FirstName);
+            _allocationPageHeader.Text = String.Format(StringConstants.Localizable.UserDataUsageTitle, _user.Name.FirstName);
 			_usedDataText.Text = StringConstants.Localizable.UsedText;
 			_usedDataAmount.Text = String.Format(StringConstants.Localizable.DataAmount, Math.Round(_user.Used, 2));
 			_pointsText.Text = StringConstants.Localizable.PointsText;
-			_pointsAmount.Text = String.Format(StringConstants.Localizable.PointsAmout, 10);
+			_pointsAmount.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, 10);
 			_graphTitle.Text = StringConstants.Localizable.GraphTitle;
 			_graphSubTitle.Text = StringConstants.Localizable.GraphSubTitle;
-			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserPhoneNumber, _user.UID);
-
-
+			_userPhoneNumber.Text = String.Format(StringConstants.Localizable.UserDataPageNumber, _user.UID);
         }
 
 		protected void setGraph()
@@ -161,7 +158,7 @@ namespace MobileApp.Droid.Views
 					ValueLabel = breakdown.DataUsed,
 					Color = SKColor.Parse("#6191E8"),
 					TextColor = SKColor.Parse("#151515")
-				};
+                };
 				number++;
 			}
 

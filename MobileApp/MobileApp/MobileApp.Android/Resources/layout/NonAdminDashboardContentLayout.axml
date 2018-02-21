@@ -48,7 +48,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:padding="10dp"
-            android:background="@drawable/RoundedBorder"
+            android:background="@drawable/roundedborderripple"
             android:textColor="#FFFFFF" />
         <Button
             android:id="@+id/TransferButton"
@@ -60,7 +60,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/RoundedBorder"
+            android:background="@drawable/roundedborderripple"
             android:textColor="#FFFFFF" />
     </LinearLayout>
     <LinearLayout
@@ -102,5 +102,18 @@
                 android:layout_height="match_parent"
                 android:id="@+id/DataRemainingFillMask" />
         </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/linearlayoutforGraph"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DateLayout">
+        <microcharts.droid.ChartView
+            android:id="@+id/chartViewforNonAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </RelativeLayout>
