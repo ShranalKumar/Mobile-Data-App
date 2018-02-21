@@ -4,7 +4,8 @@
     android:minHeight="25px"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/TransferPage">
+    android:id="@+id/BackgroundLayout"
+    android:background="#ededed">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
@@ -14,17 +15,16 @@
         android:id="@+id/TransferPageContentsLayout">
         <android.support.v7.widget.Toolbar
             android:minHeight="?android:attr/actionBarSize"
-            android:background="@android:color/transparent"
             android:minWidth="25px"
-            android:id="@+id/TransferToolBar"
-            android:padding="15dp"
+            android:id="@+id/AllocationPageToolbar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbargradient">
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/TransferToolbarLayout"
                 android:gravity="center">
                 <ImageButton
@@ -33,11 +33,11 @@
                     android:background="@android:color/transparent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true" />
+                    android:layout_alignParentLeft="true"
+                    android:padding="15dp" />
                 <TextView
-                    android:text="Transfer Data"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/TransferDataTitle"
+                    android:id="@+id/TransferPageTitle"
                     android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,83 +49,58 @@
         </android.support.v7.widget.Toolbar>
         <LinearLayout
             android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
             android:id="@+id/SendToLayout"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="Send Data to:"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/SendDataText"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp" />
-            <HorizontalScrollView
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/UserTilesScrollViewLayout"
-                android:scrollbars="none">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:id="@+id/UserSelectionSlidingLayout"
-                    android:layout_height="match_parent">
-                    <Button
-                        android:text="Louise"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectLouise"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder" />
-                    <Button
-                        android:text="Steven"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectSteven"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder" />
-                    <Button
-                        android:text="Shranal"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectShranal"
-                        android:height="45dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/progressbarborder" />
-                    <Button
-                        android:text="Soumik"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
-                        android:id="@+id/UserSelectSoumik"
-                        android:height="45dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/progressbarborder" />
-                </LinearLayout>
-            </HorizontalScrollView>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:id="@+id/DataAmountSelectorLayout"
-            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="120dp"
+            android:background="@drawable/cardstyle"
+            android:padding="5dp"
+            android:layout_margin="5dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/DataAmountSelectorTitleText"
                 android:text="Select Amount to Transfer:"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/SendDataText"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#3f3f3f" />
+            <HorizontalScrollView
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/UserTilesScrollViewLayout"
+                android:scrollbars="none"
+                android:layout_gravity="center_vertical"
+                android:fadingEdgeLength="25dp"
+                android:requiresFadingEdge="horizontal">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:id="@+id/UserSelectionSlidingLayout"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:showDividers="middle"
+                    android:divider="@drawable/VerticleDividerInivisible" />
+            </HorizontalScrollView>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/DataAmountSelectorLayout"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardstyle"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/DataAmountSelectorTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#3f3f3f" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:id="@+id/DataAmountSelectorButtonLayout"
@@ -134,8 +109,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
@@ -144,37 +119,39 @@
                     android:layout_weight="1"
                     android:padding="10dp">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/FirstUpArrow"
-                        android:rotation="180"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="270" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/FirstNumberText"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="#E89701" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/FirstDownArrow"
                         android:background="@android:color/transparent"
                         android:layout_weight="1"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <TextView
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:id="@+id/DataUnitDecimalText" />
+                    android:id="@+id/DataUnitDecimalText"
+                    android:textColor="#E89701" />
                 <LinearLayout
                     android:orientation="vertical"
                     android:id="@+id/SecondButtonLayout"
@@ -183,28 +160,29 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/SecondUpArrow"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:background="@android:color/transparent"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/SecondNumberText" />
+                        android:id="@+id/SecondNumberText"
+                        android:textColor="#E89701" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/SecondDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -214,28 +192,29 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ThirdUpArrow"
                         android:background="@android:color/transparent"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/ThirdNumberText" />
+                        android:id="@+id/ThirdNumberText"
+                        android:textColor="#E89701" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ThirdDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -245,35 +224,36 @@
                     android:padding="10dp"
                     android:layout_weight="1">
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/FourthUpArrow"
                         android:background="@android:color/transparent"
-                        android:rotation="180"
+                        android:rotation="270"
                         android:padding="15dp" />
                     <TextView
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="30dp"
-                        android:id="@+id/FourthNumberText" />
+                        android:id="@+id/FourthNumberText"
+                        android:textColor="#E89701" />
                     <ImageButton
-                        android:src="@drawable/chevrondownicon"
+                        android:src="@drawable/chevronicon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/FourthDownArrow"
                         android:background="@android:color/transparent"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:rotation="90" />
                 </LinearLayout>
                 <TextView
-                    android:text="MB"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/DataTransferUnits" />
+                    android:id="@+id/DataTransferUnits"
+                    android:textColor="#E89701" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -281,15 +261,19 @@
             android:minWidth="25px"
             android:minHeight="25px"
             android:id="@+id/RemainingDataLayoutForTransfer"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
             <TextView
-                android:text="Data Remaining:"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/DataRemainingTitleText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:textColor="#3f3f3f" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -297,191 +281,43 @@
                 android:layoutMode="clipBounds"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp">
+                android:background="@drawable/progressbarborderdark">
+                <ProgressBar
+                    android:id="@+id/DataRemainingFillMask"
+                    style="@style/ProgressBarFillStyleDark" />
                 <TextView
-                    android:text="XX GB Ramining"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/DataRemainingTextInsidePgBar"
-                    android:gravity="center" />
-                <ImageView
-                    android:src="@drawable/progressbarborder"
-                    android:id="@+id/ProgressBarBorderImage"
-                    android:adjustViewBounds="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp" />
-                <ImageView
-                    android:src="@drawable/progressbarmask"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:id="@+id/ProgressBarMaskImage"
-                    android:alpha="0.3"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp" />
+                    android:layout_centerInParent="true"
+                    android:textColor="#000000" />
             </RelativeLayout>
         </LinearLayout>
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
-            android:id="@+id/SendButtonLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:src="@drawable/progressbarborder"
-                android:layout_width="190dp"
-                android:layout_height="45dp"
-                android:id="@+id/SendButton"
-                android:background="@android:color/transparent"
-                android:layout_centerInParent="true"
-                android:scaleX="1.6"
-                android:scaleY="1.7" />
-            <TextView
-                android:text="Send"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1">
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/SendButtonLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/SendButtonText"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/SendButton"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="#ffffff"
+                    android:padding="10dp"
+                    android:background="@drawable/buttonbluebackgroundripple" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-    <RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/TransferPagePopUpLayout"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:background="@color/background_floating_material_dark"
-        android:alpha="0.95">
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_height="wrap_content"
-            android:id="@+id/TransferDialogLayout"
-            android:gravity="center"
-            android:background="@android:drawable/alert_dark_frame"
-            android:layout_width="match_parent"
-            android:padding="25dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:id="@+id/TransferDialogTpLogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/trustpowerlogo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/TrusppowerLogo"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7" />
-            </LinearLayout>
-            <TextView
-                android:text="Are you sure you would like to transfer XX MB to Steven?"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/TransferDialogText"
-                android:padding="5dp" />
-            <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TransferDialogButtons"
-                android:gravity="center">
-                <Button
-                    android:text="Yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/YesTransferButton"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:layout_margin="5dp" />
-                <Button
-                    android:text="No"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/NoDoNotTransferButton"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/TransferPageSuccessfulPopUpLayout"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:background="@color/background_floating_material_dark"
-        android:alpha="0.95">
-        <LinearLayout
-            android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_height="wrap_content"
-            android:id="@+id/TransferSuccessDialogLayout"
-            android:gravity="center"
-            android:background="@android:drawable/alert_dark_frame"
-            android:layout_width="match_parent"
-            android:padding="25dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:orientation="vertical"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:id="@+id/TransferSuccessDialogTpLogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/trustpowerlogo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/TrusppowerLogoSuccessDialog"
-                    android:scaleX="0.7"
-                    android:scaleY="0.7" />
-            </LinearLayout>
-            <TextView
-                android:text="OK! XX MB has successfully been transfered to Steven?"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/TransferSuccessDialogText"
-                android:padding="5dp" />
-            <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/TransferSuccessDialogButtons"
-                android:gravity="center">
-                <Button
-                    android:text="Ok!"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/OkTransferButton"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
 </RelativeLayout>

@@ -10,296 +10,92 @@
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/ToolbarLayout">
-        <Space
-            p1:id="@+id/space2"
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp" />
         <android.support.v7.widget.Toolbar
             p1:id="@+id/TitleBar"
             p1:minWidth="25px"
             p1:minHeight="25px"
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content">
-            <RelativeLayout
+            <LinearLayout
+                p1:orientation="horizontal"
                 p1:minWidth="25px"
                 p1:minHeight="25px"
-                p1:id="@+id/TitleBarLayout"
                 p1:layout_width="match_parent"
-                p1:layout_height="wrap_content">
-                <ImageButton
-                    p1:id="@+id/MenuButton"
-                    p1:background="@drawable/transparent_button"
-                    p1:clickable="true"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/ToolbarLayout"
+                p1:padding="5dp">
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true" />
-                <android.support.v7.widget.DialogTitle
-                    p1:id="@+id/UserName"
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/MenuButtonLayout"
+                    p1:layout_weight="1"
+                    p1:layout_gravity="left"
+                    p1:padding="3dp"
+                    p1:gravity="left">
+                    <ImageButton
+                        p1:id="@+id/MenuButton"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:src="@drawable/menu"
+                        p1:background="@android:color/transparent"
+                        p1:padding="10dp"
+                        p1:layout_gravity="left" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_toRightOf="@id/MenuButton"
-                    p1:layout_centerVertical="true"
-                    p1:maxWidth="200dp" />
-                <ImageButton
-                    p1:id="@+id/AccountSwitcher"
-                    p1:background="@drawable/transparent_button"
-                    p1:layout_width="30dp"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true"
-                    p1:layout_toRightOf="@id/UserName"
-                    p1:layout_alignWithParentIfMissing="true" />
-                <Space
-                    p1:id="@+id/space4"
-                    p1:layout_width="20dp"
-                    p1:layout_height="wrap_content"
-                    p1:layout_toRightOf="@id/AccountSwitcher" />
-                <ImageButton
-                    p1:id="@+id/NotificationButton"
-                    p1:background="@drawable/transparent_button"
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/AccountSwitcherLayout"
+                    p1:padding="10dp"
+                    p1:layout_weight="1"
+                    p1:layout_gravity="center">
+                    <TextView
+                        p1:textAppearance="?android:attr/textAppearanceMedium"
+                        p1:id="@+id/UserName"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:layout_gravity="center"
+                        p1:ellipsize="marquee"
+                        p1:singleLine="true"
+                        p1:textColor="#FFFFFF" />
+                </LinearLayout>
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
                     p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:layout_centerVertical="true"
-                    p1:layout_toRightOf="@id/space4"
-                    p1:layout_alignParentRight="true" />
-            </RelativeLayout>
+                    p1:layout_height="match_parent"
+                    p1:id="@+id/NotificationButtonLayout"
+                    p1:layout_weight="1"
+                    p1:gravity="right">
+                    <ImageButton
+                        p1:id="@+id/NotificationButton"
+                        p1:background="@android:color/transparent"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="match_parent"
+                        p1:src="@drawable/notificationicon"
+                        p1:padding="10dp" />
+                </LinearLayout>
+            </LinearLayout>
         </android.support.v7.widget.Toolbar>
-        <Space
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp"
-            p1:id="@+id/space5" />
     </LinearLayout>
-    <RelativeLayout
-        p1:id="@+id/ProductLabelLayout"
+    <Com.ViewPagerIndicator.CirclePageIndicator xmlns:app="http://schemas.android.com/apk/res-auto"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/circlePageIndicator"
+        p1:layout_alignParentBottom="true"
+        p1:padding="30dp"
+        app:vpiStrokeColor="#fffaebd7"
+        app:vpiFillColor="#ff00ffff" />
+    <android.support.v4.view.ViewPager
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:layout_below="@id/ToolbarLayout">
-        <ImageView
-            p1:id="@+id/MobileIcon"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:layout_centerHorizontal="true" />
-        <android.support.v7.widget.DialogTitle
-            p1:id="@+id/ProductName"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_centerHorizontal="true"
-            p1:layout_alignWithParentIfMissing="true"
-            p1:layout_below="@id/MobileIcon"
-            p1:layout_centerInParent="true" />
-        <Space
-            p1:id="@+id/space6"
-            p1:layout_width="match_parent"
-            p1:layout_height="10dp"
-            p1:layout_below="@id/ProductName" />
-    </RelativeLayout>
-    <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:id="@+id/MobileInformationLayout"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:layout_below="@id/ProductLabelLayout"
-        p1:layout_marginTop="30dp">
-        <android.support.v7.widget.DialogTitle
-            p1:id="@+id/DaysRemainingText"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_alignWithParentIfMissing="true"
-            p1:layout_centerHorizontal="true" />
-        <RelativeLayout
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:layout_below="@id/DaysRemainingText"
-            p1:id="@+id/DataBarLayout"
-            p1:layout_centerInParent="true">
-            <ImageView
-                p1:id="@+id/DataUsageBorder"
-                p1:layout_height="wrap_content"
-                p1:layout_width="wrap_content"
-                p1:layout_centerInParent="true" />
-            <ImageView
-                p1:id="@+id/DataUsageFill"
-                p1:layout_height="wrap_content"
-                p1:alpha="0.3"
-                p1:layout_alignLeft="@id/DataUsageBorder"
-                p1:layout_width="wrap_content"
-                p1:layout_centerInParent="true" />
-            <android.support.v7.widget.DialogTitle
-                p1:id="@+id/DataUsageText"
-                p1:textAlignment="center"
-                p1:layout_width="wrap_content"
-                p1:layout_height="wrap_content"
-                p1:layout_centerInParent="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:layout_below="@id/MobileInformationLayout"
-        p1:id="@+id/UserTilesLayout"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_marginTop="60dp">
-        <GridLayout
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/UserTileLayout"
-            p1:columnCount="2"
-            p1:rowCount="2"
-            p1:layout_centerInParent="true">
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:id="@+id/LouiseUserTile"
-                p1:layout_height="wrap_content"
-                p1:layout_width="wrap_content"
-                p1:layout_marginRight="30dp"
-                p1:layout_marginBottom="30dp">
-                <RelativeLayout
-                    p1:minWidth="25px"
-                    p1:minHeight="25px"
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/LouiseUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/LouiseTileName"
-                        p1:textAlignment="center"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/LouiseUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/LouiseTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/LouiseUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/LouiseTileName"
-                        p1:layout_alignLeft="@id/LouiseUserTileUsageBorder"
-                        p1:alpha="0.3"
-                        p1:scaleType="fitXY"
-                        p1:layout_width="wrap_content" />
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:id="@+id/ShranalUserTile">
-                <RelativeLayout
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/ShranalUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/ShranalTileName"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/ShranalUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/ShranalTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/ShranalUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/ShranalTileName"
-                        p1:alpha="0.3"
-                        p1:layout_alignLeft="@id/ShranalUserTileUsageBorder" />
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:id="@+id/SoumikUserTile">
-                <RelativeLayout
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/SoumikUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/SoumikTileName"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/SoumikUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/SoumikTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/SoumikUserTileUsageBorderMask"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/SoumikTileName"
-                        p1:alpha="0.3"
-                        p1:layout_alignLeft="@id/SoumikUserTileUsageBorder" />
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:id="@+id/MinkyuUserTile">
-                <RelativeLayout
-                    p1:minWidth="25px"
-                    p1:minHeight="25px"
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/MinkyuUsageLayout">
-                    <android.support.v7.widget.DialogTitle
-                        p1:id="@+id/MinkyuTileName"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:layout_centerHorizontal="true" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:id="@+id/MinkyuUserTileUsageBorder"
-                        p1:layout_centerInParent="true"
-                        p1:layout_below="@id/MinkyuTileName" />
-                    <ImageView
-                        p1:src="@android:drawable/ic_menu_gallery"
-                        p1:id="@+id/MinkyuUserTileUsageBorderMask"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="wrap_content"
-                        p1:alpha="0.3"
-                        p1:layout_below="@id/MinkyuTileName"
-                        p1:layout_alignLeft="@id/MinkyuUserTileUsageBorder" />
-                </RelativeLayout>
-            </LinearLayout>
-        </GridLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:layout_below="@id/UserTilesLayout"
-        p1:id="@+id/AllocateButtonLayout"
-        p1:layout_marginTop="70dp">
-        <Button
-            p1:layout_width="match_parent"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/AllocateButton"
-            p1:background="@drawable/transparent_button"
-            p1:layout_centerHorizontal="false"
-            p1:layout_centerInParent="true"
-            p1:textColor="@color/foreground_material_dark"
-            p1:clickable="true"
-            p1:text="Allocate Data"
-            p1:layout_margin="50dp" />
-    </RelativeLayout>
+        p1:layout_below="@id/ToolbarLayout"
+        p1:id="@+id/MainViewPager"
+        p1:layout_marginBottom="45dp" />
 </RelativeLayout>

@@ -3,109 +3,128 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System;
+using Java.Util;
+using MobileApp.Droid.Adapters;
+using MobileApp.Droid.Helpers;
+using MobileApp.Constants;
+using Android.Content.PM;
+using System.Collections.Generic;
+using Android.Views;
+using Android.Content;
+using System.Linq;
+using Android.Support.V4.View;
+using Android.Graphics.Drawables;
+using Com.ViewPagerIndicator;
+using Android.Graphics;
+using System.IO;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
-    [Activity(Theme = "@style/MainTheme", MainLauncher = true)]
+    [Activity(Theme = "@style/MainTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class AdminDashboardView : Activity
     {
+        private ViewPager _mainViewPager;
+        private ViewPagerAdapter _mainPagerAdapter;
+        private RelativeLayout _dashboardLayout;
         private ImageButton _hamburgerIcon;
+        private TextView _userName;
         private ImageButton _notificationButton;
-        private ImageButton _accountSwitcher;
-
-        private ImageView _mobileIcon;
-        private ImageView _dataUsageBorder;
-        private ImageView _dataUsageFill;
-        private ImageView _louiseUserTileUsageBorder;
-        private ImageView _louiseUserTileUsageBorderMask;
-        private ImageView _shranalUserTileUsageBorder;
-        private ImageView _shranalUserTileUsageBorderMask;
-        private ImageView _soumikUserTileUsageBorder;
-        private ImageView _soumikUserTileUsageBorderMask;
-        private ImageView _minkyuUserTileUsageBorder;
-        private ImageView _minkyuUserTileUsageBorderMask;
-
-        private TextView _productName;
-
-        private DialogTitle _dataUsage;
-        private DialogTitle _user;
-        private DialogTitle _daysRemaining;
-        private DialogTitle _lousieTileName;
-        private DialogTitle _shranalTileName;
-        private DialogTitle _soumikTileName;
-        private DialogTitle _minkyuTileName;
-        
+        private DashboardGradientTimerHelper _dashbardGradientTask;
+        private AdminDashboardContentView _adminDashboardContentInstance;
+        private View _adminDashboardContentView;
+        private AllocationPageView _allocationPageInstance;
+        private View _allocationPageView;
         private Button _allocateButton;
+        private CirclePageIndicator _circlePageIndicator;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.AdminDashboardLayout);
+            findAllElements();
+            
+            _mainPagerAdapter = new ViewPagerAdapter(this);
+            _mainViewPager.Adapter = _mainPagerAdapter;
+            _circlePageIndicator.SetViewPager(_mainViewPager);
+            _circlePageIndicator.SetPageColor(Color.White);
+            _circlePageIndicator.SetFillColor(CoreColorConverter.GetColor(ColorConstants.CirclePageIndicatorColor));
 
-            //Image Buttons
+            _adminDashboardContentInstance = new AdminDashboardContentView(this);
+            _adminDashboardContentView = _adminDashboardContentInstance.GetView();
+            _allocateButton = _adminDashboardContentInstance.GetAllocateButton();
+
+            _allocationPageInstance = new AllocationPageView(this);
+            _allocationPageView = _allocationPageInstance.GetView();
+
+            _mainPagerAdapter.AddView(_adminDashboardContentView);
+            _mainPagerAdapter.AddView(_allocationPageView);
+            _mainPagerAdapter.NotifyDataSetChanged();
+
+            var timer = new Timer();
+            _dashbardGradientTask = new DashboardGradientTimerHelper(this);
+            timer.Schedule(_dashbardGradientTask, 0, NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+        }
+                
+        protected void findAllElements()
+        {
+            _circlePageIndicator = FindViewById<CirclePageIndicator>(Resource.Id.circlePageIndicator);
+            _mainViewPager = FindViewById<ViewPager>(Resource.Id.MainViewPager);
+            _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
+            _userName = FindViewById<TextView>(Resource.Id.UserName);
+            _userName.Text = "MR " + (Controller._userLoggedIn.Name.FirstName + " " + Controller._userLoggedIn.Name.LastName).ToUpper();
             _notificationButton = FindViewById<ImageButton>(Resource.Id.NotificationButton);
-            _accountSwitcher = FindViewById<ImageButton>(Resource.Id.AccountSwitcher);
-
-            //Image Views
-            _mobileIcon = FindViewById<ImageView>(Resource.Id.MobileIcon);
-            _dataUsageBorder = FindViewById<ImageView>(Resource.Id.DataUsageBorder);
-            _dataUsageFill = FindViewById<ImageView>(Resource.Id.DataUsageFill);
-            _louiseUserTileUsageBorder = FindViewById<ImageView>(Resource.Id.LouiseUserTileUsageBorder);
-            _louiseUserTileUsageBorderMask = FindViewById<ImageView>(Resource.Id.LouiseUserTileUsageBorderMask);
-            _shranalUserTileUsageBorder = FindViewById<ImageView>(Resource.Id.ShranalUserTileUsageBorder);
-            _shranalUserTileUsageBorderMask = FindViewById<ImageView>(Resource.Id.ShranalUserTileUsageBorderMask);
-            _soumikUserTileUsageBorder = FindViewById<ImageView>(Resource.Id.SoumikUserTileUsageBorder);
-            _soumikUserTileUsageBorderMask = FindViewById<ImageView>(Resource.Id.SoumikUserTileUsageBorderMask);
-            _minkyuUserTileUsageBorder = FindViewById<ImageView>(Resource.Id.MinkyuUserTileUsageBorder);
-            _minkyuUserTileUsageBorderMask = FindViewById<ImageView>(Resource.Id.MinkyuUserTileUsageBorderMask);
-
-            //Text Views
-            _productName = FindViewById<TextView>(Resource.Id.ProductName);
-
-            //Dialog Titles
-            _dataUsage = FindViewById<DialogTitle>(Resource.Id.DataUsageText);
-            _user = FindViewById<DialogTitle>(Resource.Id.UserName);
-            _daysRemaining = FindViewById<DialogTitle>(Resource.Id.DaysRemainingText);
-            _lousieTileName = FindViewById<DialogTitle>(Resource.Id.LouiseTileName);
-            _shranalTileName = FindViewById<DialogTitle>(Resource.Id.ShranalTileName);
-            _soumikTileName = FindViewById<DialogTitle>(Resource.Id.SoumikTileName);
-            _minkyuTileName = FindViewById<DialogTitle>(Resource.Id.MinkyuTileName);
-
-            //Buttons
-            _allocateButton = FindViewById<Button>(Resource.Id.AllocateButton);
-
-            //Image Resources
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
-            _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
-            _mobileIcon.SetImageResource(Resource.Drawable.MobileIcon);
-            _dataUsageBorder.SetImageResource(Resource.Drawable.ProgressBarBorder);
-            _dataUsageFill.SetImageResource(Resource.Drawable.ProgressBarMask);
-            _louiseUserTileUsageBorder.SetImageResource(Resource.Drawable.ProgressBarBorder);
-            _louiseUserTileUsageBorderMask.SetImageResource(Resource.Drawable.ProgressBarMask);
-            _shranalUserTileUsageBorder.SetImageResource(Resource.Drawable.ProgressBarBorder);
-            _shranalUserTileUsageBorderMask.SetImageResource(Resource.Drawable.ProgressBarMask);
-            _soumikUserTileUsageBorder.SetImageResource(Resource.Drawable.ProgressBarBorder);
-            _soumikUserTileUsageBorderMask.SetImageResource(Resource.Drawable.ProgressBarMask);
-            _minkyuUserTileUsageBorder.SetImageResource(Resource.Drawable.ProgressBarBorder);
-            _minkyuUserTileUsageBorderMask.SetImageResource(Resource.Drawable.ProgressBarMask);
+        }
 
-            _lousieTileName.Text = "Louise";
-            _shranalTileName.Text = "Shranal";
-            _soumikTileName.Text = "Soumik";
-            _minkyuTileName.Text = "Minkyu";
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+            Reload();
+        }
 
-            _productName.Text = "Mobile";
-            _user.Text = "mrs louise shirley wesley abcd";
-            _user.SetAllCaps(true);
-            _daysRemaining.Text = "XX Days Remaining";
-            _dataUsage.Text = "XXGB Remaining";
-            _allocateButton.SetAllCaps(true);
-            _allocateButton.Click += delegate { StartActivity(typeof(AllocationPageView)); };
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Reload();
+        }
 
+        public void Reload()
+        {
+            ViewPagerAdapter._views.Clear();
+            _mainViewPager.RemoveAllViewsInLayout();
+            _mainPagerAdapter.AddView(_adminDashboardContentInstance.GetView(0, null, null));
+            _allocateButton = _adminDashboardContentInstance.GetAllocateButton();            
+            _mainPagerAdapter.AddView(_allocationPageInstance.GetView(0, null, null));
+			_allocateButton.Click += allocateButtonClickAction;
+			_mainPagerAdapter.NotifyDataSetChanged();
+        }
+
+        public void BackgroundGradientThread(TransitionDrawable transition)
+        {
+            RunOnUiThread(() =>
+            {
+                _dashboardLayout.Background = transition;
+                transition.StartTransition(NumberConstants.DashboardGradientTransition.DashboardGradientTransitionLengthInMilliseconds);
+            });
+        }
+
+        public void addView(View newView)
+        {
+            int pageIndex = _mainPagerAdapter.AddView(newView);
+            _mainViewPager.SetCurrentItem(pageIndex, true);
+        }
+
+        public void setCurrentPage(View pageToShow)
+        {
+            _mainViewPager.SetCurrentItem(_mainPagerAdapter.GetItemPosition(pageToShow), true);
+        }
+
+        public void allocateButtonClickAction(object sender, EventArgs e)
+        {
+            _mainViewPager.SetCurrentItem(2, true);
         }
     }
 }
-

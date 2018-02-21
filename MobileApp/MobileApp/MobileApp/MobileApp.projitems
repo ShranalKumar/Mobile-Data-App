@@ -9,7 +9,10 @@
     <Import_RootNamespace>MobileApp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Constants\ColorConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants\NumberConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants\StringConstants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MyClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CoreColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User.cs" />
   </ItemGroup>
 </Project>
