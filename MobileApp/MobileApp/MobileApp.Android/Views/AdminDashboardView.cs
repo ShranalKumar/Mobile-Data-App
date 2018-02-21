@@ -28,8 +28,8 @@ namespace MobileApp.Droid.Views
         private ViewPagerAdapter _mainPagerAdapter;
         private RelativeLayout _dashboardLayout;
         private ImageButton _hamburgerIcon;
+        private TextView _userName;
         private ImageButton _notificationButton;
-        private ImageButton _accountSwitcher;
         private DashboardGradientTimerHelper _dashbardGradientTask;
         private AdminDashboardContentView _adminDashboardContentInstance;
         private View _adminDashboardContentView;
@@ -72,11 +72,11 @@ namespace MobileApp.Droid.Views
             _mainViewPager = FindViewById<ViewPager>(Resource.Id.MainViewPager);
             _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
+            _userName = FindViewById<TextView>(Resource.Id.UserName);
+            _userName.Text = "MR " + (Controller._userLoggedIn.Name.FirstName + " " + Controller._userLoggedIn.Name.LastName).ToUpper();
             _notificationButton = FindViewById<ImageButton>(Resource.Id.NotificationButton);
-            _accountSwitcher = FindViewById<ImageButton>(Resource.Id.AccountSwitcher);
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
-            _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
         }
 
         protected override void OnRestart()
