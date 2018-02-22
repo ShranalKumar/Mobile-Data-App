@@ -197,18 +197,22 @@ namespace MobileApp.Droid
 			
 			foreach (var member in queryDoc.groupMembers)
 			{
+				var nonAdminDoc = client.CreateDocumentQuery<TodoItem>(collectionLink, string.Format(StringConstants.Localizable.ReadQuery, member.uid)).AsEnumerable().First();
 				if (Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2) <= member.Used)
-				{ 
+				{
 					member.Allocated = member.Used;
 					User nonAdmin = user.Where(x => x.UID == member.uid).FirstOrDefault();
 					nonAdmin.Allocated = nonAdmin.Used;
+					nonAdminDoc.Allocated = member.Used;
 				}
 				else
 				{
 					member.Allocated = Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2);
 					User nonAdmin = user.Where(x => x.UID == member.uid).FirstOrDefault();
 					nonAdmin.Allocated = Math.Round(_users.Where(x => x.UID == member.uid).FirstOrDefault().Allocated, 2);
-				}				
+					nonAdminDoc.Allocated = nonAdmin.Allocated;
+				}
+				await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, nonAdminDoc.id), nonAdminDoc);
 			}
 			
 			await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(_databaseId, _collectionId, queryDoc.id), queryDoc);
