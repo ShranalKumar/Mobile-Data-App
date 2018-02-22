@@ -45,7 +45,6 @@ namespace DocumentDBTodo
 		[JsonProperty(PropertyName = "GroupMember")]
 		public List<GroupMembers> groupMembers { get; set; }
 
-
 		[JsonProperty(PropertyName = "UsageBreakdown")]
 		public List<UsageBreakdownList> UsageBreakdown { get; set; }
 	}
@@ -57,7 +56,6 @@ namespace DocumentDBTodo
 
 		[JsonProperty(PropertyName = "LastName")]
 		public string LastName { get; set; }
-
 	}
 
 	public class GroupMembers
@@ -88,8 +86,6 @@ namespace DocumentDBTodo
 
 		[JsonProperty(PropertyName = "DataUsed")]
 		public string DataUsed { get; set; }
-
 	}
-
 }
 

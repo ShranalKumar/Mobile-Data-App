@@ -30,7 +30,6 @@ namespace MobileApp.Droid.Views
 		private LinearLayout _userDataAllocationListItem;
 		private AdminDashboardView _context;
 		private View _view;
-		private User _user;
 
 		public override int Count => throw new NotImplementedException();
 
@@ -91,7 +90,6 @@ namespace MobileApp.Droid.Views
 		}
 		public async void SaveButtonClicked(object sender, EventArgs e)
 		{
-
 			if (AllocationPageCustomUserTilesPage.unallocated >= 0)
 			{
 				double conversion;
@@ -105,10 +103,7 @@ namespace MobileApp.Droid.Views
 							SeekBar seekbar = (SeekBar)tile.GetChildAt(i);
 							userID = tile.Id;
 							conversion = ((double)seekbar.Progress / seekbar.Max) * (Controller._planDataPool + Controller._addOns);
-							Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID)).ToList().ForEach(x =>
-												{
-													x.Allocated = conversion;
-												});
+							Controller._users.Where(x => Int32.Parse(x.UID).Equals(userID)).ToList().ForEach(x => { x.Allocated = conversion; });
 						}
 					}
 				}

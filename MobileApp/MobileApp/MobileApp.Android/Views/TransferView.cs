@@ -28,15 +28,10 @@ namespace MobileApp.Droid.Views
         private TextView _fourthNumber;
         private TextView _dataUnitsToGB;
         private TextView _decimalPointVisibility;
-        private TextView _transferDialogDisplayText;
-        private TextView _successfullyTransferedMessage;
 
         private double _dataAmountDouble;
 
         private Button _sendButtonClicked;
-        private Button _doNotTransfer;
-        private Button _yesToTransfer;
-        private Button _OkSuccessfullyTransfered;
         private List<Button> _userButtons;
         private Button _selectedUser;
 
@@ -52,9 +47,7 @@ namespace MobileApp.Droid.Views
 
         private TextView _dataRemainingText;
         private TextView _gbRemainingText;
-
-        private RelativeLayout _transferConfirmationPopUp;
-        private RelativeLayout _transferSuccessMessage;
+        
         private LinearLayout _userSelectionSlidingLayout;
 
         private ProgressBar _progressBarFill;
@@ -64,11 +57,9 @@ namespace MobileApp.Droid.Views
         private string _getDataUnit;
 		private double _transferAmount;
 
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.TransferLayout);
 
             findAllElements();
@@ -98,8 +89,6 @@ namespace MobileApp.Droid.Views
             _fourthNumber = FindViewById<TextView>(Resource.Id.FourthNumberText);
             _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataTransferUnits);
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.DataUnitDecimalText);
-            _transferDialogDisplayText = FindViewById<TextView>(Resource.Id.TransferDialogText);
-            _successfullyTransferedMessage = FindViewById<TextView>(Resource.Id.TransferSuccessDialogText);
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstUpArrow);
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondUpArrow);
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdUpArrow);
@@ -110,8 +99,6 @@ namespace MobileApp.Droid.Views
             _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthDownArrow);
             _dataRemainingText = FindViewById<TextView>(Resource.Id.DataRemainingTitleText);
             _gbRemainingText = FindViewById<TextView>(Resource.Id.DataRemainingTextInsidePgBar);
-            _transferConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.TransferPagePopUpLayout);
-            _transferSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.TransferPageSuccessfulPopUpLayout);
             _progressBarFill = FindViewById<ProgressBar>(Resource.Id.DataRemainingFillMask);
             _sendButtonClicked = FindViewById<Button>(Resource.Id.SendButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.TransferBackButton);
@@ -136,14 +123,14 @@ namespace MobileApp.Droid.Views
 
         public void SetClickable()
         {
-            _firstUpArrow.Click += increaseInt;
-            _secondUpArrow.Click += increaseInt;
-            _thirdUpArrow.Click += increaseInt;
-            _fourthUpArrow.Click += increaseInt;
-            _firstDownArrow.Click += decreaseInt;
-            _secondDownArrow.Click += decreaseInt;
-            _thirdDownArrow.Click += decreaseInt;
-            _fourthDownArrow.Click += decreaseInt;
+            _firstUpArrow.Click += ArrowClicked;
+            _secondUpArrow.Click += ArrowClicked;
+            _thirdUpArrow.Click += ArrowClicked;
+            _fourthUpArrow.Click += ArrowClicked;
+            _firstDownArrow.Click += ArrowClicked;
+            _secondDownArrow.Click += ArrowClicked;
+            _thirdDownArrow.Click += ArrowClicked;
+            _fourthDownArrow.Click += ArrowClicked;
             _sendButtonClicked.Click += showConfirmationPopUp;
             _BackButton.Click += delegate { Finish(); };
 
@@ -152,7 +139,7 @@ namespace MobileApp.Droid.Views
                 user.Click += (o, s) =>
                 {
                     _userButtons.ForEach(x => x.SetBackgroundResource(Resource.Drawable.RoundedBorderButton));
-                    _userButtons.ForEach(x => x.SetTextColor(Color.ParseColor("#3f3f3f")));
+                    _userButtons.ForEach(x => x.SetTextColor(CoreColorConverter.GetColor(ColorConstants.UserButtonsColor)));
 
                     user.SetBackgroundResource(Resource.Drawable.RoundedBorderButtonClicked);
                     user.SetTextColor(Color.White);
@@ -161,111 +148,83 @@ namespace MobileApp.Droid.Views
             }
         }
 
-        private void increaseInt(object sender, EventArgs e)
+        private void ArrowClicked(object sender, EventArgs e)
         {
-			ImageButton _upArrowClicked = (ImageButton)sender;
+            ImageButton _arrowClicked = (ImageButton)sender;
 
-            switch (_upArrowClicked.Id)
+            switch (_arrowClicked.Id)
             {
                 case Resource.Id.FirstUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _firstNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _firstNumber);
                     setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _secondNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _thirdNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _fourthNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _fourthNumber);
                     break;
-            }
 
-			_getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
-			_dataAmountDouble = Double.Parse(_getDataAmount);
-			_transferAmount = _dataAmountDouble;
-
-			if (_getDataUnit == StringConstants.Localizable.MBUnit)
-			{
-				_transferAmount = _dataAmountDouble / 1000.0;
-			}
-
-			if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) < _transferAmount)
-			{
-				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-
-			}
-			else if (((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) > _transferAmount))
-			{
-				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-			}
-
-		}
-
-		private void decreaseInt(object sender, EventArgs e)
-        {
-			ImageButton _downArrowClicked = (ImageButton)sender;
-
-            switch (_downArrowClicked.Id)
-            {
                 case Resource.Id.FirstDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _firstNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _firstNumber);
                     setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _secondNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _thirdNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _fourthNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _fourthNumber);
                     break;
             }
+            ChangeAmountColor();
+        }
 
-			_getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
-			_dataAmountDouble = Double.Parse(_getDataAmount);
-			_transferAmount = _dataAmountDouble;
+        private void ChangeAmountColor()
+        {
+            _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
+            _dataAmountDouble = Double.Parse(_getDataAmount);
+            _transferAmount = _dataAmountDouble;
 
-			if (_getDataUnit == StringConstants.Localizable.MBUnit)
-			{
-				_transferAmount = _dataAmountDouble / 1000.0;
-			}
-			if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) < _transferAmount)
-			{
-				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
-			}
-			else if (((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) > _transferAmount))
-			{
-				_firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-				_fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
-			}
-		}
+            if (_getDataUnit == StringConstants.Localizable.MBUnit)
+            {
+                _transferAmount = _dataAmountDouble / 1000.0;
+            }
 
+            if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) < _transferAmount)
+            {
+                _firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+                _secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+                _thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+                _fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.RedMoreThanRemianing));
+
+            }
+            else if (((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) > _transferAmount))
+            {
+                _firstNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+                _secondNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+                _thirdNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+                _fourthNumber.SetTextColor(CoreColorConverter.GetColor(ColorConstants.YellowDataInLimit));
+            }
+        }
+        
         private void setGbOrMb(int valueOfFirstNumber)
         {
             if (valueOfFirstNumber > 0)
             {
                 _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
-                _decimalPointVisibility.Text = StringConstants.Localizable.RequestDecimalPoint;
+                _decimalPointVisibility.Text = StringConstants.Localizable.DecimalPoint;
             }
             else
             {
@@ -282,59 +241,39 @@ namespace MobileApp.Droid.Views
 
 			try
 			{
-				_transferAmount = _dataAmountDouble;
-				if (_getDataUnit == StringConstants.Localizable.MBUnit)
-				{
-					_transferAmount = _dataAmountDouble / 1000.0;
-				}
+                _transferAmount = _dataAmountDouble;
+                if (_getDataUnit == StringConstants.Localizable.MBUnit)
+                {
+                    _transferAmount = _dataAmountDouble / 1000.0;
+                }
 
-				if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) >= _transferAmount && _transferAmount != 0)
+                if ((Controller._userLoggedIn.Allocated - Controller._userLoggedIn.Used) >= _transferAmount && _transferAmount != 0)
 				{
-					AlertDialog.Builder transferDataAlert = new AlertDialog.Builder(this);
-					transferDataAlert.SetTitle(StringConstants.Localizable.TransferDataDialogTitle);
-					transferDataAlert.SetMessage(string.Format(StringConstants.Localizable.TransferPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text));
-					transferDataAlert.SetPositiveButton(StringConstants.Localizable.YesDialogButton, (transferSender, transferArgs) => { TransferDataAsync(transferSender, transferArgs); });
-					transferDataAlert.SetNegativeButton(StringConstants.Localizable.NoDialogButton, (transferSender, transferArgs) => { });
-					Dialog transferDialog = transferDataAlert.Create();
-					transferDialog.Show();
+                    Dialog transferDialog = DialogHelper.ConfirmTransfer(this, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text, TransferDataAsync);
+                    transferDialog.Show();
 				}
 				else if (_transferAmount == 0)
 				{
-					AlertDialog.Builder zeroAmountAlert = new AlertDialog.Builder(this);
-					zeroAmountAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
-					zeroAmountAlert.SetMessage(StringConstants.Localizable.TransferAmountZeroWarning);
-					zeroAmountAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
-					Dialog zerAmountDialog = zeroAmountAlert.Create();
-					zerAmountDialog.Show();
-				}
+                    Dialog zerAmountDialog = DialogHelper.ZeroAmount(this);
+                    zerAmountDialog.Show();
+                }
 				else
 				{
-					AlertDialog.Builder transferAmountAlert = new AlertDialog.Builder(this);
-					transferAmountAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
-					transferAmountAlert.SetMessage(StringConstants.Localizable.TransferAmountWarning);
-					transferAmountAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
-					Dialog transferAmountDialog = transferAmountAlert.Create();
-					transferAmountDialog.Show();
+                    Dialog transferAmountDialog = DialogHelper.TransferAmount(this);
+                    transferAmountDialog.Show();
 				}
 			}
-			catch
-			{
-				AlertDialog.Builder noUserSelectedAlert = new AlertDialog.Builder(this);
-				noUserSelectedAlert.SetTitle(StringConstants.Localizable.WarningDialogTitle);
-				noUserSelectedAlert.SetMessage(StringConstants.Localizable.NoUserSelectedWarning);
-				noUserSelectedAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (transferSender, transferEventArgs) => { });
-				Dialog noUserDialog = noUserSelectedAlert.Create();
-				noUserDialog.Show();
+			catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Dialog selectUserDialog = DialogHelper.SelectUser(this);
+                selectUserDialog.Show();
 			}		
 		}
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-			AlertDialog.Builder successAlert = new AlertDialog.Builder(this);
-			successAlert.SetTitle(StringConstants.Localizable.SuccessDialogTitle);
-			successAlert.SetMessage(string.Format(StringConstants.Localizable.TransferConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text));
-			successAlert.SetNeutralButton(StringConstants.Localizable.OkDialogButton, (successSender, successEventArgs) => { });
-			Dialog successDialog = successAlert.Create();
+            Dialog successDialog = DialogHelper.TransferSuccess(this, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
 			successDialog.Show();
 			
             _firstNumber.Text = StringConstants.Localizable.InitialAmount;

@@ -17,6 +17,7 @@ using Android.Graphics.Drawables;
 using Com.ViewPagerIndicator;
 using Android.Graphics;
 using System.IO;
+using MobileApp.Droid.Converters;
 
 namespace MobileApp.Droid.Views
 {
@@ -27,15 +28,13 @@ namespace MobileApp.Droid.Views
         private ViewPagerAdapter _mainPagerAdapter;
         private RelativeLayout _dashboardLayout;
         private ImageButton _hamburgerIcon;
+        private TextView _userName;
         private ImageButton _notificationButton;
-        private ImageButton _accountSwitcher;
         private DashboardGradientTimerHelper _dashbardGradientTask;
         private AdminDashboardContentView _adminDashboardContentInstance;
         private View _adminDashboardContentView;
         private AllocationPageView _allocationPageInstance;
         private View _allocationPageView;
-		//private GoogleMapsView _googleMapsViewInstance;
-		private View _googleMap;
         private Button _allocateButton;
         private CirclePageIndicator _circlePageIndicator;
 
@@ -49,22 +48,17 @@ namespace MobileApp.Droid.Views
             _mainViewPager.Adapter = _mainPagerAdapter;
             _circlePageIndicator.SetViewPager(_mainViewPager);
             _circlePageIndicator.SetPageColor(Color.White);
-            _circlePageIndicator.SetFillColor(new Color(255, 255, 255, 64));
+            _circlePageIndicator.SetFillColor(CoreColorConverter.GetColor(ColorConstants.CirclePageIndicatorColor));
 
             _adminDashboardContentInstance = new AdminDashboardContentView(this);
             _adminDashboardContentView = _adminDashboardContentInstance.GetView();
             _allocateButton = _adminDashboardContentInstance.GetAllocateButton();
-            //_allocateButton.Click += allocateButtonClickAction;
 
             _allocationPageInstance = new AllocationPageView(this);
             _allocationPageView = _allocationPageInstance.GetView();
 
-			//_googleMapsViewInstance = new GoogleMapsView(this);
-			//_googleMap = _googleMapsViewInstance.GetView();
-
             _mainPagerAdapter.AddView(_adminDashboardContentView);
             _mainPagerAdapter.AddView(_allocationPageView);
-			_mainPagerAdapter.AddView(_googleMap);
             _mainPagerAdapter.NotifyDataSetChanged();
 
             var timer = new Timer();
@@ -78,11 +72,11 @@ namespace MobileApp.Droid.Views
             _mainViewPager = FindViewById<ViewPager>(Resource.Id.MainViewPager);
             _dashboardLayout = FindViewById<RelativeLayout>(Resource.Id.BackgroundLayout);
             _hamburgerIcon = FindViewById<ImageButton>(Resource.Id.MenuButton);
+            _userName = FindViewById<TextView>(Resource.Id.UserName);
+            _userName.Text = "MR " + (Controller._userLoggedIn.Name.FirstName + " " + Controller._userLoggedIn.Name.LastName).ToUpper();
             _notificationButton = FindViewById<ImageButton>(Resource.Id.NotificationButton);
-            _accountSwitcher = FindViewById<ImageButton>(Resource.Id.AccountSwitcher);
             _hamburgerIcon.SetImageResource(Resource.Drawable.Menu);
             _notificationButton.SetImageResource(Resource.Drawable.NotificationIcon);
-            _accountSwitcher.SetImageResource(Resource.Drawable.ChevronDownIcon);
         }
 
         protected override void OnRestart()
@@ -104,7 +98,6 @@ namespace MobileApp.Droid.Views
             _mainPagerAdapter.AddView(_adminDashboardContentInstance.GetView(0, null, null));
             _allocateButton = _adminDashboardContentInstance.GetAllocateButton();            
             _mainPagerAdapter.AddView(_allocationPageInstance.GetView(0, null, null));
-			//_mainPagerAdapter.AddView(_googleMapsViewInstance.GetView(0, null, null));
 			_allocateButton.Click += allocateButtonClickAction;
 			_mainPagerAdapter.NotifyDataSetChanged();
         }

@@ -27,15 +27,10 @@ namespace MobileApp.Droid.Views
         private TextView _fourthNumber;
         private TextView _dataUnitsToGB;
         private TextView _decimalPointVisibility;
-        private TextView _requestDialogDisplayText;
-        private TextView _successfullyRequestedMessage;
 
         private double _dataAmountDouble;
 
         private Button _requestButtonClicked;
-        private Button _doNotRequest;
-        private Button _yesToRequest;
-        private Button _OkSuccessfullyRequested;
 
         private ImageButton _firstUpArrow;
         private ImageButton _secondUpArrow;
@@ -46,9 +41,7 @@ namespace MobileApp.Droid.Views
         private ImageButton _thirdDownArrow;
         private ImageButton _fourthDownArrow;
         private ImageButton _BackButton;
-
-        private RelativeLayout _requestConfirmationPopUp;
-        private RelativeLayout _requestSuccessMessage;
+        
 		private LinearLayout _userSelectionSlidingLayout;
         private List<Button> _userButtons;
         private Button _selectedUser;
@@ -56,6 +49,7 @@ namespace MobileApp.Droid.Views
         private DataAmountSelectorHelper _selectorHelper;
 		private string _getDataAmount;
         private string _getDataUnit;
+        private double _requestAmount;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -83,11 +77,6 @@ namespace MobileApp.Droid.Views
             _fourthNumber = FindViewById<TextView>(Resource.Id.FourthRequestNumberText);
             _dataUnitsToGB = FindViewById<TextView>(Resource.Id.DataRequestUnits);
             _decimalPointVisibility = FindViewById<TextView>(Resource.Id.RequestDataUnitDecimalText);
-            _requestDialogDisplayText = FindViewById<TextView>(Resource.Id.RequestDialogText);
-            _successfullyRequestedMessage = FindViewById<TextView>(Resource.Id.RequestSuccessDialogText);
-            _yesToRequest = FindViewById<Button>(Resource.Id.YesRequestButton);
-            _doNotRequest = FindViewById<Button>(Resource.Id.NoDoNotRequestButton);
-            _OkSuccessfullyRequested = FindViewById<Button>(Resource.Id.OkRequestButton);
             _firstUpArrow = FindViewById<ImageButton>(Resource.Id.FirstRequestUpArrow);
             _secondUpArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestUpArrow);
             _thirdUpArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestUpArrow);
@@ -96,8 +85,6 @@ namespace MobileApp.Droid.Views
             _secondDownArrow = FindViewById<ImageButton>(Resource.Id.SecondRequestDownArrow);
             _thirdDownArrow = FindViewById<ImageButton>(Resource.Id.ThirdRequestDownArrow);
             _fourthDownArrow = FindViewById<ImageButton>(Resource.Id.FourthRequestDownArrow);
-            _requestConfirmationPopUp = FindViewById<RelativeLayout>(Resource.Id.RequestPagePopUpLayout);
-            _requestSuccessMessage = FindViewById<RelativeLayout>(Resource.Id.RequestPageSuccessfulPopUpLayout);
             _requestButtonClicked = FindViewById<Button>(Resource.Id.RequestButton);
             _BackButton = FindViewById<ImageButton>(Resource.Id.RequestBackButton);
 			_userSelectionSlidingLayout = FindViewById<LinearLayout>(Resource.Id.UserSelectionSlidingLayout);
@@ -118,17 +105,14 @@ namespace MobileApp.Droid.Views
 
         protected void SetClickable()
         {
-            _yesToRequest.Click += showSuccessMessage;
-            _doNotRequest.Click += showConfirmationPopUp;
-            _OkSuccessfullyRequested.Click += showSuccessMessage;
-            _firstUpArrow.Click += increaseInt;
-            _secondUpArrow.Click += increaseInt;
-            _thirdUpArrow.Click += increaseInt;
-            _fourthUpArrow.Click += increaseInt;
-            _firstDownArrow.Click += decreaseInt;
-            _secondDownArrow.Click += decreaseInt;
-            _thirdDownArrow.Click += decreaseInt;
-            _fourthDownArrow.Click += decreaseInt;
+            _firstUpArrow.Click += ArrowClicked;
+            _secondUpArrow.Click += ArrowClicked;
+            _thirdUpArrow.Click += ArrowClicked;
+            _fourthUpArrow.Click += ArrowClicked;
+            _firstDownArrow.Click += ArrowClicked;
+            _secondDownArrow.Click += ArrowClicked;
+            _thirdDownArrow.Click += ArrowClicked;
+            _fourthDownArrow.Click += ArrowClicked;
             _requestButtonClicked.Click += showConfirmationPopUp;
             _BackButton.Click += delegate { Finish(); };
 
@@ -147,53 +131,44 @@ namespace MobileApp.Droid.Views
             }
         }
 
-        private void increaseInt(object sender, EventArgs e)
+        private void ArrowClicked(object sender, EventArgs e)
         {
-            ImageButton _upArrowClicked = (ImageButton)sender;         
+            ImageButton _arrowClicked = (ImageButton)sender;
 
-            switch (_upArrowClicked.Id)
+            switch (_arrowClicked.Id)
             {
                 case Resource.Id.FirstRequestUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _firstNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _firstNumber);
                     setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondRequestUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _secondNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdRequestUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _thirdNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthRequestUpArrow:
-                    _selectorHelper.IncreaseSelector(_upArrowClicked.Id, _fourthNumber);
+                    _selectorHelper.IncreaseSelector(_arrowClicked.Id, _fourthNumber);
                     break;
-            }
-        }
 
-
-        private void decreaseInt(object sender, EventArgs e)
-        {
-            ImageButton _downArrowClicked = (ImageButton)sender;
-
-            switch (_downArrowClicked.Id)
-            {
                 case Resource.Id.FirstRequestDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _firstNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _firstNumber);
                     setGbOrMb(Int32.Parse(_firstNumber.Text));
                     break;
 
                 case Resource.Id.SecondRequestDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _secondNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _secondNumber);
                     break;
 
                 case Resource.Id.ThirdRequestDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _thirdNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _thirdNumber);
                     break;
 
                 case Resource.Id.FourthRequestDownArrow:
-                    _selectorHelper.DecreaseSelector(_downArrowClicked.Id, _fourthNumber);
+                    _selectorHelper.DecreaseSelector(_arrowClicked.Id, _fourthNumber);
                     break;
             }
         }
@@ -203,7 +178,7 @@ namespace MobileApp.Droid.Views
             if (valueOfFirstNumber > 0)
             {
                 _dataUnitsToGB.Text = StringConstants.Localizable.GBUnit;
-                _decimalPointVisibility.Text = StringConstants.Localizable.RequestDecimalPoint;
+                _decimalPointVisibility.Text = StringConstants.Localizable.DecimalPoint;
             }
             else
             {
@@ -217,38 +192,45 @@ namespace MobileApp.Droid.Views
             _getDataAmount = _firstNumber.Text + _decimalPointVisibility.Text + _secondNumber.Text + _thirdNumber.Text + _fourthNumber.Text;
             _dataAmountDouble = Double.Parse(_getDataAmount);
             _getDataUnit = _dataUnitsToGB.Text;
-            _requestDialogDisplayText.Text = string.Format(StringConstants.Localizable.RequestPopUpMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
 
-            if (_requestConfirmationPopUp.Visibility == ViewStates.Invisible)
+            try
             {
-                _requestConfirmationPopUp.Visibility = ViewStates.Visible;
+                _requestAmount = _dataAmountDouble;
+                if (_getDataUnit == StringConstants.Localizable.MBUnit)
+                {
+                    _requestAmount = _dataAmountDouble / 1000.0;
+                }
+
+                if (_requestAmount != 0)
+                {
+                    Dialog requestDialog = DialogHelper.ConfirmRequest(this, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text, showSuccessMessage);
+                    requestDialog.Show();
+                }
+                else
+                {
+                    Dialog zerAmountDialog = DialogHelper.ZeroAmount(this);
+                    zerAmountDialog.Show();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _requestConfirmationPopUp.Visibility = ViewStates.Invisible;
+                Console.WriteLine(ex.Message);
+                Dialog selectUserDialog = DialogHelper.SelectUser(this);
+                selectUserDialog.Show();
             }
         }
 
         private void showSuccessMessage(object sender, EventArgs e)
         {
-            _successfullyRequestedMessage.Text = string.Format(StringConstants.Localizable.RequestConfirmationMessage, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
+            Dialog successDialog = DialogHelper.RequestSuccess(this, _dataAmountDouble.ToString(), _getDataUnit, _selectedUser.Text);
+            successDialog.Show();
+
             _firstNumber.Text = StringConstants.Localizable.InitialAmount;
             _secondNumber.Text = StringConstants.Localizable.InitialAmount;
             _thirdNumber.Text = StringConstants.Localizable.InitialAmount;
             _fourthNumber.Text = StringConstants.Localizable.InitialAmount;
             _dataUnitsToGB.Text = StringConstants.Localizable.MBUnit;
             _decimalPointVisibility.Text = "";
-
-
-            if (_requestSuccessMessage.Visibility == ViewStates.Invisible)
-            {
-                _requestSuccessMessage.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                _requestSuccessMessage.Visibility = ViewStates.Invisible;
-                _requestConfirmationPopUp.Visibility = ViewStates.Invisible;
-            }
         }
     }
 }

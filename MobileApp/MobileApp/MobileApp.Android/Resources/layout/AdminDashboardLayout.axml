@@ -34,14 +34,15 @@
                     p1:layout_weight="1"
                     p1:layout_gravity="left"
                     p1:padding="3dp"
-                    p1:gravity="center">
+                    p1:gravity="left">
                     <ImageButton
                         p1:id="@+id/MenuButton"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
                         p1:src="@drawable/menu"
                         p1:background="@android:color/transparent"
-                        p1:padding="10dp" />
+                        p1:padding="10dp"
+                        p1:layout_gravity="left" />
                 </LinearLayout>
                 <LinearLayout
                     p1:orientation="horizontal"
@@ -58,18 +59,10 @@
                         p1:id="@+id/UserName"
                         p1:layout_width="wrap_content"
                         p1:layout_height="wrap_content"
-                        p1:text="MRS LOUISE SHIRLEY WESLEY"
                         p1:layout_gravity="center"
                         p1:ellipsize="marquee"
                         p1:singleLine="true"
                         p1:textColor="#FFFFFF" />
-                    <ImageButton
-                        p1:id="@+id/AccountSwitcher"
-                        p1:background="@android:color/transparent"
-                        p1:layout_width="wrap_content"
-                        p1:layout_height="match_parent"
-                        p1:src="@drawable/chevrondownicon"
-                        p1:padding="10dp" />
                 </LinearLayout>
                 <LinearLayout
                     p1:orientation="horizontal"
@@ -103,5 +96,6 @@
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
         p1:layout_below="@id/ToolbarLayout"
-        p1:id="@+id/MainViewPager" />
+        p1:id="@+id/MainViewPager"
+        p1:layout_marginBottom="45dp" />
 </RelativeLayout>

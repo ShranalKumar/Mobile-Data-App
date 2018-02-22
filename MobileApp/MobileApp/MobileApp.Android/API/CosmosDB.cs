@@ -234,28 +234,9 @@ namespace MobileApp.Droid
                     Console.WriteLine("404 not found");
                     return user;
                 }
-                
-                GroupMembers newGroupMember = new GroupMembers();
-                newGroupMember.uid = newMember.UID;
-                NameList newUserName = new NameList();
-                newUserName.FirstName = newMember.Name.FirstName;
-                newUserName.LastName = newMember.Name.LastName;
-                newGroupMember.Name = new List<NameList>();
-                newGroupMember.Name.Add(newUserName);
-                newGroupMember.AdminStatus = newMember.AdminStatus;
-                newGroupMember.Used = newMember.Used;
-                newGroupMember.Allocated = newMember.Allocated;
-                newGroupMember.UsageBreakdown = new List<UsageBreakdownList>();
 
-                User newUser = new User();
-                newUser.UID = newGroupMember.uid;
-                newUser.Name = new UserName();
-                newUser.Name.FirstName = newGroupMember.Name[0].FirstName;
-                newUser.Name.LastName = newGroupMember.Name[0].LastName;
-                newUser.AdminStatus = newGroupMember.AdminStatus;
-                newUser.Used = newGroupMember.Used;
-                newUser.Allocated = newGroupMember.Allocated;
-                newUser.UsageBreakdown = new List<UserUsageBreakdown>();
+                GroupMembers newGroupMember = ClassConverterHelper.createGroupMember(newMember);
+                User newUser = ClassConverterHelper.createUser(newMember);
 
                 Controller._users.Add(newUser);
                 queryDoc.groupMembers.Add(newGroupMember);
